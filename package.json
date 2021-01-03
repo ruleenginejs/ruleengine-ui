@@ -1,0 +1,66 @@
+{
+  "name": "@ruleenginejs/ruleengine-ui-kit-vue",
+  "version": "1.0.0",
+  "description": "UI components for ruleengine editor",
+  "main": "dist/ruleengine-ui-kit-vue.common.js",
+  "module": "dist/ruleengine-ui-kit-vue.esm.js",
+  "unpkg": "dist/ruleengine-ui-kit-vue.js",
+  "files": [
+    "src",
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "start": "npm run dev:start",
+    "dev:start": "cross-env NO_SOURCE_MAP=true npm run dev:serve",
+    "dev:serve": "vue-cli-service serve",
+    "dev:build": "vue-cli-service build",
+    "dev:lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "vue": "^3.0.5"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.9",
+    "@vue/cli-plugin-eslint": "~4.5.9",
+    "@vue/cli-service": "~4.5.9",
+    "@vue/compiler-sfc": "^3.0.5",
+    "babel-eslint": "^10.1.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.17.0",
+    "eslint-plugin-vue": "^7.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruleenginejs/ruleengine-ui-kit-vue.git"
+  },
+  "author": "Nikolay Naumenkov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ruleenginejs/ruleengine-ui-kit-vue/issues"
+  },
+  "homepage": "https://github.com/ruleenginejs/ruleengine-ui-kit-vue#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
