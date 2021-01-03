@@ -1,4 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import UIKit from "./index"
 
-createApp(App).mount('#app')
+const app = createApp(App)
+
+app.use(UIKit)
+app.mount('#app')

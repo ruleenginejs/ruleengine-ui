@@ -1,10 +1,15 @@
 <template>
-  <div />
+  <all-components />
 </template>
 
 <script>
+import AllComponents from "@/views/all-components";
+
 export default {
-  name: "App"
+  name: "App",
+  components: {
+    AllComponents
+  }
 };
 </script>
 
