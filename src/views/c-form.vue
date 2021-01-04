@@ -1,7 +1,7 @@
 <template>
   <v-content class="w-1/3">
     <v-label>Form</v-label>
-    <v-input v-model="form.text" type="text" />
+    <v-input v-model="form.text" type="text" placeholder="Enter your text" />
     <v-label>Text: {{ form.text }}</v-label>
     <v-input v-model="form.text" icon-clickable type="text">
       <template #icon>

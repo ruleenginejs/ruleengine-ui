@@ -18,6 +18,11 @@
 
   /* disabled */
   @apply disabled:opacity-38;
+
+  /* placeholder */
+  &::placeholder {
+    @apply text-input-placeholder-foreground;
+  }
 }
 
 .v-input--icon {
