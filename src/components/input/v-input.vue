@@ -1,10 +1,12 @@
 <template>
-  <div class="v-input-wrap" :class="className">
+  <div class="v-input-wrap" :class="wrapClasses">
     <input
       class="v-input"
       :class="inputClasses"
       v-model="value"
       v-bind="$attrs"
+      :disabled="disabled"
+      :readonly="readonly"
     />
     <span
       v-if="hasIcon"
@@ -35,11 +37,21 @@ export default {
     iconClickable: {
       type: Boolean,
       default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    readonly: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ["update:modelValue"],
   setup(props, { emit, slots }) {
-    const { modelValue, iconClickable } = toRefs(props);
+    const { modelValue, iconClickable, className, disabled, readonly } = toRefs(
+      props
+    );
 
     const value = computed({
       get: () => modelValue.value,
@@ -49,15 +61,21 @@ export default {
     const hasIcon = computed(() => !!slots.icon);
 
     const iconClasses = computed(() => ({
-      "v-input__icon--clickable": iconClickable.value
+      "v-input__icon--clickable":
+        !disabled.value && !readonly.value && iconClickable.value
     }));
 
     const inputClasses = computed(() => ({
       "v-input--icon": hasIcon.value
     }));
 
+    const wrapClasses = computed(() => ({
+      [className]: !!className.value,
+      "v-input-wrap--disabled": disabled.value
+    }));
+
     const onIconClick = () => {
-      if (!iconClickable.value) return;
+      if (!iconClickable.value || disabled.value || readonly.value) return;
       emit("icon-click");
     };
 
@@ -66,7 +84,8 @@ export default {
       iconClasses,
       onIconClick,
       hasIcon,
-      inputClasses
+      inputClasses,
+      wrapClasses
     };
   }
 };

@@ -1,0 +1,4 @@
+.v-label {
+  /* visual styles */
+  @apply text-sm text-foreground;
+}

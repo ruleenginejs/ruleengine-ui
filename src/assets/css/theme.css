@@ -1,8 +1,15 @@
 :root {
-  /* Input */
+  /* input */
   --input-placeholder-foreground: #a6a6a6;
   --input-background: #3c3c3c;
   --input-foreground: #cccccc;
-  /* Border */
+
+  /* border */
   --focus-border: #007fd4;
+
+  /* window */
+  --window-background: #171717;
+
+  /* common */
+  --foreground: #cccccc;
 }

@@ -4,15 +4,20 @@
 }
 
 .v-input {
+  /* display styles */
+  @apply block;
+
   /* visual styles */
-  @apply bg-input-background text-input-foreground;
-  @apply text-sm;
+  @apply text-sm bg-input-background text-input-foreground;
 
   /* size */
   @apply w-full h-6 p-1;
 
   /* focus */
   @apply focus:outline-blue;
+
+  /* disabled */
+  @apply disabled:opacity-38;
 }
 
 .v-input--icon {
@@ -24,10 +29,10 @@
   @apply absolute top-0 right-0;
 
   /* display styles */
-  @apply flex;
+  @apply flex items-center justify-center;
 
   /* visual styles */
-  @apply text-sm text-input-foreground;
+  @apply text-base leading-none text-input-foreground;
 
   /* size */
   @apply w-6 h-6 px-1 py-0.5;
@@ -37,4 +42,8 @@
 
 .v-input__icon--clickable {
   @apply cursor-pointer;
+}
+
+.v-input-wrap--disabled .v-input__icon {
+  @apply opacity-38;
 }
