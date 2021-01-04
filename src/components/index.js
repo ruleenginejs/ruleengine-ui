@@ -1,3 +1,5 @@
 export * from "./icons"
 export * from "./input"
 export * from "./label"
+export * from "./space"
+export * from "./content"

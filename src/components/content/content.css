@@ -1,0 +1,27 @@
+.v-content--padding-sm {
+  @apply p-2;
+}
+
+.v-content--padding-md {
+  @apply p-4;
+}
+
+.v-content--padding-lg {
+  @apply p-6;
+}
+
+.v-content--h-full {
+  @apply h-full;
+}
+
+.v-content--w-full {
+  @apply w-full;
+}
+
+.v-content--all-distr {
+  @apply flex-grow;
+}
+
+.v-content--scroll {
+  @apply overflow-auto;
+}

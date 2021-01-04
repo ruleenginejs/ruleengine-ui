@@ -1,5 +1,5 @@
 <template>
-  <div class="w-1/3">
+  <v-content class="w-1/3">
     <h4>Form</h4>
     <v-input v-model="form.text" type="text" />
     <p>Text: {{ form.text }}</p>
@@ -20,7 +20,7 @@
         <v-icon-file-menu />
       </template>
     </v-input>
-  </div>
+  </v-content>
 </template>
 
 <script>

@@ -1,0 +1,4 @@
+.v-space {
+  /* display styles */
+  @apply flex-grow;
+}
