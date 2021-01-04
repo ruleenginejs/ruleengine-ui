@@ -47,7 +47,7 @@ export default {
       default: false
     }
   },
-  emits: ["update:modelValue"],
+  emits: ["update:modelValue", "icon-click"],
   setup(props, { emit, slots }) {
     const { modelValue, iconClickable, className, disabled, readonly } = toRefs(
       props
@@ -70,7 +70,7 @@ export default {
     }));
 
     const wrapClasses = computed(() => ({
-      [className]: !!className.value,
+      [className.value]: !!className.value,
       "v-input-wrap--disabled": disabled.value
     }));
 

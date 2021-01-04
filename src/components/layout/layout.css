@@ -1,0 +1,117 @@
+.v-layout {
+  @apply flex;
+}
+
+.v-layout--inline {
+  @apply inline-flex;
+}
+
+.v-layout--vertical {
+  @apply flex-col;
+}
+
+.v-layout--vertical.v-layout--reverse {
+  @apply flex-col-reverse;
+}
+
+.v-layout--wrap {
+  @apply flex-wrap;
+}
+
+.v-layout--wrap.v-layout--reverse {
+  @apply flex-wrap-reverse;
+}
+
+.v-layout--h-full {
+  @apply h-full;
+}
+
+.v-layout--w-full {
+  @apply w-full;
+}
+
+.v-layout--h-start {
+  @apply items-start;
+}
+
+.v-layout--h-end {
+  @apply items-end;
+}
+
+.v-layout--h-center {
+  @apply items-center;
+}
+
+.v-layout--h-baseline {
+  @apply items-baseline;
+}
+
+.v-layout--h-stretch {
+  @apply items-stretch;
+}
+
+.v-layout--w-start {
+  @apply justify-start;
+}
+
+.v-layout--w-end {
+  @apply justify-end;
+}
+
+.v-layout--w-between {
+  @apply justify-between;
+}
+
+.v-layout--w-center {
+  @apply justify-center;
+}
+
+.v-layout--gutter-sm:not(.v-layout--wrap)>* {
+  @apply mr-2;
+}
+
+.v-layout--gutter-md:not(.v-layout--wrap)>* {
+  @apply mr-4;
+}
+
+.v-layout--gutter-lg:not(.v-layout--wrap)>* {
+  @apply mr-6;
+}
+
+.v-layout--gutter-sm:not(.v-layout--wrap)>*:last-child,
+.v-layout--gutter-md:not(.v-layout--wrap)>*:last-child,
+.v-layout--gutter-lg:not(.v-layout--wrap)>*:last-child {
+  @apply mr-0;
+}
+
+.v-layout--gutter-sm.v-layout--wrap {
+  @apply -mt-2 -ml-2;
+}
+
+.v-layout--gutter-sm.v-layout--wrap>* {
+  @apply mt-2 ml-2;
+}
+
+.v-layout--gutter-md.v-layout--wrap {
+  @apply -mt-4 -ml-4;
+}
+
+.v-layout--gutter-md.v-layout--wrap>* {
+  @apply mt-4 ml-4;
+}
+
+.v-layout--gutter-lg.v-layout--wrap {
+  @apply -mt-6 -ml-6;
+}
+
+.v-layout--gutter-lg.v-layout--wrap>* {
+  @apply mt-6 ml-6;
+}
+
+.v-layout--all-distr {
+  @apply flex-grow;
+}
+
+.v-layout--no-overflow {
+  @apply overflow-hidden;
+}

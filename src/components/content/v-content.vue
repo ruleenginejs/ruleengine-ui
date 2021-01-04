@@ -6,6 +6,7 @@
 
 <script>
 import { computed, toRefs } from "vue";
+
 export default {
   name: "v-content",
   props: {
