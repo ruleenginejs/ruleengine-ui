@@ -14,4 +14,10 @@ export default {
 </script>
 
 <style>
+@import "./assets/css/demo";
+
+body {
+  background-color: #171717;
+  color: blueviolet;
+}
 </style>

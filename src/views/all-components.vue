@@ -1,12 +1,14 @@
 <template>
-  <div>
-    <h4>Form</h4>
-    <v-input />
-  </div>
+  <c-form />
 </template>
 
 <script>
+import CForm from "./c-form";
+
 export default {
-  name: "all-components"
+  name: "all-components",
+  components: {
+    CForm
+  }
 };
 </script>

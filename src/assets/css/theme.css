@@ -1,0 +1,8 @@
+:root {
+  /* Input */
+  --input-placeholder-foreground: #a6a6a6;
+  --input-background: #3c3c3c;
+  --input-foreground: #cccccc;
+  /* Border */
+  --focus-border: #007fd4;
+}
