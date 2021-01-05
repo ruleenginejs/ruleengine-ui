@@ -3,7 +3,7 @@
     <v-action-bar>
       <v-action-group>
         <v-action @click="onClick">
-          <v-icon-stop />
+          <v-icon-play />
         </v-action>
         <v-action @click="onClick">
           <v-icon-stop />
