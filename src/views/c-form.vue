@@ -1,5 +1,5 @@
 <template>
-  <v-content class="w-1/3">
+  <v-content padding="md" class="w-1/3">
     <v-label>Form</v-label>
     <v-input v-model="form.text" type="text" placeholder="Enter your text" />
     <v-label>Text: {{ form.text }}</v-label>

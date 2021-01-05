@@ -1,5 +1,5 @@
 <template>
-  <v-content class="w-1/2">
+  <v-content padding="md" class="w-1/2">
     <v-action-bar>
       <v-action-group>
         <v-action @click="onClick">

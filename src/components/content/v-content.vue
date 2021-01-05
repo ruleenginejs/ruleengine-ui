@@ -16,7 +16,7 @@ export default {
     },
     padding: {
       type: String,
-      default: "md"
+      default: null
     },
     wFull: {
       type: Boolean,
