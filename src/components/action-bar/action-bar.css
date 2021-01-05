@@ -1,0 +1,26 @@
+.v-action-bar {
+  /* display styles */
+  @apply flex;
+
+  /* visual styles */
+  @apply bg-action-bar-background;
+
+  /* sizes */
+  @apply px-2 py-1.6;
+}
+
+.v-action-bar--l-border {
+  @apply border-l border-solid border-action-bar-border;
+}
+
+.v-action-bar--r-border {
+  @apply border-r border-solid border-action-bar-border;
+}
+
+.v-action-bar > * {
+  @apply mr-2;
+}
+
+.v-action-bar > *:last-child {
+  @apply mr-0;
+}

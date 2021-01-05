@@ -1,0 +1,18 @@
+.v-action-group {
+  /* display styles */
+  @apply flex;
+}
+
+.v-action + .v-action-group,
+.v-action-group + .v-action,
+.v-action-group + .v-action-group {
+  @apply ml-2.1;
+}
+
+.v-action-group > * {
+  @apply mr-2;
+}
+
+.v-action-group > *:last-child {
+  @apply mr-0;
+}

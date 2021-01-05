@@ -1,0 +1,24 @@
+.v-action {
+  /* display styles */
+  @apply flex items-center justify-center flex-shrink-0;
+
+  /* visual styles */
+  @apply text-xs leading-none;
+  @apply text-action-bar-inactive-foreground;
+  @apply bg-action-bar-inactive-background;
+  @apply rounded-3;
+
+  /* sizes */
+  @apply w-9.1 h-5.1 px-1 py-0.5;
+
+  /* active */
+  &:active:not(.v-action--disabled) {
+    @apply text-action-bar-active-foreground;
+    @apply bg-action-bar-active-background;
+  }
+}
+
+.v-action--disabled {
+  /* visual styles */
+  @apply text-action-bar-disabled-foreground;
+}

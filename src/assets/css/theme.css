@@ -12,4 +12,13 @@
 
   /* common */
   --foreground: #cccccc;
+
+  /* action bar */
+  --action-bar-background: #252526;
+  --action-bar-border: #000000;
+  --action-bar-active-background: #4a4a4a;
+  --action-bar-active-foreground: #ffffff66;
+  --action-bar-inactive-background: #333333;
+  --action-bar-inactive-foreground: #ffffff;
+  --action-bar-disabled-foreground: #ffffff66;
 }
