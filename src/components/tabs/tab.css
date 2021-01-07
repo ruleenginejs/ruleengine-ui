@@ -1,0 +1,69 @@
+.v-tab {
+  /* display styles */
+  @apply flex flex-shrink-0 items-center;
+
+  /* visual styles */
+  @apply text-sm leading-none;
+  @apply bg-tab-inactive-background text-tab-inactive-foreground;
+  @apply border-r border-solid border-tab-border;
+
+  /* sizes */
+  @apply pl-2.5 w-28.5 min-w-fit;
+
+  @apply cursor-pointer;
+}
+
+.v-tab--selected {
+  /* visual styles */
+  @apply bg-tab-active-background text-tab-active-foreground;
+}
+
+.v-tab__label {
+  /* display styles */
+  @apply flex-grow;
+
+  /* visual styles */
+  @apply whitespace-nowrap;
+}
+
+.v-tab__icon {
+  /* display styles */
+  @apply flex flex-shrink-0;
+
+  /* visual styles */
+  @apply text-xs leading-none;
+
+  /* sizes */
+  @apply pr-1.5;
+}
+
+.v-tab__actions {
+  /* display styles */
+  @apply flex items-center justify-center flex-shrink-0;
+
+  /* sizes */
+  @apply pl-1 pr-2 w-7;
+}
+
+.v-tab__action {
+  /* display styles */
+  @apply flex items-center justify-center;
+
+  /* visual styles */
+  @apply text-xxs leading-none;
+
+  /* sizes */
+  @apply w-4 h-4;
+
+  &:active {
+    @apply text-xs leading-none;
+  }
+}
+
+.v-tab__action--close {
+  display: none;
+}
+
+.v-tab__action--modified {
+
+}

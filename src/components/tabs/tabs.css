@@ -1,0 +1,32 @@
+.v-tabs {
+  /* display styles */
+  @apply flex;
+
+  /* visual styles */
+  @apply bg-tab-background;
+
+  /* sizes */
+  @apply h-8.7;
+
+  /* scroll */
+  @apply overflow-y-hidden overflow-x-scroll;
+}
+
+/* scrollbar styles */
+.v-tabs::-webkit-scrollbar {
+  /* visual styles */
+  @apply bg-transparent;
+
+  /* sizes */
+  @apply h-0.5;
+}
+
+.v-tabs::-webkit-scrollbar-thumb {
+  /* visual styles */
+  @apply bg-transparent;
+}
+
+.v-tabs:hover::-webkit-scrollbar-thumb {
+  /* visual styles */
+  @apply bg-tab-scroll-hover-foreground;
+}
