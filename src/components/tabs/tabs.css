@@ -9,7 +9,7 @@
   @apply h-35sp;
 
   /* scroll */
-  @apply overflow-y-hidden overflow-x-scroll;
+  @apply overflow-y-hidden overflow-x-auto;
 }
 
 /* scrollbar styles */
