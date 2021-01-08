@@ -13,6 +13,9 @@
   @apply pl-2.5 w-120sp min-w-fit;
 
   @apply cursor-pointer;
+
+  /* focus */
+  @apply focus:outline-blue;
 }
 
 .v-tab--selected {
