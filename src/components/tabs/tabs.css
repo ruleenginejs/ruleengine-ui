@@ -6,7 +6,7 @@
   @apply bg-tab-background;
 
   /* sizes */
-  @apply h-8.7;
+  @apply h-35sp;
 
   /* scroll */
   @apply overflow-y-hidden overflow-x-scroll;

@@ -6,7 +6,7 @@
 .v-action + .v-action-group,
 .v-action-group + .v-action,
 .v-action-group + .v-action-group {
-  @apply ml-2.1;
+  @apply ml-9sp;
 }
 
 .v-action-group > * {

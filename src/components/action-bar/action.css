@@ -3,13 +3,13 @@
   @apply flex items-center justify-center flex-shrink-0;
 
   /* visual styles */
-  @apply text-xs leading-none;
+  @apply text-11sp leading-none;
   @apply text-action-bar-inactive-foreground;
   @apply bg-action-bar-inactive-background;
-  @apply rounded-3;
+  @apply rounded-3sp;
 
   /* sizes */
-  @apply w-9.1 h-5.1 px-1 py-0.5;
+  @apply w-38sp h-21sp px-1 py-0.5;
 
   /* active */
   &:active:not(.v-action--disabled) {

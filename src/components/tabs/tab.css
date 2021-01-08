@@ -5,12 +5,12 @@
   @apply flex flex-shrink-0 items-center;
 
   /* visual styles */
-  @apply text-sm leading-none;
+  @apply text-13sp leading-none;
   @apply bg-tab-inactive-background text-tab-inactive-foreground;
   @apply border-r border-solid border-tab-border;
 
   /* sizes */
-  @apply pl-2.5 w-28.5 min-w-fit;
+  @apply pl-2.5 w-120sp min-w-fit;
 
   @apply cursor-pointer;
 }
@@ -33,7 +33,7 @@
   @apply flex flex-shrink-0;
 
   /* visual styles */
-  @apply text-xs leading-none;
+  @apply text-11sp leading-none;
 
   /* sizes */
   @apply pr-1.5;
@@ -52,12 +52,12 @@
   @apply flex items-center justify-center;
 
   /* visual styles */
-  @apply text-xxs leading-none;
+  @apply text-9sp leading-none;
 
   /* sizes */
   @apply w-4 h-4;
 
   &:active {
-    @apply text-xs leading-none;
+    @apply text-11sp leading-none;
   }
 }

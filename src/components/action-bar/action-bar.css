@@ -6,7 +6,7 @@
   @apply bg-action-bar-background;
 
   /* sizes */
-  @apply px-2 py-1.6;
+  @apply px-2 py-7sp;
 }
 
 .v-action-bar--l-border {

@@ -8,7 +8,7 @@
   @apply block;
 
   /* visual styles */
-  @apply text-sm bg-input-background text-input-foreground;
+  @apply text-13sp bg-input-background text-input-foreground;
 
   /* size */
   @apply w-full h-6 p-1;
