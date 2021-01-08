@@ -32,7 +32,7 @@ export default {
   },
   props: {
     name: {
-      type: String,
+      type: [String, Number],
       default: null
     },
     modified: {
@@ -49,11 +49,10 @@ export default {
     const instance = getCurrentInstance();
     const { name, iconColor } = toRefs(props);
 
-    const updateSelectedTab = inject("updateSelectedTab");
     const selectedTab = inject("selectedTab");
 
     const hasIcon = computed(() => !!slots.icon);
-    const tabName = computed(() => name || instance.uid);
+    const tabName = computed(() => name.value || instance.uid);
     const selected = computed(
       () => selectedTab && tabName.value === selectedTab.value
     );
@@ -67,9 +66,8 @@ export default {
     }));
 
     const onSelect = () => {
-      debugger;
-      if (updateSelectedTab) {
-        updateSelectedTab(tabName);
+      if (selectedTab) {
+        selectedTab.value = tabName.value;
       }
     };
 

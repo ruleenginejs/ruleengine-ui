@@ -1,6 +1,6 @@
 <template>
   <v-content class="w-1/2">
-    <v-tabs>
+    <v-tabs v-model="selectedTab">
       <v-tab icon-color="#B69E24" modified @close="onClose">
         File Name.txt
         <template #icon>
@@ -44,6 +44,11 @@
 <script>
 export default {
   name: "c-tabs",
+  data() {
+    return {
+      selectedTab: null
+    };
+  },
   methods: {
     onClose() {
       alert(1);

@@ -32,6 +32,7 @@ module.exports = {
         blue: ['1px solid var(--focus-border)', '-1px'],
       },
       fontSize: {
+        "8sp": ['0.5rem', { lineHeight: '0.85rem' }],
         "9sp": ['0.5625rem', { lineHeight: '0.9rem' }],
         "11sp": ['0.6875rem', { lineHeight: '1rem' }],
         "13sp": ['0.8125rem', { lineHeight: '1.1375rem' }],

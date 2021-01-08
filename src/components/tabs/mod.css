@@ -28,3 +28,9 @@
 .v-tab:hover .v-tab__actions .v-tab__action-close {
   display: flex;
 }
+
+/* modified icon */
+.v-tab__action__icon--modified {
+  /* visual styles */
+  @apply text-8sp leading-none;
+}
