@@ -6,6 +6,7 @@ import VIconPlay from "./v-icon-play"
 import VIconBook from "./v-icon-book"
 import VIconClose from "./v-icon-close"
 import VIconCircle from "./v-icon-circle"
+import VIconChevronDown from "./v-icon-chevron-down"
 
 export {
   VIconFileMenu,
@@ -13,5 +14,6 @@ export {
   VIconPlay,
   VIconBook,
   VIconClose,
-  VIconCircle
+  VIconCircle,
+  VIconChevronDown
 }

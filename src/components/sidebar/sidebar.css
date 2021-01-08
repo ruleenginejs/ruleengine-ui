@@ -1,0 +1,4 @@
+.v-sidebar {
+  /* visual styles */
+  @apply bg-side-bar-background;
+}

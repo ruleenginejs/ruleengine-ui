@@ -30,4 +30,9 @@
   --tab-active-foreground: #FFFFFF;
   --tab-border: #252526;
   --tab-scroll-hover-foreground: #cccccc33;
+
+  /* sidebar */
+  --side-bar-background: #252526;
+  --side-bar-section-header-border: #cccccc33;
+  --side-bar-title-foreground: #bbbbbb;
 }

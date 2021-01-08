@@ -26,7 +26,11 @@ module.exports = {
         "tab-active-background": "var(--tab-active-background)",
         "tab-active-foreground": "var(--tab-active-foreground)",
         "tab-border": "var(--tab-border)",
-        "tab-scroll-hover-foreground": "var(--tab-scroll-hover-foreground)"
+        "tab-scroll-hover-foreground": "var(--tab-scroll-hover-foreground)",
+
+        "side-bar-background": "var(--side-bar-background)",
+        "side-bar-section-header-border": "var(--side-bar-section-header-border)",
+        "side-bar-title-foreground": "var(--side-bar-title-foreground)"
       },
       outline: {
         blue: ['1px solid var(--focus-border)', '-1px'],
@@ -34,6 +38,7 @@ module.exports = {
       fontSize: {
         "8sp": ['0.5rem', { lineHeight: '0.85rem' }],
         "9sp": ['0.5625rem', { lineHeight: '0.9rem' }],
+        "10sp": ['0.625rem', { lineHeight: '0.95rem' }],
         "11sp": ['0.6875rem', { lineHeight: '1rem' }],
         "13sp": ['0.8125rem', { lineHeight: '1.1375rem' }],
       },
@@ -53,7 +58,10 @@ module.exports = {
       },
       minWidth: {
         fit: "fit-content"
-      }
+      },
+      transitionProperty: {
+        height: 'height',
+      },
     }
   },
   variants: {
