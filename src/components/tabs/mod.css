@@ -1,0 +1,30 @@
+/* normal styles */
+.v-tab__action--modified .v-tab__action__icon--close {
+  display: none;
+}
+
+.v-tab__action--modified .v-tab__action__icon--modified {
+  display: block;
+}
+
+/* hover styles */
+.v-tab__action--modified:hover .v-tab__action__icon--close {
+  display: block;
+}
+
+.v-tab__action--modified:hover .v-tab__action__icon--modified {
+  display: none;
+}
+
+/* action states */
+.v-tab__actions .v-tab__action-close {
+  display: none;
+}
+
+.v-tab__actions .v-tab__action-close.v-tab__action--modified {
+  display: flex;
+}
+
+.v-tab:hover .v-tab__actions .v-tab__action-close {
+  display: flex;
+}

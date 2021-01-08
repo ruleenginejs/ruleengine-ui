@@ -1,13 +1,13 @@
 <template>
   <v-content class="w-1/2">
     <v-tabs>
-      <v-tab icon-color="#B69E24">
+      <v-tab icon-color="#B69E24" modified @close="onClose">
         File Name.txt
         <template #icon>
           <v-icon-book />
         </template>
       </v-tab>
-      <v-tab icon-color="#B69E24">
+      <v-tab>
         <template #default>File Name.txt</template>
         <template #icon>
           <v-icon-play />
@@ -19,7 +19,7 @@
           <v-icon-stop />
         </template>
       </v-tab>
-      <v-tab icon-color="#B69E24">
+      <v-tab>
         File Name.txt
         <template #icon>
           <v-icon-book />
@@ -43,6 +43,11 @@
 
 <script>
 export default {
-  name: "c-tabs"
+  name: "c-tabs",
+  methods: {
+    onClose() {
+      alert(1);
+    }
+  }
 };
 </script>
