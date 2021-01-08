@@ -1,5 +1,5 @@
 <template>
-  <div class="v-tab" :class="tabClasses" @click="onSelect">
+  <div class="v-tab" :class="tabClasses" @click="onSelect" ref="container">
     <div v-if="hasIcon" class="v-tab__icon" :style="iconStyle">
       <slot name="icon" />
     </div>
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { computed, getCurrentInstance, inject, toRefs } from "vue";
+import { computed, getCurrentInstance, inject, ref, toRefs } from "vue";
 import VIconClose from "@/components/icons/v-icon-close";
 import VIconCircle from "@/components/icons/v-icon-circle";
 
@@ -47,9 +47,9 @@ export default {
   emits: ["close"],
   setup(props, { slots, emit }) {
     const instance = getCurrentInstance();
-    const { name, iconColor } = toRefs(props);
-
     const selectedTab = inject("selectedTab");
+    const { name, iconColor } = toRefs(props);
+    const container = ref(null);
 
     const hasIcon = computed(() => !!slots.icon);
     const tabName = computed(() => name.value || instance.uid);
@@ -69,11 +69,16 @@ export default {
       if (selectedTab) {
         selectedTab.value = tabName.value;
       }
+
+      if (container.value) {
+        container.value.scrollIntoView();
+      }
     };
 
     const onClose = () => emit("close");
 
     return {
+      container,
       hasIcon,
       tabClasses,
       iconStyle,
