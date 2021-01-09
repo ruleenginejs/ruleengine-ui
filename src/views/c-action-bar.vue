@@ -29,7 +29,7 @@
         </v-action>
       </v-action-group>
     </v-action-bar>
-    <v-action-bar l-border>
+    <v-action-bar l-border right>
       <v-action>
         <v-icon-stop />
       </v-action>

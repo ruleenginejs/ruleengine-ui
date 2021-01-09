@@ -17,6 +17,10 @@
   @apply border-r border-solid border-action-bar-border;
 }
 
+.v-action-bar--right {
+  @apply justify-end;
+}
+
 .v-action-bar > * {
   @apply mr-2;
 }

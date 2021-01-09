@@ -17,14 +17,19 @@ export default {
     rBorder: {
       type: Boolean,
       default: false
+    },
+    right: {
+      type: Boolean,
+      default: false
     }
   },
   setup(props) {
-    const { lBorder, rBorder } = toRefs(props);
+    const { lBorder, rBorder, right } = toRefs(props);
 
     const cssClasses = computed(() => ({
       "v-action-bar--l-border": lBorder.value,
-      "v-action-bar--r-border": rBorder.value
+      "v-action-bar--r-border": rBorder.value,
+      "v-action-bar--right": right.value
     }));
 
     return {
