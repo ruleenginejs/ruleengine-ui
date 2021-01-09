@@ -55,14 +55,14 @@
 .v-sidebar-section:focus {
   @apply outline-none;
 }
-.v-sidebar-section:focus .v-sidebar-section__header {
+.v-sidebar-section.v-sidebar-section--expandable:focus .v-sidebar-section__header {
   @apply outline-blue;
 }
-.v-sidebar-section:focus:active .v-sidebar-section__header {
+.v-sidebar-section.v-sidebar-section--expandable:focus:active .v-sidebar-section__header {
   @apply outline-none;
 }
 
-/* transition expand */
+/* expand anim */
 .v-sidebar-section__expand-anim-enter-active,
 .v-sidebar-section__expand-anim-leave-active {
   @apply transition-height ease-in-out duration-200;
@@ -71,4 +71,23 @@
 .v-sidebar-section__expand-anim-enter-from,
 .v-sidebar-section__expand-anim-leave-to {
   height: 0 !important;
+}
+
+/* height full */
+.v-sidebar-section--h-full {
+  /* display styles */
+  @apply flex flex-col;
+
+  /* sizes */
+  @apply h-full;
+}
+
+.v-sidebar-section--h-full .v-sidebar-section__header {
+  /* display styles */
+  @apply flex-shrink-0;
+}
+
+.v-sidebar-section--h-full .v-sidebar-section__content {
+  /* display styles */
+  @apply flex-grow;
 }

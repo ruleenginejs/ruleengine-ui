@@ -1,8 +1,15 @@
 <template>
   <v-content padding="md" class="w-1/2">
     <v-sidebar class="h-96">
-      <v-sidebar-section title="Title" expand>
-        <v-treeview :items="items" />
+      <v-sidebar-section
+        title="Title"
+        h-full
+        :expandable="false"
+        :bottom-border="false"
+      >
+        <v-content scroll h-full>
+          <v-treeview :items="items" />
+        </v-content>
       </v-sidebar-section>
     </v-sidebar>
   </v-content>

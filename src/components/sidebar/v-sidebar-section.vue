@@ -3,7 +3,8 @@
     class="v-sidebar-section"
     :class="{
       'v-sidebar-section--expandable': expandable,
-      'v-sidebar-section--expanded': expanded
+      'v-sidebar-section--expanded': expanded,
+      'v-sidebar-section--h-full': hFull
     }"
     tabindex="-1"
     ref="container"
@@ -74,6 +75,10 @@ export default {
     bottomBorder: {
       type: Boolean,
       default: true
+    },
+    hFull: {
+      type: Boolean,
+      default: false
     }
   },
   setup(props) {
