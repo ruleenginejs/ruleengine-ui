@@ -29,7 +29,6 @@
   --tab-active-background: #1E1E1E;
   --tab-active-foreground: #FFFFFF;
   --tab-border: #252526;
-  --tab-scroll-hover-foreground: #cccccc33;
 
   /* sidebar */
   --side-bar-background: #252526;
@@ -42,4 +41,7 @@
   --list-active-selection-foreground: #ffffff;
   --list-inactive-selection-background: #37373d;
   --list-inactive-foreground: #cccccc;
+
+  /* scrollbar */
+  --scroll-hover-foreground: #cccccc33;
 }

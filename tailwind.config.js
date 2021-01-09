@@ -7,6 +7,7 @@ module.exports = {
         "window-background": "var(--window-background)",
         "foreground": "var(--foreground)",
         "focus-border": "var(--focus-border)",
+        "scroll-hover-foreground": "var(--scroll-hover-foreground)",
 
         "input-placeholder-foreground": "var(--input-placeholder-foreground)",
         "input-background": "var(--input-background)",
@@ -26,7 +27,6 @@ module.exports = {
         "tab-active-background": "var(--tab-active-background)",
         "tab-active-foreground": "var(--tab-active-foreground)",
         "tab-border": "var(--tab-border)",
-        "tab-scroll-hover-foreground": "var(--tab-scroll-hover-foreground)",
 
         "side-bar-background": "var(--side-bar-background)",
         "side-bar-section-header-border": "var(--side-bar-section-header-border)",

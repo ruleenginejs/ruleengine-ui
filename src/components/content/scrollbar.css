@@ -1,0 +1,18 @@
+/* scrollbar styles */
+.v-content::-webkit-scrollbar {
+  /* visual styles */
+  @apply bg-transparent;
+
+  /* sizes */
+  @apply h-1 w-1;
+}
+
+.v-content::-webkit-scrollbar-thumb {
+  /* visual styles */
+  @apply bg-transparent;
+}
+
+.v-content:hover::-webkit-scrollbar-thumb {
+  /* visual styles */
+  @apply bg-scroll-hover-foreground;
+}
