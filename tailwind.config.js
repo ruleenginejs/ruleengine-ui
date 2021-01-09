@@ -30,7 +30,13 @@ module.exports = {
 
         "side-bar-background": "var(--side-bar-background)",
         "side-bar-section-header-border": "var(--side-bar-section-header-border)",
-        "side-bar-title-foreground": "var(--side-bar-title-foreground)"
+        "side-bar-title-foreground": "var(--side-bar-title-foreground)",
+
+        "list-hover-background": "var(--list-hover-background)",
+        "list-active-selection-background": "var(--list-active-selection-background)",
+        "list-active-selection-foreground": "var(--list-active-selection-foreground)",
+        "list-inactive-selection-background": "var(--list-inactive-selection-background)",
+        "list-inactive-foreground": "var(--list-inactive-foreground)"
       },
       outline: {
         blue: ['1px solid var(--focus-border)', '-1px'],
@@ -52,6 +58,7 @@ module.exports = {
         "7sp": '0.4375rem',
         "9sp": '0.5625rem',
         "21sp": '1.3125rem',
+        "22sp": '1.375rem',
         "35sp": '2.1875rem',
         "38sp": '2.375rem',
         "120sp": '7.5rem'

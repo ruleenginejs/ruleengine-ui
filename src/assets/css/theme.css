@@ -35,4 +35,11 @@
   --side-bar-background: #252526;
   --side-bar-section-header-border: #cccccc33;
   --side-bar-title-foreground: #bbbbbb;
+
+  /* list */
+  --list-hover-background: #2a2d2e;
+  --list-active-selection-background: #094771;
+  --list-active-selection-foreground: #ffffff;
+  --list-inactive-selection-background: #37373d;
+  --list-inactive-foreground: #cccccc;
 }

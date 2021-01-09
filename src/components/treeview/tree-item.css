@@ -1,0 +1,83 @@
+.v-tree-item {
+  /* display styles */
+  @apply flex items-center;
+
+  /* visual styles */
+  @apply text-13sp leading-4 text-list-inactive-foreground;
+
+  /* sizes */
+  @apply h-22sp;
+
+  @apply outline-none cursor-pointer;
+
+  /* hover */
+  &:hover {
+    @apply bg-list-hover-background;
+  }
+}
+
+.v-tree-item__label {
+  /* display styles */
+  @apply flex-grow;
+
+  /* visual styles */
+  @apply truncate;
+}
+
+.v-tree-item__indent {
+  /* display styles */
+  @apply flex-shrink-0;
+}
+
+.v-tree-item__chevron {
+  /* display styles */
+  @apply flex items-center justify-center flex-shrink-0;
+
+  /* visual styles */
+  @apply text-10sp leading-none;
+
+  /* sizes */
+  @apply h-22sp w-5;
+
+  /* rotate */
+  @apply transform -rotate-90;
+}
+
+.v-tree-item__icon {
+  /* display styles */
+  @apply flex items-center justify-center flex-shrink-0;
+
+  /* visual styles */
+  @apply text-10sp leading-none;
+
+  /* sizes */
+  @apply h-22sp w-4 mr-1;
+}
+
+/* modificators */
+.v-tree-item--root .v-tree-item__label {
+  /* visual styles */
+  @apply text-11sp leading-4 uppercase font-bold;
+}
+
+.v-tree-item--expanded .v-tree-item__chevron {
+  /* rotate */
+  @apply transform rotate-0;
+}
+
+.v-tree-item--selected {
+  /* visual styles */
+  @apply bg-list-inactive-selection-background;
+
+  &:focus {
+    @apply text-list-active-selection-foreground bg-list-active-selection-background;
+  }
+}
+
+/* root item focus */
+.v-tree-item--root:focus {
+  @apply outline-blue;
+}
+.v-tree-item--root:focus:active {
+  @apply outline-none;
+}
