@@ -21,7 +21,7 @@
       {{ item.name }}
     </div>
   </div>
-  <template v-if="hasChildren && item.expanded">
+  <template v-if="isEachChildren">
     <v-tree-item
       v-for="(child, index) in item.children"
       :key="child.id || index"
@@ -61,9 +61,12 @@ export default {
     const { expanded, selected, children } = toRefs(props.item);
     const container = ref(null);
 
-    const hasChildren = computed(() => children?.value.length);
+    const hasChildren = computed(() => !!children);
     const isRoot = computed(() => depth.value === 0);
     const indent = computed(() => `${depth.value * INDENT_FACTOR}rem`);
+    const isEachChildren = computed(
+      () => hasChildren.value && children.value.length && expanded?.value
+    );
 
     const itemClasses = computed(() => ({
       "v-tree-item--root": isRoot.value,
@@ -72,6 +75,7 @@ export default {
     }));
 
     const forward = (eventName) => (e) => emit(eventName, e);
+    const forwardSelect = forward("select");
 
     const onSelect = () => {
       if (container.value) {
@@ -86,11 +90,12 @@ export default {
 
     return {
       hasChildren,
+      isEachChildren,
       container,
       itemClasses,
       indent,
       onSelect,
-      forwardSelect: forward("select")
+      forwardSelect
     };
   }
 };

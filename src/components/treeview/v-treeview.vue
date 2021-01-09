@@ -30,7 +30,7 @@ export default {
     const selectedItem = ref(null);
 
     const onSelect = (e) => {
-      if (e.item.children?.length) {
+      if (e.item.children) {
         e.item.expanded = !e.item.expanded;
       }
 

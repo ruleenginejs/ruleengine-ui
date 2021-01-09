@@ -16,6 +16,21 @@
 </template>
 
 <script>
+function generateItems() {
+  const items = [];
+  for (let i = 1; i < 30; i++) {
+    items.push({
+      id: 5 + i,
+      name: "file " + i,
+      icon: "v-icon-doc-text",
+      iconColor: "#B69E24",
+      expanded: false,
+      selected: false
+    });
+  }
+  return items;
+}
+
 export default {
   name: "c-treeview",
   data() {
@@ -60,7 +75,16 @@ export default {
               iconColor: "#B69E24",
               expanded: false,
               selected: false
-            }
+            },
+            {
+              id: 500,
+              name: "folder 500",
+              icon: "v-icon-folder",
+              expanded: false,
+              selected: false,
+              children: []
+            },
+            ...generateItems()
           ]
         }
       ]
