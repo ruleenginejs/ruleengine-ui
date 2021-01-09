@@ -22,6 +22,9 @@
 
   /* visual styles */
   @apply truncate;
+
+  /* sizes */
+  @apply pr-1;
 }
 
 .v-tree-item__indent {
