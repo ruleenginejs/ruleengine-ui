@@ -31,7 +31,7 @@ export default {
       default: false
     },
     scroll: {
-      type: Boolean,
+      type: [Boolean, String],
       default: false
     }
   },
@@ -45,7 +45,9 @@ export default {
       "v-content--w-full": wFull.value,
       "v-content--h-full": hFull.value,
       "v-content--all-distr": allDistr.value,
-      "v-content--scroll": scroll.value
+      "v-content--scroll": scroll.value,
+      "v-scrollbar": scroll.value,
+      "v-scrollbar--sm": scroll.value === "sm"
     }));
 
     return {

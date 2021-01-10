@@ -7,7 +7,7 @@
         :expandable="false"
         :bottom-border="false"
       >
-        <v-content scroll h-full>
+        <v-content scroll="sm" h-full>
           <v-treeview :items="items" />
         </v-content>
       </v-sidebar-section>

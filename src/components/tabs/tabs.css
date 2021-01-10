@@ -11,22 +11,3 @@
   /* scroll */
   @apply overflow-y-hidden overflow-x-auto;
 }
-
-/* scrollbar styles */
-.v-tabs::-webkit-scrollbar {
-  /* visual styles */
-  @apply bg-transparent;
-
-  /* sizes */
-  @apply h-0.5;
-}
-
-.v-tabs::-webkit-scrollbar-thumb {
-  /* visual styles */
-  @apply bg-transparent;
-}
-
-.v-tabs:hover::-webkit-scrollbar-thumb {
-  /* visual styles */
-  @apply bg-scroll-hover-foreground;
-}

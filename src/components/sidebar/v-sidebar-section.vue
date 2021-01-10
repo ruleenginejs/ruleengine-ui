@@ -33,7 +33,12 @@
       <div
         v-show="expanded"
         class="v-sidebar-section__content"
-        :class="{ 'v-sidebar-section__border': bottomBorder }"
+        :class="{
+          'v-sidebar-section__border': bottomBorder,
+          'v-sidebar-section__content--scroll': scroll,
+          'v-scrollbar': scroll,
+          'v-scrollbar--sm': scroll === 'sm'
+        }"
       >
         <slot />
       </div>
@@ -78,6 +83,10 @@ export default {
     },
     hFull: {
       type: Boolean,
+      default: false
+    },
+    scroll: {
+      type: [Boolean, String],
       default: false
     }
   },

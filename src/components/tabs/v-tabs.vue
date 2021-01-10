@@ -1,5 +1,5 @@
 <template>
-  <div class="v-tabs">
+  <div class="v-tabs v-scrollbar v-scrollbar--sm">
     <slot />
   </div>
 </template>

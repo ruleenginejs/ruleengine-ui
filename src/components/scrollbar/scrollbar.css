@@ -1,0 +1,22 @@
+.v-scrollbar::-webkit-scrollbar {
+  /* visual styles */
+  @apply bg-transparent;
+
+  /* sizes */
+  @apply h-1 w-1;
+}
+
+.v-scrollbar::-webkit-scrollbar-thumb {
+  /* visual styles */
+  @apply bg-transparent;
+}
+
+.v-scrollbar:hover::-webkit-scrollbar-thumb {
+  /* visual styles */
+  @apply bg-scroll-hover-foreground;
+}
+
+.v-scrollbar--sm::-webkit-scrollbar {
+  /* sizes */
+  @apply h-0.5 w-0.5;
+}

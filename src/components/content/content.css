@@ -1,5 +1,3 @@
-@import "scrollbar";
-
 .v-content--padding-sm {
   @apply p-2;
 }
