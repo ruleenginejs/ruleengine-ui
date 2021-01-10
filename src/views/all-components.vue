@@ -4,6 +4,7 @@
   <c-tabs />
   <c-sidebar />
   <c-treeview />
+  <c-split-view />
 </template>
 
 <script>
@@ -12,6 +13,7 @@ import CActionBar from "./c-action-bar";
 import CTabs from "./c-tabs";
 import CSidebar from "./c-sidebar";
 import CTreeview from "./c-treeview";
+import CSplitView from "./c-split-view";
 
 export default {
   name: "all-components",
@@ -20,7 +22,8 @@ export default {
     CActionBar,
     CTabs,
     CSidebar,
-    CTreeview
+    CTreeview,
+    CSplitView
   }
 };
 </script>

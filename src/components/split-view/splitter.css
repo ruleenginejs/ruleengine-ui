@@ -1,0 +1,17 @@
+.v-splitter {
+  /* display styles */
+  @apply flex-shrink-0;
+
+  /* sizes */
+  @apply h-full w-1;
+
+  @apply cursor-col-resize;
+}
+
+.v-splitter--disabled {
+  @apply cursor-default;
+}
+
+.v-splitter-body-cursor {
+  @apply cursor-col-resize;
+}

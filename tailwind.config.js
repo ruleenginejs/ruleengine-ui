@@ -31,6 +31,7 @@ module.exports = {
         "side-bar-background": "var(--side-bar-background)",
         "side-bar-section-header-border": "var(--side-bar-section-header-border)",
         "side-bar-title-foreground": "var(--side-bar-title-foreground)",
+        "side-bar-border": "var(--side-bar-border)",
 
         "list-hover-background": "var(--list-hover-background)",
         "list-active-selection-background": "var(--list-active-selection-background)",
@@ -69,6 +70,9 @@ module.exports = {
       transitionProperty: {
         height: 'height',
       },
+      cursor: {
+        'col-resize': 'col-resize'
+      }
     }
   },
   variants: {

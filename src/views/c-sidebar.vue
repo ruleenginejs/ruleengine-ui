@@ -1,6 +1,6 @@
 <template>
   <v-content padding="md" class="w-1/2">
-    <v-sidebar>
+    <v-sidebar rt-border>
       <v-sidebar-section title="Title">
         <div>Content</div>
       </v-sidebar-section>

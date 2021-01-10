@@ -18,6 +18,9 @@
     "postrelease": "npm run lib:build && npm run push && npm publish",
     "push": "git push origin master --tags"
   },
+  "dependencies": {
+    "debounce": "^1.2.0"
+  },
   "peerDependencies": {
     "vue": "^3.0.5"
   },

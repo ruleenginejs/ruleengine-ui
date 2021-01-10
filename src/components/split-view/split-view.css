@@ -1,0 +1,7 @@
+.v-split-view {
+  /* display styles */
+  @apply flex flex-row;
+
+  /* sizes */
+  @apply h-full w-full;
+}
