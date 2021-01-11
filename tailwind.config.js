@@ -71,7 +71,8 @@ module.exports = {
         height: 'height',
       },
       cursor: {
-        'col-resize': 'col-resize'
+        'col-resize': 'col-resize',
+        'row-resize': 'row-resize'
       }
     }
   },

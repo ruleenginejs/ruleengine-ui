@@ -1,7 +1,28 @@
 .v-split-view {
-  /* display styles */
-  @apply flex flex-row;
+  @apply flex;
 
+  @apply w-full h-full;
+}
+
+.v-split-view--horizontal {
+  @apply flex-col;
+}
+
+.v-split-view--vertical {
+  @apply flex-row;
+}
+
+/* gutter styles */
+.v-gutter--horizontal {
   /* sizes */
-  @apply h-full w-full;
+  @apply h-full;
+
+  @apply cursor-col-resize;
+}
+
+.v-gutter--vertical {
+  /* sizes */
+  @apply w-full;
+
+  @apply cursor-row-resize;
 }

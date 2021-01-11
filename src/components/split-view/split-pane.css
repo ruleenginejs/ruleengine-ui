@@ -1,10 +1,11 @@
 .v-split-pane {
-  /* sizes */
-  @apply h-full;
-
   @apply overflow-hidden;
 }
 
-.v-split-pane--all-distr {
-  @apply flex-grow;
+.v-split-view--horizontal .v-split-pane {
+  @apply w-full;
+}
+
+.v-split-view--vertical .v-split-pane {
+  @apply h-full;
 }

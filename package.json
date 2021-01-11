@@ -13,13 +13,14 @@
     "dev:serve": "vue-cli-service serve",
     "dev:build": "vue-cli-service build",
     "dev:lint": "vue-cli-service lint",
-    "lib:build": "vue-cli-service build --target lib --name ruleengine-ui-kit-vue ./src/index.js",
+    "lib:build": "cross-env BUILD_LIB=true vue-cli-service build --target lib --name ruleengine-ui-kit-vue ./src/index.js",
     "release": "npm version",
     "postrelease": "npm run lib:build && npm run push && npm publish",
     "push": "git push origin master --tags"
   },
   "dependencies": {
-    "debounce": "^1.2.0"
+    "debounce": "^1.2.0",
+    "split.js": "^1.6.2"
   },
   "peerDependencies": {
     "vue": "^3.0.5"
