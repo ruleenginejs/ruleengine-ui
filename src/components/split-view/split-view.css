@@ -13,6 +13,10 @@
 }
 
 /* gutter styles */
+.v-gutter {
+  @apply flex-shrink-0;
+}
+
 .v-gutter--horizontal {
   /* sizes */
   @apply h-full;
