@@ -1,0 +1,12 @@
+.v-graph-canvas {
+  /* display styles */
+  @apply relative;
+
+  /* visual styles */
+  @apply bg-graph-background;
+
+  /* sizes */
+  @apply w-full h-full;
+
+  @apply overflow-hidden;
+}

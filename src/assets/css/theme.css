@@ -45,4 +45,11 @@
 
   /* scrollbar */
   --scroll-hover-foreground: #cccccc33;
+
+  /* graph */
+  --graph-background: #1E1E1E;
+  --graph-foreground: #D4D4D4;
+  --graph-round-border: #4C4F53;
+  --graph-error-background: #810B07;
+  --graph-shadow: #00000080;
 }

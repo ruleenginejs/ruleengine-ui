@@ -37,7 +37,13 @@ module.exports = {
         "list-active-selection-background": "var(--list-active-selection-background)",
         "list-active-selection-foreground": "var(--list-active-selection-foreground)",
         "list-inactive-selection-background": "var(--list-inactive-selection-background)",
-        "list-inactive-foreground": "var(--list-inactive-foreground)"
+        "list-inactive-foreground": "var(--list-inactive-foreground)",
+
+        "graph-background": "var(--graph-background)",
+        "graph-foreground": "var(--graph-foreground)",
+        "graph-round-border": "var(--graph-round-border)",
+        "graph-error-background": "var(--graph-error-background)",
+        "graph-shadow": "var(--graph-shadow)"
       },
       outline: {
         blue: ['1px solid var(--focus-border)', '-1px'],
@@ -48,6 +54,8 @@ module.exports = {
         "10sp": ['0.625rem', { lineHeight: '0.95rem' }],
         "11sp": ['0.6875rem', { lineHeight: '1rem' }],
         "13sp": ['0.8125rem', { lineHeight: '1.1375rem' }],
+        "15sp": ['0.9375rem'],
+        "18sp": ['1.125rem'],
       },
       opacity: {
         38: '0.38',
@@ -60,6 +68,8 @@ module.exports = {
         "9sp": '0.5625rem',
         "21sp": '1.3125rem',
         "22sp": '1.375rem',
+        "30sp": '1.875rem',
+        "33sp": '2.0625rem',
         "35sp": '2.1875rem',
         "38sp": '2.375rem',
         "120sp": '7.5rem'
@@ -73,6 +83,15 @@ module.exports = {
       cursor: {
         'col-resize': 'col-resize',
         'row-resize': 'row-resize'
+      },
+      borderWidth: {
+        3: '3px',
+      },
+      lineHeight: {
+        "30sp": "1.875rem"
+      },
+      boxShadow: {
+        "0-2-4": '0 2px 4px 0 var(--graph-shadow)'
       }
     }
   },

@@ -5,6 +5,7 @@
   <c-sidebar />
   <c-treeview />
   <c-split-view />
+  <c-graph />
 </template>
 
 <script>
@@ -14,6 +15,7 @@ import CTabs from "./c-tabs";
 import CSidebar from "./c-sidebar";
 import CTreeview from "./c-treeview";
 import CSplitView from "./c-split-view";
+import CGraph from "./c-graph";
 
 export default {
   name: "all-components",
@@ -23,7 +25,8 @@ export default {
     CTabs,
     CSidebar,
     CTreeview,
-    CSplitView
+    CSplitView,
+    CGraph
   }
 };
 </script>

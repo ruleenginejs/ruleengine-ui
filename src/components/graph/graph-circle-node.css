@@ -1,0 +1,28 @@
+.v-graph-circle-node {
+  /* display styles */
+  @apply absolute left-0 top-0;
+  @apply flex items-center justify-center;
+
+  /* visual styles */
+  @apply bg-graph-background text-graph-foreground;
+  @apply rounded-full;
+
+  /* border */
+  @apply border-3 border-solid border-graph-round-border;
+
+  /* shadow */
+  @apply shadow-0-2-4;
+
+  /* sizes */
+  @apply w-33sp h-33sp;
+}
+
+.v-graph-circle-node__label {
+  /* visual styles */
+  @apply text-18sp leading-none;
+}
+
+.v-graph-circle-node__label--sm {
+  /* visual styles */
+  @apply text-15sp leading-none;
+}
