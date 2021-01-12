@@ -58,9 +58,10 @@ export default {
       minSizes,
       sizes
     } = toRefs(props);
+
     const { panes } = usePanes();
 
-    useSplit(panes, emit, {
+    const { collapse } = useSplit(panes, emit, {
       vertical,
       gutterSize,
       expandToMin,
@@ -69,6 +70,10 @@ export default {
       minSizes,
       sizes
     });
+
+    return {
+      collapse
+    };
   }
 };
 </script>

@@ -1,6 +1,8 @@
 .v-split-view {
-  @apply flex;
+  /* display styles */
+  @apply flex relative;
 
+  /* sizes */
   @apply w-full h-full;
 }
 
@@ -14,7 +16,7 @@
 
 /* gutter styles */
 .v-gutter {
-  @apply flex-shrink-0;
+  @apply absolute left-0 top-0;
 }
 
 .v-gutter--horizontal {

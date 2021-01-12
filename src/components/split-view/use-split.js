@@ -1,22 +1,8 @@
 import { watch, onMounted, onBeforeUnmount } from "vue";
 import Split from "split.js";
 
-function gutter(i, gutterDirection) {
-  const gut = document.createElement('div')
-  gut.className = `v-gutter v-gutter--${gutterDirection}`
-  return gut;
-}
-
-function elementStyle(dimension, size, gutterSize) {
-  return {
-    'flex-basis': `calc(${size}% - ${gutterSize}px)`
-  }
-}
-
-function gutterStyle(dimension, gutterSize) {
-  return {
-    'flex-basis': `${gutterSize}px`,
-  }
+function isDefined(value) {
+  return value !== null && value !== undefined;
 }
 
 export default function useSplit(panes, emit, options) {
@@ -31,20 +17,15 @@ export default function useSplit(panes, emit, options) {
   } = options;
 
   let split = null;
-
-  const onDrag = (e) => emit("drag", e);
-  const onDragStart = (e) => emit("drag-start", e);
-  const onDragEnd = (e) => emit("drag-end", e);
+  let gutterElements = [];
 
   const initSplit = () => {
-    const paneElements = panes.map(({ paneElement }) => paneElement);
-
     split = Split(
-      paneElements,
+      getPaneElements(),
       {
         direction: vertical.value ? "horizontal" : "vertical",
         gutter,
-        gutterSize: gutterSize.value,
+        gutterSize: 0,
         expandToMin: expandToMin.value,
         sizes: sizes.value ?? undefined,
         minSize: minSizes.value ?? minSize.value,
@@ -56,12 +37,15 @@ export default function useSplit(panes, emit, options) {
         onDragEnd
       }
     );
+
+    updateGutter(split.getSizes());
   };
 
   const removeSplit = () => {
     if (split) {
       split.destroy();
       split = null;
+      gutterElements = [];
     }
   }
 
@@ -85,4 +69,69 @@ export default function useSplit(panes, emit, options) {
   onBeforeUnmount(() => {
     removeSplit();
   })
+
+  function getPaneElements() {
+    return panes.map(({ paneElement }) => paneElement);
+  }
+
+  function gutter(i, gutterDirection) {
+    const gut = document.createElement('div')
+    gut.className = `v-gutter v-gutter--${gutterDirection}`
+    gutterElements.push(gut);
+    return gut;
+  }
+
+  function elementStyle(dimension, size) {
+    return {
+      'flex-basis': `${size}%`
+    }
+  }
+
+  function gutterStyle(dimension) {
+    return {
+      [dimension]: `${gutterSize.value}px`,
+      [dimension === "width" ? "left" : "top"]: "0%"
+    }
+  }
+
+  function updateGutter(paneSizes) {
+    const prop = vertical.value ? "left" : "top";
+    const halfGutSize = (gutterSize.value ?? 0) / 2;
+    let accumulatedSize = 0;
+
+    for (let i = 0; i < gutterElements.length; i++) {
+      const gutterElement = gutterElements[i];
+
+      if (isDefined(paneSizes[i])) {
+        accumulatedSize += paneSizes[i];
+        gutterElement.style[prop] = `calc(${accumulatedSize}% - ${halfGutSize}px)`;
+      }
+    }
+  }
+
+  function onDrag(e) {
+    updateGutter(e);
+    emit("drag", e);
+  }
+
+  function onDragStart(e) {
+    updateGutter(e);
+    emit("drag-start", e)
+  }
+
+  function onDragEnd(e) {
+    updateGutter(e);
+    emit("drag-end", e)
+  }
+
+  function collapse(i) {
+    if (split) {
+      split.collapse(i);
+      updateGutter(split.getSizes());
+    }
+  }
+
+  return {
+    collapse
+  };
 }

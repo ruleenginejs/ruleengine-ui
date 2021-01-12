@@ -4,11 +4,15 @@
     <button @click="destroySplitView = !destroySplitView">
       destroySplitView: {{ destroySplitView }}
     </button>
+    <button @click="onCollapseLeft">collapse left</button>
+    <button @click="onCollapseRight">collapse right</button>
   </v-content>
   <v-content padding="md" class="h-96">
     <v-split-view
-      :sizes="[20, 80, 20]"
-      :min-sizes="[100, 0, 100]"
+      ref="splitview"
+      :sizes="[20, 60, 20]"
+      :min-sizes="[0, 4, 100]"
+      :gutter-size="4"
       v-if="!destroySplitView"
       :vertical="vertical"
       @drag="onDrag"
@@ -32,6 +36,12 @@ export default {
     };
   },
   methods: {
+    onCollapseRight() {
+      this.$refs.splitview.collapse(2);
+    },
+    onCollapseLeft() {
+      this.$refs.splitview.collapse(0);
+    },
     onDrag(e) {
       console.log("onDrag", e);
     },
