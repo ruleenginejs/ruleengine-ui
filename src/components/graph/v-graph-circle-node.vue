@@ -1,5 +1,10 @@
 <template>
-  <div class="v-graph-circle-node" :style="{ transform: transformStyle }">
+  <div
+    class="v-graph-circle-node"
+    :class="{ 'v-graph-circle-node--error': error }"
+    :style="{ transform: transformStyle }"
+    tabindex="0"
+  >
     <div
       class="v-graph-circle-node__label"
       :class="{ 'v-graph-circle-node__label--sm': truncateLength > 1 }"
@@ -29,6 +34,10 @@ export default {
     y: {
       type: Number,
       default: 0
+    },
+    error: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ["update:x", "update:y"],

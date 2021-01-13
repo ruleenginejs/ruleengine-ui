@@ -1,6 +1,8 @@
 .v-graph-circle-node {
-  /* display styles */
+  /* position */
   @apply absolute left-0 top-0;
+
+  /* display styles */
   @apply flex items-center justify-center;
 
   /* visual styles */
@@ -15,6 +17,24 @@
 
   /* sizes */
   @apply w-33sp h-33sp;
+
+  @apply outline-none;
+
+  /* focus */
+  &:focus {
+    @apply border-focus-border;
+  }
+  &:focus:active {
+    @apply border-graph-round-border;
+  }
+}
+
+.v-graph-circle-node--error {
+  @apply border-graph-error-background;
+
+  &:focus:active {
+    @apply border-graph-error-background;
+  }
 }
 
 .v-graph-circle-node__label {

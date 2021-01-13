@@ -7,7 +7,7 @@
 <script>
 export default {
   name: "v-graph-canvas"
-}
+};
 </script>
 
 <style>

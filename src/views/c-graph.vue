@@ -7,7 +7,7 @@
   <v-content padding="md" style="height: 600px">
     <v-graph-canvas>
       <v-graph-circle-node :x="100" :y="100" title="S" />
-      <v-graph-circle-node :x="nodePos1.x" :y="nodePos1.y" title="ERROR" />
+      <v-graph-circle-node :x="nodePos1.x" :y="nodePos1.y" title="ERROR" error />
     </v-graph-canvas>
   </v-content>
 </template>
