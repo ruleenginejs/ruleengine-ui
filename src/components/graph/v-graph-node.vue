@@ -4,6 +4,7 @@
     :class="{ 'v-graph-node--selected': selected }"
     :style="{ transform: transformStyle }"
     @click="onSelect"
+    v-draggable.stop="draggableCallbacks"
   >
     <div
       class="v-graph-node__header"
@@ -43,16 +44,21 @@
 
 <script>
 import { toRefs } from "vue";
+import draggable from "@/directives/draggable";
 import usePosition from "./composables/use-position";
 import useTransform from "./composables/use-transform";
 import usePresetColor from "./composables/use-preset-color";
 import useSelect from "./composables/use-select";
+import useNodeDraggable from "./composables/use-node-draggable";
 
 const presetColors = ["blue", "green"];
 const colorFn = (color) => `v-graph-node__header--${color}`;
 
 export default {
   name: "v-graph-node",
+  directives: {
+    draggable
+  },
   props: {
     id: {
       type: [String, Number],
@@ -82,6 +88,7 @@ export default {
     const position = usePosition(x, y, emit);
     const transformStyle = useTransform(position);
     const { selected, onSelect } = useSelect();
+    const { draggableCallbacks } = useNodeDraggable(position);
 
     const { colorStyle, colorClassName } = usePresetColor(
       headerColor,
@@ -94,7 +101,9 @@ export default {
       colorStyle,
       colorClassName,
       selected,
-      onSelect
+      onSelect,
+      position,
+      draggableCallbacks
     };
   }
 };

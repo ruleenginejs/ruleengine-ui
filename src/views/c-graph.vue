@@ -3,9 +3,11 @@
     <button @click="onChangePos">
       x: {{ nodePos1.x }}, y: {{ nodePos1.y }}
     </button>
+    <br />
+    <button @click="destroy = !destroy">destroy {{ destroy }}</button>
   </v-content>
   <v-content padding="md" style="height: 600px">
-    <v-graph-canvas>
+    <v-graph-canvas v-if="!destroy">
       <v-graph-circle-node :id="1" :x="100" :y="100" title="s" />
       <v-graph-circle-node
         :id="2"
@@ -63,7 +65,8 @@ export default {
   name: "c-graph",
   data() {
     return {
-      nodePos1: { x: 20, y: 30 }
+      nodePos1: { x: 20, y: 30 },
+      destroy: false
     };
   },
   methods: {

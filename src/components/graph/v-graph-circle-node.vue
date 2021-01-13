@@ -7,6 +7,7 @@
     }"
     :style="{ transform: transformStyle }"
     @click="onSelect"
+    v-draggable.stop="draggableCallbacks"
   >
     <div
       class="v-graph-circle-node__label"
@@ -19,13 +20,18 @@
 
 <script>
 import { toRefs } from "vue";
+import draggable from "@/directives/draggable";
 import usePosition from "./composables/use-position";
 import useTransform from "./composables/use-transform";
 import useTruncateTitle from "./composables/use-truncate-title";
 import useSelect from "./composables/use-select";
+import useNodeDraggable from "./composables/use-node-draggable";
 
 export default {
   name: "v-graph-circle-node",
+  directives: {
+    draggable
+  },
   props: {
     id: {
       type: [String, Number],
@@ -56,13 +62,15 @@ export default {
     const transformStyle = useTransform(position);
     const { truncateTitle, truncateLength } = useTruncateTitle(title, 2);
     const { selected, onSelect } = useSelect();
+    const { draggableCallbacks } = useNodeDraggable(position);
 
     return {
       transformStyle,
       truncateTitle,
       truncateLength,
       selected,
-      onSelect
+      onSelect,
+      draggableCallbacks
     };
   }
 };
