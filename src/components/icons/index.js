@@ -9,6 +9,7 @@ import VIconCircle from "./v-icon-circle"
 import VIconChevronDown from "./v-icon-chevron-down"
 import VIconFolder from "./v-icon-folder"
 import VIconDocText from "./v-icon-doc-text"
+import VIconScript from "./v-icon-script"
 
 export {
   VIconFileMenu,
@@ -19,5 +20,6 @@ export {
   VIconCircle,
   VIconChevronDown,
   VIconFolder,
-  VIconDocText
+  VIconDocText,
+  VIconScript
 }

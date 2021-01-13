@@ -1,0 +1,63 @@
+.v-graph-port {
+  /* display styles */
+  @apply flex items-center flex-row;
+
+  /* sizes */
+  @apply h-22sp;
+}
+
+.v-graph-port--disabled {
+  @apply opacity-38;
+}
+
+.v-graph-port__anchor {
+  /* display styles */
+  @apply flex-shrink-0;
+
+  /* visual styles */
+  @apply bg-graph-inactive-port-backgound rounded-full;
+
+  /* sizes */
+  @apply w-11sp h-11sp;
+}
+
+.v-graph-port--active .v-graph-port__anchor {
+  @apply bg-graph-active-port-backgound;
+}
+
+.v-graph-port--error .v-graph-port__anchor {
+  @apply bg-graph-error-background;
+}
+
+.v-graph-port__label {
+  /* display styles */
+  @apply flex-grow;
+
+  /* visual styles */
+  @apply leading-4 truncate;
+}
+
+.v-graph-node__part--left .v-graph-port {
+  /* margin */
+  @apply -ml-1.5;
+}
+
+.v-graph-node__part--right .v-graph-port {
+  /* display styles */
+  @apply flex-row-reverse;
+
+  /* margin */
+  @apply -mr-1.5;
+}
+
+.v-graph-node__part--right .v-graph-port__label {
+  @apply text-right;
+}
+
+.v-graph-node__part--left .v-graph-port__anchor {
+  @apply mr-2;
+}
+
+.v-graph-node__part--right .v-graph-port__anchor {
+  @apply ml-2;
+}

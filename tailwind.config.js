@@ -43,7 +43,11 @@ module.exports = {
         "graph-foreground": "var(--graph-foreground)",
         "graph-round-border": "var(--graph-round-border)",
         "graph-error-background": "var(--graph-error-background)",
-        "graph-shadow": "var(--graph-shadow)"
+        "graph-node-background": "var(--graph-node-background)",
+        "graph-node-header-background": "var(--graph-node-header-background)",
+        "graph-node-border": "var(--graph-node-border)",
+        "graph-active-port-backgound": "var(--graph-active-port-backgound)",
+        "graph-inactive-port-backgound": "var(--graph-inactive-port-backgound)"
       },
       outline: {
         blue: ['1px solid var(--focus-border)', '-1px'],
@@ -61,21 +65,29 @@ module.exports = {
         38: '0.38',
       },
       borderRadius: {
-        "3sp": '0.1875rem'
+        "3sp": '0.1875rem',
+        "5sp": '0.3125rem'
       },
       spacing: {
         "7sp": '0.4375rem',
         "9sp": '0.5625rem',
+        "11sp": '0.6875rem',
         "21sp": '1.3125rem',
         "22sp": '1.375rem',
         "30sp": '1.875rem',
         "33sp": '2.0625rem',
         "35sp": '2.1875rem',
         "38sp": '2.375rem',
-        "120sp": '7.5rem'
+        "120sp": '7.5rem',
+        "180sp": "11.25rem",
+        "210sp": "13.125rem"
       },
       minWidth: {
         fit: "fit-content"
+      },
+      minHeight: {
+        fit: "fit-content",
+        "210sp": "13.125rem"
       },
       transitionProperty: {
         height: 'height',
@@ -91,7 +103,8 @@ module.exports = {
         "30sp": "1.875rem"
       },
       boxShadow: {
-        "0-2-4": '0 2px 4px 0 var(--graph-shadow)'
+        "0-2-4": '0 2px 4px 0 var(--shadow-50)',
+        "0-1-2": '0 1px 2px 0 var(--shadow-30)'
       }
     }
   },

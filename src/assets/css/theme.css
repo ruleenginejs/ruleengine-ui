@@ -13,6 +13,10 @@
   /* common */
   --foreground: #cccccc;
 
+  /* shadow */
+  --shadow-50: #00000080;
+  --shadow-30: #0000004D;
+
   /* action bar */
   --action-bar-background: #252526;
   --action-bar-border: #000000;
@@ -52,4 +56,9 @@
   --graph-round-border: #4C4F53;
   --graph-error-background: #810B07;
   --graph-shadow: #00000080;
+  --graph-node-background: #414141;
+  --graph-node-header-background: #4C4F53;
+  --graph-node-border: #754A4A;
+  --graph-active-port-backgound: #82801A;
+  --graph-inactive-port-backgound: #D4D4D4;
 }

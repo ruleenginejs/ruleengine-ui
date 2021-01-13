@@ -23,6 +23,10 @@ import useTruncateTitle from "./composables/use-truncate-title";
 export default {
   name: "v-graph-circle-node",
   props: {
+    id: {
+      type: [String, Number],
+      default: null
+    },
     title: {
       type: String,
       default: null

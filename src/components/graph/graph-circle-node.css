@@ -6,8 +6,7 @@
   @apply flex items-center justify-center;
 
   /* visual styles */
-  @apply bg-graph-background text-graph-foreground;
-  @apply rounded-full;
+  @apply bg-graph-background text-graph-foreground rounded-full;
 
   /* border */
   @apply border-3 border-solid border-graph-round-border;
@@ -18,6 +17,7 @@
   /* sizes */
   @apply w-33sp h-33sp;
 
+  /* outline */
   @apply outline-none;
 
   /* focus */
@@ -39,7 +39,7 @@
 
 .v-graph-circle-node__label {
   /* visual styles */
-  @apply text-18sp leading-none;
+  @apply text-18sp leading-none uppercase;
 }
 
 .v-graph-circle-node__label--sm {
