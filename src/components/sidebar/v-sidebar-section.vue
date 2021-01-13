@@ -6,8 +6,7 @@
       'v-sidebar-section--expanded': expanded,
       'v-sidebar-section--h-full': hFull
     }"
-    tabindex="-1"
-    ref="container"
+    :tabindex="tabIndex"
   >
     <div
       class="v-sidebar-section__header"
@@ -47,7 +46,7 @@
 </template>
 
 <script>
-import { ref, toRefs } from "vue";
+import { computed, ref, toRefs } from "vue";
 import useExpand from "./use-expand";
 import VIconChevronDown from "@/components/icons/v-icon-chevron-down";
 
@@ -93,22 +92,19 @@ export default {
   setup(props) {
     const { expand, expandable } = toRefs(props);
     const expanded = ref(expandable.value === false ? true : expand.value);
-    const container = ref(null);
 
     const { expandEnter, expandAfterEnter, expandBeforeLeave } = useExpand();
 
     const onToggleExpand = () => {
       if (!expandable.value) return;
       expanded.value = !expanded.value;
-
-      if (container.value) {
-        container.value.focus();
-      }
     };
+
+    const tabIndex = computed(() => (expandable.value ? 0 : null));
 
     return {
       expanded,
-      container,
+      tabIndex,
       expandEnter,
       expandAfterEnter,
       expandBeforeLeave,
