@@ -1,5 +1,10 @@
 <template>
-  <div class="v-graph-node" :style="{ transform: transformStyle }" tabindex="0">
+  <div
+    class="v-graph-node"
+    :class="{ 'v-graph-node--selected': selected }"
+    :style="{ transform: transformStyle }"
+    @click="onSelect"
+  >
     <div
       class="v-graph-node__header"
       :style="{ backgroundColor: colorStyle }"
@@ -41,6 +46,7 @@ import { toRefs } from "vue";
 import usePosition from "./composables/use-position";
 import useTransform from "./composables/use-transform";
 import usePresetColor from "./composables/use-preset-color";
+import useSelect from "./composables/use-select";
 
 const presetColors = ["blue", "green"];
 const colorFn = (color) => `v-graph-node__header--${color}`;
@@ -75,6 +81,8 @@ export default {
 
     const position = usePosition(x, y, emit);
     const transformStyle = useTransform(position);
+    const { selected, onSelect } = useSelect();
+
     const { colorStyle, colorClassName } = usePresetColor(
       headerColor,
       presetColors,
@@ -84,7 +92,9 @@ export default {
     return {
       transformStyle,
       colorStyle,
-      colorClassName
+      colorClassName,
+      selected,
+      onSelect
     };
   }
 };

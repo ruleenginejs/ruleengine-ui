@@ -19,22 +19,22 @@
 
   /* outline */
   @apply outline-none;
-
-  /* focus */
-  &:focus {
-    @apply border-focus-border;
-  }
-  &:focus:active {
-    @apply border-graph-round-border;
-  }
 }
 
 .v-graph-circle-node--error {
   @apply border-graph-error-background;
+}
 
-  &:focus:active {
-    @apply border-graph-error-background;
-  }
+.v-graph-circle-node--selected {
+  @apply border-focus-border;
+}
+
+.v-graph-circle-node--selected:active {
+  @apply border-graph-round-border;
+}
+
+.v-graph-circle-node--error.v-graph-circle-node--selected:active {
+  @apply border-graph-error-background;
 }
 
 .v-graph-circle-node__label {

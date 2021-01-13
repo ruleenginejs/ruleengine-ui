@@ -1,9 +1,12 @@
 <template>
   <div
     class="v-graph-circle-node"
-    :class="{ 'v-graph-circle-node--error': error }"
+    :class="{
+      'v-graph-circle-node--error': error,
+      'v-graph-circle-node--selected': selected
+    }"
     :style="{ transform: transformStyle }"
-    tabindex="0"
+    @click="onSelect"
   >
     <div
       class="v-graph-circle-node__label"
@@ -19,6 +22,7 @@ import { toRefs } from "vue";
 import usePosition from "./composables/use-position";
 import useTransform from "./composables/use-transform";
 import useTruncateTitle from "./composables/use-truncate-title";
+import useSelect from "./composables/use-select";
 
 export default {
   name: "v-graph-circle-node",
@@ -51,11 +55,14 @@ export default {
     const position = usePosition(x, y, emit);
     const transformStyle = useTransform(position);
     const { truncateTitle, truncateLength } = useTruncateTitle(title, 2);
+    const { selected, onSelect } = useSelect();
 
     return {
       transformStyle,
       truncateTitle,
-      truncateLength
+      truncateLength,
+      selected,
+      onSelect
     };
   }
 };

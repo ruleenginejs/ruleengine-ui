@@ -19,14 +19,14 @@
 
   /* outline */
   @apply outline-none;
+}
 
-  /* focus */
-  &:focus {
-    @apply border-focus-border;
-  }
-  &:focus:active {
-    @apply border-graph-node-border;
-  }
+.v-graph-node--selected {
+  @apply border-focus-border;
+}
+
+.v-graph-node--selected:active {
+  @apply border-graph-node-border;
 }
 
 .v-graph-node__header {
