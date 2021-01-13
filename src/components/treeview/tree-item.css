@@ -10,8 +10,8 @@
 
   @apply outline-none cursor-pointer;
 
-  /* hover */
-  &:hover {
+  /* hover, focus */
+  &:hover, &:focus {
     @apply bg-list-hover-background;
   }
 }

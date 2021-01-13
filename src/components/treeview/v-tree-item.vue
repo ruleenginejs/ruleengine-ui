@@ -1,11 +1,5 @@
 <template>
-  <div
-    class="v-tree-item"
-    :class="itemClasses"
-    tabindex="-1"
-    ref="container"
-    @click="onSelect"
-  >
+  <div class="v-tree-item" :class="itemClasses" tabindex="0" @click="onSelect">
     <div class="v-tree-item__indent" :style="{ width: indent }"></div>
     <div class="v-tree-item__chevron">
       <v-icon-chevron-down v-if="hasChildren" />
@@ -33,7 +27,7 @@
 </template>
 
 <script>
-import { computed, defineAsyncComponent, ref, toRefs } from "vue";
+import { computed, defineAsyncComponent, toRefs } from "vue";
 import VIconChevronDown from "@/components/icons/v-icon-chevron-down";
 const VTreeItem = defineAsyncComponent(() => import("./v-tree-item"));
 
@@ -59,7 +53,6 @@ export default {
   setup(props, { emit }) {
     const { depth, item } = toRefs(props);
     const { expanded, selected, children } = toRefs(props.item);
-    const container = ref(null);
 
     const hasChildren = computed(() => !!children);
     const isRoot = computed(() => depth.value === 0);
@@ -78,10 +71,6 @@ export default {
     const forwardSelect = forward("select");
 
     const onSelect = () => {
-      if (container.value) {
-        container.value.focus();
-      }
-
       emit("select", {
         item: item.value,
         depth: depth.value
@@ -91,7 +80,6 @@ export default {
     return {
       hasChildren,
       isEachChildren,
-      container,
       itemClasses,
       indent,
       onSelect,
