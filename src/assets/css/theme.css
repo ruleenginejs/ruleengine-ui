@@ -58,6 +58,8 @@
   --graph-shadow: #00000080;
   --graph-node-background: #414141;
   --graph-node-header-background: #4C4F53;
+  --graph-node-header-blue-background: #3A68A1;
+  --graph-node-header-green-background: #247939;
   --graph-node-border: #754A4A;
   --graph-active-port-backgound: #82801A;
   --graph-inactive-port-backgound: #D4D4D4;

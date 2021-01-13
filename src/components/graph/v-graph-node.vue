@@ -1,6 +1,10 @@
 <template>
   <div class="v-graph-node" :style="{ transform: transformStyle }" tabindex="0">
-    <div class="v-graph-node__header">
+    <div
+      class="v-graph-node__header"
+      :style="{ backgroundColor: colorStyle }"
+      :class="colorClassName"
+    >
       <div
         v-if="$slots['header-left-icon']"
         class="v-graph-node__header__icon v-graph-node__header__left"
@@ -36,6 +40,10 @@
 import { toRefs } from "vue";
 import usePosition from "./composables/use-position";
 import useTransform from "./composables/use-transform";
+import usePresetColor from "./composables/use-preset-color";
+
+const presetColors = ["blue", "green"];
+const colorFn = (color) => `v-graph-node__header--${color}`;
 
 export default {
   name: "v-graph-node",
@@ -55,17 +63,28 @@ export default {
     y: {
       type: Number,
       default: 0
+    },
+    headerColor: {
+      type: String,
+      default: null
     }
   },
   emits: ["update:x", "update:y"],
   setup(props, { emit }) {
-    const { x, y } = toRefs(props);
+    const { x, y, headerColor } = toRefs(props);
 
     const position = usePosition(x, y, emit);
     const transformStyle = useTransform(position);
+    const { colorStyle, colorClassName } = usePresetColor(
+      headerColor,
+      presetColors,
+      colorFn
+    );
 
     return {
-      transformStyle
+      transformStyle,
+      colorStyle,
+      colorClassName
     };
   }
 };

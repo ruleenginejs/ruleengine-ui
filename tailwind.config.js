@@ -45,6 +45,8 @@ module.exports = {
         "graph-error-background": "var(--graph-error-background)",
         "graph-node-background": "var(--graph-node-background)",
         "graph-node-header-background": "var(--graph-node-header-background)",
+        "graph-node-header-blue-background": "var(--graph-node-header-blue-background)",
+        "graph-node-header-green-background": "var(--graph-node-header-green-background)",
         "graph-node-border": "var(--graph-node-border)",
         "graph-active-port-backgound": "var(--graph-active-port-backgound)",
         "graph-inactive-port-backgound": "var(--graph-inactive-port-backgound)"

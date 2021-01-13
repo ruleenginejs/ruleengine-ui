@@ -31,6 +31,27 @@
           <v-graph-port id="out-default">out default</v-graph-port>
         </template>
       </v-graph-node>
+      <v-graph-node
+        :id="3"
+        :x="400"
+        :y="20"
+        title="Response"
+        header-color="blue"
+      />
+      <v-graph-node
+        :id="3"
+        :x="300"
+        :y="240"
+        title="Response"
+        header-color="green"
+      />
+      <v-graph-node
+        :id="3"
+        :x="500"
+        :y="340"
+        title="Response"
+        header-color="#82801A"
+      />
       <v-graph-connection from="1:default" to="3:in-default" />
       <v-graph-connection from="3:out-default" to="2:default" />
     </v-graph-canvas>
