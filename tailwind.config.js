@@ -59,6 +59,7 @@ module.exports = {
         "9sp": ['0.5625rem', { lineHeight: '0.9rem' }],
         "10sp": ['0.625rem', { lineHeight: '0.95rem' }],
         "11sp": ['0.6875rem', { lineHeight: '1rem' }],
+        "12sp": ['0.75rem', { lineHeight: '1.0687rem' }],
         "13sp": ['0.8125rem', { lineHeight: '1.1375rem' }],
         "15sp": ['0.9375rem'],
         "18sp": ['1.125rem'],

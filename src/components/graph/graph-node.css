@@ -64,7 +64,7 @@
   @apply flex items-center justify-center;
 
   /* visual styles */
-  @apply text-11sp leading-none;
+  @apply text-12sp leading-none;
 
   /* sizes */
   @apply w-4 h-4;

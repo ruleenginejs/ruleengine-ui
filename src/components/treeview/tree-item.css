@@ -51,7 +51,7 @@
   @apply flex items-center justify-center flex-shrink-0;
 
   /* visual styles */
-  @apply text-10sp leading-none;
+  @apply text-12sp leading-none;
 
   /* sizes */
   @apply h-22sp w-4 mr-1;
