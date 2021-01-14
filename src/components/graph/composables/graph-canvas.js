@@ -123,9 +123,14 @@ class GraphCanvas {
     }
   }
 
-  moveLayer(deltaX, deltaY) {
+  move(deltaX, deltaY) {
     this.layerPosition.x += deltaX;
     this.layerPosition.y += deltaY;
+  }
+
+  moveTo(x, y) {
+    this.layerPosition.x = x;
+    this.layerPosition.y = y;
   }
 
   onDragStart(e) {
@@ -140,7 +145,7 @@ class GraphCanvas {
       const deltaX = x - this.moveStartPoint.value.x;
       const deltaY = y - this.moveStartPoint.value.y;
 
-      this.moveLayer(deltaX, deltaY);
+      this.move(deltaX, deltaY);
     }
   }
 
