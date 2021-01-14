@@ -10,9 +10,8 @@
 
 <script>
 import draggable from "@/directives/draggable";
-import useCanvasDraggable from "./composables/use-canvas-draggable";
-import useCanvasInstance from "./composables/use-canvas-instance";
 import { provide } from "vue";
+import useCanvas from "./composables/use-canvas";
 
 export default {
   name: "v-graph-canvas",
@@ -21,10 +20,10 @@ export default {
   },
   emits: ["select"],
   setup(props, { emit }) {
-    const { instance, selected, onSelect } = useCanvasInstance(emit);
-    const { draggableCallbacks } = useCanvasDraggable(onSelect);
+    const canvasInstance = useCanvas(emit);
+    const { selected, draggableCallbacks } = canvasInstance;
 
-    provide("canvas", instance);
+    provide("canvas", canvasInstance);
 
     return {
       draggableCallbacks,

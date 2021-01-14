@@ -20,14 +20,8 @@
 <script>
 import { inject, toRefs } from "vue";
 import draggable from "@/directives/draggable";
-import usePosition from "./composables/use-position";
-import useTransform from "./composables/use-transform";
+import useNode from "./composables/use-node";
 import useTruncateTitle from "./composables/use-truncate-title";
-import useSelection from "./composables/use-selection";
-import useNodeDraggable from "./composables/use-node-draggable";
-import useNodeInstance from "./composables/use-node-instance";
-import useNodeRegistration from "./composables/use-node-registration";
-import useNodeSelection from "./composables/use-node-selection";
 
 export default {
   name: "v-graph-circle-node",
@@ -59,19 +53,11 @@ export default {
   emits: ["update:x", "update:y"],
   setup(props, { emit }) {
     const { x, y, title, id } = toRefs(props);
-    const canvas = inject("canvas");
-
-    const position = usePosition(x, y, emit);
-    const transformStyle = useTransform(position);
     const { truncateTitle, truncateLength } = useTruncateTitle(title, 2);
-    const { selected, onSelect } = useSelection();
-    const { draggableCallbacks } = useNodeDraggable(position, onSelect);
-    const { instance, nodeId } = useNodeInstance(id, selected, position);
 
-    if (canvas) {
-      useNodeRegistration(canvas, nodeId, instance);
-      useNodeSelection(canvas, nodeId, selected);
-    }
+    const canvas = inject("canvas");
+    const nodeInstance = useNode(canvas, id, x, y, emit);
+    const { transformStyle, selected, draggableCallbacks } = nodeInstance;
 
     return {
       transformStyle,

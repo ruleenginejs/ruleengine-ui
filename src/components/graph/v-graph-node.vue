@@ -44,14 +44,8 @@
 <script>
 import { inject, toRefs } from "vue";
 import draggable from "@/directives/draggable";
-import usePosition from "./composables/use-position";
-import useTransform from "./composables/use-transform";
 import usePresetColor from "./composables/use-preset-color";
-import useSelection from "./composables/use-selection";
-import useNodeDraggable from "./composables/use-node-draggable";
-import useNodeInstance from "./composables/use-node-instance";
-import useNodeRegistration from "./composables/use-node-registration";
-import useNodeSelection from "./composables/use-node-selection";
+import useNode from "./composables/use-node";
 
 const presetColors = ["blue", "green"];
 const colorFn = (color) => `v-graph-node__header--${color}`;
@@ -86,18 +80,10 @@ export default {
   emits: ["update:x", "update:y"],
   setup(props, { emit }) {
     const { x, y, headerColor, id } = toRefs(props);
+
     const canvas = inject("canvas");
-
-    const position = usePosition(x, y, emit);
-    const transformStyle = useTransform(position);
-    const { selected, onSelect } = useSelection();
-    const { draggableCallbacks } = useNodeDraggable(position, onSelect);
-    const { instance, nodeId } = useNodeInstance(id, selected, position);
-
-    if (canvas) {
-      useNodeRegistration(canvas, nodeId, instance);
-      useNodeSelection(canvas, nodeId, selected);
-    }
+    const nodeInstance = useNode(canvas, id, x, y, emit);
+    const { transformStyle, selected, draggableCallbacks } = nodeInstance;
 
     const { colorStyle, colorClassName } = usePresetColor(
       headerColor,
@@ -110,7 +96,6 @@ export default {
       colorStyle,
       colorClassName,
       selected,
-      position,
       draggableCallbacks
     };
   }
