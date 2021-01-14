@@ -50,13 +50,13 @@ class GraphCanvas {
   }
 
   addNode(id, node) {
-    node._canvas = this;
+    node.canvas = this;
     this.nodes[id] = node;
   }
 
   removeNode(id) {
     if (this.nodes[id]) {
-      this.nodes[id]._canvas = null;
+      this.nodes[id].canvas = null;
       delete this.nodes[id];
     }
   }
@@ -87,15 +87,15 @@ class GraphCanvas {
 
   containerPointToLayerPoint({ x, y }) {
     return {
-      x: x - this.layerPosition.x,
-      y: y - this.layerPosition.y
+      x: x / this.scale.value - this.layerPosition.x,
+      y: y / this.scale.value - this.layerPosition.y
     }
   }
 
   layerPointToContainerPoint({ x, y }) {
     return {
-      x: x + this.layerPosition.x,
-      y: y + this.layerPosition.y
+      x: (x + this.layerPosition.x) * this.scale.value,
+      y: (y + this.layerPosition.y) * this.scale.value
     };
   }
 
@@ -147,6 +147,7 @@ class GraphCanvas {
   onDragEnd() {
     this.moving.value = false;
     this.moveStartPoint.value = null;
+
     this.onClickEnd();
   }
 

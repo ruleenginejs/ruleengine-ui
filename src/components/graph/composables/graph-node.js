@@ -9,9 +9,10 @@ class GraphNode {
       x: posX.value,
       y: posY.value
     });
-
     this.selected = ref(false);
-    this._canvas = null;
+    this.moving = ref(false);
+    this.moveOffsetPoint = ref(null);
+    this.canvas = null;
 
     this.onDragStart = this.onDragStart.bind(this);
     this.onDrag = this.onDrag.bind(this);
@@ -49,15 +50,45 @@ class GraphNode {
     this.selected.value = false;
   }
 
-  onDragStart() {
-
+  moveTo(x, y) {
+    this.position.x = x;
+    this.position.y = y;
   }
 
-  onDrag() {
+  onDragStart(e) {
+    this.moving.value = true;
+    const startPoint = this.canvas?.mouseEventToLayerPoint(e);
 
+    if (startPoint) {
+      this.moveOffsetPoint.value = {
+        x: startPoint.x - this.position.x,
+        y: startPoint.y - this.position.y
+      }
+    }
+  }
+
+  onDrag(e) {
+    if (this.moving.value) {
+      const movingPoint = this.canvas?.mouseEventToLayerPoint(e);
+      const offsetPoint = this.moveOffsetPoint.value;
+
+      if (movingPoint && offsetPoint) {
+        this.moveTo(
+          movingPoint.x - offsetPoint.x,
+          movingPoint.y - offsetPoint.y
+        );
+      }
+    }
   }
 
   onDragEnd() {
+    this.moving.value = false;
+    this.moveOffsetPoint.value = null;
+
+    this.onClickEnd();
+  }
+
+  onClickEnd() {
     this.select();
   }
 }

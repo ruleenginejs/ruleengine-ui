@@ -1,7 +1,10 @@
 <template>
   <div
     class="v-graph-node"
-    :class="{ 'v-graph-node--selected': selected }"
+    :class="{
+      'v-graph-node--selected': selected,
+      'v-graph-node--moving': moving
+    }"
     :style="{ transform: transformStyle }"
     v-draggable.stop="draggableCallbacks"
   >
@@ -83,7 +86,12 @@ export default {
 
     const canvas = inject("canvas");
     const nodeInstance = useNode(canvas, id, x, y, emit);
-    const { transformStyle, selected, draggableCallbacks } = nodeInstance;
+    const {
+      transformStyle,
+      selected,
+      draggableCallbacks,
+      moving
+    } = nodeInstance;
 
     const { colorStyle, colorClassName } = usePresetColor(
       headerColor,
@@ -96,6 +104,7 @@ export default {
       colorStyle,
       colorClassName,
       selected,
+      moving,
       draggableCallbacks
     };
   }

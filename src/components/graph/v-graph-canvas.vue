@@ -1,7 +1,10 @@
 <template>
   <div
     class="v-graph-canvas"
-    :class="{ 'v-graph-canvas--selected': selected }"
+    :class="{
+      'v-graph-canvas--selected': selected,
+      'v-graph-canvas--moving': moving
+    }"
     v-draggable="draggableCallbacks"
     ref="container"
   >
@@ -42,7 +45,8 @@ export default {
       selected,
       draggableCallbacks,
       layerTransformStyle,
-      container
+      container,
+      moving
     } = canvasInstance;
 
     provide("canvas", canvasInstance);
@@ -51,7 +55,8 @@ export default {
       draggableCallbacks,
       selected,
       layerTransformStyle,
-      container
+      container,
+      moving
     };
   }
 };
