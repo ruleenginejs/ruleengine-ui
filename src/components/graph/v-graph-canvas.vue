@@ -3,8 +3,25 @@
     class="v-graph-canvas"
     :class="{ 'v-graph-canvas--selected': selected }"
     v-draggable="draggableCallbacks"
+    ref="container"
   >
-    <slot />
+    <div
+      class="v-graph-canvas__layer"
+      :style="{ transform: layerTransformStyle }"
+    >
+      <div
+        v-if="$slots['connection']"
+        class="v-graph-canvas__layer v-graph-canvas__connection-layer"
+      >
+        <slot name="connection" />
+      </div>
+      <div
+        v-if="$slots['node']"
+        class="v-graph-canvas__layer v-graph-canvas__node-layer"
+      >
+        <slot name="node" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -21,13 +38,20 @@ export default {
   emits: ["select"],
   setup(props, { emit }) {
     const canvasInstance = useCanvas(emit);
-    const { selected, draggableCallbacks } = canvasInstance;
+    const {
+      selected,
+      draggableCallbacks,
+      layerTransformStyle,
+      container
+    } = canvasInstance;
 
     provide("canvas", canvasInstance);
 
     return {
       draggableCallbacks,
-      selected
+      selected,
+      layerTransformStyle,
+      container
     };
   }
 };

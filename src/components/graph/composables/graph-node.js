@@ -11,6 +11,7 @@ class GraphNode {
     });
 
     this.selected = ref(false);
+    this._canvas = null;
 
     this.onDragStart = this.onDragStart.bind(this);
     this.onDrag = this.onDrag.bind(this);

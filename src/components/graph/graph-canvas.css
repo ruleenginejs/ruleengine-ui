@@ -10,3 +10,16 @@
 
   @apply overflow-hidden;
 }
+
+.v-graph-canvas__layer {
+  /* display styles */
+  @apply absolute left-0 top-0;
+}
+
+.v-graph-canvas__connection-layer {
+  @apply z-10;
+}
+
+.v-graph-canvas__node-layer {
+  @apply z-20;
+}
