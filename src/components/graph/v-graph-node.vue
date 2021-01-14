@@ -5,7 +5,7 @@
       'v-graph-node--selected': selected,
       'v-graph-node--moving': moving
     }"
-    :style="{ transform: transformStyle }"
+    :style="{ transform: transformStyle, zIndex: zIndex }"
     v-draggable.stop="draggableCallbacks"
   >
     <div
@@ -89,8 +89,9 @@ export default {
     const {
       transformStyle,
       selected,
-      draggableCallbacks,
-      moving
+      moving,
+      zIndex,
+      draggableCallbacks
     } = nodeInstance;
 
     const { colorStyle, colorClassName } = usePresetColor(
@@ -105,6 +106,7 @@ export default {
       colorClassName,
       selected,
       moving,
+      zIndex,
       draggableCallbacks
     };
   }

@@ -12,6 +12,7 @@ class GraphNode {
     this.selected = ref(false);
     this.moving = ref(false);
     this.moveOffsetPoint = ref(null);
+    this.zIndex = ref(1);
     this.canvas = null;
 
     this.onDragStart = this.onDragStart.bind(this);
@@ -55,8 +56,13 @@ class GraphNode {
     this.position.y = y;
   }
 
+  toFront() {
+    this.canvas?.toFront(this);
+  }
+
   onDragStart(e) {
     this.moving.value = true;
+    this.toFront();
     const startPoint = this.canvas?.mouseEventToLayerPoint(e);
 
     if (startPoint) {

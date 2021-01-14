@@ -3,9 +3,10 @@
     class="v-graph-circle-node"
     :class="{
       'v-graph-circle-node--error': error,
-      'v-graph-circle-node--selected': selected
+      'v-graph-circle-node--selected': selected,
+      'v-graph-circle-node--moving': moving
     }"
-    :style="{ transform: transformStyle }"
+    :style="{ transform: transformStyle, zIndex: zIndex }"
     v-draggable.stop="draggableCallbacks"
   >
     <div
@@ -57,13 +58,21 @@ export default {
 
     const canvas = inject("canvas");
     const nodeInstance = useNode(canvas, id, x, y, emit);
-    const { transformStyle, selected, draggableCallbacks } = nodeInstance;
+    const {
+      transformStyle,
+      selected,
+      moving,
+      zIndex,
+      draggableCallbacks
+    } = nodeInstance;
 
     return {
       transformStyle,
       truncateTitle,
       truncateLength,
       selected,
+      moving,
+      zIndex,
       draggableCallbacks
     };
   }

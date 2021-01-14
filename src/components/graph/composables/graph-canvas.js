@@ -8,12 +8,18 @@ class GraphCanvas {
 
     this.container = ref(null);
     this.selectedNode = ref(null);
+
     this.scale = ref(1);
     this.minScale = ref(0.1);
     this.maxScale = ref(2);
+
     this.layerPosition = reactive({ x: 0, y: 0 });
     this.moving = ref(false);
     this.moveStartPoint = ref(null);
+
+    this.minZIndex = ref(1);
+    this.maxZIndex = ref(1000);
+    this.lastZIndex = ref(this.minZIndex.value);
 
     this.onDragStart = this.onDragStart.bind(this);
     this.onDrag = this.onDrag.bind(this);
@@ -82,6 +88,20 @@ class GraphCanvas {
     if (this.selectedNode.value) {
       this.selectedNode.value.deselect();
       this.selectedNode.value = null;
+    }
+  }
+
+  toFront(node) {
+    this.tryResetZIndex();
+    node.zIndex.value = ++this.lastZIndex.value;
+  }
+
+  tryResetZIndex() {
+    if (this.lastZIndex.value >= this.maxZIndex.value) {
+      for (let key in this.nodes) {
+        this.nodes[key].zIndex.value = this.minZIndex.value;
+      }
+      this.lastZIndex.value = this.minZIndex.value;
     }
   }
 
