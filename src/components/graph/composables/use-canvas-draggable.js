@@ -1,9 +1,4 @@
-/* eslint-disable no-unused-vars */
-import { ref } from "vue";
-
-export default function useCanvasDraggable() {
-  const dragging = ref(false);
-
+export default function useCanvasDraggable(onSelect = null) {
   const onDragStart = () => {
   }
 
@@ -11,6 +6,7 @@ export default function useCanvasDraggable() {
   }
 
   const onDragEnd = () => {
+    onSelect?.();
   }
 
   const draggableCallbacks = {

@@ -1,6 +1,6 @@
 import { ref } from "vue";
 
-export default function useSelect() {
+export default function useSelection() {
   const selected = ref(false);
 
   const onSelect = () => {

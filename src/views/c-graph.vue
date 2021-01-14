@@ -5,6 +5,12 @@
     </button>
     <br />
     <button @click="destroy = !destroy">destroy {{ destroy }}</button>
+    <br />
+    <button @click="destroyNode = !destroyNode">
+      destroyNode {{ destroyNode }}
+    </button>
+    <br />
+    <button @click="onChangeNodeId">change node id {{ nodeId }}</button>
   </v-content>
   <v-content padding="md" style="height: 600px">
     <v-graph-canvas v-if="!destroy">
@@ -16,7 +22,13 @@
         title="error"
         error
       />
-      <v-graph-node :id="3" :x="200" :y="20" title="Response">
+      <v-graph-node
+        v-if="!destroyNode"
+        :id="nodeId"
+        :x="200"
+        :y="20"
+        title="Response"
+      >
         <template #header-left-icon>
           <v-icon-doc-text />
         </template>
@@ -33,27 +45,9 @@
           <v-graph-port id="out-default">out default</v-graph-port>
         </template>
       </v-graph-node>
-      <v-graph-node
-        :id="3"
-        :x="400"
-        :y="20"
-        title="Response"
-        header-color="blue"
-      />
-      <v-graph-node
-        :id="3"
-        :x="300"
-        :y="240"
-        title="Response"
-        header-color="green"
-      />
-      <v-graph-node
-        :id="3"
-        :x="500"
-        :y="340"
-        title="Response"
-        header-color="#82801A"
-      />
+      <v-graph-node :x="400" :y="20" title="Response" header-color="blue" />
+      <v-graph-node :x="300" :y="240" title="Response" header-color="green" />
+      <v-graph-node :x="500" :y="340" title="Response" header-color="#82801A" />
       <v-graph-connection from="1:default" to="3:in-default" />
       <v-graph-connection from="3:out-default" to="2:default" />
     </v-graph-canvas>
@@ -66,13 +60,18 @@ export default {
   data() {
     return {
       nodePos1: { x: 20, y: 30 },
-      destroy: false
+      destroy: false,
+      destroyNode: false,
+      nodeId: 3
     };
   },
   methods: {
     onChangePos() {
       this.nodePos1.x = 40;
       this.nodePos1.y = 50;
+    },
+    onChangeNodeId() {
+      this.nodeId = 4;
     }
   }
 };

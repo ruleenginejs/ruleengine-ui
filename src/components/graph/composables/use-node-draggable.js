@@ -1,9 +1,4 @@
-/* eslint-disable no-unused-vars */
-import { ref } from "vue";
-
-export default function useNodeDraggable() {
-  const dragging = ref(false);
-
+export default function useNodeDraggable(position, onSelect = null) {
   const onDragStart = () => {
   }
 
@@ -11,6 +6,7 @@ export default function useNodeDraggable() {
   }
 
   const onDragEnd = () => {
+    onSelect?.();
   }
 
   const draggableCallbacks = {
