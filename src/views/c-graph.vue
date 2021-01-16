@@ -11,9 +11,21 @@
     </button>
     <br />
     <button @click="onChangeNodeId">change node id {{ nodeId }}</button>
+    <br />
+    <p>Viewport: {{ viewport }}</p>
+    <p>Zoom: {{ zoom }}</p>
+    <button @click="zoom = zoom + 20">+ zoom</button>
+    <button @click="zoom = zoom - 20">- zoom</button>
+    <br />
+    <button @click="viewport = [50, 200]">change viewport</button>
   </v-content>
   <v-content padding="md" style="height: 600px">
-    <v-graph-canvas v-if="!destroy">
+    <v-graph-canvas
+      v-if="!destroy"
+      v-model:viewport="viewport"
+      v-model:zoom="zoom"
+      :min-zoom="20"
+    >
       <template #node>
         <v-graph-circle-node :id="1" :x="100" :y="100" title="s" />
         <v-graph-circle-node
@@ -71,7 +83,9 @@ export default {
       nodePos1: { x: 20, y: 30 },
       destroy: false,
       destroyNode: false,
-      nodeId: 3
+      nodeId: 3,
+      viewport: [0, 0],
+      zoom: 100
     };
   },
   methods: {

@@ -16,7 +16,7 @@
   @apply absolute left-0 top-0;
 }
 
-.v-graph-canvas__connection-layer {
+.v-graph-canvas__svg-layer {
   @apply z-10;
 }
 

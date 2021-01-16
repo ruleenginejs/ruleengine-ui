@@ -5,10 +5,7 @@ class GraphNode {
     this.id = idVal;
     this.emit = emit;
 
-    this.position = reactive({
-      x: posX.value,
-      y: posY.value
-    });
+    this.position = reactive({ x: posX.value, y: posY.value });
     this.selected = ref(false);
     this.moving = ref(false);
     this.moveOffsetPoint = ref(null);
@@ -62,7 +59,6 @@ class GraphNode {
 
   onDragStart(e) {
     this.moving.value = true;
-    this.toFront();
     const startPoint = this.canvas?.mouseEventToLayerPoint(e);
 
     if (startPoint) {
@@ -71,6 +67,8 @@ class GraphNode {
         y: startPoint.y - this.position.y
       }
     }
+
+    this.toFront();
   }
 
   onDrag(e) {

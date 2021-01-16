@@ -1,21 +1,36 @@
-import { ref, watch, computed, reactive } from "vue"
+import { mac } from "@/utils/browser";
+import isDefined from "@/utils/is-defined";
+import { getWheelDelta } from "@/utils/wheel-delta";
+import { ref, watch, computed, reactive, onMounted } from "vue"
 import clamp from "./clamp";
 
 class GraphCanvas {
-  constructor(emit) {
+  constructor(emit, {
+    viewport,
+    zoom,
+    minZoom,
+    maxZoom,
+    zoomSnap,
+    zoomIntensity,
+    moveIntensity
+  }) {
     this.emit = emit;
     this.nodes = {};
 
     this.container = ref(null);
     this.selectedNode = ref(null);
 
-    this.scale = ref(1);
-    this.minScale = ref(0.1);
-    this.maxScale = ref(2);
+    this.minZoom = minZoom;
+    this.maxZoom = maxZoom;
+    this.zoomSnap = zoomSnap;
+    this.zoomIntensity = zoomIntensity;
+    this.zoom = ref(this.limitZoom(zoom.value));
 
-    this.layerPosition = reactive({ x: 0, y: 0 });
+    const viewPoint = this.toPoint(viewport.value);
+    this.layerPosition = reactive({ x: viewPoint.x, y: viewPoint.y });
     this.moving = ref(false);
     this.moveStartPoint = ref(null);
+    this.moveIntensity = moveIntensity;
 
     this.minZIndex = ref(1);
     this.maxZIndex = ref(1000);
@@ -24,13 +39,24 @@ class GraphCanvas {
     this.onDragStart = this.onDragStart.bind(this);
     this.onDrag = this.onDrag.bind(this);
     this.onDragEnd = this.onDragEnd.bind(this);
+    this.onWheelScroll = this.onWheelScroll.bind(this);
 
     this.draggableCallbacks = {
       dragStart: this.onDragStart,
       drag: this.onDrag,
       dragEnd: this.onDragEnd
     };
+    this.wheelCallbacks = { wheel: this.onWheelScroll };
 
+    this.initComputed();
+    this.initWatchers({ zoom, viewport });
+
+    onMounted(() => {
+      this.zoomChanged();
+    })
+  }
+
+  initComputed() {
     this.selected = computed({
       get: () => !this.selectedNode.value,
       set: val => {
@@ -40,19 +66,67 @@ class GraphCanvas {
       }
     });
 
-    this.computedScale = computed(() =>
-      clamp(this.minScale.value, this.scale.value, this.maxScale.value));
-
-    this.layerTransformStyle = computed(() =>
-      `translate(${this.layerPosition.x}px, ${this.layerPosition.y}px) scale(${this.computedScale.value})`);
-
-    this.initWatchers();
+    this.scale = computed(() => this.zoom.value / 100);
+    this.scaleStyle = computed(() => `scale(${this.scale.value})`);
+    this.translateStyle = computed(() =>
+      `translate(${this.layerPosition.x}px, ${this.layerPosition.y}px)`);
   }
 
-  initWatchers() {
+  initWatchers({ zoom, viewport }) {
     watch(this.selectedNode, () => {
       this.emit("select", this.selectedNode.value);
     })
+
+    watch(zoom, () => {
+      this.setZoom(zoom.value);
+    })
+
+    watch(viewport, () => {
+      this.setView(this.toPoint(viewport.value))
+    })
+
+    watch(this.layerPosition, () => {
+      const { x, y } = this.layerPosition;
+      this.emit("update:viewport", [x, y]);
+    })
+  }
+
+  zoomChanged() {
+    this.emit("update:zoom", this.zoom.value);
+  }
+
+  getContainerSize() {
+    return this.container.value?.getBoundingClientRect();
+  }
+
+  getContainerCenter() {
+    const size = this.getContainerSize();
+    return {
+      x: (size?.width ?? 0) / 2,
+      y: (size?.height ?? 0) / 2
+    }
+  }
+
+  toPoint(value) {
+    return Array.isArray(value)
+      ? { x: value[0], y: value[1] }
+      : null;
+  }
+
+  subtractPoint(pointA, pointB) {
+    return { x: pointA.x - pointB.x, y: pointA.y - pointB.y };
+  }
+
+  addPoint(pointA, pointB) {
+    return { x: pointA.x + pointB.x, y: pointA.y + pointB.y };
+  }
+
+  multiplyPointBy(point, num) {
+    return { x: point.x * num, y: point.y * num };
+  }
+
+  dividePointBy(point, num) {
+    return { x: point.x / num, y: point.y / num };
   }
 
   addNode(id, node) {
@@ -127,6 +201,18 @@ class GraphCanvas {
     return this.getMousePosition(e, this.container.value);
   }
 
+  getCenterLayerPoint() {
+    return this.containerPointToLayerPoint(this.getContainerCenter());
+  }
+
+  getCenterLayerOffset({ x, y }) {
+    const centerPoint = this.getCenterLayerPoint();
+    return {
+      x: x - centerPoint.x,
+      y: y - centerPoint.y
+    }
+  }
+
   getMousePosition(e, container = null) {
     if (!container) {
       return {
@@ -151,6 +237,45 @@ class GraphCanvas {
   moveTo(x, y) {
     this.layerPosition.x = x;
     this.layerPosition.y = y;
+  }
+
+  setZoom(zoom) {
+    const oldCenter = this.getCenterLayerPoint();
+    this.zoom.value = this.limitZoom(zoom);
+    const newCenter = this.getCenterLayerPoint();
+    const offset = this.subtractPoint(newCenter, oldCenter);
+    this.move(offset.x, offset.y);
+    this.zoomChanged();
+  }
+
+  setZoomAround(point, zoom) {
+    const containerPoint = this.layerPointToContainerPoint(point);
+    this.zoom.value = this.limitZoom(zoom);
+    const newPoint = this.containerPointToLayerPoint(containerPoint);
+    const offset = this.subtractPoint(newPoint, point);
+    this.move(offset.x, offset.y);
+    this.zoomChanged();
+  }
+
+  getZoomScale(toZoom, fromZoom = null) {
+    fromZoom = !isDefined(fromZoom) ? this.zoom.value : fromZoom;
+    return toZoom / fromZoom;
+  }
+
+  setView({ x, y }) {
+    this.moveTo(x, y);
+  }
+
+  limitZoom(zoom) {
+    if (this.zoomSnap.value) {
+      zoom = Math.round(zoom / this.zoomSnap.value) * this.zoomSnap.value;
+    }
+    return clamp(this.minZoom.value, zoom, this.maxZoom.value);
+  }
+
+  performZoom(point, delta) {
+    const zoom = this.zoom.value + (delta * this.zoomIntensity.value);
+    this.setZoomAround(point, zoom);
   }
 
   onDragStart(e) {
@@ -178,6 +303,26 @@ class GraphCanvas {
 
   onClickEnd() {
     this.selected.value = true;
+  }
+
+  onWheelScroll(e) {
+    if (mac && Number.isInteger(e.deltaY)) {
+      this.onWheelMove(e);
+      return;
+    }
+
+    const delta = getWheelDelta(e);
+    const point = this.mouseEventToLayerPoint(e);
+
+    this.performZoom(point, delta);
+  }
+
+  onWheelMove(e) {
+    let { deltaX, deltaY } = e;
+    const moveIntensity = this.moveIntensity.value;
+    const offsetX = -deltaX * moveIntensity / this.scale.value;
+    const offsetY = -deltaY * moveIntensity / this.scale.value;
+    this.move(offsetX, offsetY);
   }
 }
 
