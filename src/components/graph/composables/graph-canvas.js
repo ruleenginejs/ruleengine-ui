@@ -27,11 +27,15 @@ class GraphCanvas {
     this.zoomIntensity = zoomIntensity;
     this.zoom = ref(this.limitZoom(zoom.value));
 
-    const viewPoint = this.toPoint(viewport.value);
-    this.layerPosition = reactive({ x: viewPoint.x, y: viewPoint.y });
+    const viewportPoint = this.toPoint(viewport.value);
+    this.layerPosition = reactive({ x: viewportPoint.x, y: viewportPoint.y });
     this.moving = ref(false);
     this.moveStartPoint = ref(null);
     this.moveIntensity = moveIntensity;
+
+    this.moveEdgeSize = ref(200);
+    this.moveTimer = ref(null);
+    this.moveStep = ref(50);
 
     this.minZIndex = ref(1);
     this.maxZIndex = ref(1000);
@@ -391,6 +395,57 @@ class GraphCanvas {
     const offsetX = -deltaX * moveIntensity / this.scale.value;
     const offsetY = -deltaY * moveIntensity / this.scale.value;
     this.move(offsetX, offsetY);
+  }
+
+  handleEdgeAutoMoving(e, nodeId) {
+    //debugger;
+    const mousePoint = this.mouseEventToContainerPoint(e);
+    const size = this.getContainerSize();
+
+    const edgeSize = this.moveEdgeSize.value;
+    const edgeTop = edgeSize;
+    const edgeLeft = edgeSize;
+    const edgeBottom = (size.y - edgeSize);
+    const edgeRight = (size.x - edgeSize);
+
+    const isInLeftEdge = (mousePoint.x < edgeLeft);
+    const isInRightEdge = (mousePoint.x > edgeRight);
+    const isInTopEdge = (mousePoint.y < edgeTop);
+    const isInBottomEdge = (mousePoint.y > edgeBottom);
+
+    if (!(isInLeftEdge || isInRightEdge || isInTopEdge || isInBottomEdge)) {
+      clearTimeout(this.moveTimer.value);
+      return;
+    }
+
+    debugger;
+
+    const handleMove = () => {
+      let deltaX = 0
+      let deltaY = 0;
+
+      if (isInLeftEdge) {
+        const intensity = ((edgeLeft - mousePoint.x) / edgeSize);
+        deltaX = this.moveStep.value * intensity;
+      }
+
+      this.move(deltaX, deltaY);
+      this.nodes[nodeId].move(-deltaX, -deltaY);
+    }
+
+    const that = this;
+
+    const requestMoving = function requestMoving() {
+      clearTimeout(that.moveTimer.value);
+      handleMove();
+      that.moveTimer.value = setTimeout(requestMoving, 30);
+    }
+
+    requestMoving();
+  }
+
+  stopEdgeAutoMoving() {
+    clearTimeout(this.moveTimer.value);
   }
 }
 

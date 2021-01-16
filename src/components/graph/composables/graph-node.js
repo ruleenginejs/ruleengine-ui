@@ -79,6 +79,11 @@ class GraphNode {
     this.position.y = y;
   }
 
+  move(deltaX, deltaY) {
+    this.position.x += deltaX;
+    this.position.y += deltaY;
+  }
+
   toFront() {
     this.canvas?.toFront(this);
   }
@@ -108,6 +113,8 @@ class GraphNode {
           movingPoint.y - offsetPoint.y
         );
       }
+
+      this.canvas?.handleEdgeAutoMoving(e, this.id);
     }
   }
 
