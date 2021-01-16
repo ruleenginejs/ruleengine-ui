@@ -82,7 +82,7 @@ export default {
       moveIntensity
     } = toRefs(props);
 
-    const canvasInstance = useCanvas(emit, {
+    const canvas = useCanvas(emit, {
       viewport,
       zoom,
       minZoom,
@@ -100,9 +100,11 @@ export default {
       translateStyle,
       container,
       moving
-    } = canvasInstance;
+    } = canvas;
 
-    provide("canvas", canvasInstance);
+    provide("canvas", canvas);
+
+    const getCanvas = () => canvas;
 
     return {
       draggableCallbacks,
@@ -111,7 +113,8 @@ export default {
       scaleStyle,
       translateStyle,
       container,
-      moving
+      moving,
+      getCanvas
     };
   }
 };

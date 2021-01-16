@@ -1,4 +1,5 @@
 import { reactive, watch, ref, computed } from "vue";
+import Bounds from "./bounds";
 
 class GraphNode {
   constructor(idVal, posX, posY, emit) {
@@ -11,6 +12,7 @@ class GraphNode {
     this.moveOffsetPoint = ref(null);
     this.zIndex = ref(1);
     this.canvas = null;
+    this.container = ref(null);
 
     this.onDragStart = this.onDragStart.bind(this);
     this.onDrag = this.onDrag.bind(this);
@@ -38,6 +40,22 @@ class GraphNode {
       this.emit("update:x", this.position.x);
       this.emit("update:y", this.position.y);
     });
+  }
+
+  getSize() {
+    const size = this.container?.getBoundingClientRect();
+    return {
+      x: size?.width ?? 0,
+      y: size?.height ?? 0
+    }
+  }
+
+  getBounds() {
+    return new Bounds(this.position, this.getSize());
+  }
+
+  clonePoint({ x, y }) {
+    return { x, y };
   }
 
   select() {

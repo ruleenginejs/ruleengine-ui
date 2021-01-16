@@ -57,23 +57,27 @@ export default {
     const { truncateTitle, truncateLength } = useTruncateTitle(title, 2);
 
     const canvas = inject("canvas");
-    const nodeInstance = useNode(canvas, id, x, y, emit);
+    const node = useNode(canvas, id, x, y, emit);
     const {
       transformStyle,
       selected,
       moving,
       zIndex,
       draggableCallbacks
-    } = nodeInstance;
+    } = node;
+
+    const getNode = () => node;
 
     return {
-      transformStyle,
-      truncateTitle,
-      truncateLength,
+      node,
       selected,
       moving,
       zIndex,
-      draggableCallbacks
+      transformStyle,
+      truncateTitle,
+      truncateLength,
+      draggableCallbacks,
+      getNode
     };
   }
 };

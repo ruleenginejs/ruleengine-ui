@@ -2,6 +2,7 @@ import { mac } from "@/utils/browser";
 import isDefined from "@/utils/is-defined";
 import { getWheelDelta } from "@/utils/wheel-delta";
 import { ref, watch, computed, reactive, onMounted } from "vue"
+import Bounds from "./bounds";
 import clamp from "./clamp";
 
 class GraphCanvas {
@@ -96,21 +97,33 @@ class GraphCanvas {
   }
 
   getContainerSize() {
-    return this.container.value?.getBoundingClientRect();
+    const size = this.container.value?.getBoundingClientRect();
+    return {
+      x: size?.x ?? 0,
+      y: size?.y ?? 0
+    }
   }
 
   getContainerCenter() {
-    const size = this.getContainerSize();
+    const { x, y } = this.getContainerSize();
     return {
-      x: (size?.width ?? 0) / 2,
-      y: (size?.height ?? 0) / 2
+      x: x / 2,
+      y: y / 2
     }
+  }
+
+  getContainerBounds() {
+    return new Bounds(this.layerPosition, this.getContainerSize());
   }
 
   toPoint(value) {
     return Array.isArray(value)
       ? { x: value[0], y: value[1] }
       : null;
+  }
+
+  point(x = 0, y = 0) {
+    return { x, y };
   }
 
   subtractPoint(pointA, pointB) {
@@ -139,6 +152,18 @@ class GraphCanvas {
       this.nodes[id].canvas = null;
       delete this.nodes[id];
     }
+  }
+
+  getNodes() {
+    return Object.keys(this.nodes)
+      .map(key => this.nodes[key]);
+  }
+
+  getNodeBounds() {
+    return this.getNodes().reduce((res, node) => {
+      const { min, max } = node.getBounds();
+      return res.extend(min).extend(max);
+    }, new Bounds(this.point(), this.point()));
   }
 
   isSelected(node) {

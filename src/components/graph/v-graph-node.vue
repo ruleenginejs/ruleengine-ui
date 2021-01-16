@@ -7,6 +7,7 @@
     }"
     :style="{ transform: transformStyle, zIndex: zIndex }"
     v-draggable.stop="draggableCallbacks"
+    ref="container"
   >
     <div
       class="v-graph-node__header"
@@ -85,14 +86,15 @@ export default {
     const { x, y, headerColor, id } = toRefs(props);
 
     const canvas = inject("canvas");
-    const nodeInstance = useNode(canvas, id, x, y, emit);
+    const node = useNode(canvas, id, x, y, emit);
     const {
       transformStyle,
       selected,
       moving,
       zIndex,
+      container,
       draggableCallbacks
-    } = nodeInstance;
+    } = node;
 
     const { colorStyle, colorClassName } = usePresetColor(
       headerColor,
@@ -100,14 +102,19 @@ export default {
       colorFn
     );
 
+    const getNode = () => node;
+
     return {
+      node,
+      moving,
+      zIndex,
+      container,
       transformStyle,
       colorStyle,
       colorClassName,
       selected,
-      moving,
-      zIndex,
-      draggableCallbacks
+      draggableCallbacks,
+      getNode
     };
   }
 };
