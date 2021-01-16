@@ -18,6 +18,8 @@
     <button @click="zoom = zoom - 20">- zoom</button>
     <br />
     <button @click="viewport = [50, 200]">change viewport</button>
+    <br />
+    <button @click="fitCanvas">fit canvas</button>
   </v-content>
   <v-content padding="md" style="height: 600px">
     <v-graph-canvas
@@ -25,6 +27,7 @@
       v-model:viewport="viewport"
       v-model:zoom="zoom"
       :min-zoom="20"
+      ref="canvas"
     >
       <template #node>
         <v-graph-circle-node :id="1" :x="100" :y="100" title="s" />
@@ -95,6 +98,10 @@ export default {
     },
     onChangeNodeId() {
       this.nodeId = 4;
+    },
+    fitCanvas() {
+      const canvas = this.$refs.canvas.getCanvas();
+      canvas.fitBounds(canvas.getNodeBounds());
     }
   }
 };

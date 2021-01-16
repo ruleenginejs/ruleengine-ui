@@ -8,6 +8,7 @@
     }"
     :style="{ transform: transformStyle, zIndex: zIndex }"
     v-draggable.stop="draggableCallbacks"
+    ref="container"
   >
     <div
       class="v-graph-circle-node__label"
@@ -63,6 +64,7 @@ export default {
       selected,
       moving,
       zIndex,
+      container,
       draggableCallbacks
     } = node;
 
@@ -73,6 +75,7 @@ export default {
       selected,
       moving,
       zIndex,
+      container,
       transformStyle,
       truncateTitle,
       truncateLength,

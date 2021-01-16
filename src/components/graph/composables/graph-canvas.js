@@ -99,8 +99,8 @@ class GraphCanvas {
   getContainerSize() {
     const size = this.container.value?.getBoundingClientRect();
     return {
-      x: size?.x ?? 0,
-      y: size?.y ?? 0
+      x: size?.width ?? 0,
+      y: size?.height ?? 0
     }
   }
 
@@ -113,7 +113,10 @@ class GraphCanvas {
   }
 
   getContainerBounds() {
-    return new Bounds(this.layerPosition, this.getContainerSize());
+    return new Bounds(
+      this.layerPosition,
+      this.addPoint(this.layerPosition, this.getContainerSize())
+    );
   }
 
   toPoint(value) {
@@ -160,10 +163,15 @@ class GraphCanvas {
   }
 
   getNodeBounds() {
-    return this.getNodes().reduce((res, node) => {
+    const nodes = this.getNodes();
+    if (nodes.length === 0) {
+      return new Bounds(this.point(), this.point())
+    }
+
+    return nodes.reduce((res, node) => {
       const { min, max } = node.getBounds();
       return res.extend(min).extend(max);
-    }, new Bounds(this.point(), this.point()));
+    }, new Bounds());
   }
 
   isSelected(node) {
@@ -271,6 +279,7 @@ class GraphCanvas {
     const offset = this.subtractPoint(newCenter, oldCenter);
     this.move(offset.x, offset.y);
     this.zoomChanged();
+    return this;
   }
 
   setZoomAround(point, zoom) {
@@ -280,6 +289,7 @@ class GraphCanvas {
     const offset = this.subtractPoint(newPoint, point);
     this.move(offset.x, offset.y);
     this.zoomChanged();
+    return this;
   }
 
   getZoomScale(toZoom, fromZoom = null) {
@@ -287,8 +297,22 @@ class GraphCanvas {
     return toZoom / fromZoom;
   }
 
+  getScaleZoom(scale) {
+    return scale * 100;
+  }
+
   setView({ x, y }) {
     this.moveTo(x, y);
+    return this;
+  }
+
+  setCenter({ x, y }, zoom = null) {
+    this.moveTo(x, y);
+    this.zoom.value = isDefined(zoom) ? this.limitZoom(zoom) : this.zoom.value;
+    const center = this.getCenterLayerPoint();
+    const centerOffset = this.subtractPoint(center, this.layerPosition);
+    this.move(centerOffset.x, centerOffset.y);
+    this.zoomChanged();
   }
 
   limitZoom(zoom) {
@@ -301,6 +325,25 @@ class GraphCanvas {
   performZoom(point, delta) {
     const zoom = this.zoom.value + (delta * this.zoomIntensity.value);
     this.setZoomAround(point, zoom);
+  }
+
+  fitBounds(bounds) {
+    const { center, zoom } = this.getBoundsCenterZoom(bounds);
+    this.setCenter(center, zoom);
+  }
+
+  getBoundsCenterZoom(bounds) {
+    const zoom = this.getBoundsZoom(bounds);
+    return { center: bounds.getCenter(), zoom };
+  }
+
+  getBoundsZoom(bounds) {
+    const size = this.getContainerSize();
+    const boundsSize = bounds.getSize();
+    const scaleX = size.x / boundsSize.x;
+    const scaleY = size.y / boundsSize.y;
+    const scale = Math.min(scaleX, scaleY);
+    return this.limitZoom(this.getScaleZoom(scale));
   }
 
   onDragStart(e) {

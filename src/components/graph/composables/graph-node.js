@@ -43,19 +43,27 @@ class GraphNode {
   }
 
   getSize() {
-    const size = this.container?.getBoundingClientRect();
+    const size = this.container.value?.getBoundingClientRect();
+    const scale = this.canvas?.scale.value ?? 0;
     return {
-      x: size?.width ?? 0,
-      y: size?.height ?? 0
+      x: (size?.width ?? 0) / scale,
+      y: (size?.height ?? 0) / scale
     }
   }
 
   getBounds() {
-    return new Bounds(this.position, this.getSize());
+    return new Bounds(
+      this.position,
+      this.addPoint(this.position, this.getSize())
+    );
   }
 
   clonePoint({ x, y }) {
     return { x, y };
+  }
+
+  addPoint(pointA, pointB) {
+    return { x: pointA.x + pointB.x, y: pointA.y + pointB.y };
   }
 
   select() {

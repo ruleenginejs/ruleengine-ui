@@ -3,8 +3,8 @@ class Bounds {
     this.min = null;
     this.max = null;
 
-    this.extend(a);
-    this.extend(b);
+    if (a) this.extend(a);
+    if (b) this.extend(b);
   }
 
   extend({ x, y }) {
