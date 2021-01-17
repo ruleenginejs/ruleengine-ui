@@ -235,7 +235,7 @@ class GraphCanvas {
     }
   }
 
-  toFront(node) {
+  bringToFront(node) {
     this.tryResetZIndex();
     node.zIndex.value = ++this.lastZIndex.value;
   }

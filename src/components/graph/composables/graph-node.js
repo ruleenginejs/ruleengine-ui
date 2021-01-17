@@ -84,8 +84,8 @@ class GraphNode {
     this.position.y += deltaY;
   }
 
-  toFront() {
-    this.canvas?.toFront(this);
+  bringToFront() {
+    this.canvas?.bringToFront(this);
   }
 
   onDragStart(e) {
@@ -99,7 +99,7 @@ class GraphNode {
       }
     }
 
-    this.toFront();
+    this.bringToFront();
   }
 
   onDrag(e) {
