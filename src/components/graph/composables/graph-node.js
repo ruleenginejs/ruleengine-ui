@@ -114,7 +114,7 @@ class GraphNode {
         );
       }
 
-      this.canvas?.handleEdgeAutoMoving(e, this.id);
+      this.canvas?.updateEdgeScrolling(e, this.id);
     }
   }
 
@@ -122,6 +122,7 @@ class GraphNode {
     this.moving.value = false;
     this.moveOffsetPoint.value = null;
 
+    this.canvas?.stopEdgeScrolling();
     this.onClickEnd();
   }
 

@@ -27,6 +27,7 @@
       v-model:viewport="viewport"
       v-model:zoom="zoom"
       :min-zoom="20"
+      :edge-sizes="{ edgeBottomSize: { in: 10, out: 0 } }"
       ref="canvas"
     >
       <template #node>

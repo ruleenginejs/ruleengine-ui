@@ -4,6 +4,7 @@ import { getWheelDelta } from "@/utils/wheel-delta";
 import { ref, watch, computed, reactive, onMounted } from "vue"
 import Bounds from "./bounds";
 import clamp from "./clamp";
+import EdgeScrolling from "./edge-scrolling";
 
 class GraphCanvas {
   constructor(emit, {
@@ -13,7 +14,9 @@ class GraphCanvas {
     maxZoom,
     zoomSnap,
     zoomIntensity,
-    moveIntensity
+    moveIntensity,
+    edgeMaxStep,
+    edgeSizes
   }) {
     this.emit = emit;
     this.nodes = {};
@@ -40,6 +43,11 @@ class GraphCanvas {
     this.minZIndex = ref(1);
     this.maxZIndex = ref(1000);
     this.lastZIndex = ref(this.minZIndex.value);
+
+    this.edgeScrolling = this.makeEdgeSrolling(
+      edgeMaxStep.value,
+      edgeSizes.value
+    );
 
     this.onDragStart = this.onDragStart.bind(this);
     this.onDrag = this.onDrag.bind(this);
@@ -94,6 +102,31 @@ class GraphCanvas {
       const { x, y } = this.layerPosition;
       this.emit("update:viewport", [x, y]);
     })
+  }
+
+  makeEdgeSrolling(maxStep, edgeSizes) {
+    const defaultEdgeSizes = {
+      edgeTopSize: { in: 0, out: 20 },
+      edgeBottomSize: { in: 0, out: 20 },
+      edgeLeftSize: { in: 0, out: 20 },
+      edgeRightSize: { in: 0, out: 20 },
+      ...edgeSizes
+    }
+
+    const options = {
+      maxStep,
+      ...defaultEdgeSizes
+    };
+
+    const callbacks = {
+      onViewportSize: () => this.getContainerSize(),
+      onScroll: ({ deltaX, deltaY, data }) => {
+        this.move(-deltaX, -deltaY);
+        this.nodes[data].move(deltaX, deltaY);
+      }
+    }
+
+    return new EdgeScrolling(options, callbacks);
   }
 
   zoomChanged() {
@@ -397,55 +430,13 @@ class GraphCanvas {
     this.move(offsetX, offsetY);
   }
 
-  handleEdgeAutoMoving(e, nodeId) {
-    //debugger;
-    const mousePoint = this.mouseEventToContainerPoint(e);
-    const size = this.getContainerSize();
-
-    const edgeSize = this.moveEdgeSize.value;
-    const edgeTop = edgeSize;
-    const edgeLeft = edgeSize;
-    const edgeBottom = (size.y - edgeSize);
-    const edgeRight = (size.x - edgeSize);
-
-    const isInLeftEdge = (mousePoint.x < edgeLeft);
-    const isInRightEdge = (mousePoint.x > edgeRight);
-    const isInTopEdge = (mousePoint.y < edgeTop);
-    const isInBottomEdge = (mousePoint.y > edgeBottom);
-
-    if (!(isInLeftEdge || isInRightEdge || isInTopEdge || isInBottomEdge)) {
-      clearTimeout(this.moveTimer.value);
-      return;
-    }
-
-    debugger;
-
-    const handleMove = () => {
-      let deltaX = 0
-      let deltaY = 0;
-
-      if (isInLeftEdge) {
-        const intensity = ((edgeLeft - mousePoint.x) / edgeSize);
-        deltaX = this.moveStep.value * intensity;
-      }
-
-      this.move(deltaX, deltaY);
-      this.nodes[nodeId].move(-deltaX, -deltaY);
-    }
-
-    const that = this;
-
-    const requestMoving = function requestMoving() {
-      clearTimeout(that.moveTimer.value);
-      handleMove();
-      that.moveTimer.value = setTimeout(requestMoving, 30);
-    }
-
-    requestMoving();
+  updateEdgeScrolling(e, data = null) {
+    const point = this.mouseEventToContainerPoint(e);
+    this.edgeScrolling.update(point, data);
   }
 
-  stopEdgeAutoMoving() {
-    clearTimeout(this.moveTimer.value);
+  stopEdgeScrolling() {
+    this.edgeScrolling.stop();
   }
 }
 

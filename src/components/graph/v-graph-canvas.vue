@@ -68,6 +68,14 @@ export default {
     moveIntensity: {
       type: Number,
       default: 0.4
+    },
+    edgeMaxStep: {
+      type: Number,
+      default: 10
+    },
+    edgeSizes: {
+      type: Object,
+      default: null
     }
   },
   emits: ["select", "update:zoom", "update:viewport"],
@@ -79,7 +87,9 @@ export default {
       maxZoom,
       zoomSnap,
       zoomIntensity,
-      moveIntensity
+      moveIntensity,
+      edgeSizes,
+      edgeMaxStep
     } = toRefs(props);
 
     const canvas = useCanvas(emit, {
@@ -89,7 +99,9 @@ export default {
       maxZoom,
       zoomSnap,
       zoomIntensity,
-      moveIntensity
+      moveIntensity,
+      edgeMaxStep,
+      edgeSizes
     });
 
     const {
