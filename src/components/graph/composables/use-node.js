@@ -1,28 +1,13 @@
 import GraphNode from "./graph-node";
-import { onUnmounted, getCurrentInstance, watch, markRaw } from "vue";
+import { markRaw, onUnmounted } from "vue";
 
 export default function useNode(canvas, nodeId, posX, posY, emit) {
-  const internalInstance = getCurrentInstance();
-  const id = nodeId.value ?? internalInstance.uid;
-
-  const nodeInstance = markRaw(new GraphNode(id, posX, posY, emit));
-  canvas?.addNode(id, nodeInstance)
+  const node = markRaw(new GraphNode(nodeId, posX, posY, emit));
 
   onUnmounted(() => {
-    canvas?.deselect(nodeInstance);
-    canvas?.removeNode(id);
-  })
+    canvas?.removeNode(node.id);
+  });
 
-  const updateSelected = () => {
-    if (nodeInstance.selected.value) {
-      canvas?.select(nodeInstance)
-    } else {
-      canvas?.deselect(nodeInstance)
-    }
-  }
-
-  watch(nodeInstance.selected, updateSelected);
-  updateSelected();
-
-  return nodeInstance;
+  canvas?.addNode(node);
+  return node;
 }

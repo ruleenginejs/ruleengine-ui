@@ -55,9 +55,10 @@ export default {
   emits: ["update:x", "update:y"],
   setup(props, { emit }) {
     const { x, y, title, id } = toRefs(props);
+    const canvas = inject("canvas");
+
     const { truncateTitle, truncateLength } = useTruncateTitle(title, 2);
 
-    const canvas = inject("canvas");
     const node = useNode(canvas, id, x, y, emit);
     const {
       transformStyle,

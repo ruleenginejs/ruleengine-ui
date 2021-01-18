@@ -84,8 +84,8 @@ export default {
   emits: ["update:x", "update:y"],
   setup(props, { emit }) {
     const { x, y, headerColor, id } = toRefs(props);
-
     const canvas = inject("canvas");
+
     const node = useNode(canvas, id, x, y, emit);
     const {
       transformStyle,

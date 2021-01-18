@@ -193,14 +193,14 @@ class GraphCanvas {
     return { x: point.x / num, y: point.y / num };
   }
 
-  addNode(id, node) {
-    node.canvas = this;
-    this.nodes[id] = node;
+  addNode(node) {
+    this.nodes[node.id] = node;
+    node.onAdd?.(this);
   }
 
   removeNode(id) {
     if (this.nodes[id]) {
-      this.nodes[id].canvas = null;
+      this.nodes[id].onRemove?.(this);
       delete this.nodes[id];
     }
   }

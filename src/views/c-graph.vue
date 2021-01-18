@@ -20,6 +20,10 @@
     <button @click="viewport = [50, 200]">change viewport</button>
     <br />
     <button @click="fitCanvas">fit canvas</button>
+    <br />
+    <button @click="invalidateConnection = true">
+      invalidate connection {{ invalidateConnection }}
+    </button>
   </v-content>
   <v-content padding="md" style="height: 600px">
     <v-graph-canvas
@@ -72,7 +76,11 @@
         />
       </template>
       <template #connection>
-        <v-graph-connection from="1:default" to="3:in-default" />
+        <v-graph-connection
+          from="1:default"
+          to="3:in-default"
+          v-model:invalidate="invalidateConnection"
+        />
         <v-graph-connection from="3:out-default" to="2:default" />
       </template>
     </v-graph-canvas>
@@ -89,7 +97,8 @@ export default {
       destroyNode: false,
       nodeId: 3,
       viewport: [0, 0],
-      zoom: 100
+      zoom: 100,
+      invalidateConnection: true
     };
   },
   methods: {

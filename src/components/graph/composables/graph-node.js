@@ -1,9 +1,10 @@
-import { reactive, watch, ref, computed } from "vue";
+import { reactive, watch, ref, computed, getCurrentInstance } from "vue";
 import Bounds from "./bounds";
 
 class GraphNode {
-  constructor(idVal, posX, posY, emit) {
-    this.id = idVal;
+  constructor(id, posX, posY, emit) {
+    this.canvas = null;
+    this.id = id.value ?? getCurrentInstance().uid;
     this.emit = emit;
 
     this.position = reactive({ x: posX.value, y: posY.value });
@@ -11,7 +12,6 @@ class GraphNode {
     this.moving = ref(false);
     this.moveOffsetPoint = ref(null);
     this.zIndex = ref(1);
-    this.canvas = null;
     this.container = ref(null);
 
     this.onDragStart = this.onDragStart.bind(this);
@@ -24,10 +24,13 @@ class GraphNode {
       dragEnd: this.onDragEnd
     };
 
+    this.initComputed();
+    this.initWatchers(posX, posY);
+  }
+
+  initComputed() {
     this.transformStyle = computed(() =>
       `translate(${this.position.x}px, ${this.position.y}px)`);
-
-    this.initWatchers(posX, posY);
   }
 
   initWatchers(posX, posY) {
@@ -40,6 +43,10 @@ class GraphNode {
       this.emit("update:x", this.position.x);
       this.emit("update:y", this.position.y);
     });
+
+    watch(this.selected, () => {
+      this.updateSelection();
+    })
   }
 
   getSize() {
@@ -74,6 +81,14 @@ class GraphNode {
     this.selected.value = false;
   }
 
+  updateSelection() {
+    if (this.selected.value) {
+      this.canvas?.select(this);
+    } else {
+      this.canvas?.deselect(this);
+    }
+  }
+
   moveTo(x, y) {
     this.position.x = x;
     this.position.y = y;
@@ -86,6 +101,16 @@ class GraphNode {
 
   bringToFront() {
     this.canvas?.bringToFront(this);
+  }
+
+  onAdd(canvas) {
+    this.canvas = canvas;
+    this.updateSelection();
+  }
+
+  onRemove() {
+    this.canvas?.deselect(this);
+    this.canvas = null;
   }
 
   onDragStart(e) {
