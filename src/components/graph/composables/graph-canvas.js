@@ -22,6 +22,7 @@ class GraphCanvas {
     this.nodes = {};
 
     this.container = ref(null);
+    this.size = reactive({ x: 0, y: 0 });
     this.selectedNode = ref(null);
 
     this.minZoom = minZoom;
@@ -52,20 +53,24 @@ class GraphCanvas {
     this.onDragStart = this.onDragStart.bind(this);
     this.onDrag = this.onDrag.bind(this);
     this.onDragEnd = this.onDragEnd.bind(this);
-    this.onWheelScroll = this.onWheelScroll.bind(this);
-
     this.draggableCallbacks = {
       dragStart: this.onDragStart,
       drag: this.onDrag,
       dragEnd: this.onDragEnd
     };
+
+    this.onWheelScroll = this.onWheelScroll.bind(this);
     this.wheelCallbacks = { wheel: this.onWheelScroll };
+
+    this.onResize = this.onResize.bind(this);
+    this.resizeCallbacks = { resize: this.onResize };
 
     this.initComputed();
     this.initWatchers({ zoom, viewport });
 
     onMounted(() => {
       this.zoomChanged();
+      this.invalidateSize();
     })
   }
 
@@ -139,6 +144,12 @@ class GraphCanvas {
       x: size?.width ?? 0,
       y: size?.height ?? 0
     }
+  }
+
+  invalidateSize() {
+    const { x, y } = this.getContainerSize();
+    this.size.x = x;
+    this.size.y = y;
   }
 
   getContainerCenter() {
@@ -437,6 +448,10 @@ class GraphCanvas {
 
   stopEdgeScrolling() {
     this.edgeScrolling.stop();
+  }
+
+  onResize() {
+    this.invalidateSize();
   }
 }
 

@@ -23,3 +23,12 @@
 .v-graph-canvas__node-layer {
   @apply z-20;
 }
+
+.v-graph-canvas__svg-layer > svg {
+  /* display styles */
+  @apply absolute left-0 right-0;
+
+  @apply origin-top-left;
+
+  @apply pointer-events-none;
+}

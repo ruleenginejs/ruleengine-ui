@@ -7,16 +7,21 @@
     }"
     v-draggable="draggableCallbacks"
     v-wheel.prevent.stop="wheelCallbacks"
+    v-resize="resizeCallbacks"
     ref="container"
   >
     <div class="v-graph-canvas__layer" :style="{ transform: scaleStyle }">
       <div class="v-graph-canvas__layer" :style="{ transform: translateStyle }">
-        <div
+        <v-graph-svg-layer
           v-if="$slots['connection']"
-          class="v-graph-canvas__layer v-graph-canvas__svg-layer"
+          :translate-x="layerPosition.x"
+          :translate-y="layerPosition.y"
+          :width="size.x"
+          :height="size.y"
+          :scale="scale"
         >
           <slot name="connection" />
-        </div>
+        </v-graph-svg-layer>
         <div
           v-if="$slots['node']"
           class="v-graph-canvas__layer v-graph-canvas__node-layer"
@@ -31,14 +36,20 @@
 <script>
 import draggable from "@/directives/draggable";
 import wheel from "@/directives/wheel";
+import resize from "@/directives/resize";
 import { provide, toRefs } from "vue";
 import useCanvas from "./composables/use-canvas";
+import VGraphSvgLayer from "./v-graph-svg-layer";
 
 export default {
   name: "v-graph-canvas",
   directives: {
     draggable,
-    wheel
+    wheel,
+    resize
+  },
+  components: {
+    VGraphSvgLayer
   },
   props: {
     viewport: {
@@ -107,11 +118,15 @@ export default {
     const {
       selected,
       draggableCallbacks,
+      resizeCallbacks,
       wheelCallbacks,
       scaleStyle,
       translateStyle,
       container,
-      moving
+      moving,
+      layerPosition,
+      size,
+      scale
     } = canvas;
 
     provide("canvas", canvas);
@@ -121,11 +136,15 @@ export default {
     return {
       draggableCallbacks,
       wheelCallbacks,
+      resizeCallbacks,
       selected,
       scaleStyle,
       translateStyle,
       container,
       moving,
+      layerPosition,
+      size,
+      scale,
       getCanvas
     };
   }

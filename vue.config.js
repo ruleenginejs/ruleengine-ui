@@ -4,7 +4,8 @@ module.exports = {
       config.externals({
         "vue": "vue",
         "debounce": "debounce",
-        "split.js": "split.js"
+        "split.js": "split.js",
+        "@svgdotjs/svg.js": "@svgdotjs/svg.js"
       })
     }
   },
