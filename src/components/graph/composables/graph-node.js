@@ -128,6 +128,12 @@ class GraphNode {
     }
   }
 
+  findPortBy(portName, direction) {
+    return this.ports.filter(port =>
+      port.name.value === portName && port.direction.value === direction
+    )[0] ?? null;
+  }
+
   onDragStart(e) {
     this.moving.value = true;
     const startPoint = this.canvas?.mouseEventToLayerPoint(e);

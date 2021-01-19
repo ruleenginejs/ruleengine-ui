@@ -20,6 +20,7 @@ class GraphCanvas {
   }) {
     this.emit = emit;
     this.nodes = {};
+    this.connections = [];
 
     this.container = ref(null);
     this.size = reactive({ x: 0, y: 0 });
@@ -220,6 +221,20 @@ class GraphCanvas {
       const { min, max } = node.getBounds();
       return res.extend(min).extend(max);
     }, new Bounds());
+  }
+
+  addConnection(connection) {
+    this.connections.push(connection);
+    connection.onAdd?.(this);
+  }
+
+  removeConnection(connection) {
+    const index = this.connections.indexOf(connection);
+
+    if (index > -1) {
+      connection.onRemove?.(this);
+      this.connections.splice(index, 1);
+    }
   }
 
   isSelected(node) {

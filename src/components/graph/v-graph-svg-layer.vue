@@ -1,8 +1,7 @@
 <template>
-  <div
-    class="v-graph-canvas__layer v-graph-canvas__svg-layer"
-    ref="container"
-  />
+  <div class="v-graph-canvas__layer v-graph-canvas__svg-layer" ref="container">
+    <slot />
+  </div>
 </template>
 
 <script>

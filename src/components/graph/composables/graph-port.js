@@ -1,4 +1,5 @@
 import portDirection from "./port-direction";
+import { watch, ref } from "vue";
 
 class GraphPort {
   constructor({
@@ -13,12 +14,25 @@ class GraphPort {
     this.disabled = disabled;
     this.linkLimit = linkLimit;
 
-    if (inc.value) {
-      this.direction = portDirection.Incoming;
-    } else if (out.value) {
-      this.direction = portDirection.Outgoing;
+    this.direction = ref(portDirection.Duplex);
+    this.updateDirection(inc.value, out.value);
+
+    this.initWatchers({ inc, out });
+  }
+
+  initWatchers({ inc, out }) {
+    watch([inc, out], () => {
+      this.updateDirection(inc.value, out.value);
+    });
+  }
+
+  updateDirection(inc, out) {
+    if (inc) {
+      this.direction.value = portDirection.Incoming;
+    } else if (out) {
+      this.direction.value = portDirection.Outgoing;
     } else {
-      this.direction = portDirection.Duplex;
+      this.direction.value = portDirection.Duplex;
     }
   }
 
@@ -28,6 +42,10 @@ class GraphPort {
 
   onRemove() {
     this.node = null;
+  }
+
+  getAnchorCenterLayerPosition() {
+    return { x: 10, y: 10 };
   }
 }
 

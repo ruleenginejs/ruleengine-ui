@@ -24,6 +24,10 @@
     <button @click="invalidateConnection = true">
       invalidate connection {{ invalidateConnection }}
     </button>
+    <br />
+    <button @click="portFrom = 'unknown target'">
+      chage port from {{ portFrom }}
+    </button>
   </v-content>
   <v-content padding="md" style="height: 600px">
     <v-graph-canvas
@@ -69,16 +73,21 @@
         <v-graph-node :x="400" :y="20" title="Response" header-color="blue" />
         <v-graph-node :x="300" :y="240" title="Response" header-color="green" />
         <v-graph-node
+          :id="5"
           :x="500"
           :y="340"
           title="Response"
           header-color="#82801A"
-        />
+        >
+          <template #left>
+            <v-graph-port inc name="default">in default</v-graph-port>
+          </template>
+        </v-graph-node>
       </template>
       <template #connection>
         <v-graph-connection
-          from="1:default:out"
-          to="3:default:in"
+          :from="portFrom"
+          to="5:default:in"
           v-model:invalidate="invalidateConnection"
         />
         <v-graph-connection from="3:out-default" to="2:default" />
@@ -98,7 +107,8 @@ export default {
       nodeId: 3,
       viewport: [0, 0],
       zoom: 100,
-      invalidateConnection: true
+      invalidateConnection: true,
+      portFrom: "3:default:out"
     };
   },
   methods: {
