@@ -86,7 +86,7 @@ class Draggable {
   }
 }
 
-const PROP = "$_v_draggable";
+const PROP = Symbol("draggable");
 
 export default {
   mounted(el, { value, modifiers }) {

@@ -34,7 +34,7 @@ class Resizing {
   }
 }
 
-const PROP = "$_v_resize";
+const PROP = Symbol("resize");
 
 export default {
   mounted(el, { value }) {

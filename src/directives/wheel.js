@@ -41,7 +41,7 @@ class Wheel {
   }
 }
 
-const PROP = "$_v_wheel";
+const PROP = Symbol("wheel");
 
 export default {
   mounted(el, { value, modifiers }) {
