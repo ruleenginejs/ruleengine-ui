@@ -86,14 +86,16 @@ class Draggable {
   }
 }
 
+const PROP = "$_v_draggable";
+
 export default {
-  mounted(el, { dir, value, modifiers }) {
-    dir.draggable = new Draggable(el, value, !!modifiers.stop);
+  mounted(el, { value, modifiers }) {
+    el[PROP] = new Draggable(el, value, !!modifiers.stop);
   },
-  beforeUnmount(el, { dir }) {
-    if (dir.draggable) {
-      dir.draggable.destroy();
-      dir.draggable = null;
+  beforeUnmount(el) {
+    if (el[PROP]) {
+      el[PROP].destroy();
+      delete el[PROP];
     }
   }
 }

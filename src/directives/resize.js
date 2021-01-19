@@ -34,14 +34,16 @@ class Resizing {
   }
 }
 
+const PROP = "$_v_resize";
+
 export default {
-  mounted(el, { dir, value }) {
-    dir.resize = new Resizing(el, value);
+  mounted(el, { value }) {
+    el[PROP] = new Resizing(el, value);
   },
-  beforeUnmount(el, { dir }) {
-    if (dir.resize) {
-      dir.resize.destroy();
-      dir.resize = null;
+  beforeUnmount(el) {
+    if (el[PROP]) {
+      el[PROP].destroy();
+      delete el[PROP];
     }
   }
 }

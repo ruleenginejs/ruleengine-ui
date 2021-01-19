@@ -41,14 +41,16 @@ class Wheel {
   }
 }
 
+const PROP = "$_v_wheel";
+
 export default {
-  mounted(el, { dir, value, modifiers }) {
-    dir.wheel = new Wheel(el, value, modifiers);
+  mounted(el, { value, modifiers }) {
+    el[PROP] = new Wheel(el, value, modifiers);
   },
-  beforeUnmount(el, { dir }) {
-    if (dir.wheel) {
-      dir.wheel.destroy();
-      dir.wheel = null;
+  beforeUnmount(el) {
+    if (el[PROP]) {
+      el[PROP].destroy();
+      delete el[PROP];
     }
   }
 }
