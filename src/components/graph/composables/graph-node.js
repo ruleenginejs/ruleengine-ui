@@ -6,6 +6,7 @@ class GraphNode {
     this.canvas = null;
     this.id = id.value ?? getCurrentInstance().uid;
     this.emit = emit;
+    this.ports = [];
 
     this.position = reactive({ x: posX.value, y: posY.value });
     this.selected = ref(false);
@@ -111,6 +112,20 @@ class GraphNode {
   onRemove() {
     this.canvas?.deselect(this);
     this.canvas = null;
+  }
+
+  addPort(port) {
+    this.ports.push(port);
+    port.onAdd?.(this);
+  }
+
+  removePort(port) {
+    const index = this.ports.indexOf(port);
+
+    if (index > -1) {
+      port.onRemove?.(this);
+      this.ports.splice(index, 1);
+    }
   }
 
   onDragStart(e) {

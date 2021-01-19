@@ -57,13 +57,13 @@
             <v-icon-script />
           </template>
           <template #left>
-            <v-graph-port id="in-default">in default</v-graph-port>
-            <v-graph-port id="in-error" error>in error</v-graph-port>
-            <v-graph-port id="in-200">in 200</v-graph-port>
-            <v-graph-port id="in-404" disabled>in 404</v-graph-port>
+            <v-graph-port inc name="default">in default</v-graph-port>
+            <v-graph-port inc name="error" error>in error</v-graph-port>
+            <v-graph-port inc name="200">in 200</v-graph-port>
+            <v-graph-port inc name="404" disabled>in 404</v-graph-port>
           </template>
           <template #right>
-            <v-graph-port id="out-default">out default</v-graph-port>
+            <v-graph-port out name="default">out default</v-graph-port>
           </template>
         </v-graph-node>
         <v-graph-node :x="400" :y="20" title="Response" header-color="blue" />
@@ -77,8 +77,8 @@
       </template>
       <template #connection>
         <v-graph-connection
-          from="1:default"
-          to="3:in-default"
+          from="1:default:out"
+          to="3:default:in"
           v-model:invalidate="invalidateConnection"
         />
         <v-graph-connection from="3:out-default" to="2:default" />

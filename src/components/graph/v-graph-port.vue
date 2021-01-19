@@ -14,12 +14,23 @@
 </template>
 
 <script>
+import { inject, toRefs } from "vue";
+import usePort from "./composables/use-port";
+
 export default {
   name: "v-graph-port",
   props: {
-    id: {
-      type: [String, Number],
+    name: {
+      type: String,
       default: null
+    },
+    inc: {
+      type: Boolean,
+      default: false
+    },
+    out: {
+      type: Boolean,
+      default: false
     },
     error: {
       type: Boolean,
@@ -28,7 +39,22 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    linkLimit: {
+      type: Number,
+      default: 1
     }
+  },
+  setup(props) {
+    const { name, inc, out, disabled, linkLimit } = toRefs(props);
+    const node = inject("node");
+    const port = usePort(node, { name, inc, out, disabled, linkLimit });
+
+    const getPort = () => port;
+
+    return {
+      getPort
+    };
   }
 };
 </script>

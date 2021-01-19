@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import { inject, toRefs } from "vue";
+import { inject, provide, toRefs } from "vue";
 import draggable from "@/directives/draggable";
 import usePresetColor from "./composables/use-preset-color";
 import useNode from "./composables/use-node";
@@ -103,6 +103,7 @@ export default {
     );
 
     const getNode = () => node;
+    provide("node", node);
 
     return {
       node,
