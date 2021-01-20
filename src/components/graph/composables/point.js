@@ -72,7 +72,6 @@ class Point {
     return new Point(this.x * point.x, this.y * point.y);
   }
 
-
   unscaleBy(point) {
     return new Point(this.x / point.x, this.y / point.y);
   }

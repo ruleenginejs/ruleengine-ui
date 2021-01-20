@@ -62,7 +62,9 @@ class GraphConnection {
 
   onRemove() {
     this.clearDrawCache();
+    this.clearDraw();
     this.canvas = null;
+    this.svg = null;
   }
 
   drawIfNeeded() {

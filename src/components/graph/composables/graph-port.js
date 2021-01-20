@@ -27,6 +27,14 @@ class GraphPort {
     });
   }
 
+  onAdd(node) {
+    this.node = node;
+  }
+
+  onRemove() {
+    this.node = null;
+  }
+
   updateDirection(inc, out) {
     if (inc) {
       this.direction.value = portDirection.Incoming;
@@ -52,14 +60,6 @@ class GraphPort {
     }
   }
 
-  onAdd(node) {
-    this.node = node;
-  }
-
-  onRemove() {
-    this.node = null;
-  }
-
   getAnchorCenterLayerPosition() {
     const rect = this.anchor.value?.getBoundingClientRect();
     const canvas = this.node?.canvas;
@@ -68,7 +68,7 @@ class GraphPort {
       clientX: rect.left,
       clientY: rect.top
     }));
-    const size = new Point(rect.width, rect.height);
+    const size = (new Point(rect.width, rect.height)).divideBy(canvas.scale.value);
     const halfSize = size.divideBy(2);
     return pos.add(halfSize);
   }
