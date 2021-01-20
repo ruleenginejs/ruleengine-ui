@@ -3,7 +3,8 @@
     class="v-graph-port"
     :class="{
       'v-graph-port--error': error,
-      'v-graph-port--disabled': disabled
+      'v-graph-port--disabled': disabled,
+      'v-graph-port--active': linked
     }"
   >
     <div class="v-graph-port__anchor" ref="anchor"></div>
@@ -45,16 +46,18 @@ export default {
       default: 1
     }
   },
-  setup(props) {
+  emits: ["link", "unlink"],
+  setup(props, { emit }) {
     const { name, inc, out, disabled, linkLimit } = toRefs(props);
     const node = inject("node");
-    const port = usePort(node, { name, inc, out, disabled, linkLimit });
-    const { anchor } = port;
+    const port = usePort(node, { name, inc, out, disabled, linkLimit, emit });
+    const { anchor, linked } = port;
 
     const getPort = () => port;
 
     return {
       anchor,
+      linked,
       getPort
     };
   }

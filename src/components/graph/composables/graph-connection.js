@@ -24,6 +24,8 @@ class GraphConnection {
 
     onMounted(() => {
       nextTick(() => {
+        this.notifyRelink(null, this.from.value);
+        this.notifyRelink(null, this.to.value);
         this.draw();
       })
     })
@@ -47,11 +49,13 @@ class GraphConnection {
       this.to.value = this.parseTarget(to.value);
     })
 
-    watch(this.from, () => {
+    watch(this.from, (newVal, oldVal) => {
+      this.notifyRelink(oldVal, newVal);
       this.invalidate.value = true;
     })
 
-    watch(this.to, () => {
+    watch(this.to, (newVal, oldVal) => {
+      this.notifyRelink(oldVal, newVal);
       this.invalidate.value = true;
     })
   }
@@ -61,6 +65,8 @@ class GraphConnection {
   }
 
   onRemove() {
+    this.notifyUnlink(this.from.value);
+    this.notifyUnlink(this.to.value);
     this.clearDrawCache();
     this.clearDraw();
     this.canvas = null;
@@ -172,6 +178,28 @@ class GraphConnection {
     if (target.portName !== otherTarget.portName) return false;
     if (target.direction !== otherTarget.direction) return false;
     return true;
+  }
+
+  notifyRelink(oldTarget, newTarget) {
+    this.notifyUnlink(oldTarget);
+    this.notifyLink(newTarget);
+  }
+
+  notifyUnlink(target) {
+    if (target) {
+      this.notifyPort(target, "onUnlink");
+    }
+  }
+
+  notifyLink(target) {
+    if (target) {
+      this.notifyPort(target, "onLink");
+    }
+  }
+
+  notifyPort(target, method) {
+    const port = this.findPort(target);
+    port?.[method]?.(this);
   }
 }
 
