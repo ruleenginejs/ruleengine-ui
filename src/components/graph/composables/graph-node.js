@@ -210,6 +210,11 @@ class GraphNode {
     this.onClickEnd();
   }
 
+  onEdgeScroll(deltaX, deltaY) {
+    this.move(deltaX, deltaY);
+    this.drawConnections(true);
+  }
+
   onClickEnd() {
     this.select();
   }

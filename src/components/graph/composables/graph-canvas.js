@@ -128,7 +128,7 @@ class GraphCanvas {
       onViewportSize: () => this.getContainerSize(),
       onScroll: ({ deltaX, deltaY, data }) => {
         this.move(-deltaX, -deltaY);
-        this.nodes[data].move(deltaX, deltaY);
+        this.nodes[data].onEdgeScroll?.(deltaX, deltaY);
       }
     }
 
