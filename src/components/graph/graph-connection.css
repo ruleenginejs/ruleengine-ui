@@ -1,0 +1,4 @@
+.v-graph-connection {
+  /* visual styles */
+  @apply stroke-current text-graph-connection-background;
+}

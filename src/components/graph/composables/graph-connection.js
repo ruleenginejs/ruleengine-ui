@@ -9,7 +9,10 @@ class GraphConnection {
     from,
     to,
     invalidate,
-    emit
+    emit,
+    color,
+    borderWidth,
+    className
   }) {
     this.canvas = null;
     this.emit = emit;
@@ -17,6 +20,9 @@ class GraphConnection {
     this.from = ref(this.parseTarget(from.value));
     this.to = ref(this.parseTarget(to.value));
     this.invalidate = ref(invalidate.value);
+    this.color = color;
+    this.borderWidth = borderWidth;
+    this.className = className;
     this.svgElement = null;
     this.drawCache = null;
 
@@ -57,6 +63,14 @@ class GraphConnection {
     watch(this.to, (newVal, oldVal) => {
       this.notifyRelink(oldVal, newVal);
       this.invalidate.value = true;
+    })
+
+    watch([this.color, this.borderWidth], () => {
+      this.updateSvgStyle();
+    })
+
+    watch(this.className, (newVal, oldVal) => {
+      this.updateCssClass(oldVal, newVal);
     })
   }
 
@@ -142,8 +156,26 @@ class GraphConnection {
 
   createSvgElement() {
     const line = new Line(0, 0, 0, 0);
-    line.stroke({ color: "#414141", width: 3, linecap: "round" });
+    line.addClass(this.className.value);
+    this.updateSvgStyle(line);
     return line;
+  }
+
+  updateSvgStyle(element = this.svgElement) {
+    element?.stroke({
+      width: this.borderWidth.value,
+      linecap: "round"
+    });
+    element.css("stroke", this.color.value);
+  }
+
+  updateCssClass(oldCssClass, newCssClass) {
+    if (oldCssClass) {
+      this.srcElement?.removeClass(oldCssClass);
+    }
+    if (newCssClass) {
+      this.srcElement?.addClass(newCssClass);
+    }
   }
 
   findFromPort() {

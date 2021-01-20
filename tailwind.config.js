@@ -49,7 +49,8 @@ module.exports = {
         "graph-node-header-green-background": "var(--graph-node-header-green-background)",
         "graph-node-border": "var(--graph-node-border)",
         "graph-active-port-backgound": "var(--graph-active-port-backgound)",
-        "graph-inactive-port-backgound": "var(--graph-inactive-port-backgound)"
+        "graph-inactive-port-backgound": "var(--graph-inactive-port-backgound)",
+        "graph-connection-background": "var(--graph-connection-background)"
       },
       outline: {
         blue: ['1px solid var(--focus-border)', '-1px'],
