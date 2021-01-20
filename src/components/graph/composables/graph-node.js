@@ -14,6 +14,7 @@ class GraphNode {
     this.moveOffsetPoint = ref(null);
     this.zIndex = ref(1);
     this.container = ref(null);
+    this.connectionCache = null;
 
     this.onDragStart = this.onDragStart.bind(this);
     this.onDrag = this.onDrag.bind(this);
@@ -48,6 +49,17 @@ class GraphNode {
     watch(this.selected, () => {
       this.updateSelection();
     })
+  }
+
+  onAdd(canvas) {
+    this.canvas = canvas;
+    this.updateSelection();
+  }
+
+  onRemove() {
+    this.clearConnectionCache();
+    this.canvas?.deselect(this);
+    this.canvas = null;
   }
 
   getSize() {
@@ -104,16 +116,6 @@ class GraphNode {
     this.canvas?.bringToFront(this);
   }
 
-  onAdd(canvas) {
-    this.canvas = canvas;
-    this.updateSelection();
-  }
-
-  onRemove() {
-    this.canvas?.deselect(this);
-    this.canvas = null;
-  }
-
   addPort(port) {
     this.ports.push(port);
     port.onAdd?.(this);
@@ -132,6 +134,39 @@ class GraphNode {
     return this.ports.filter(port =>
       port.name.value === portName && port.direction.value === direction
     )[0] ?? null;
+  }
+
+  getPortConnections() {
+    const result = [];
+    for (let i = 0; i < this.ports.length; i++) {
+      result.push(...this.ports[i].getConnections());
+    }
+    return result;
+  }
+
+  drawConnections(caching = false) {
+    let connections;
+    if (caching) {
+      if (!this.connectionCache) {
+        this.connectionCache = this.getPortConnections();
+      }
+      connections = this.connectionCache;
+    } else {
+      connections = this.getPortConnections();
+    }
+
+    for (let i = 0; i < connections.length; i++) {
+      connections[i].draw(caching);
+    }
+  }
+
+  clearConnectionCache() {
+    if (this.connectionCache) {
+      this.connectionCache.forEach(c => {
+        c.clearDrawCache();
+      });
+      this.connectionCache = null;
+    }
   }
 
   onDragStart(e) {
@@ -161,6 +196,7 @@ class GraphNode {
       }
 
       this.canvas?.updateEdgeScrolling(e, this.id);
+      this.drawConnections(true);
     }
   }
 
@@ -169,6 +205,8 @@ class GraphNode {
     this.moveOffsetPoint.value = null;
 
     this.canvas?.stopEdgeScrolling();
+    this.clearConnectionCache();
+
     this.onClickEnd();
   }
 

@@ -9,5 +9,5 @@ export default function usePort(node, options) {
   });
 
   node?.addPort(port);
-  return node;
+  return port;
 }

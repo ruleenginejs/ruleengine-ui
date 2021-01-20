@@ -1,6 +1,7 @@
-import { ref, watch, onMounted } from "vue";
+import { ref, watch, onMounted, nextTick } from "vue";
 import portDirection from "./port-direction";
 import { Line } from "@svgdotjs/svg.js";
+import isDefined from "@/utils/is-defined";
 
 class GraphConnection {
   constructor({
@@ -17,16 +18,18 @@ class GraphConnection {
     this.to = ref(this.parseTarget(to.value));
     this.invalidate = ref(invalidate.value);
     this.svgElement = null;
-    this.cache = null;
+    this.drawCache = null;
 
-    this.initWatchers({ invalidate, svg, from, to })
+    this.initWatchers({ invalidate, from, to })
 
     onMounted(() => {
-      this.draw();
+      nextTick(() => {
+        this.draw();
+      })
     })
   }
 
-  initWatchers({ invalidate, svg, from, to }) {
+  initWatchers({ invalidate, from, to }) {
     watch(invalidate, () => {
       this.invalidate.value = invalidate.value;
     });
@@ -51,10 +54,6 @@ class GraphConnection {
     watch(this.to, () => {
       this.invalidate.value = true;
     })
-
-    watch(svg.rootGroup, () => {
-      this.draw();
-    })
   }
 
   onAdd(canvas) {
@@ -62,6 +61,7 @@ class GraphConnection {
   }
 
   onRemove() {
+    this.clearDrawCache();
     this.canvas = null;
   }
 
@@ -84,15 +84,15 @@ class GraphConnection {
     let to = null;
 
     if (caching) {
-      if (!this.cache) {
-        this.cache = {
+      if (!this.drawCache) {
+        this.drawCache = {
           from: this.findFromPort(),
           to: this.findToPort()
         }
       }
 
-      from = this.cache.from;
-      to = this.cache.to;
+      from = this.drawCache.from;
+      to = this.drawCache.to;
     } else {
       from = this.findFromPort();
       to = this.findToPort();
@@ -121,8 +121,8 @@ class GraphConnection {
       .attr('y2', p2.y);
   }
 
-  clearCache() {
-    this.cache = null;
+  clearDrawCache() {
+    this.drawCache = null;
   }
 
   clearDraw() {
@@ -161,6 +161,15 @@ class GraphConnection {
       ? portDirection.Incoming
       : (direction === "out" ? portDirection.Outgoing : portDirection.Duplex);
     return { nodeId, portName, direction };
+  }
+
+  targetEquals(target, otherTarget) {
+    if (target === otherTarget) return true;
+    if (!isDefined(target) || !isDefined(otherTarget)) return false;
+    if (`${target.nodeId}` !== `${otherTarget.nodeId}`) return false;
+    if (target.portName !== otherTarget.portName) return false;
+    if (target.direction !== otherTarget.direction) return false;
+    return true;
   }
 }
 

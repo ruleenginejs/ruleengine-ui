@@ -237,6 +237,11 @@ class GraphCanvas {
     }
   }
 
+  findConnectionByTarget(target) {
+    return this.connections.filter(c =>
+      c.targetEquals(c.from.value, target) || c.targetEquals(c.to.value, target));
+  }
+
   isSelected(node) {
     return this.selectedNode.value === node;
   }

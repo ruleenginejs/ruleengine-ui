@@ -25,6 +25,10 @@
       invalidate connection {{ invalidateConnection }}
     </button>
     <br />
+    <button @click="destroyConnection = !destroyConnection">
+      destroyConnection {{ destroyConnection }}
+    </button>
+    <br />
     <button @click="portFrom = 'unknown target'">
       chage port from {{ portFrom }}
     </button>
@@ -89,6 +93,7 @@
           :from="portFrom"
           to="5:default:in"
           v-model:invalidate="invalidateConnection"
+          v-if="!destroyConnection"
         />
         <v-graph-connection from="3:out-default" to="2:default" />
       </template>
@@ -108,7 +113,8 @@ export default {
       viewport: [0, 0],
       zoom: 100,
       invalidateConnection: true,
-      portFrom: "3:default:out"
+      portFrom: "3:default:out",
+      destroyConnection: false
     };
   },
   methods: {

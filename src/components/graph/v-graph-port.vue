@@ -6,7 +6,7 @@
       'v-graph-port--disabled': disabled
     }"
   >
-    <div class="v-graph-port__anchor"></div>
+    <div class="v-graph-port__anchor" ref="anchor"></div>
     <div v-if="$slots['default']" class="v-graph-port__label">
       <slot />
     </div>
@@ -49,10 +49,12 @@ export default {
     const { name, inc, out, disabled, linkLimit } = toRefs(props);
     const node = inject("node");
     const port = usePort(node, { name, inc, out, disabled, linkLimit });
+    const { anchor } = port;
 
     const getPort = () => port;
 
     return {
+      anchor,
       getPort
     };
   }
