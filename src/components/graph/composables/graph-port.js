@@ -1,4 +1,4 @@
-import { ref, computed, getCurrentInstance } from "vue";
+import { ref, computed, getCurrentInstance, reactive, watch } from "vue";
 import Point from "@/utils/point";
 
 class GraphPort {
@@ -15,12 +15,32 @@ class GraphPort {
     this.linkLimit = linkLimit;
     this.anchor = ref(null);
     this.linkCount = ref(0);
+    this.linking = ref(false);
+
+    this.onLinkStart = this.onLinkStart.bind(this);
+    this.onLinkEnd = this.onLinkEnd.bind(this);
+    this.onLinkData = this.onLinkData.bind(this);
+
+    this.linkOptions = reactive({
+      start: this.onLinkStart,
+      end: this.onLinkEnd,
+      data: this.onLinkData,
+      enabled: !disabled.value
+    });
 
     this.initComputed();
+    this.initWatchers({ disabled });
   }
 
   initComputed() {
     this.linked = computed(() => this.linkCount.value > 0);
+  }
+
+  initWatchers({ disabled }) {
+    watch(disabled, () => {
+      debugger;
+      this.linkOptions.enabled = !disabled.value;
+    });
   }
 
   onAdd(node) {
@@ -77,6 +97,20 @@ class GraphPort {
     const size = (new Point(rect.width, rect.height)).divideBy(canvas.scale.value);
     const halfSize = size.divideBy(2);
     return pos.add(halfSize);
+  }
+
+  onLinkStart() {
+    this.linking.value = true;
+  }
+
+  onLinkEnd() {
+    debugger;
+    this.linking.value = false;
+  }
+
+  onLinkData() {
+    debugger;
+    return this.makeTarget();
   }
 }
 

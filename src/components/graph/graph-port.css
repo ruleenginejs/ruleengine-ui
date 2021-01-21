@@ -12,21 +12,24 @@
 
 .v-graph-port__anchor {
   /* display styles */
-  @apply flex-shrink-0;
+  @apply flex-shrink-0 flex items-center justify-center;
 
   /* visual styles */
-  @apply bg-graph-inactive-port-backgound rounded-full;
+  @apply bg-graph-node-background rounded-full;
+
+  /* border */
+  @apply border border-solid border-graph-inactive-port-backgound;
 
   /* sizes */
   @apply w-11sp h-11sp;
 }
 
-.v-graph-port--active .v-graph-port__anchor {
-  @apply bg-graph-active-port-backgound;
-}
+.v-graph-port__anchor > .v-svg-icon {
+  /* display styles */
+  @apply hidden;
 
-.v-graph-port--error .v-graph-port__anchor {
-  @apply bg-graph-error-background;
+  /* sizes */
+  @apply w-7sp h-7sp;
 }
 
 .v-graph-port__label {
@@ -60,4 +63,28 @@
 
 .v-graph-node__part--right .v-graph-port__anchor {
   @apply ml-2;
+}
+
+.v-graph-port--active .v-graph-port__anchor {
+  @apply border-none bg-graph-active-port-backgound;
+}
+
+.v-graph-port--error .v-graph-port__anchor {
+  @apply bg-graph-error-background;
+}
+
+.v-graph-port__anchor:hover:not(.v-graph-port__anchor--linking) > .v-svg-icon {
+  @apply block;
+}
+
+.v-graph-port.v-graph-port--active .v-graph-port__anchor > .v-svg-icon {
+  @apply hidden;
+}
+
+.v-graph-port.v-graph-port--disabled .v-graph-port__anchor > .v-svg-icon {
+  @apply hidden;
+}
+
+.v-graph-port__anchor--linking {
+  @apply border-none bg-graph-inactive-port-backgound;
 }

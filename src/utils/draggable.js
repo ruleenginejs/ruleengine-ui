@@ -1,4 +1,7 @@
 class Draggable {
+  static activeDraggable = null;
+  static activeDroppable = null;
+
   constructor(element, callbacks = null, stopEvent = false) {
     this.onMouseDown = this.onMouseDown.bind(this);
     this.onMove = this.onMove.bind(this);
@@ -31,6 +34,27 @@ class Draggable {
     document.removeEventListener("mouseup", this.onMouseUp);
   }
 
+  activate() {
+    Draggable.activeDraggable = this;
+  }
+
+  deactivate() {
+    if (Draggable.activeDraggable === this) {
+      Draggable.activeDraggable = null;
+    }
+  }
+
+  tryDrop(e) {
+    Draggable.activeDroppable?.onDrop({
+      ev: e,
+      draggable: this
+    });
+  }
+
+  getData() {
+    return this.callbacks?.data?.();
+  }
+
   isRightMouseButton(e) {
     return "button" in e && e.button !== 0;
   }
@@ -41,7 +65,7 @@ class Draggable {
     }
 
     if (!this.dragging) {
-      this.callbacks?.dragStart(e);
+      this.callbacks?.dragStart?.(e);
     }
 
     e.preventDefault();
@@ -51,6 +75,7 @@ class Draggable {
     }
 
     this.dragging = true;
+    this.activate();
     this.bindEvents();
   }
 
@@ -59,21 +84,25 @@ class Draggable {
       return;
     }
 
-    this.callbacks?.drag(e);
+    this.callbacks?.drag?.(e);
   }
 
   onMouseUp(e) {
     if (this.dragging) {
-      this.callbacks?.dragEnd(e);
+      this.tryDrop(e);
+      this.callbacks?.dragEnd?.(e);
     }
 
     this.dragging = false;
-    this.unbindEvents()
+    this.deactivate();
+    this.unbindEvents();
   }
 
   destroy() {
     if (!this.destroyed) {
       this.destroyed = true;
+
+      this.deactivate();
       this.unbindMouseDown();
 
       if (this.dragging) {

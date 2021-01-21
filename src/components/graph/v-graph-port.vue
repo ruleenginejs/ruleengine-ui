@@ -7,7 +7,14 @@
       'v-graph-port--active': linked
     }"
   >
-    <div class="v-graph-port__anchor" ref="anchor"></div>
+    <div
+      class="v-graph-port__anchor"
+      :class="{ 'v-graph-port__anchor--linking': linking }"
+      v-link.stop="linkOptions"
+      ref="anchor"
+    >
+      <v-icon-plus-bold />
+    </div>
     <div v-if="$slots['default']" class="v-graph-port__label">
       <slot />
     </div>
@@ -16,10 +23,18 @@
 
 <script>
 import { inject, toRefs } from "vue";
+import link from "@/directives/link";
 import usePort from "./composables/use-port";
+import VIconPlusBold from "@/components/icons/v-icon-plus-bold.vue";
 
 export default {
   name: "v-graph-port",
+  directives: {
+    link
+  },
+  components: {
+    VIconPlusBold
+  },
   props: {
     id: {
       type: [String, Number],
@@ -44,13 +59,15 @@ export default {
     const node = inject("node");
 
     const port = usePort(node, { id, disabled, linkLimit, emit });
-    const { anchor, linked } = port;
+    const { anchor, linked, linkOptions, linking } = port;
 
     const getPort = () => port;
 
     return {
       anchor,
       linked,
+      linkOptions,
+      linking,
       getPort
     };
   }
