@@ -9,7 +9,6 @@ class GraphNode {
     this.ports = [];
 
     this.position = reactive({ x: posX.value, y: posY.value });
-    this.selected = ref(false);
     this.moving = ref(false);
     this.moveOffsetPoint = ref(null);
     this.zIndex = ref(1);
@@ -45,20 +44,14 @@ class GraphNode {
       this.emit("update:x", this.position.x);
       this.emit("update:y", this.position.y);
     });
-
-    watch(this.selected, () => {
-      this.updateSelection();
-    })
   }
 
   onAdd(canvas) {
     this.canvas = canvas;
-    this.updateSelection();
   }
 
   onRemove() {
     this.clearConnectionCache();
-    this.canvas?.deselect(this);
     this.canvas = null;
   }
 
@@ -84,22 +77,6 @@ class GraphNode {
 
   addPoint(pointA, pointB) {
     return { x: pointA.x + pointB.x, y: pointA.y + pointB.y };
-  }
-
-  select() {
-    this.selected.value = true;
-  }
-
-  deselect() {
-    this.selected.value = false;
-  }
-
-  updateSelection() {
-    if (this.selected.value) {
-      this.canvas?.select(this);
-    } else {
-      this.canvas?.deselect(this);
-    }
   }
 
   moveTo(x, y) {
@@ -216,7 +193,7 @@ class GraphNode {
   }
 
   onClickEnd() {
-    this.select();
+    this.emit("update:selected", true);
   }
 }
 

@@ -24,7 +24,6 @@ class GraphCanvas {
 
     this.container = ref(null);
     this.size = reactive({ x: 0, y: 0 });
-    this.selectedNode = ref(null);
 
     this.minZoom = minZoom;
     this.maxZoom = maxZoom;
@@ -76,15 +75,6 @@ class GraphCanvas {
   }
 
   initComputed() {
-    this.selected = computed({
-      get: () => !this.selectedNode.value,
-      set: val => {
-        if (val) {
-          this.resetSelection();
-        }
-      }
-    });
-
     this.scale = computed(() => this.zoom.value / 100);
     this.scaleStyle = computed(() => `scale(${this.scale.value})`);
     this.translateStyle = computed(() =>
@@ -92,10 +82,6 @@ class GraphCanvas {
   }
 
   initWatchers({ zoom, viewport }) {
-    watch(this.selectedNode, () => {
-      this.emit("select", this.selectedNode.value);
-    })
-
     watch(zoom, () => {
       this.setZoom(zoom.value);
     })
@@ -240,30 +226,6 @@ class GraphCanvas {
   findConnectionByTarget(target) {
     return this.connections.filter(c =>
       c.targetEquals(c.from.value, target) || c.targetEquals(c.to.value, target));
-  }
-
-  isSelected(node) {
-    return this.selectedNode.value === node;
-  }
-
-  select(node) {
-    this.resetSelection();
-    node.select();
-    this.selectedNode.value = node;
-  }
-
-  deselect(node) {
-    if (this.isSelected(node)) {
-      node.deselect();
-      this.selectedNode.value = null;
-    }
-  }
-
-  resetSelection() {
-    if (this.selectedNode.value) {
-      this.selectedNode.value.deselect();
-      this.selectedNode.value = null;
-    }
   }
 
   bringToFront(node) {
@@ -438,7 +400,7 @@ class GraphCanvas {
   }
 
   onClickEnd() {
-    this.selected.value = true;
+    this.emit("update:selected", true);
   }
 
   onWheelScroll(e) {

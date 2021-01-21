@@ -79,9 +79,13 @@ export default {
     headerColor: {
       type: String,
       default: null
+    },
+    selected: {
+      type: Boolean,
+      default: false
     }
   },
-  emits: ["update:x", "update:y"],
+  emits: ["update:x", "update:y", "update:selected"],
   setup(props, { emit }) {
     const { x, y, headerColor, id } = toRefs(props);
     const canvas = inject("canvas");
@@ -89,7 +93,6 @@ export default {
     const node = useNode(canvas, id, x, y, emit);
     const {
       transformStyle,
-      selected,
       moving,
       zIndex,
       container,
@@ -113,7 +116,6 @@ export default {
       transformStyle,
       colorStyle,
       colorClassName,
-      selected,
       draggableCallbacks,
       getNode
     };

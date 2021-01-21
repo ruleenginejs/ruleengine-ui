@@ -50,9 +50,13 @@ export default {
     error: {
       type: Boolean,
       default: false
+    },
+    selected: {
+      type: Boolean,
+      default: false
     }
   },
-  emits: ["update:x", "update:y"],
+  emits: ["update:x", "update:y", "update:selected"],
   setup(props, { emit }) {
     const { x, y, title, id } = toRefs(props);
     const canvas = inject("canvas");
@@ -62,7 +66,6 @@ export default {
     const node = useNode(canvas, id, x, y, emit);
     const {
       transformStyle,
-      selected,
       moving,
       zIndex,
       container,
@@ -73,7 +76,6 @@ export default {
 
     return {
       node,
-      selected,
       moving,
       zIndex,
       container,

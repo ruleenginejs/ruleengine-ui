@@ -87,9 +87,13 @@ export default {
     edgeSizes: {
       type: Object,
       default: null
+    },
+    selected: {
+      type: Boolean,
+      default: false
     }
   },
-  emits: ["select", "update:zoom", "update:viewport"],
+  emits: ["update:selected", "update:zoom", "update:viewport"],
   setup(props, { emit }) {
     const {
       viewport,
@@ -116,7 +120,6 @@ export default {
     });
 
     const {
-      selected,
       draggableCallbacks,
       resizeCallbacks,
       wheelCallbacks,
@@ -130,14 +133,12 @@ export default {
     } = canvas;
 
     provide("canvas", canvas);
-
     const getCanvas = () => canvas;
 
     return {
       draggableCallbacks,
       wheelCallbacks,
       resizeCallbacks,
-      selected,
       scaleStyle,
       translateStyle,
       container,
