@@ -1,11 +1,11 @@
-import { ref, watch, onMounted, nextTick } from "vue";
-import portDirection from "./port-direction";
+import { ref, watch, onMounted, nextTick, getCurrentInstance } from "vue";
 import { Line } from "@svgdotjs/svg.js";
 import isDefined from "@/utils/is-defined";
 
 class GraphConnection {
   constructor({
     svg,
+    id,
     from,
     to,
     invalidate,
@@ -17,8 +17,9 @@ class GraphConnection {
     this.canvas = null;
     this.emit = emit;
     this.svg = svg;
-    this.from = ref(this.parseTarget(from.value));
-    this.to = ref(this.parseTarget(to.value));
+    this.id = id.value ?? getCurrentInstance().uid;
+    this.from = from;
+    this.to = to;
     this.invalidate = ref(invalidate.value);
     this.color = color;
     this.borderWidth = borderWidth;
@@ -26,7 +27,7 @@ class GraphConnection {
     this.svgElement = null;
     this.drawCache = null;
 
-    this.initWatchers({ invalidate, from, to })
+    this.initWatchers({ invalidate })
 
     onMounted(() => {
       nextTick(() => {
@@ -37,7 +38,7 @@ class GraphConnection {
     })
   }
 
-  initWatchers({ invalidate, from, to }) {
+  initWatchers({ invalidate }) {
     watch(invalidate, () => {
       this.invalidate.value = invalidate.value;
     });
@@ -45,14 +46,6 @@ class GraphConnection {
     watch(this.invalidate, () => {
       this.emit("update:invalidate", this.invalidate.value);
       this.drawIfNeeded();
-    })
-
-    watch(from, () => {
-      this.from.value = this.parseTarget(from.value);
-    })
-
-    watch(to, () => {
-      this.to.value = this.parseTarget(to.value);
     })
 
     watch(this.from, (newVal, oldVal) => {
@@ -81,8 +74,10 @@ class GraphConnection {
   onRemove() {
     this.notifyUnlink(this.from.value);
     this.notifyUnlink(this.to.value);
+
     this.clearDrawCache();
     this.clearDraw();
+
     this.canvas = null;
     this.svg = null;
   }
@@ -189,26 +184,16 @@ class GraphConnection {
   findPort(target) {
     if (!target) return null;
     if (!this.canvas) return null;
-    const node = this.canvas.nodes[target.nodeId];
+    const node = this.canvas.getNode(target.nodeId);
     if (!node) return null;
-    return node.findPortBy(target.portName, target.direction);
-  }
-
-  parseTarget(target) {
-    let [nodeId, portName, direction] = (target || "").split(":");
-    if (!nodeId || !portName) return null;
-    direction = direction === "in"
-      ? portDirection.Incoming
-      : (direction === "out" ? portDirection.Outgoing : portDirection.Duplex);
-    return { nodeId, portName, direction };
+    return node.getPort(target.portId);
   }
 
   targetEquals(target, otherTarget) {
     if (target === otherTarget) return true;
     if (!isDefined(target) || !isDefined(otherTarget)) return false;
-    if (`${target.nodeId}` !== `${otherTarget.nodeId}`) return false;
-    if (target.portName !== otherTarget.portName) return false;
-    if (target.direction !== otherTarget.direction) return false;
+    if (target.nodeId !== otherTarget.nodeId) return false;
+    if (target.portId !== otherTarget.portId) return false;
     return true;
   }
 

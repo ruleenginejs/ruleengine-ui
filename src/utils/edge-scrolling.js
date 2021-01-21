@@ -1,4 +1,4 @@
-import isDefined from "@/utils/is-defined";
+import isDefined from "./is-defined";
 import clamp from "./clamp";
 
 class EdgeScrolling {

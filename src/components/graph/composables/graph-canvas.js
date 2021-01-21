@@ -2,9 +2,9 @@ import { mac } from "@/utils/browser";
 import isDefined from "@/utils/is-defined";
 import { getWheelDelta } from "@/utils/wheel-delta";
 import { ref, watch, computed, reactive, onMounted } from "vue"
-import Bounds from "./bounds";
-import clamp from "./clamp";
-import EdgeScrolling from "./edge-scrolling";
+import Bounds from "@/utils/bounds";
+import clamp from "@/utils/clamp";
+import EdgeScrolling from "@/utils/edge-scrolling";
 
 class GraphCanvas {
   constructor(emit, {
@@ -20,7 +20,7 @@ class GraphCanvas {
   }) {
     this.emit = emit;
     this.nodes = {};
-    this.connections = [];
+    this.connections = {};
 
     this.container = ref(null);
     this.size = reactive({ x: 0, y: 0 });
@@ -192,6 +192,10 @@ class GraphCanvas {
     }
   }
 
+  getNode(nodeId) {
+    return this.nodes[nodeId] ?? null;
+  }
+
   getNodes() {
     return Object.keys(this.nodes)
       .map(key => this.nodes[key]);
@@ -210,22 +214,31 @@ class GraphCanvas {
   }
 
   addConnection(connection) {
-    this.connections.push(connection);
+    this.connections[connection.id] = connection;
     connection.onAdd?.(this);
   }
 
   removeConnection(connection) {
-    const index = this.connections.indexOf(connection);
-
-    if (index > -1) {
+    if (this.connections[connection.id]) {
       connection.onRemove?.(this);
-      this.connections.splice(index, 1);
+      delete this.connections[connection.id];
     }
   }
 
-  findConnectionByTarget(target) {
-    return this.connections.filter(c =>
-      c.targetEquals(c.from.value, target) || c.targetEquals(c.to.value, target));
+  getConnection(connectionId) {
+    return this.connections[connectionId] ?? null;
+  }
+
+  findConnectionsByTarget(target) {
+    const result = [];
+    for (let key in this.connections) {
+      const connection = this.connections[key];
+      if (connection.targetEquals(connection.from.value, target)
+        || connection.targetEquals(connection.to.value, target)) {
+        result.push(connection);
+      }
+    }
+    return result;
   }
 
   bringToFront(node) {

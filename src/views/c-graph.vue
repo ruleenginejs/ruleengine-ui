@@ -29,7 +29,7 @@
       destroyConnection {{ destroyConnection }}
     </button>
     <br />
-    <button @click="portFrom = 'unknown target'">
+    <button @click="portFrom = { nodeId: 4, portId: 5 }">
       chage port from {{ portFrom }}
     </button>
   </v-content>
@@ -57,6 +57,7 @@
           :x="200"
           :y="20"
           title="Response"
+          v-model:selected="selected"
         >
           <template #header-left-icon>
             <v-icon-doc-text />
@@ -65,13 +66,13 @@
             <v-icon-script />
           </template>
           <template #left>
-            <v-graph-port inc name="default">in default</v-graph-port>
-            <v-graph-port inc name="error" error>in error</v-graph-port>
-            <v-graph-port inc name="200">in 200</v-graph-port>
-            <v-graph-port inc name="404" disabled>in 404</v-graph-port>
+            <v-graph-port>in default</v-graph-port>
+            <v-graph-port error>in error</v-graph-port>
+            <v-graph-port id="200">in 200</v-graph-port>
+            <v-graph-port id="404" disabled>in 404</v-graph-port>
           </template>
           <template #right>
-            <v-graph-port out name="default">out default</v-graph-port>
+            <v-graph-port id="outdef">out default</v-graph-port>
           </template>
         </v-graph-node>
         <v-graph-node :x="400" :y="20" title="Response" header-color="blue" />
@@ -84,18 +85,21 @@
           header-color="#82801A"
         >
           <template #left>
-            <v-graph-port inc name="default">in default</v-graph-port>
+            <v-graph-port id="indef">in default</v-graph-port>
           </template>
         </v-graph-node>
       </template>
       <template #connection>
         <v-graph-connection
           :from="portFrom"
-          to="5:default:in"
+          :to="{ nodeId: 5, portId: 'indef' }"
           v-model:invalidate="invalidateConnection"
           v-if="!destroyConnection"
         />
-        <v-graph-connection from="3:out-default" to="2:default" />
+        <v-graph-connection
+          :from="{ nodeId: 5, portId: 8 }"
+          :to="{ nodeId: 3, portId: 8 }"
+        />
       </template>
     </v-graph-canvas>
   </v-content>
@@ -113,8 +117,9 @@ export default {
       viewport: [0, 0],
       zoom: 100,
       invalidateConnection: true,
-      portFrom: "3:default:out",
-      destroyConnection: false
+      portFrom: { nodeId: 3, portId: "outdef" },
+      destroyConnection: false,
+      selected: false
     };
   },
   methods: {

@@ -1,38 +1,26 @@
-import portDirection from "./port-direction";
-import { watch, ref, computed } from "vue";
-import Point from "./point";
+import { ref, computed, getCurrentInstance } from "vue";
+import Point from "@/utils/point";
 
 class GraphPort {
   constructor({
-    name,
-    inc,
-    out,
+    id,
     disabled,
     linkLimit,
     emit
   }) {
     this.node = null;
     this.emit = emit;
-    this.name = name;
+    this.id = id.value ?? getCurrentInstance().uid;
     this.disabled = disabled;
     this.linkLimit = linkLimit;
     this.anchor = ref(null);
-    this.direction = ref(portDirection.Duplex);
     this.linkCount = ref(0);
 
     this.initComputed();
-    this.initWatchers({ inc, out });
-    this.updateDirection(inc.value, out.value);
   }
 
   initComputed() {
     this.linked = computed(() => this.linkCount.value > 0);
-  }
-
-  initWatchers({ inc, out }) {
-    watch([inc, out], () => {
-      this.updateDirection(inc.value, out.value);
-    });
   }
 
   onAdd(node) {
@@ -64,28 +52,17 @@ class GraphPort {
     }
   }
 
-  updateDirection(inc, out) {
-    if (inc) {
-      this.direction.value = portDirection.Incoming;
-    } else if (out) {
-      this.direction.value = portDirection.Outgoing;
-    } else {
-      this.direction.value = portDirection.Duplex;
-    }
-  }
-
   getConnections() {
     const target = this.makeTarget();
     if (!target || !this.node?.canvas) return [];
-    return this.node?.canvas.findConnectionByTarget(target);
+    return this.node?.canvas.findConnectionsByTarget(target);
   }
 
   makeTarget() {
     if (!this.node) return null;
     return {
       nodeId: this.node.id,
-      portName: this.name.value,
-      direction: this.direction.value
+      portId: this.id,
     }
   }
 

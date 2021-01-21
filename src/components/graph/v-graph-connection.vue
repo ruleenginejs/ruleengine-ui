@@ -5,12 +5,16 @@ import useConnection from "./composables/use-connection";
 export default {
   name: "v-graph-connection",
   props: {
+    id: {
+      type: [String, Number],
+      default: null
+    },
     from: {
-      type: String,
+      type: Object,
       default: null
     },
     to: {
-      type: String,
+      type: Object,
       default: null
     },
     invalidate: {
@@ -32,7 +36,7 @@ export default {
   },
   emits: ["update:invalidate"],
   setup(props, { emit }) {
-    const { from, to, invalidate, color, borderWidth, className } = toRefs(
+    const { id, from, to, invalidate, color, borderWidth, className } = toRefs(
       props
     );
     const canvas = inject("canvas");
@@ -40,6 +44,7 @@ export default {
 
     const connection = useConnection(canvas, {
       svg,
+      id,
       from,
       to,
       invalidate,

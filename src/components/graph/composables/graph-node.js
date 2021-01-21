@@ -1,12 +1,12 @@
 import { reactive, watch, ref, computed, getCurrentInstance } from "vue";
-import Bounds from "./bounds";
+import Bounds from "@/utils/bounds";
 
 class GraphNode {
   constructor(id, posX, posY, emit) {
     this.canvas = null;
     this.id = id.value ?? getCurrentInstance().uid;
     this.emit = emit;
-    this.ports = [];
+    this.ports = {};
 
     this.position = reactive({ x: posX.value, y: posY.value });
     this.moving = ref(false);
@@ -94,29 +94,25 @@ class GraphNode {
   }
 
   addPort(port) {
-    this.ports.push(port);
+    this.ports[port.id] = port;
     port.onAdd?.(this);
   }
 
   removePort(port) {
-    const index = this.ports.indexOf(port);
-
-    if (index > -1) {
+    if (this.ports[port.id]) {
       port.onRemove?.(this);
-      this.ports.splice(index, 1);
+      delete this.ports[port.id];
     }
   }
 
-  findPortBy(portName, direction) {
-    return this.ports.filter(port =>
-      port.name.value === portName && port.direction.value === direction
-    )[0] ?? null;
+  getPort(portId) {
+    return this.ports[portId] ?? null;
   }
 
   getPortConnections() {
     const result = [];
-    for (let i = 0; i < this.ports.length; i++) {
-      result.push(...this.ports[i].getConnections());
+    for (let key in this.ports) {
+      result.push(...this.ports[key].getConnections());
     }
     return result;
   }

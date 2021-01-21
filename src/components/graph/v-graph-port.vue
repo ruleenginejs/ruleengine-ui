@@ -21,17 +21,9 @@ import usePort from "./composables/use-port";
 export default {
   name: "v-graph-port",
   props: {
-    name: {
-      type: String,
+    id: {
+      type: [String, Number],
       default: null
-    },
-    inc: {
-      type: Boolean,
-      default: false
-    },
-    out: {
-      type: Boolean,
-      default: false
     },
     error: {
       type: Boolean,
@@ -43,14 +35,15 @@ export default {
     },
     linkLimit: {
       type: Number,
-      default: 1
+      default: null
     }
   },
   emits: ["link", "unlink"],
   setup(props, { emit }) {
-    const { name, inc, out, disabled, linkLimit } = toRefs(props);
+    const { id, disabled, linkLimit } = toRefs(props);
     const node = inject("node");
-    const port = usePort(node, { name, inc, out, disabled, linkLimit, emit });
+
+    const port = usePort(node, { id, disabled, linkLimit, emit });
     const { anchor, linked } = port;
 
     const getPort = () => port;
