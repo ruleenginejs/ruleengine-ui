@@ -73,6 +73,10 @@
   @apply bg-graph-error-background;
 }
 
+.v-graph-port__anchor--linking {
+  @apply bg-graph-inactive-port-backgound;
+}
+
 .v-graph-port__anchor:hover:not(.v-graph-port__anchor--linking) > .v-svg-icon {
   @apply block;
 }
@@ -85,6 +89,6 @@
   @apply hidden;
 }
 
-.v-graph-port__anchor--linking {
-  @apply bg-graph-inactive-port-backgound;
+.v-graph-port .v-graph-port__anchor.v-graph-port__anchor--link-enter > .v-svg-icon {
+  @apply hidden;
 }

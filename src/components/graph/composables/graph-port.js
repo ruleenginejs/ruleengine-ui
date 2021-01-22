@@ -23,25 +23,8 @@ class GraphPort {
 
     this.initComputed();
     this.initWatchers();
-
-    this.linkOptions = reactive({
-      start: () => this.linking.value = true,
-      end: () => this.linking.value = false,
-      data: () => this.makeTarget(),
-      enabled: this.linkEnabled.value,
-      snapToCenter: true
-    });
-
-    this.linkTargetOptions = reactive({
-      enter: () => this.linkEnter.value = true,
-      leave: () => this.linkEnter.value = false,
-      link: (e) => this.emit("new-link", {
-        from: e.data,
-        to: this.makeTarget()
-      }),
-      rule: () => this.linkRule.value?.(),
-      enabled: this.linkEnabled.value
-    });
+    this.initLinkOptions();
+    this.initLinkTargetOptions();
   }
 
   initComputed() {
@@ -59,6 +42,32 @@ class GraphPort {
     watch(this.linkEnabled, () => {
       this.linkOptions.enabled = this.linkEnabled.value;
       this.linkTargetOptions.enabled = this.linkEnabled.value
+    });
+  }
+
+  initLinkOptions() {
+    this.linkOptions = reactive({
+      start: () => this.linking.value = true,
+      end: () => this.linking.value = false,
+      data: () => this.makeTarget(),
+      enabled: this.linkEnabled.value,
+      snapToCenter: true
+    });
+  }
+
+  initLinkTargetOptions() {
+    this.linkTargetOptions = reactive({
+      enter: () => this.linkEnter.value = true,
+      leave: () => this.linkEnter.value = false,
+      link: (e) => {
+        this.linkEnter.value = false;
+        this.emit("new-link", {
+          from: e.data,
+          to: this.makeTarget()
+        })
+      },
+      rule: () => this.linkRule.value?.(),
+      enabled: this.linkEnabled.value
     });
   }
 
