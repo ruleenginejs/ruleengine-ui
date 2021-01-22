@@ -86,5 +86,5 @@
 }
 
 .v-graph-port__anchor--linking {
-  @apply border-none bg-graph-inactive-port-backgound;
+  @apply bg-graph-inactive-port-backgound;
 }

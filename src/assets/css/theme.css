@@ -14,6 +14,7 @@
   --foreground: #cccccc;
 
   /* shadow */
+  --shadow-100: #000000;
   --shadow-50: #00000080;
   --shadow-30: #0000004D;
 
@@ -55,7 +56,6 @@
   --graph-foreground: #D4D4D4;
   --graph-round-border: #4C4F53;
   --graph-error-background: #810B07;
-  --graph-shadow: #00000080;
   --graph-node-background: #414141;
   --graph-node-header-background: #4C4F53;
   --graph-node-header-blue-background: #3A68A1;
@@ -64,4 +64,7 @@
   --graph-active-port-backgound: #82801A;
   --graph-inactive-port-backgound: #D4D4D4;
   --graph-connection-background: #414141;
+
+  /* link */
+  --link-control-backgound: #007fd4;
 }

@@ -1,5 +1,6 @@
 import { ref, computed, getCurrentInstance, reactive, watch } from "vue";
 import Point from "@/utils/point";
+import isDefined from "@/utils/is-defined";
 
 class GraphPort {
   constructor({
@@ -21,25 +22,32 @@ class GraphPort {
     this.onLinkEnd = this.onLinkEnd.bind(this);
     this.onLinkData = this.onLinkData.bind(this);
 
+    this.initComputed();
+    this.initWatchers();
+
     this.linkOptions = reactive({
       start: this.onLinkStart,
       end: this.onLinkEnd,
       data: this.onLinkData,
-      enabled: !disabled.value
+      enabled: this.linkEnabled.value
     });
-
-    this.initComputed();
-    this.initWatchers({ disabled });
   }
 
   initComputed() {
     this.linked = computed(() => this.linkCount.value > 0);
+
+    this.linkEnabled = computed(() => {
+      if (this.disabled.value) return false;
+      if (isDefined(this.linkLimit.value)
+        && this.linkCount.value >= this.linkLimit.value) return false;
+      return true;
+    })
   }
 
-  initWatchers({ disabled }) {
-    watch(disabled, () => {
+  initWatchers() {
+    watch(this.linkEnabled, () => {
       debugger;
-      this.linkOptions.enabled = !disabled.value;
+      this.linkOptions.enabled = this.linkEnabled.value;
     });
   }
 
@@ -104,7 +112,6 @@ class GraphPort {
   }
 
   onLinkEnd() {
-    debugger;
     this.linking.value = false;
   }
 

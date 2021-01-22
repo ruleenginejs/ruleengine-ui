@@ -50,7 +50,9 @@ module.exports = {
         "graph-node-border": "var(--graph-node-border)",
         "graph-active-port-backgound": "var(--graph-active-port-backgound)",
         "graph-inactive-port-backgound": "var(--graph-inactive-port-backgound)",
-        "graph-connection-background": "var(--graph-connection-background)"
+        "graph-connection-background": "var(--graph-connection-background)",
+
+        "link-control-backgound": "var(--link-control-backgound)"
       },
       outline: {
         blue: ['1px solid var(--focus-border)', '-1px'],
@@ -73,6 +75,9 @@ module.exports = {
         "5sp": '0.3125rem'
       },
       spacing: {
+        "2sp": '0.125rem',
+        "3sp": '0.1875rem',
+        "5sp": '0.3125rem',
         "7sp": '0.4375rem',
         "9sp": '0.5625rem',
         "11sp": '0.6875rem',
@@ -96,6 +101,9 @@ module.exports = {
       transitionProperty: {
         height: 'height',
       },
+      transformOrigin: {
+        "center-left": 'center left'
+      },
       cursor: {
         'col-resize': 'col-resize',
         'row-resize': 'row-resize'
@@ -108,7 +116,11 @@ module.exports = {
       },
       boxShadow: {
         "0-2-4": '0 2px 4px 0 var(--shadow-50)',
-        "0-1-2": '0 1px 2px 0 var(--shadow-30)'
+        "0-1-2": '0 1px 2px 0 var(--shadow-30)',
+        "0-0-2": '0 0 2px 0 var(--shadow-100)',
+      },
+      zIndex: {
+        9999: '9999',
       }
     }
   },

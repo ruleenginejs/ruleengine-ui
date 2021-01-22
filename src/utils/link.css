@@ -1,0 +1,37 @@
+.v-link-control {
+  /* display styles */
+  @apply fixed left-0 top-0 z-9999;
+
+  /* visual styles */
+  @apply bg-link-control-backgound;
+
+  /* sizes */
+  @apply w-0 h-3sp;
+
+  /* shadow */
+  @apply shadow-0-0-2;
+
+  @apply origin-center-left;
+}
+
+.v-link-control__start, .v-link-control__end {
+  /* display styles */
+  @apply absolute;
+
+  /* visual styles */
+  @apply bg-link-control-backgound rounded-full;
+
+  /* sizes */
+  @apply w-7sp h-7sp;
+
+  /* shadow */
+  @apply shadow-0-0-2;
+}
+
+.v-link-control__start {
+  @apply -top-2sp -left-3sp;
+}
+
+.v-link-control__end {
+  @apply -top-2sp -right-3sp;
+}
