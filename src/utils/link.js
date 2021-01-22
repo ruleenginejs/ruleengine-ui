@@ -13,8 +13,9 @@ class Link {
 
     this.controlElement = null;
     this.startPosition = null;
-    this.snapDistance = 10;
-    this.snapToCenter = true;
+    this.snapToCenter = options?.snapToCenter ?? false;
+    this.snapOffset = new Point(0, 1);
+    this.cursorOffset = new Point(0, 3);
 
     this.callbacks = {
       start: options?.start,
@@ -110,22 +111,26 @@ class Link {
     let pos;
 
     if (this.snapToCenter) {
-      pos = this.getCenterPosition(this.element);
-      pos.y -= 1;
+      pos = this.getCenterPosition(this.element).subtract(this.snapOffset);
     } else {
-      pos = new Point(mousePos.x, mousePos.y);
-      pos.y -= 3;
+      pos = (new Point(mousePos.x, mousePos.y)).subtract(this.cursorOffset);
     }
 
     s.transform = `translate(${pos.x}px, ${pos.y}px)`;
     return pos;
   }
 
-  updateControlPosition(startPos, newPos) {
+  updateControlPosition(startPos, newPos, dropElement = null) {
     if (!this.controlElement) return;
     const s = this.controlElement.style;
+    let pos;
 
-    const pos = new Point(newPos.x, newPos.y - 3);
+    if (this.snapToCenter && dropElement) {
+      pos = this.getCenterPosition(dropElement).subtract(this.snapOffset);
+    } else {
+      pos = (new Point(newPos.x, newPos.y)).subtract(this.cursorOffset);
+    }
+
     const distance = startPos.distanceTo(pos);
     const deg = degrees(Math.atan2(pos.y - startPos.y, pos.x - startPos.x));
 
@@ -150,7 +155,12 @@ class Link {
 
     const { clientX, clientY } = e;
     const newPos = new Point(clientX, clientY);
-    this.updateControlPosition(this.startPosition, newPos);
+
+    this.updateControlPosition(
+      this.startPosition,
+      newPos,
+      Draggable.activeDroppable?.element
+    );
   }
 
   onDragEnd(e) {

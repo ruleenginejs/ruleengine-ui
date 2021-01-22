@@ -28,7 +28,8 @@ class GraphPort {
       start: () => this.linking.value = true,
       end: () => this.linking.value = false,
       data: () => this.makeTarget(),
-      enabled: this.linkEnabled.value
+      enabled: this.linkEnabled.value,
+      snapToCenter: true
     });
 
     this.linkTargetOptions = reactive({

@@ -76,6 +76,7 @@ class Droppable {
 
   onDrop(e) {
     this.callbacks?.drop?.(e);
+    this.deactivate();
   }
 
   destroy() {
