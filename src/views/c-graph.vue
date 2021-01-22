@@ -32,6 +32,10 @@
     <button @click="portFrom = { nodeId: 4, portId: 5 }">
       chage port from {{ portFrom }}
     </button>
+    <br />
+    <button @click="portDisabled = !portDisabled">
+      portDisabled {{ portDisabled }}
+    </button>
   </v-content>
   <v-content padding="md" style="height: 600px">
     <v-graph-canvas
@@ -69,7 +73,12 @@
             <v-graph-port>in default</v-graph-port>
             <v-graph-port error>in error</v-graph-port>
             <v-graph-port id="200">in 200</v-graph-port>
-            <v-graph-port id="404" disabled>in 404</v-graph-port>
+            <v-graph-port
+              id="404"
+              :disabled="portDisabled"
+              @new-link="onNewLink"
+              >in 404</v-graph-port
+            >
           </template>
           <template #right>
             <v-graph-port id="outdef">out default</v-graph-port>
@@ -119,7 +128,8 @@ export default {
       invalidateConnection: true,
       portFrom: { nodeId: 3, portId: "outdef" },
       destroyConnection: false,
-      selected: false
+      selected: false,
+      portDisabled: true
     };
   },
   methods: {
@@ -133,6 +143,9 @@ export default {
     fitCanvas() {
       const canvas = this.$refs.canvas.getCanvas();
       canvas.fitBounds(canvas.getNodeBounds());
+    },
+    onNewLink(e) {
+      console.log(e);
     }
   }
 };

@@ -9,8 +9,12 @@
   >
     <div
       class="v-graph-port__anchor"
-      :class="{ 'v-graph-port__anchor--linking': linking }"
+      :class="{
+        'v-graph-port__anchor--linking': linking,
+        'v-graph-port__anchor--link-enter': linkEnter
+      }"
       v-link.stop="linkOptions"
+      v-link-target.stop="linkTargetOptions"
       ref="anchor"
     >
       <v-icon-plus-bold />
@@ -24,13 +28,15 @@
 <script>
 import { inject, toRefs } from "vue";
 import link from "@/directives/link";
+import linkTarget from "@/directives/link-target";
 import usePort from "./composables/use-port";
 import VIconPlusBold from "@/components/icons/v-icon-plus-bold.vue";
 
 export default {
   name: "v-graph-port",
   directives: {
-    link
+    link,
+    linkTarget
   },
   components: {
     VIconPlusBold
@@ -51,15 +57,26 @@ export default {
     linkLimit: {
       type: Number,
       default: null
+    },
+    linkRule: {
+      type: Function,
+      default: null
     }
   },
-  emits: ["link", "unlink"],
+  emits: ["link", "unlink", "new-link"],
   setup(props, { emit }) {
-    const { id, disabled, linkLimit } = toRefs(props);
+    const { id, disabled, linkLimit, linkRule } = toRefs(props);
     const node = inject("node");
 
-    const port = usePort(node, { id, disabled, linkLimit, emit });
-    const { anchor, linked, linkOptions, linking } = port;
+    const port = usePort(node, { id, disabled, linkLimit, linkRule, emit });
+    const {
+      anchor,
+      linked,
+      linkOptions,
+      linkTargetOptions,
+      linking,
+      linkEnter
+    } = port;
 
     const getPort = () => port;
 
@@ -67,7 +84,9 @@ export default {
       anchor,
       linked,
       linkOptions,
+      linkTargetOptions,
       linking,
+      linkEnter,
       getPort
     };
   }

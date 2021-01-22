@@ -12,6 +12,8 @@
   @apply shadow-0-0-2;
 
   @apply origin-center-left;
+
+  @apply pointer-events-none;
 }
 
 .v-link-control__start, .v-link-control__end {
@@ -26,6 +28,8 @@
 
   /* shadow */
   @apply shadow-0-0-2;
+
+  @apply pointer-events-none;
 }
 
 .v-link-control__start {

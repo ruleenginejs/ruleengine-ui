@@ -7,6 +7,7 @@ class GraphPort {
     id,
     disabled,
     linkLimit,
+    linkRule,
     emit
   }) {
     this.node = null;
@@ -17,18 +18,27 @@ class GraphPort {
     this.anchor = ref(null);
     this.linkCount = ref(0);
     this.linking = ref(false);
-
-    this.onLinkStart = this.onLinkStart.bind(this);
-    this.onLinkEnd = this.onLinkEnd.bind(this);
-    this.onLinkData = this.onLinkData.bind(this);
+    this.linkEnter = ref(false);
+    this.linkRule = linkRule;
 
     this.initComputed();
     this.initWatchers();
 
     this.linkOptions = reactive({
-      start: this.onLinkStart,
-      end: this.onLinkEnd,
-      data: this.onLinkData,
+      start: () => this.linking.value = true,
+      end: () => this.linking.value = false,
+      data: () => this.makeTarget(),
+      enabled: this.linkEnabled.value
+    });
+
+    this.linkTargetOptions = reactive({
+      enter: () => this.linkEnter.value = true,
+      leave: () => this.linkEnter.value = false,
+      link: (e) => this.emit("new-link", {
+        from: e.data,
+        to: this.makeTarget()
+      }),
+      rule: () => this.linkRule.value?.(),
       enabled: this.linkEnabled.value
     });
   }
@@ -46,8 +56,8 @@ class GraphPort {
 
   initWatchers() {
     watch(this.linkEnabled, () => {
-      debugger;
       this.linkOptions.enabled = this.linkEnabled.value;
+      this.linkTargetOptions.enabled = this.linkEnabled.value
     });
   }
 
@@ -105,19 +115,6 @@ class GraphPort {
     const size = (new Point(rect.width, rect.height)).divideBy(canvas.scale.value);
     const halfSize = size.divideBy(2);
     return pos.add(halfSize);
-  }
-
-  onLinkStart() {
-    this.linking.value = true;
-  }
-
-  onLinkEnd() {
-    this.linking.value = false;
-  }
-
-  onLinkData() {
-    debugger;
-    return this.makeTarget();
   }
 }
 

@@ -2,7 +2,6 @@ import Draggable from "./draggable";
 
 class Droppable {
   constructor(element, callbacks = null, stopEvent = false) {
-    debugger;
     this.onMouseEnter = this.onMouseEnter.bind(this);
     this.onMouseLeave = this.onMouseLeave.bind(this);
     this.onDrop = this.onDrop.bind(this);
@@ -36,13 +35,12 @@ class Droppable {
   }
 
   onMouseEnter(e) {
-    debugger;
     if (!Draggable.activeDraggable
       || Draggable.activeDraggable.element === this.element) {
       return;
     }
 
-    this.callbacks?.enter?.({
+    this.callbacks?.dropEnter?.({
       ev: e,
       draggable: Draggable.activeDraggable
     });
@@ -57,13 +55,12 @@ class Droppable {
   }
 
   onMouseLeave(e) {
-    debugger;
     if (!Draggable.activeDraggable
       || Draggable.activeDraggable.element === this.element) {
       return;
     }
 
-    this.callbacks?.leave?.({
+    this.callbacks?.dropLeave?.({
       ev: e,
       draggable: Draggable.activeDraggable
     });
@@ -78,14 +75,12 @@ class Droppable {
   }
 
   onDrop(e) {
-    debugger;
     this.callbacks?.drop?.(e);
   }
 
   destroy() {
     if (!this.destroyed) {
       this.destroyed = true;
-      debugger;
       this.deactivate();
       this.unbindEvents();
       this.element = null;

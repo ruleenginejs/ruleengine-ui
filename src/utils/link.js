@@ -6,18 +6,22 @@ import degrees from "./degrees";
 class Link {
   constructor(element, options = null, stopEvent = false) {
     this.element = element;
+    this.stopEvent = stopEvent;
+    this.destroyed = false;
+    this.enabled = true;
+    this.draggable = null;
+
+    this.controlElement = null;
+    this.startPosition = null;
+    this.snapDistance = 10;
+    this.snapToCenter = true;
+
     this.callbacks = {
       start: options?.start,
       move: options?.move,
       end: options?.end,
       data: options?.data
     };
-    this.stopEvent = stopEvent;
-    this.destroyed = false;
-    this.controlElement = null;
-    this.startPosition = null;
-    this.snapDistance = 10;
-    this.snapToCenter = true;
 
     this.onDragStart = this.onDragStart.bind(this);
     this.onDrag = this.onDrag.bind(this);
@@ -35,7 +39,6 @@ class Link {
 
   update(options) {
     if (this.enabled !== options?.enabled) {
-      debugger;
       this.enable(options?.enabled);
     }
   }
