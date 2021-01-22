@@ -70,18 +70,27 @@
             <v-icon-script />
           </template>
           <template #left>
-            <v-graph-port>in default</v-graph-port>
-            <v-graph-port error>in error</v-graph-port>
-            <v-graph-port id="200">in 200</v-graph-port>
+            <v-graph-port :link-limit="1" @new-link="onNewLink"
+              >in default</v-graph-port
+            >
+            <v-graph-port :link-limit="1" @new-link="onNewLink" error
+              >in error</v-graph-port
+            >
+            <v-graph-port :link-limit="1" @new-link="onNewLink" id="200"
+              >in 200</v-graph-port
+            >
             <v-graph-port
               id="404"
+              :link-limit="1"
               :disabled="portDisabled"
               @new-link="onNewLink"
               >in 404</v-graph-port
             >
           </template>
           <template #right>
-            <v-graph-port id="outdef">out default</v-graph-port>
+            <v-graph-port @new-link="onNewLink" id="outdef" :link-limit="1"
+              >out default</v-graph-port
+            >
           </template>
         </v-graph-node>
         <v-graph-node :x="400" :y="20" title="Response" header-color="blue" />
@@ -94,20 +103,27 @@
           header-color="#82801A"
         >
           <template #left>
-            <v-graph-port id="indef">in default</v-graph-port>
+            <v-graph-port @new-link="onNewLink" :link-limit="1" id="indef"
+              >in default</v-graph-port
+            >
           </template>
         </v-graph-node>
       </template>
       <template #connection>
-        <v-graph-connection
+        <!--
+          <v-graph-connection
+          key="defconn1"
           :from="portFrom"
           :to="{ nodeId: 5, portId: 'indef' }"
           v-model:invalidate="invalidateConnection"
           v-if="!destroyConnection"
         />
+        -->
         <v-graph-connection
-          :from="{ nodeId: 5, portId: 8 }"
-          :to="{ nodeId: 3, portId: 8 }"
+          v-for="(conn, index) in connections"
+          :key="index"
+          :from="conn.from"
+          :to="conn.to"
         />
       </template>
     </v-graph-canvas>
@@ -129,7 +145,8 @@ export default {
       portFrom: { nodeId: 3, portId: "outdef" },
       destroyConnection: false,
       selected: false,
-      portDisabled: true
+      portDisabled: true,
+      connections: []
     };
   },
   methods: {
@@ -145,7 +162,7 @@ export default {
       canvas.fitBounds(canvas.getNodeBounds());
     },
     onNewLink(e) {
-      console.log(e);
+      this.connections.push({ from: e.from, to: e.to });
     }
   }
 };
