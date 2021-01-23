@@ -25,7 +25,7 @@
   @apply border-graph-error-background;
 }
 
-.v-graph-circle-node--selected {
+.v-graph-circle-node--selected, .v-graph-circle-node--link-enter {
   @apply border-focus-border;
 }
 

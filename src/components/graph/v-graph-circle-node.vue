@@ -4,10 +4,13 @@
     :class="{
       'v-graph-circle-node--error': error,
       'v-graph-circle-node--selected': selected,
-      'v-graph-circle-node--moving': moving
+      'v-graph-circle-node--moving': moving,
+      'v-graph-circle-node--link-enter': linkEnter
     }"
     :style="{ transform: transformStyle, zIndex: zIndex }"
-    v-draggable.stop="draggableCallbacks"
+    v-draggable.noctrl.stop="draggableCallbacks"
+    v-link.ctrl.stop="linkOptions"
+    v-link-target.stop="linkTargetOptions"
     ref="container"
   >
     <div
@@ -22,13 +25,17 @@
 <script>
 import { inject, toRefs } from "vue";
 import draggable from "@/directives/draggable";
+import link from "@/directives/link";
+import linkTarget from "@/directives/link-target";
 import useNode from "./composables/use-node";
 import useTruncateTitle from "./composables/use-truncate-title";
 
 export default {
   name: "v-graph-circle-node",
   directives: {
-    draggable
+    draggable,
+    link,
+    linkTarget
   },
   props: {
     id: {
@@ -56,7 +63,7 @@ export default {
       default: false
     }
   },
-  emits: ["update:x", "update:y", "update:selected"],
+  emits: ["update:x", "update:y", "update:selected", "new-link"],
   setup(props, { emit }) {
     const { x, y, title, id } = toRefs(props);
     const canvas = inject("canvas");
@@ -69,7 +76,10 @@ export default {
       moving,
       zIndex,
       container,
-      draggableCallbacks
+      draggableCallbacks,
+      linkOptions,
+      linkTargetOptions,
+      linkEnter
     } = node;
 
     const getNode = () => node;
@@ -83,6 +93,9 @@ export default {
       truncateTitle,
       truncateLength,
       draggableCallbacks,
+      linkOptions,
+      linkTargetOptions,
+      linkEnter,
       getNode
     };
   }

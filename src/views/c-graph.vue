@@ -47,13 +47,20 @@
       ref="canvas"
     >
       <template #node>
-        <v-graph-circle-node :id="1" :x="100" :y="100" title="s" />
+        <v-graph-circle-node
+          :id="1"
+          :x="100"
+          :y="100"
+          title="s"
+          @new-link="onNodeNewlink"
+        />
         <v-graph-circle-node
           :id="2"
           :x="nodePos1.x"
           :y="nodePos1.y"
           title="error"
           error
+          @new-link="onNodeNewlink"
         />
         <v-graph-node
           v-if="!destroyNode"
