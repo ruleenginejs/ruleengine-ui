@@ -4,7 +4,8 @@ const PROP = Symbol("link");
 
 export default {
   mounted(el, { value, modifiers }) {
-    el[PROP] = new Link(el, value, !!modifiers.stop);
+    const ctrl = modifiers.ctrl ? true : (modifiers.noctrl ? false : null);
+    el[PROP] = new Link(el, value, !!modifiers.stop, ctrl);
   },
   updated(el, { value }) {
     if (el[PROP]) {

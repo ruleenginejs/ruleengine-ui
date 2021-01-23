@@ -14,6 +14,7 @@ class GraphNode {
     this.zIndex = ref(1);
     this.container = ref(null);
     this.connectionCache = null;
+    this.linkEnter = ref(false);
 
     this.onDragStart = this.onDragStart.bind(this);
     this.onDrag = this.onDrag.bind(this);
@@ -27,6 +28,9 @@ class GraphNode {
 
     this.initComputed();
     this.initWatchers(posX, posY);
+
+    this.initLinkOptions();
+    this.initLinkTargetOptions();
   }
 
   initComputed() {
@@ -43,6 +47,28 @@ class GraphNode {
     watch(this.position, () => {
       this.emit("update:x", this.position.x);
       this.emit("update:y", this.position.y);
+    });
+  }
+
+  initLinkOptions() {
+    this.linkOptions = reactive({
+      data: () => ({ nodeId: this.id, portId: null })
+    });
+  }
+
+  initLinkTargetOptions() {
+    this.linkTargetOptions = reactive({
+      enter: () => this.linkEnter.value = true,
+      leave: () => this.linkEnter.value = false,
+      link: (e) => {
+        this.linkEnter.value = false;
+        this.emit("new-link", {
+          ...e,
+          from: e.data,
+          to: { nodeId: this.id, portId: null }
+        })
+      },
+      snapToCenter: false
     });
   }
 

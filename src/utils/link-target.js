@@ -1,4 +1,5 @@
 import Droppable from "./droppable";
+import isDefined from "./is-defined";
 
 class LinkTarget {
   constructor(element, options = null, stopEvent = false) {
@@ -7,6 +8,10 @@ class LinkTarget {
     this.destroyed = false;
     this.enabled = true;
     this.droppable = null;
+
+    this.data = {
+      snapToCenter: options?.snapToCenter ?? null
+    };
 
     this.callbacks = {
       enter: options?.enter,
@@ -29,7 +34,7 @@ class LinkTarget {
   }
 
   update(options) {
-    if (this.enabled !== options?.enabled) {
+    if (isDefined(options?.enabled) && this.enabled !== options?.enabled) {
       this.enable(options?.enabled);
     }
   }
@@ -38,7 +43,8 @@ class LinkTarget {
     this.droppable = new Droppable(this.element, {
       dropEnter: this.onDropEnter,
       dropLeave: this.onDropLeave,
-      drop: this.onDrop
+      drop: this.onDrop,
+      data: () => this.data
     }, this.stopEvent);
   }
 

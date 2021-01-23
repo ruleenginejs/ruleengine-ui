@@ -68,7 +68,8 @@ class GraphPort {
         })
       },
       rule: () => this.linkRule.value?.(),
-      enabled: this.linkEnabled.value
+      enabled: this.linkEnabled.value,
+      snapToCenter: true
     });
   }
 

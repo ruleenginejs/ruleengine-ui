@@ -3,10 +3,13 @@
     class="v-graph-node"
     :class="{
       'v-graph-node--selected': selected,
-      'v-graph-node--moving': moving
+      'v-graph-node--moving': moving,
+      'v-graph-node--link-enter': linkEnter
     }"
     :style="{ transform: transformStyle, zIndex: zIndex }"
-    v-draggable.stop="draggableCallbacks"
+    v-draggable.noctrl.stop="draggableCallbacks"
+    v-link.ctrl.stop="linkOptions"
+    v-link-target.stop="linkTargetOptions"
     ref="container"
   >
     <div
@@ -48,6 +51,8 @@
 <script>
 import { inject, provide, toRefs } from "vue";
 import draggable from "@/directives/draggable";
+import link from "@/directives/link";
+import linkTarget from "@/directives/link-target";
 import usePresetColor from "./composables/use-preset-color";
 import useNode from "./composables/use-node";
 
@@ -57,7 +62,9 @@ const colorFn = (color) => `v-graph-node__header--${color}`;
 export default {
   name: "v-graph-node",
   directives: {
-    draggable
+    draggable,
+    link,
+    linkTarget
   },
   props: {
     id: {
@@ -85,7 +92,7 @@ export default {
       default: false
     }
   },
-  emits: ["update:x", "update:y", "update:selected"],
+  emits: ["update:x", "update:y", "update:selected", "new-link"],
   setup(props, { emit }) {
     const { x, y, headerColor, id } = toRefs(props);
     const canvas = inject("canvas");
@@ -96,7 +103,10 @@ export default {
       moving,
       zIndex,
       container,
-      draggableCallbacks
+      draggableCallbacks,
+      linkOptions,
+      linkTargetOptions,
+      linkEnter
     } = node;
 
     const { colorStyle, colorClassName } = usePresetColor(
@@ -117,6 +127,9 @@ export default {
       colorStyle,
       colorClassName,
       draggableCallbacks,
+      linkOptions,
+      linkTargetOptions,
+      linkEnter,
       getNode
     };
   }

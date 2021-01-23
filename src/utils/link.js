@@ -2,14 +2,16 @@ import "./link.css";
 import Draggable from "./draggable";
 import Point from "./point";
 import degrees from "./degrees";
+import isDefined from "./is-defined";
 
 class Link {
-  constructor(element, options = null, stopEvent = false) {
+  constructor(element, options = null, stopEvent = false, ctrl = null) {
     this.element = element;
     this.stopEvent = stopEvent;
     this.destroyed = false;
     this.enabled = true;
     this.draggable = null;
+    this.ctrl = ctrl;
 
     this.controlElement = null;
     this.startPosition = null;
@@ -39,7 +41,7 @@ class Link {
   }
 
   update(options) {
-    if (this.enabled !== options?.enabled) {
+    if (isDefined(options?.enabled) && this.enabled !== options?.enabled) {
       this.enable(options?.enabled);
     }
   }
@@ -50,7 +52,7 @@ class Link {
       drag: this.onDrag,
       dragEnd: this.onDragEnd,
       data: this.callbacks.data
-    }, this.stopEvent);
+    }, this.stopEvent, this.ctrl);
   }
 
   destroyDraggable() {
@@ -120,12 +122,18 @@ class Link {
     return pos;
   }
 
-  updateControlPosition(startPos, newPos, dropElement = null) {
+  updateControlPosition(startPos, newPos, dropElement = null, snapToCenter = null) {
     if (!this.controlElement) return;
     const s = this.controlElement.style;
     let pos;
 
-    if (this.snapToCenter && dropElement) {
+    let snap = this.snapToCenter;
+
+    if (isDefined(snapToCenter)) {
+      snap = snapToCenter;
+    }
+
+    if (snap && dropElement) {
       pos = this.getCenterPosition(dropElement).subtract(this.snapOffset);
     } else {
       pos = (new Point(newPos.x, newPos.y)).subtract(this.cursorOffset);
@@ -155,11 +163,13 @@ class Link {
 
     const { clientX, clientY } = e;
     const newPos = new Point(clientX, clientY);
+    const droppable = Draggable.activeDroppable;
 
     this.updateControlPosition(
       this.startPosition,
       newPos,
-      Draggable.activeDroppable?.element
+      droppable?.element,
+      droppable?.getData()?.snapToCenter
     );
   }
 

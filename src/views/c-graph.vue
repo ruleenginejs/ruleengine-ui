@@ -62,6 +62,7 @@
           :y="20"
           title="Response"
           v-model:selected="selected"
+          @new-link="onNodeNewlink"
         >
           <template #header-left-icon>
             <v-icon-doc-text />
@@ -70,42 +71,56 @@
             <v-icon-script />
           </template>
           <template #left>
-            <v-graph-port :link-limit="1" @new-link="onNewLink"
-              >in default</v-graph-port
-            >
-            <v-graph-port :link-limit="1" @new-link="onNewLink" error
-              >in error</v-graph-port
-            >
-            <v-graph-port :link-limit="1" @new-link="onNewLink" id="200"
-              >in 200</v-graph-port
-            >
+            <v-graph-port :link-limit="1" @new-link="onNewLink">
+              in default
+            </v-graph-port>
+            <v-graph-port :link-limit="1" @new-link="onNewLink" error>
+              in error
+            </v-graph-port>
+            <v-graph-port :link-limit="1" @new-link="onNewLink" id="200">
+              in 200
+            </v-graph-port>
             <v-graph-port
               id="404"
               :link-limit="1"
               :disabled="portDisabled"
               @new-link="onNewLink"
-              >in 404</v-graph-port
             >
+              in 404
+            </v-graph-port>
           </template>
           <template #right>
-            <v-graph-port @new-link="onNewLink" id="outdef" :link-limit="1"
-              >out default</v-graph-port
-            >
+            <v-graph-port @new-link="onNewLink" id="outdef" :link-limit="1">
+              out default
+            </v-graph-port>
           </template>
         </v-graph-node>
-        <v-graph-node :x="400" :y="20" title="Response" header-color="blue" />
-        <v-graph-node :x="300" :y="240" title="Response" header-color="green" />
+        <v-graph-node
+          @new-link="onNodeNewlink"
+          :x="400"
+          :y="20"
+          title="Response"
+          header-color="blue"
+        />
+        <v-graph-node
+          @new-link="onNodeNewlink"
+          :x="300"
+          :y="240"
+          title="Response"
+          header-color="green"
+        />
         <v-graph-node
           :id="5"
           :x="500"
           :y="340"
           title="Response"
           header-color="#82801A"
+          @new-link="onNodeNewlink"
         >
           <template #left>
-            <v-graph-port @new-link="onNewLink" :link-limit="1" id="indef"
-              >in default</v-graph-port
-            >
+            <v-graph-port @new-link="onNewLink" :link-limit="1" id="indef">
+              in default
+            </v-graph-port>
           </template>
         </v-graph-node>
       </template>
@@ -160,6 +175,9 @@ export default {
     fitCanvas() {
       const canvas = this.$refs.canvas.getCanvas();
       canvas.fitBounds(canvas.getNodeBounds());
+    },
+    onNodeNewlink(e) {
+      console.log(e);
     },
     onNewLink(e) {
       this.connections.push({ from: e.from, to: e.to });

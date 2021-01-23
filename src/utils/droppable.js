@@ -34,6 +34,10 @@ class Droppable {
     }
   }
 
+  getData() {
+    return this.callbacks?.data?.();
+  }
+
   onMouseEnter(e) {
     if (!Draggable.activeDraggable
       || Draggable.activeDraggable.element === this.element) {
