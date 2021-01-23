@@ -1,19 +1,27 @@
+import isDefined from "./is-defined";
+
 class Draggable {
   static activeDraggable = null;
   static activeDroppable = null;
 
-  constructor(element, callbacks = null, stopEvent = false) {
+  constructor(element, callbacks = null, stopEvent = false, ctrl = null) {
     this.onMouseDown = this.onMouseDown.bind(this);
     this.onMove = this.onMove.bind(this);
     this.onMouseUp = this.onMouseUp.bind(this);
+    this.onPrevent = this.onPrevent.bind(this);
 
     this.element = element;
     this.callbacks = callbacks;
     this.stopEvent = stopEvent;
     this.dragging = false;
     this.destroyed = false;
+    this.ctrl = ctrl;
 
     this.bindMouseDown();
+
+    if (this.ctrl) {
+      this.bindContextMenu();
+    }
   }
 
   bindMouseDown() {
@@ -22,6 +30,14 @@ class Draggable {
 
   unbindMouseDown() {
     this.element.removeEventListener("mousedown", this.onMouseDown);
+  }
+
+  bindContextMenu() {
+    this.element.addEventListener("contextmenu", this.onPrevent);
+  }
+
+  unbindContextMenu() {
+    this.element.removeEventListener("contextmenu", this.onPrevent);
   }
 
   bindEvents() {
@@ -59,8 +75,18 @@ class Draggable {
     return "button" in e && e.button !== 0;
   }
 
+  checkCtrl(e) {
+    if (!isDefined(this.ctrl)) return true;
+    if (this.ctrl) return e.ctrlKey;
+    else return !e.ctrlKey;
+  }
+
   onMouseDown(e) {
     if (this.isRightMouseButton(e)) {
+      return;
+    }
+
+    if (!this.checkCtrl(e)) {
       return;
     }
 
@@ -98,12 +124,21 @@ class Draggable {
     this.unbindEvents();
   }
 
+  onPrevent(e) {
+    e.preventDefault();
+
+    if (this.stopEvent) {
+      e.stopPropagation();
+    }
+  }
+
   destroy() {
     if (!this.destroyed) {
       this.destroyed = true;
 
       this.deactivate();
       this.unbindMouseDown();
+      this.unbindContextMenu();
 
       if (this.dragging) {
         this.unbindEvents();

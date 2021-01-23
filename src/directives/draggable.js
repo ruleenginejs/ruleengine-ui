@@ -4,7 +4,8 @@ const PROP = Symbol("draggable");
 
 export default {
   mounted(el, { value, modifiers }) {
-    el[PROP] = new Draggable(el, value, !!modifiers.stop);
+    const ctrl = modifiers.ctrl ? true : (modifiers.noctrl ? false : null);
+    el[PROP] = new Draggable(el, value, !!modifiers.stop, ctrl);
   },
   beforeUnmount(el) {
     if (el[PROP]) {
