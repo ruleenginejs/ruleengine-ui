@@ -62,6 +62,7 @@ class GraphPort {
       link: (e) => {
         this.linkEnter.value = false;
         this.emit("new-link", {
+          ...e,
           from: e.data,
           to: this.makeTarget()
         })
