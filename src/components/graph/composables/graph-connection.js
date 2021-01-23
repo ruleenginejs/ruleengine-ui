@@ -149,7 +149,7 @@ class GraphConnection {
   }
 
   computePath(p1, p2) {
-    return `M${p1.x} ${p1.y} L${p2.x} ${p2.y}`;
+    return `M${p1.x} ${p1.y} C 70 20, 120 20, ${p2.x} ${p2.y}`;
   }
 
   clearDrawCache() {
@@ -172,11 +172,14 @@ class GraphConnection {
   }
 
   updateStyle(svgElement = this.svgElement) {
-    svgElement?.stroke({
-      width: this.borderWidth.value,
-      linecap: "round"
-    });
-    svgElement?.css("stroke", this.color.value);
+    if (!svgElement) return;
+
+    svgElement
+      .stroke({
+        width: this.borderWidth.value,
+        color: this.color.value,
+        linecap: "round"
+      }).fill("transparent");
   }
 
   updateSelectedClass(svgElement = this.svgElement) {

@@ -27,7 +27,7 @@ export default {
     },
     color: {
       type: String,
-      default: null
+      default: "var(--graph-connection-background)"
     },
     borderWidth: {
       type: Number,
