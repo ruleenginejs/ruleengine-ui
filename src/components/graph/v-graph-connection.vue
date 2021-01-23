@@ -21,6 +21,10 @@ export default {
       type: Boolean,
       default: true
     },
+    selected: {
+      type: Boolean,
+      default: false
+    },
     color: {
       type: String,
       default: null
@@ -32,13 +36,25 @@ export default {
     className: {
       type: String,
       default: "v-graph-connection"
+    },
+    selectedClass: {
+      type: String,
+      default: "v-graph-connection--selected"
     }
   },
-  emits: ["update:invalidate"],
+  emits: ["update:invalidate", "update:selected"],
   setup(props, { emit }) {
-    const { id, from, to, invalidate, color, borderWidth, className } = toRefs(
-      props
-    );
+    const {
+      id,
+      from,
+      to,
+      invalidate,
+      selected,
+      color,
+      borderWidth,
+      className,
+      selectedClass
+    } = toRefs(props);
     const canvas = inject("canvas");
     const svg = inject("svg");
 
@@ -48,10 +64,12 @@ export default {
       from,
       to,
       invalidate,
+      selected,
       emit,
       color,
       borderWidth,
-      className
+      className,
+      selectedClass
     });
     const getConnection = () => connection;
 

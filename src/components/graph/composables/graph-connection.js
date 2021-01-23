@@ -1,5 +1,5 @@
 import { ref, watch, onMounted, nextTick, getCurrentInstance } from "vue";
-import { Line } from "@svgdotjs/svg.js";
+import { Path } from "@svgdotjs/svg.js";
 import isDefined from "@/utils/is-defined";
 
 class GraphConnection {
@@ -9,10 +9,12 @@ class GraphConnection {
     from,
     to,
     invalidate,
+    selected,
     emit,
     color,
     borderWidth,
-    className
+    className,
+    selectedClass
   }) {
     this.canvas = null;
     this.emit = emit;
@@ -21,11 +23,15 @@ class GraphConnection {
     this.from = from;
     this.to = to;
     this.invalidate = ref(invalidate.value);
+    this.selected = selected;
     this.color = color;
     this.borderWidth = borderWidth;
     this.className = className;
+    this.selectedClass = selectedClass;
     this.svgElement = null;
     this.drawCache = null;
+
+    this.onSelect = this.onSelect.bind(this);
 
     this.initWatchers({ invalidate })
 
@@ -59,11 +65,19 @@ class GraphConnection {
     })
 
     watch([this.color, this.borderWidth], () => {
-      this.updateSvgStyle();
+      this.updateStyle();
     })
 
     watch(this.className, (newVal, oldVal) => {
       this.updateCssClass(oldVal, newVal);
+    })
+
+    watch(this.selectedClass, (newVal, oldVal) => {
+      this.updateCssClass(oldVal, newVal);
+    })
+
+    watch(this.selected, () => {
+      this.updateSelectedClass();
     })
   }
 
@@ -131,11 +145,11 @@ class GraphConnection {
   update(fromPort, toPort) {
     const p1 = fromPort.getAnchorCenterLayerPosition();
     const p2 = toPort.getAnchorCenterLayerPosition();
-    this.svgElement
-      .attr('x1', p1.x)
-      .attr('y1', p1.y)
-      .attr('x2', p2.x)
-      .attr('y2', p2.y);
+    this.svgElement.attr('d', this.computePath(p1, p2));
+  }
+
+  computePath(p1, p2) {
+    return `M${p1.x} ${p1.y} L${p2.x} ${p2.y}`;
   }
 
   clearDrawCache() {
@@ -150,18 +164,27 @@ class GraphConnection {
   }
 
   createSvgElement() {
-    const line = new Line(0, 0, 0, 0);
-    line.addClass(this.className.value);
-    this.updateSvgStyle(line);
-    return line;
+    const path = new Path();
+    path.addClass(this.className.value).click(this.onSelect);
+    this.updateStyle(path);
+    this.updateSelectedClass(path);
+    return path;
   }
 
-  updateSvgStyle(element = this.svgElement) {
-    element?.stroke({
+  updateStyle(svgElement = this.svgElement) {
+    svgElement?.stroke({
       width: this.borderWidth.value,
       linecap: "round"
     });
-    element.css("stroke", this.color.value);
+    svgElement?.css("stroke", this.color.value);
+  }
+
+  updateSelectedClass(svgElement = this.svgElement) {
+    if (this.selected.value) {
+      svgElement?.addClass(this.selectedClass.value);
+    } else {
+      svgElement?.removeClass(this.selectedClass.value);
+    }
   }
 
   updateCssClass(oldCssClass, newCssClass) {
@@ -171,6 +194,11 @@ class GraphConnection {
     if (newCssClass) {
       this.srcElement?.addClass(newCssClass);
     }
+  }
+
+  onSelect(e) {
+    this.stopEvent(e);
+    this.emit("update:selected", true);
   }
 
   findFromPort() {
@@ -217,6 +245,11 @@ class GraphConnection {
   notifyPort(target, method) {
     const port = this.findPort(target);
     port?.[method]?.(this);
+  }
+
+  stopEvent(e) {
+    e.preventDefault();
+    e.stopPropagation();
   }
 }
 

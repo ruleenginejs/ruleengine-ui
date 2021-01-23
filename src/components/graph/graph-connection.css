@@ -1,4 +1,7 @@
 .v-graph-connection {
   /* visual styles */
   @apply stroke-current text-graph-connection-background;
+
+  /* interactive */
+  @apply pointer-events-auto;
 }

@@ -170,6 +170,7 @@
           :key="index"
           :from="conn.from"
           :to="conn.to"
+          v-model:selected="conn.selected"
         />
       </template>
     </v-graph-canvas>
@@ -214,7 +215,7 @@ export default {
       console.log(e);
     },
     onNewLink(e) {
-      this.connections.push({ from: e.from, to: e.to });
+      this.connections.push({ from: e.from, to: e.to, selected: false });
     }
   }
 };
