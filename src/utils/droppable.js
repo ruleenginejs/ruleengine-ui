@@ -25,12 +25,13 @@ class Droppable {
   }
 
   activate() {
-    Draggable.activeDroppable = this;
+    Draggable.activeDroppables.unshift(this);
   }
 
   deactivate() {
-    if (Draggable.activeDroppable === this) {
-      Draggable.activeDroppable = null;
+    const index = Draggable.activeDroppables.indexOf(this);
+    if (index > -1) {
+      Draggable.activeDroppables.splice(index, 1);
     }
   }
 
@@ -80,6 +81,11 @@ class Droppable {
 
   onDrop(e) {
     this.callbacks?.drop?.(e);
+    this.deactivate();
+  }
+
+  onFinish(e) {
+    this.callbacks?.dropFinish?.(e);
     this.deactivate();
   }
 

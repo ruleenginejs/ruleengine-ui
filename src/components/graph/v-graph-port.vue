@@ -10,7 +10,7 @@
     <div
       class="v-graph-port__anchor"
       :class="{
-        'v-graph-port__anchor--linking': linking,
+        'v-graph-port__anchor--link-start': linkStart,
         'v-graph-port__anchor--link-enter': linkEnter
       }"
       v-link.stop="linkOptions"
@@ -74,7 +74,7 @@ export default {
       linked,
       linkOptions,
       linkTargetOptions,
-      linking,
+      linkStart,
       linkEnter
     } = port;
 
@@ -85,7 +85,7 @@ export default {
       linked,
       linkOptions,
       linkTargetOptions,
-      linking,
+      linkStart,
       linkEnter,
       getPort
     };

@@ -73,11 +73,11 @@
   @apply bg-graph-error-background;
 }
 
-.v-graph-port__anchor--linking, .v-graph-port__anchor--link-enter {
+.v-graph-port__anchor--link-start, .v-graph-port__anchor--link-enter {
   @apply border-none bg-graph-link-active-port-backgound;
 }
 
-.v-graph-port__anchor:hover:not(.v-graph-port__anchor--linking) > .v-svg-icon {
+.v-graph-port__anchor:hover:not(.v-graph-port__anchor--link-start) > .v-svg-icon {
   @apply block;
 }
 

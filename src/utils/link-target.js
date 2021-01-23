@@ -16,12 +16,14 @@ class LinkTarget {
     this.callbacks = {
       enter: options?.enter,
       leave: options?.leave,
+      finish: options?.finish,
       link: options?.link,
       rule: options?.rule
     };
 
     this.onDropEnter = this.onDropEnter.bind(this);
     this.onDropLeave = this.onDropLeave.bind(this);
+    this.onDropFinish = this.onDropFinish.bind(this);
     this.onDrop = this.onDrop.bind(this);
 
     this.enable(options?.enabled ?? true);
@@ -43,6 +45,7 @@ class LinkTarget {
     this.droppable = new Droppable(this.element, {
       dropEnter: this.onDropEnter,
       dropLeave: this.onDropLeave,
+      dropFinish: this.onDropFinish,
       drop: this.onDrop,
       data: () => this.data
     }, this.stopEvent);
@@ -56,7 +59,7 @@ class LinkTarget {
   }
 
   checkRule(e) {
-    return this.callbacks?.rule?.(e.draggable?.getData()) ?? true;
+    return this.callbacks.rule?.(e.draggable?.getData()) ?? true;
   }
 
   onDropEnter(e) {
@@ -64,7 +67,7 @@ class LinkTarget {
       return;
     }
 
-    this.callbacks?.enter?.(e);
+    this.callbacks.enter?.(e);
   }
 
   onDropLeave(e) {
@@ -72,7 +75,15 @@ class LinkTarget {
       return;
     }
 
-    this.callbacks?.leave?.(e);
+    this.callbacks.leave?.(e);
+  }
+
+  onDropFinish(e) {
+    if (!this.checkRule(e)) {
+      return;
+    }
+
+    this.callbacks.finish?.(e);
   }
 
   onDrop(e) {
@@ -80,7 +91,7 @@ class LinkTarget {
       return;
     }
 
-    this.callbacks?.link?.({
+    this.callbacks.link?.({
       ...e,
       data: e.draggable?.getData()
     });

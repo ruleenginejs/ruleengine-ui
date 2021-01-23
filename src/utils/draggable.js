@@ -2,7 +2,7 @@ import isDefined from "./is-defined";
 
 class Draggable {
   static activeDraggable = null;
-  static activeDroppable = null;
+  static activeDroppables = [];
 
   constructor(element, callbacks = null, stopEvent = false, ctrl = null) {
     this.onMouseDown = this.onMouseDown.bind(this);
@@ -58,13 +58,6 @@ class Draggable {
     if (Draggable.activeDraggable === this) {
       Draggable.activeDraggable = null;
     }
-  }
-
-  tryDrop(e) {
-    Draggable.activeDroppable?.onDrop({
-      ev: e,
-      draggable: this
-    });
   }
 
   getData() {
@@ -125,10 +118,34 @@ class Draggable {
   }
 
   onPrevent(e) {
+    if (!e.ctrlKey) {
+      return;
+    }
+
     e.preventDefault();
 
     if (this.stopEvent) {
       e.stopPropagation();
+    }
+  }
+
+  tryDrop(e) {
+    const active = Draggable.activeDroppables;
+
+    active[0]?.onDrop({
+      ev: e,
+      draggable: this
+    });
+
+    if (active.length > 0) {
+      const copy = active.slice();
+
+      for (let i = 0; i < copy.length; i++) {
+        copy[i].onFinish({
+          ev: e,
+          draggable: this
+        })
+      }
     }
   }
 

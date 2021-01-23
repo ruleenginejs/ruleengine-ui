@@ -57,11 +57,15 @@ class GraphNode {
   }
 
   initLinkTargetOptions() {
+    const end = () => this.linkEnter.value = false;
+
     this.linkTargetOptions = reactive({
       enter: () => this.linkEnter.value = true,
-      leave: () => this.linkEnter.value = false,
+      leave: end,
+      finish: end,
       link: (e) => {
-        this.linkEnter.value = false;
+        end();
+
         this.emit("new-link", {
           ...e,
           from: e.data,

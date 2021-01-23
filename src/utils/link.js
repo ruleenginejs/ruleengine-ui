@@ -163,7 +163,7 @@ class Link {
 
     const { clientX, clientY } = e;
     const newPos = new Point(clientX, clientY);
-    const droppable = Draggable.activeDroppable;
+    const droppable = Draggable.activeDroppables[0];
 
     this.updateControlPosition(
       this.startPosition,
