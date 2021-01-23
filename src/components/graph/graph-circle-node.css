@@ -46,3 +46,14 @@
   /* visual styles */
   @apply text-15sp leading-none;
 }
+
+/* single port styles */
+.v-graph-circle-node__port {
+  /* display styles */
+  @apply absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2;
+  @apply invisible;
+}
+
+.v-graph-circle-node__port .v-graph-port {
+  @apply h-auto;
+}

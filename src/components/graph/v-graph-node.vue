@@ -91,14 +91,18 @@ export default {
     selected: {
       type: Boolean,
       default: false
+    },
+    linkRule: {
+      type: Function,
+      default: null
     }
   },
   emits: ["update:x", "update:y", "update:selected", "new-link"],
   setup(props, { emit }) {
-    const { x, y, headerColor, id } = toRefs(props);
-    const canvas = inject("canvas");
+    const { x, y, headerColor, id, linkRule } = toRefs(props);
 
-    const node = useNode(canvas, id, x, y, emit);
+    const canvas = inject("canvas");
+    const node = useNode(canvas, { id, x, y, emit, linkRule });
     const {
       transformStyle,
       moving,

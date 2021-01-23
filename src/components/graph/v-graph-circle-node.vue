@@ -19,15 +19,18 @@
     >
       {{ truncateTitle }}
     </div>
+    <div v-if="$slots['port']" class="v-graph-circle-node__port">
+      <slot name="port" />
+    </div>
   </div>
 </template>
 
 <script>
-import { inject, toRefs } from "vue";
+import { inject, provide, toRefs } from "vue";
 import draggable from "@/directives/draggable";
 import link from "@/directives/link";
 import linkTarget from "@/directives/link-target";
-import useNode from "./composables/use-node";
+import useCircleNode from "./composables/use-circle-node";
 import useTruncateTitle from "./composables/use-truncate-title";
 
 export default {
@@ -61,16 +64,18 @@ export default {
     selected: {
       type: Boolean,
       default: false
+    },
+    linkRule: {
+      type: Function,
+      default: null
     }
   },
   emits: ["update:x", "update:y", "update:selected", "new-link"],
   setup(props, { emit }) {
-    const { x, y, title, id } = toRefs(props);
+    const { x, y, title, id, linkRule } = toRefs(props);
+
     const canvas = inject("canvas");
-
-    const { truncateTitle, truncateLength } = useTruncateTitle(title, 2);
-
-    const node = useNode(canvas, id, x, y, emit);
+    const node = useCircleNode(canvas, { id, x, y, emit, linkRule });
     const {
       transformStyle,
       moving,
@@ -82,7 +87,10 @@ export default {
       linkEnter
     } = node;
 
+    const { truncateTitle, truncateLength } = useTruncateTitle(title, 2);
+
     const getNode = () => node;
+    provide("node", node);
 
     return {
       node,

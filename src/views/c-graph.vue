@@ -53,7 +53,11 @@
           :y="100"
           title="s"
           @new-link="onNodeNewlink"
-        />
+        >
+          <template #port>
+            <v-graph-port id="s" />
+          </template>
+        </v-graph-circle-node>
         <v-graph-circle-node
           :id="2"
           :x="nodePos1.x"
@@ -61,7 +65,11 @@
           title="error"
           error
           @new-link="onNodeNewlink"
-        />
+        >
+          <template #port>
+            <v-graph-port id="e" />
+          </template>
+        </v-graph-circle-node>
         <v-graph-node
           v-if="!destroyNode"
           :id="nodeId"

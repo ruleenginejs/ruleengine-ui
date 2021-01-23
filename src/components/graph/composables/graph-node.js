@@ -2,19 +2,26 @@ import { reactive, watch, ref, computed, getCurrentInstance } from "vue";
 import Bounds from "@/utils/bounds";
 
 class GraphNode {
-  constructor(id, posX, posY, emit) {
+  constructor({
+    id,
+    x,
+    y,
+    emit,
+    linkRule
+  }) {
     this.canvas = null;
     this.id = id.value ?? getCurrentInstance().uid;
     this.emit = emit;
     this.ports = {};
 
-    this.position = reactive({ x: posX.value, y: posY.value });
+    this.position = reactive({ x: x.value, y: y.value });
     this.moving = ref(false);
     this.moveOffsetPoint = ref(null);
     this.zIndex = ref(1);
     this.container = ref(null);
     this.connectionCache = null;
     this.linkEnter = ref(false);
+    this.linkRule = linkRule;
 
     this.onDragStart = this.onDragStart.bind(this);
     this.onDrag = this.onDrag.bind(this);
@@ -29,7 +36,7 @@ class GraphNode {
     this.onSelect = () => { this.emit("update:selected", true); }
 
     this.initComputed();
-    this.initWatchers(posX, posY);
+    this.initWatchers(x, y);
 
     this.initLinkOptions();
     this.initLinkTargetOptions();
@@ -40,10 +47,10 @@ class GraphNode {
       `translate(${this.position.x}px, ${this.position.y}px)`);
   }
 
-  initWatchers(posX, posY) {
-    watch([posX, posY], () => {
-      this.position.x = posX.value;
-      this.position.y = posY.value;
+  initWatchers(x, y) {
+    watch([x, y], () => {
+      this.position.x = x.value;
+      this.position.y = y.value;
     })
 
     watch(this.position, () => {
@@ -54,7 +61,7 @@ class GraphNode {
 
   initLinkOptions() {
     this.linkOptions = reactive({
-      data: () => ({ nodeId: this.id, portId: null })
+      data: () => this.makeTarget()
     });
   }
 
@@ -65,17 +72,22 @@ class GraphNode {
       enter: () => this.linkEnter.value = true,
       leave: end,
       finish: end,
-      link: (e) => {
-        end();
-
-        this.emit("new-link", {
-          ...e,
-          from: e.data,
-          to: { nodeId: this.id, portId: null }
-        })
-      },
+      link: (e) => { end(); this.emitNewLink(e); },
+      rule: () => this.linkRule.value?.(),
       snapToCenter: false
     });
+  }
+
+  emitNewLink(e) {
+    this.emit("new-link", {
+      ...e,
+      from: e.data,
+      to: this.makeTarget()
+    })
+  }
+
+  makeTarget() {
+    return { nodeId: this.id, portId: null };
   }
 
   onAdd(canvas) {
@@ -139,6 +151,10 @@ class GraphNode {
 
   getPort(portId) {
     return this.ports[portId] ?? null;
+  }
+
+  getPorts() {
+    return Object.keys(this.ports).map(key => this.ports[key]);
   }
 
   getPortConnections() {
