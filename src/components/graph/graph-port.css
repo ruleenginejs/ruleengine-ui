@@ -104,3 +104,12 @@
 .v-graph-port__label__text--link-start, .v-graph-port__label__text--link-enter {
   @apply outline-blue;
 }
+
+/* no label */
+.v-graph-node__part--left .v-graph-port--no-label .v-graph-port__anchor {
+  @apply mr-0;
+}
+
+.v-graph-node__part--right .v-graph-port--no-label .v-graph-port__anchor {
+  @apply ml-0;
+}

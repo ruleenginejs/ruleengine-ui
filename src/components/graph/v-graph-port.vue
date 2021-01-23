@@ -5,7 +5,8 @@
       'v-graph-port--error': error,
       'v-graph-port--disabled': disabled,
       'v-graph-port--active': linked,
-      'v-graph-port--selected': selected
+      'v-graph-port--selected': selected,
+      'v-graph-port--no-label': !$slots['default']
     }"
   >
     <div

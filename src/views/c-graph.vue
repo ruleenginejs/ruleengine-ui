@@ -109,11 +109,13 @@
             >
               in 404
             </v-graph-port>
+            <v-graph-port id="500" :link-limit="1" @new-link="onNewLink" />
           </template>
           <template #right>
             <v-graph-port @new-link="onNewLink" id="outdef" :link-limit="1">
               out default
             </v-graph-port>
+            <v-graph-port id="501" :link-limit="1" @new-link="onNewLink" />
           </template>
         </v-graph-node>
         <v-graph-node
