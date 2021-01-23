@@ -50,6 +50,8 @@ module.exports = {
         "graph-node-border": "var(--graph-node-border)",
         "graph-active-port-backgound": "var(--graph-active-port-backgound)",
         "graph-inactive-port-backgound": "var(--graph-inactive-port-backgound)",
+        "graph-inactive-port-border": "var(--graph-inactive-port-border)",
+        "graph-link-active-port-backgound": "var(--graph-link-active-port-backgound)",
         "graph-connection-background": "var(--graph-connection-background)",
 
         "link-control-backgound": "var(--link-control-backgound)"

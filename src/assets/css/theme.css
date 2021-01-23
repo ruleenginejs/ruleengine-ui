@@ -62,7 +62,9 @@
   --graph-node-header-green-background: #247939;
   --graph-node-border: #754A4A;
   --graph-active-port-backgound: #82801A;
-  --graph-inactive-port-backgound: #D4D4D4;
+  --graph-inactive-port-backgound: #4C4F53;
+  --graph-inactive-port-border: #D4D4D4;
+  --graph-link-active-port-backgound: #D4D4D4;
   --graph-connection-background: #414141;
 
   /* link */
