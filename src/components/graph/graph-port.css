@@ -65,6 +65,7 @@
   @apply ml-2;
 }
 
+/* state styles */
 .v-graph-port--active .v-graph-port__anchor {
   @apply border-none bg-graph-active-port-backgound;
 }
@@ -77,6 +78,7 @@
   @apply border-none bg-graph-link-active-port-backgound;
 }
 
+/* plus icon styles */
 .v-graph-port__anchor:hover:not(.v-graph-port__anchor--link-start) > .v-svg-icon {
   @apply block;
 }
@@ -91,4 +93,9 @@
 
 .v-graph-port .v-graph-port__anchor.v-graph-port__anchor--link-enter > .v-svg-icon {
   @apply hidden;
+}
+
+/* selected styles */
+.v-graph-port--selected .v-graph-port__label__text {
+  @apply outline-blue;
 }

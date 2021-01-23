@@ -21,8 +21,11 @@ class GraphPort {
     this.linkEnter = ref(false);
     this.linkRule = linkRule;
 
+    this.onSelect = () => { this.emit("update:selected", true); }
+
     this.initComputed();
     this.initWatchers();
+
     this.initLinkOptions();
     this.initLinkTargetOptions();
   }

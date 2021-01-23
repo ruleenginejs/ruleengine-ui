@@ -26,6 +26,8 @@ class GraphNode {
       dragEnd: this.onDragEnd
     };
 
+    this.onSelect = () => { this.emit("update:selected", true); }
+
     this.initComputed();
     this.initWatchers(posX, posY);
 
@@ -209,17 +211,11 @@ class GraphNode {
 
     this.canvas?.stopEdgeScrolling();
     this.clearConnectionCache();
-
-    this.onClickEnd();
   }
 
   onEdgeScroll(deltaX, deltaY) {
     this.move(deltaX, deltaY);
     this.drawConnections(true);
-  }
-
-  onClickEnd() {
-    this.emit("update:selected", true);
   }
 }
 

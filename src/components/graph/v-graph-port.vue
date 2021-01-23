@@ -4,7 +4,8 @@
     :class="{
       'v-graph-port--error': error,
       'v-graph-port--disabled': disabled,
-      'v-graph-port--active': linked
+      'v-graph-port--active': linked,
+      'v-graph-port--selected': selected
     }"
   >
     <div
@@ -20,7 +21,9 @@
       <v-icon-plus-bold />
     </div>
     <div v-if="$slots['default']" class="v-graph-port__label">
-      <slot />
+      <span class="v-graph-port__label__text" @click.prevent.stop="onSelect">
+        <slot />
+      </span>
     </div>
   </div>
 </template>
@@ -54,6 +57,10 @@ export default {
       type: Boolean,
       default: false
     },
+    selected: {
+      type: Boolean,
+      default: false
+    },
     linkLimit: {
       type: Number,
       default: null
@@ -63,7 +70,7 @@ export default {
       default: null
     }
   },
-  emits: ["link", "unlink", "new-link"],
+  emits: ["link", "unlink", "new-link", "update:selected"],
   setup(props, { emit }) {
     const { id, disabled, linkLimit, linkRule } = toRefs(props);
     const node = inject("node");
@@ -75,7 +82,8 @@ export default {
       linkOptions,
       linkTargetOptions,
       linkStart,
-      linkEnter
+      linkEnter,
+      onSelect
     } = port;
 
     const getPort = () => port;
@@ -87,6 +95,7 @@ export default {
       linkTargetOptions,
       linkStart,
       linkEnter,
+      onSelect,
       getPort
     };
   }

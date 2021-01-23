@@ -78,13 +78,27 @@
             <v-icon-script />
           </template>
           <template #left>
-            <v-graph-port :link-limit="1" @new-link="onNewLink">
+            <v-graph-port
+              :link-limit="1"
+              @new-link="onNewLink"
+              v-model:selected="portSelected"
+            >
               in default
             </v-graph-port>
-            <v-graph-port :link-limit="1" @new-link="onNewLink" error>
+            <v-graph-port
+              :link-limit="1"
+              @new-link="onNewLink"
+              error
+              v-model:selected="portSelected2"
+            >
               in error
             </v-graph-port>
-            <v-graph-port :link-limit="1" @new-link="onNewLink" id="200">
+            <v-graph-port
+              :link-limit="1"
+              @new-link="onNewLink"
+              id="200"
+              v-model:selected="portSelected3"
+            >
               in 200
             </v-graph-port>
             <v-graph-port
@@ -168,7 +182,10 @@ export default {
       destroyConnection: false,
       selected: false,
       portDisabled: true,
-      connections: []
+      connections: [],
+      portSelected: false,
+      portSelected2: false,
+      portSelected3: false
     };
   },
   methods: {

@@ -65,6 +65,8 @@ class GraphCanvas {
     this.onResize = this.onResize.bind(this);
     this.resizeCallbacks = { resize: this.onResize };
 
+    this.onSelect = () => { this.emit("update:selected", true); }
+
     this.initComputed();
     this.initWatchers({ zoom, viewport });
 
@@ -408,12 +410,6 @@ class GraphCanvas {
   onDragEnd() {
     this.moving.value = false;
     this.moveStartPoint.value = null;
-
-    this.onClickEnd();
-  }
-
-  onClickEnd() {
-    this.emit("update:selected", true);
   }
 
   onWheelScroll(e) {

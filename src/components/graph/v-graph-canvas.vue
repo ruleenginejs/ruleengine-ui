@@ -8,6 +8,7 @@
     v-draggable="draggableCallbacks"
     v-wheel.prevent.stop="wheelCallbacks"
     v-resize="resizeCallbacks"
+    @click="onSelect"
     ref="container"
   >
     <div class="v-graph-canvas__layer" :style="{ transform: scaleStyle }">
@@ -129,7 +130,8 @@ export default {
       moving,
       layerPosition,
       size,
-      scale
+      scale,
+      onSelect
     } = canvas;
 
     provide("canvas", canvas);
@@ -146,6 +148,7 @@ export default {
       layerPosition,
       size,
       scale,
+      onSelect,
       getCanvas
     };
   }
