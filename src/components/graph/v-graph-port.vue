@@ -21,7 +21,16 @@
       <v-icon-plus-bold />
     </div>
     <div v-if="$slots['default']" class="v-graph-port__label">
-      <span class="v-graph-port__label__text" @click.prevent.stop="onSelect">
+      <span
+        class="v-graph-port__label__text"
+        :class="{
+          'v-graph-port__label__text--link-start': labelLinkStart,
+          'v-graph-port__label__text--link-enter': labelLinkEnter
+        }"
+        v-link.ctrl.stop="labelLinkOptions"
+        v-link-target.stop="labelLinkTargetOptions"
+        @click.prevent.stop="onSelect"
+      >
         <slot />
       </span>
     </div>
@@ -83,6 +92,10 @@ export default {
       linkTargetOptions,
       linkStart,
       linkEnter,
+      labelLinkOptions,
+      labelLinkTargetOptions,
+      labelLinkStart,
+      labelLinkEnter,
       onSelect
     } = port;
 
@@ -95,6 +108,10 @@ export default {
       linkTargetOptions,
       linkStart,
       linkEnter,
+      labelLinkOptions,
+      labelLinkTargetOptions,
+      labelLinkStart,
+      labelLinkEnter,
       onSelect,
       getPort
     };

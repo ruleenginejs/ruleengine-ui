@@ -99,3 +99,8 @@
 .v-graph-port--selected .v-graph-port__label__text {
   @apply outline-blue;
 }
+
+/* label link styles */
+.v-graph-port__label__text--link-start, .v-graph-port__label__text--link-enter {
+  @apply outline-blue;
+}

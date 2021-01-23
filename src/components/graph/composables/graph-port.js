@@ -20,14 +20,18 @@ class GraphPort {
     this.linkStart = ref(false);
     this.linkEnter = ref(false);
     this.linkRule = linkRule;
+    this.labelLinkStart = ref(false);
+    this.labelLinkEnter = ref(false);
 
     this.onSelect = () => { this.emit("update:selected", true); }
 
     this.initComputed();
     this.initWatchers();
 
-    this.initLinkOptions();
-    this.initLinkTargetOptions();
+    this.linkOptions = this.makeLinkOptions(this.linkStart, true);
+    this.linkTargetOptions = this.makeLinkTargetOptions(this.linkEnter, true);
+    this.labelLinkOptions = this.makeLinkOptions(this.labelLinkStart, false);
+    this.labelLinkTargetOptions = this.makeLinkTargetOptions(this.labelLinkEnter, false);
   }
 
   initComputed() {
@@ -42,38 +46,43 @@ class GraphPort {
   }
 
   initWatchers() {
-    watch(this.linkEnabled, () => {
-      this.linkOptions.enabled = this.linkEnabled.value;
-      this.linkTargetOptions.enabled = this.linkEnabled.value
+    watch(this.linkEnabled, (val) => {
+      this.linkOptions.enabled = val;
+      this.linkTargetOptions.enabled = val;
+      this.labelLinkOptions.enabled = val;
+      this.labelLinkTargetOptions.enabled = val;
     });
   }
 
-  initLinkOptions() {
-    this.linkOptions = reactive({
-      start: () => this.linkStart.value = true,
-      end: () => this.linkStart.value = false,
+  makeLinkOptions(stateRef, snapToCenter = false) {
+    return reactive({
+      start: () => stateRef.value = true,
+      end: () => stateRef.value = false,
       data: () => this.makeTarget(),
       enabled: this.linkEnabled.value,
-      snapToCenter: true
+      snapToCenter
     });
   }
 
-  initLinkTargetOptions() {
-    this.linkTargetOptions = reactive({
-      enter: () => this.linkEnter.value = true,
-      leave: () => this.linkEnter.value = false,
-      link: (e) => {
-        this.linkEnter.value = false;
-        this.emit("new-link", {
-          ...e,
-          from: e.data,
-          to: this.makeTarget()
-        })
-      },
+  makeLinkTargetOptions(stateRef, snapToCenter = false) {
+    const end = () => stateRef.value = false;
+
+    return reactive({
+      enter: () => stateRef.value = true,
+      leave: end,
+      link: (e) => { end(); this.emitNewLink(e); },
       rule: () => this.linkRule.value?.(),
       enabled: this.linkEnabled.value,
-      snapToCenter: true
+      snapToCenter
     });
+  }
+
+  emitNewLink(e) {
+    this.emit("new-link", {
+      ...e,
+      from: e.data,
+      to: this.makeTarget()
+    })
   }
 
   onAdd(node) {
