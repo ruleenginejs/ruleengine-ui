@@ -222,6 +222,8 @@ class GraphNode {
   }
 
   onDragEnd() {
+    this.drawConnections(true);
+
     this.moving.value = false;
     this.moveOffsetPoint.value = null;
 
