@@ -40,6 +40,10 @@ export default {
     selectedClass: {
       type: String,
       default: "v-graph-connection--selected"
+    },
+    curveFactor: {
+      type: Number,
+      default: 0.25
     }
   },
   emits: ["update:invalidate", "update:selected"],
@@ -53,8 +57,10 @@ export default {
       color,
       borderWidth,
       className,
-      selectedClass
+      selectedClass,
+      curveFactor
     } = toRefs(props);
+
     const canvas = inject("canvas");
     const svg = inject("svg");
 
@@ -69,7 +75,8 @@ export default {
       color,
       borderWidth,
       className,
-      selectedClass
+      selectedClass,
+      curveFactor
     });
     const getConnection = () => connection;
 

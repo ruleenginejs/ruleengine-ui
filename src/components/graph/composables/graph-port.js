@@ -8,7 +8,8 @@ class GraphPort {
     disabled,
     linkLimit,
     linkRule,
-    emit
+    emit,
+    direction
   }) {
     this.node = null;
     this.emit = emit;
@@ -22,6 +23,7 @@ class GraphPort {
     this.linkRule = linkRule;
     this.labelLinkStart = ref(false);
     this.labelLinkEnter = ref(false);
+    this.direction = direction;
 
     this.onSelect = () => { this.emit("update:selected", true); }
 
@@ -118,6 +120,10 @@ class GraphPort {
     const target = this.makeTarget();
     if (!target || !this.node?.canvas) return [];
     return this.node?.canvas.findConnectionsByTarget(target);
+  }
+
+  getConnectionDirection() {
+    return this.direction.value;
   }
 
   makeTarget() {

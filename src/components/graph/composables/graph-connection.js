@@ -14,7 +14,8 @@ class GraphConnection {
     color,
     borderWidth,
     className,
-    selectedClass
+    selectedClass,
+    curveFactor
   }) {
     this.canvas = null;
     this.emit = emit;
@@ -28,6 +29,7 @@ class GraphConnection {
     this.borderWidth = borderWidth;
     this.className = className;
     this.selectedClass = selectedClass;
+    this.curveFactor = curveFactor;
     this.svgElement = null;
     this.drawCache = null;
 
@@ -61,6 +63,10 @@ class GraphConnection {
 
     watch(this.to, (newVal, oldVal) => {
       this.notifyRelink(oldVal, newVal);
+      this.invalidate.value = true;
+    })
+
+    watch(this.curveFactor, () => {
       this.invalidate.value = true;
     })
 
@@ -145,11 +151,45 @@ class GraphConnection {
   update(fromPort, toPort) {
     const p1 = fromPort.getAnchorCenterLayerPosition();
     const p2 = toPort.getAnchorCenterLayerPosition();
-    this.svgElement.attr('d', this.computePath(p1, p2));
+
+    const distance = p1.distanceTo(p2);
+
+    const fromDirection = fromPort.getConnectionDirection();
+    const toDirection = toPort.getConnectionDirection();
+
+    const offsetX1 = this.getBezierHorizontalOffset(distance, fromDirection);
+    const offsetY1 = this.getBezierVerticalOffset(distance, fromDirection);
+
+    const offsetX2 = this.getBezierHorizontalOffset(distance, toDirection);
+    const offsetY2 = this.getBezierVerticalOffset(distance, toDirection);
+
+    const x1 = p1.x + offsetX1;
+    const y1 = p1.y + offsetY1;
+    const x2 = p2.x + offsetX2;
+    const y2 = p2.y + offsetY2;
+
+    const path = `M${p1.x} ${p1.y} C ${x1} ${y1}, ${x2} ${y2}, ${p2.x} ${p2.y}`;
+    this.updatePath(path);
   }
 
-  computePath(p1, p2) {
-    return `M${p1.x} ${p1.y} C 70 20, 120 20, ${p2.x} ${p2.y}`;
+  getBezierHorizontalOffset(distance, direction = null) {
+    switch (direction) {
+      case "left": return distance * -this.curveFactor.value;
+      case "right": return distance * this.curveFactor.value;
+      default: return 0;
+    }
+  }
+
+  getBezierVerticalOffset(distance, direction = null) {
+    switch (direction) {
+      case "up": return distance * -this.curveFactor.value;
+      case "down": return distance * this.curveFactor.value;
+      default: return 0;
+    }
+  }
+
+  updatePath(path) {
+    this.svgElement?.attr("d", path);
   }
 
   clearDrawCache() {

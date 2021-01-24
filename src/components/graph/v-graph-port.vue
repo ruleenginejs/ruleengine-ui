@@ -78,14 +78,25 @@ export default {
     linkRule: {
       type: Function,
       default: null
+    },
+    direction: {
+      type: String,
+      default: null
     }
   },
   emits: ["link", "unlink", "new-link", "update:selected"],
   setup(props, { emit }) {
-    const { id, disabled, linkLimit, linkRule } = toRefs(props);
+    const { id, disabled, linkLimit, linkRule, direction } = toRefs(props);
     const node = inject("node");
 
-    const port = usePort(node, { id, disabled, linkLimit, linkRule, emit });
+    const port = usePort(node, {
+      id,
+      disabled,
+      linkLimit,
+      linkRule,
+      emit,
+      direction
+    });
     const {
       anchor,
       linked,

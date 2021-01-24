@@ -90,6 +90,7 @@
               :link-limit="1"
               @new-link="onNewLink"
               v-model:selected="portSelected"
+              direction="left"
             >
               in default
             </v-graph-port>
@@ -98,6 +99,7 @@
               @new-link="onNewLink"
               error
               v-model:selected="portSelected2"
+              direction="left"
             >
               in error
             </v-graph-port>
@@ -106,6 +108,7 @@
               @new-link="onNewLink"
               id="200"
               v-model:selected="portSelected3"
+              direction="left"
             >
               in 200
             </v-graph-port>
@@ -114,16 +117,27 @@
               :link-limit="1"
               :disabled="portDisabled"
               @new-link="onNewLink"
+              direction="left"
             >
               in 404
             </v-graph-port>
             <v-graph-port id="500" :link-limit="1" @new-link="onNewLink" />
           </template>
           <template #right>
-            <v-graph-port @new-link="onNewLink" id="outdef" :link-limit="1">
+            <v-graph-port
+              @new-link="onNewLink"
+              id="outdef"
+              :link-limit="1"
+              direction="right"
+            >
               out default
             </v-graph-port>
-            <v-graph-port id="501" :link-limit="1" @new-link="onNewLink" />
+            <v-graph-port
+              id="501"
+              :link-limit="1"
+              @new-link="onNewLink"
+              direction="right"
+            />
           </template>
         </v-graph-node>
         <v-graph-node
@@ -149,7 +163,22 @@
           @new-link="onNodeNewlink"
         >
           <template #left>
-            <v-graph-port @new-link="onNewLink" :link-limit="1" id="indef">
+            <v-graph-port
+              @new-link="onNewLink"
+              :link-limit="1"
+              id="indef"
+              direction="left"
+            >
+              in default
+            </v-graph-port>
+          </template>
+          <template #right>
+            <v-graph-port
+              @new-link="onNewLink"
+              :link-limit="1"
+              id="indef2"
+              direction="right"
+            >
               in default
             </v-graph-port>
           </template>
