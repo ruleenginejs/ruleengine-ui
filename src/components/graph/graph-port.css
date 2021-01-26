@@ -40,6 +40,11 @@
   @apply leading-4 truncate;
 }
 
+.v-graph-port__label__text {
+  /* display styles */
+  @apply inline-block;
+}
+
 .v-graph-node__part--left .v-graph-port {
   /* margin */
   @apply -ml-1.5;
