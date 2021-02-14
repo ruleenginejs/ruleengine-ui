@@ -11,6 +11,9 @@ import VIconFolder from "./v-icon-folder"
 import VIconDocText from "./v-icon-doc-text"
 import VIconScript from "./v-icon-script"
 import VIconPlusBold from "./v-icon-plus-bold"
+import VIconPlus from "./v-icon-plus"
+import VIconSidebarLeft from "./v-icon-sidebar-left"
+import VIconSidebarRight from "./v-icon-sidebar-right"
 
 export {
   VIconFileMenu,
@@ -23,5 +26,8 @@ export {
   VIconFolder,
   VIconDocText,
   VIconScript,
-  VIconPlusBold
+  VIconPlusBold,
+  VIconPlus,
+  VIconSidebarLeft,
+  VIconSidebarRight
 }
