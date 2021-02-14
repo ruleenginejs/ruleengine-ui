@@ -1,17 +1,18 @@
 :root {
-  /* input */
-  --input-placeholder-foreground: #a6a6a6;
-  --input-background: #3c3c3c;
-  --input-foreground: #cccccc;
-
-  /* border */
-  --focus-border: #007fd4;
-
   /* window */
   --window-background: #171717;
 
   /* common */
+  --background: #1E1E1E;
   --foreground: #cccccc;
+
+  /* border */
+  --focus-border: #007fd4;
+
+  /* input */
+  --input-placeholder-foreground: #a6a6a6;
+  --input-background: #3c3c3c;
+  --input-foreground: #cccccc;
 
   /* shadow */
   --shadow-100: #000000;
