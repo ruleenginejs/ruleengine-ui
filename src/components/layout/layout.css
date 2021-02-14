@@ -112,6 +112,10 @@
   @apply flex-grow;
 }
 
+.v-layout--not-shrink {
+  @apply flex-shrink-0;
+}
+
 .v-layout--no-overflow {
   @apply overflow-hidden;
 }

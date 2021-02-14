@@ -82,6 +82,10 @@ export default {
       type: Boolean,
       default: false
     },
+    notShrink: {
+      type: Boolean,
+      default: false
+    },
     noOverflow: {
       type: Boolean,
       default: false
@@ -106,6 +110,7 @@ export default {
       wBetween,
       wCenter,
       allDistr,
+      notShrink,
       noOverflow
     } = toRefs(props);
 
@@ -129,6 +134,7 @@ export default {
       "v-layout--w-between": wBetween.value,
       "v-layout--w-center": wCenter.value,
       "v-layout--all-distr": allDistr.value,
+      "v-layout--not-shrink": notShrink.value,
       "v-layout--no-overflow": noOverflow.value
     }));
 

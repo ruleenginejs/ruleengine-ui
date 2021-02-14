@@ -1,12 +1,12 @@
 .v-action-bar {
   /* display styles */
-  @apply flex;
+  @apply flex items-center;
 
   /* visual styles */
   @apply bg-action-bar-background;
 
   /* sizes */
-  @apply px-2 py-7sp;
+  @apply px-2 h-35sp;
 }
 
 .v-action-bar--l-border {
