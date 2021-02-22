@@ -3,17 +3,15 @@ import { provide } from "vue";
 export default function usePanes() {
   const panes = [];
 
-  const registerPane = (paneElement, options = {}) => {
-    panes.push({ paneElement, ...options });
+  const registerPane = (paneOptions) => {
+    panes.push(paneOptions);
   };
 
-  const unregisterPane = (paneElement) => {
-    const item = panes.find((item) => item.paneElement === paneElement);
-    if (item) {
-      const index = panes.indexOf(item);
-      if (index > -1) {
-        panes.splice(index, 1);
-      }
+  const unregisterPane = (paneId) => {
+    const index = panes.findIndex((pane) => pane.id === paneId);
+
+    if (index !== -1) {
+      panes.splice(index, 1);
     }
   };
 

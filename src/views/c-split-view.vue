@@ -1,27 +1,32 @@
 <template>
   <v-content padding="md">
-    <button @click="vertical = !vertical">vertical: {{ vertical }}</button>
+    <button @click="horizontal = !horizontal">
+      horizontal: {{ horizontal }}
+    </button>
+    <br />
     <button @click="destroySplitView = !destroySplitView">
       destroySplitView: {{ destroySplitView }}
     </button>
-    <button @click="onCollapseLeft">collapse left</button>
-    <button @click="onCollapseRight">collapse right</button>
+    <br />
+    <button @click="toggleLeft">toggle left</button>
+    <br />
+    <button @click="toggleRight">toggle right</button>
   </v-content>
   <v-content padding="md" class="h-96">
     <v-split-view
+      key="test"
       ref="splitview"
-      :sizes="[20, 60, 20]"
-      :min-sizes="[0, 4, 100]"
-      :gutter-size="4"
       v-if="!destroySplitView"
-      :vertical="vertical"
-      @drag="onDrag"
-      @drag-start="onDragStart"
-      @drag-end="onDragEnd"
+      :horizontal="horizontal"
+      :snap-offset="30"
+      :window-resize-delay="100"
+      @resize="onResize"
     >
-      <v-split-pane>Left</v-split-pane>
-      <v-split-pane>Center</v-split-pane>
-      <v-split-pane>Right</v-split-pane>
+      <v-split-pane id="left" key="1" size="300px" :min-size="40"
+        >Left</v-split-pane
+      >
+      <v-split-pane key="2" :min-size="200">Center</v-split-pane>
+      <v-split-pane id="right" key="3" size="20%">Right</v-split-pane>
     </v-split-view>
   </v-content>
 </template>
@@ -31,32 +36,26 @@ export default {
   name: "c-split-view",
   data() {
     return {
-      vertical: true,
+      horizontal: false,
       destroySplitView: false
     };
   },
   methods: {
-    onCollapseRight() {
-      this.$refs.splitview.collapse(2);
+    onResize(e) {
+      console.log("onResize", e);
     },
-    onCollapseLeft() {
-      this.$refs.splitview.collapse(0);
+    toggleLeft() {
+      this.$refs.splitview.getInstance().togglePane("left", null, true);
     },
-    onDrag(e) {
-      console.log("onDrag", e);
-    },
-    onDragStart(e) {
-      console.log("onDragStart", e);
-    },
-    onDragEnd(e) {
-      console.log("onDragEnd", e);
+    toggleRight() {
+      this.$refs.splitview.getInstance().togglePane("right", null, true);
     }
   }
 };
 </script>
 
 <style>
-.v-gutter {
+.v-split-gutter {
   @apply bg-black;
 }
 </style>

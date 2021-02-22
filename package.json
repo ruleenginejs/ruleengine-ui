@@ -19,9 +19,10 @@
     "push": "git push origin master --tags"
   },
   "dependencies": {
+    "@svgdotjs/svg.js": "^3.0.16",
     "debounce": "^1.2.0",
     "split.js": "^1.6.2",
-    "@svgdotjs/svg.js": "^3.0.16"
+    "splitview.js": "file:../splitviewjs"
   },
   "peerDependencies": {
     "vue": "^3.0.5"

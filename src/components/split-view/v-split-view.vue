@@ -1,11 +1,5 @@
 <template>
-  <div
-    class="v-split-view"
-    :class="{
-      'v-split-view--vertical': vertical,
-      'v-split-view--horizontal': !vertical
-    }"
-  >
+  <div class="v-split-view" v-resize:[windowResizeDelay]="resizeCallbacks">
     <slot />
   </div>
 </template>
@@ -14,11 +8,15 @@
 import { toRefs } from "vue";
 import useSplit from "./use-split";
 import usePanes from "./use-panes";
+import resize from "@/directives/resize";
 
 export default {
   name: "v-split-view",
+  directives: {
+    resize
+  },
   props: {
-    vertical: {
+    horizontal: {
       type: Boolean,
       default: false
     },
@@ -34,45 +32,38 @@ export default {
       type: Number,
       default: 0
     },
-    sizes: {
-      type: Array,
-      default: null
+    customGutterClassName: {
+      type: String,
+      default: "v-split-gutter"
     },
-    minSize: {
+    windowResizeDelay: {
       type: Number,
-      default: 0
-    },
-    minSizes: {
-      type: Array,
-      default: null
+      default: 300
     }
   },
-  emits: ["drag", "drag-start", "drag-end"],
+  emits: ["resize"],
   setup(props, { emit }) {
     const {
-      vertical,
+      horizontal,
       gutterSize,
       expandToMin,
       snapOffset,
-      minSize,
-      minSizes,
-      sizes
+      customGutterClassName
     } = toRefs(props);
 
     const { panes } = usePanes();
 
-    const { collapse } = useSplit(panes, emit, {
-      vertical,
+    const { getInstance, resizeCallbacks } = useSplit(panes, emit, {
+      horizontal,
       gutterSize,
       expandToMin,
       snapOffset,
-      minSize,
-      minSizes,
-      sizes
+      customGutterClassName
     });
 
     return {
-      collapse
+      resizeCallbacks,
+      getInstance
     };
   }
 };
