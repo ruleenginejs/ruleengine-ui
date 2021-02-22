@@ -13,8 +13,8 @@
     "dev:build": "vue-cli-service build",
     "dev:lint": "vue-cli-service lint",
     "lib:build": "cross-env BUILD_LIB=true vue-cli-service build --target lib --name ruleengine-ui-kit-vue ./src/index.js",
-    "release": "npm version",
-    "postrelease": "npm run lib:build && npm run push && npm publish",
+    "version": "npm run lib:build",
+    "postrelease": "npm run push && npm publish",
     "push": "git push origin master --tags"
   },
   "dependencies": {
