@@ -3,6 +3,14 @@
   @apply bg-side-bar-background;
 }
 
+.v-sidebar--w-full {
+  @apply w-full;
+}
+
+.v-sidebar--h-full {
+  @apply h-full;
+}
+
 .v-sidebar--rt-border {
   @apply border-r border-t border-solid border-action-bar-border;
 }
