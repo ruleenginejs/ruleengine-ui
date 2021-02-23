@@ -1,6 +1,6 @@
 {
   "name": "@ruleenginejs/ruleengine-ui-kit-vue",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "UI components for ruleengine editor",
   "main": "dist/ruleengine-ui-kit-vue.common.js",
   "files": [
