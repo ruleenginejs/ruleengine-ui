@@ -25,7 +25,8 @@
   display: flex;
 }
 
-.v-tab:hover .v-tab__actions .v-tab__action-close {
+.v-tab:hover .v-tab__actions .v-tab__action-close,
+.v-tab--selected .v-tab__actions .v-tab__action-close {
   display: flex;
 }
 

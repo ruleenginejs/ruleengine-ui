@@ -33,13 +33,13 @@
 
 .v-tab__icon {
   /* display styles */
-  @apply flex flex-shrink-0;
+  @apply flex justify-end flex-shrink-0;
 
   /* visual styles */
   @apply text-11sp leading-none;
 
   /* sizes */
-  @apply pr-1.5;
+  @apply w-22sp pr-1.5;
 }
 
 .v-tab__actions {
