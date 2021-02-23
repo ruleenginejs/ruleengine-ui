@@ -20,7 +20,7 @@
   "dependencies": {
     "@svgdotjs/svg.js": "^3.0.16",
     "debounce": "^1.2.0",
-    "splitview.js": "^1.0.1"
+    "splitview.js": "^1.0.4"
   },
   "peerDependencies": {
     "vue": "^3.0.5"

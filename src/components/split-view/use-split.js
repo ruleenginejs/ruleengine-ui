@@ -48,19 +48,15 @@ export default function useSplit(panes, emit, options) {
       expandToMin: expandToMin.value,
       gutterSize: gutterSize.value,
       snapOffset: snapOffset.value,
-      customGutterClassName: customGutterClassName.value
+      customGutterClassName: customGutterClassName.value,
+      onResize: (e) => emit("resize", e)
     });
-    instance.on("resize", onResize);
     return instance;
   }
 
   function remove() {
     instance?.destroy();
     instance = null;
-  }
-
-  function onResize(percentSizes, sender) {
-    emit("resize", { percentSizes, sender });
   }
 
   function onWindowResize() {
