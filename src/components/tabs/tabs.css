@@ -11,3 +11,7 @@
   /* scroll */
   @apply overflow-y-hidden overflow-x-auto;
 }
+
+.v-tabs--w-full {
+  @apply w-full;
+}

@@ -1,5 +1,8 @@
 <template>
-  <div class="v-tabs v-scrollbar v-scrollbar--sm">
+  <div
+    class="v-tabs v-scrollbar v-scrollbar--sm"
+    :class="{ 'v-tabs--w-full': wFull }"
+  >
     <slot />
   </div>
 </template>
@@ -13,6 +16,10 @@ export default {
     modelValue: {
       type: [String, Number],
       default: null
+    },
+    wFull: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ["update:modelValue"],

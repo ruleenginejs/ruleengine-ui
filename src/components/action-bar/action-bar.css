@@ -21,6 +21,14 @@
   @apply justify-end;
 }
 
+.v-action-bar--w-full {
+  @apply w-full;
+}
+
+.v-action-bar--no-overflow {
+  @apply overflow-hidden;
+}
+
 .v-action-bar > * {
   @apply mr-2;
 }
