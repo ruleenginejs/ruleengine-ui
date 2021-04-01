@@ -1,5 +1,5 @@
 <template>
-  <div class="v-split-view" v-resize:[windowResizeDelay]="resizeCallbacks">
+  <div class="v-split-view" v-resize:[resizeDelay]="resizeCallbacks">
     <slot />
   </div>
 </template>
@@ -36,7 +36,7 @@ export default {
       type: String,
       default: "v-split-gutter"
     },
-    windowResizeDelay: {
+    resizeDelay: {
       type: Number,
       default: 100
     }

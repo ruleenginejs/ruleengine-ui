@@ -7,7 +7,7 @@
     }"
     v-draggable="draggableCallbacks"
     v-wheel.prevent.stop="wheelCallbacks"
-    v-resize:[windowResizeDelay]="resizeCallbacks"
+    v-resize:[resizeDelay]="resizeCallbacks"
     @click="onSelect"
     ref="container"
   >
@@ -93,7 +93,7 @@ export default {
       type: Boolean,
       default: false
     },
-    windowResizeDelay: {
+    resizeDelay: {
       type: Number,
       default: 100
     }
