@@ -7,7 +7,7 @@
     }"
     v-draggable="draggableCallbacks"
     v-wheel.prevent.stop="wheelCallbacks"
-    v-resize="resizeCallbacks"
+    v-resize:[windowResizeDelay]="resizeCallbacks"
     @click="onSelect"
     ref="container"
   >
@@ -92,6 +92,10 @@ export default {
     selected: {
       type: Boolean,
       default: false
+    },
+    windowResizeDelay: {
+      type: Number,
+      default: 100
     }
   },
   emits: ["update:selected", "update:zoom", "update:viewport"],

@@ -38,7 +38,7 @@ export default {
     },
     windowResizeDelay: {
       type: Number,
-      default: 300
+      default: 100
     }
   },
   emits: ["resize"],
