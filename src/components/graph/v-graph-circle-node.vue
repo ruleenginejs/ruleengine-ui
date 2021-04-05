@@ -11,6 +11,7 @@
     v-draggable.noctrl.stop="draggableCallbacks"
     v-link.ctrl.stop="linkOptions"
     v-link-target.stop="linkTargetOptions"
+    @click.prevent.stop="onSelect"
     ref="container"
   >
     <div
@@ -84,7 +85,8 @@ export default {
       draggableCallbacks,
       linkOptions,
       linkTargetOptions,
-      linkEnter
+      linkEnter,
+      onSelect
     } = node;
 
     const { truncateTitle, truncateLength } = useTruncateTitle(title, 2);
@@ -104,6 +106,7 @@ export default {
       linkOptions,
       linkTargetOptions,
       linkEnter,
+      onSelect,
       getNode
     };
   }
