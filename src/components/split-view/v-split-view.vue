@@ -41,7 +41,7 @@ export default {
       default: 100
     }
   },
-  emits: ["resize"],
+  emits: ["resize", "created"],
   setup(props, { emit }) {
     const {
       horizontal,

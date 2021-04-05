@@ -1,4 +1,4 @@
-import { watch, onMounted, onBeforeUnmount, nextTick } from "vue";
+import { watch, onMounted, onBeforeUnmount, nextTick, markRaw } from "vue";
 import SplitView from "splitview.js";
 
 export default function useSplit(panes, emit, options) {
@@ -42,7 +42,7 @@ export default function useSplit(panes, emit, options) {
   }
 
   function create() {
-    instance = SplitView(panes, {
+    instance = markRaw(SplitView(panes, {
       percent: false,
       direction: horizontal.value ? "horizontal" : "vertical",
       expandToMin: expandToMin.value,
@@ -50,7 +50,8 @@ export default function useSplit(panes, emit, options) {
       snapOffset: snapOffset.value,
       customGutterClassName: customGutterClassName.value,
       onResize: (e) => emit("resize", e)
-    });
+    }));
+    emit("created", instance);
     return instance;
   }
 
