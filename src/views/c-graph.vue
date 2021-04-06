@@ -225,7 +225,12 @@ export default {
       destroyConnection: false,
       selected: false,
       portDisabled: true,
-      connections: [],
+      connections: [
+        {
+          from: { nodeId: 1, portId: "s" },
+          to: { nodeId: 3, portId: "outdef" }
+        }
+      ],
       portSelected: false,
       portSelected2: false,
       portSelected3: false
@@ -248,6 +253,10 @@ export default {
     },
     onNewLink(e) {
       this.connections.push({ from: e.from, to: e.to, selected: false });
+      // this.fitCanvas();
+      //this.$nextTick(() => {
+        //this.fitCanvas();
+      //});
     },
     circleLinkRule(from, to) {
       console.log(from, to);

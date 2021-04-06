@@ -1,4 +1,4 @@
-import { ref, watch, onMounted, nextTick, getCurrentInstance } from "vue";
+import { ref, watch, onMounted, getCurrentInstance } from "vue";
 import { Path } from "@svgdotjs/svg.js";
 import isDefined from "@/utils/is-defined";
 
@@ -38,11 +38,9 @@ class GraphConnection {
     this.initWatchers({ invalidate })
 
     onMounted(() => {
-      nextTick(() => {
-        this.notifyRelink(null, this.from.value);
-        this.notifyRelink(null, this.to.value);
-        this.draw();
-      })
+      this.notifyRelink(null, this.from.value);
+      this.notifyRelink(null, this.to.value);
+      this.draw();
     })
   }
 
@@ -85,6 +83,12 @@ class GraphConnection {
     watch(this.selected, () => {
       this.updateSelectedClass();
     })
+
+    watch(this.svg.rootGroup, () => {
+      if (this.svg.rootGroup.value) {
+        this.draw();
+      }
+    });
   }
 
   onAdd(canvas) {
@@ -114,6 +118,7 @@ class GraphConnection {
 
   draw(caching = false) {
     this.invalidate.value = false;
+
     const rootGroup = this.svg.rootGroup.value;
     if (!rootGroup) return;
 
