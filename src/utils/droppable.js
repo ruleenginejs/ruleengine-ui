@@ -1,7 +1,7 @@
 import Draggable from "./draggable";
 
 class Droppable {
-  constructor(element, callbacks = null, stopEvent = false) {
+  constructor(element, callbacks = null, stopEvent = false, group = null) {
     this.onMouseEnter = this.onMouseEnter.bind(this);
     this.onMouseLeave = this.onMouseLeave.bind(this);
     this.onDrop = this.onDrop.bind(this);
@@ -9,6 +9,7 @@ class Droppable {
     this.element = element;
     this.callbacks = callbacks;
     this.stopEvent = stopEvent;
+    this.group = group;
     this.destroyed = false;
 
     this.bindEvents();
@@ -41,7 +42,8 @@ class Droppable {
 
   onMouseEnter(e) {
     if (!Draggable.activeDraggable
-      || Draggable.activeDraggable.element === this.element) {
+      || Draggable.activeDraggable.element === this.element
+      || Draggable.activeDraggable.group !== this.group) {
       return;
     }
 
@@ -61,7 +63,8 @@ class Droppable {
 
   onMouseLeave(e) {
     if (!Draggable.activeDraggable
-      || Draggable.activeDraggable.element === this.element) {
+      || Draggable.activeDraggable.element === this.element
+      || Draggable.activeDraggable.group !== this.group) {
       return;
     }
 

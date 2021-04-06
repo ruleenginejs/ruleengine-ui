@@ -4,7 +4,7 @@ class Draggable {
   static activeDraggable = null;
   static activeDroppables = [];
 
-  constructor(element, callbacks = null, stopEvent = false, ctrl = null) {
+  constructor(element, callbacks = null, stopEvent = false, ctrl = null, group = null) {
     this.onMouseDown = this.onMouseDown.bind(this);
     this.onMove = this.onMove.bind(this);
     this.onMouseUp = this.onMouseUp.bind(this);
@@ -13,6 +13,7 @@ class Draggable {
     this.element = element;
     this.callbacks = callbacks;
     this.stopEvent = stopEvent;
+    this.group = group;
     this.dragging = false;
     this.destroyed = false;
     this.ctrl = ctrl;

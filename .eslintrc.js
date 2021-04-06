@@ -7,8 +7,10 @@ module.exports = {
     "plugin:vue/vue3-essential",
     "eslint:recommended"
   ],
+  parser: "@babel/eslint-parser",
   parserOptions: {
-    parser: "babel-eslint"
+    ecmaVersion: 2020,
+    sourceType: "module"
   },
   rules: {
     "no-console": process.env.NODE_ENV === "production" ? "error" : "off",

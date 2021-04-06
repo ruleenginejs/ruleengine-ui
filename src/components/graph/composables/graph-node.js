@@ -73,7 +73,7 @@ class GraphNode {
       leave: end,
       finish: end,
       link: (e) => { end(); this.emitNewLink(e); },
-      rule: () => this.linkRule.value?.(),
+      rule: (e) => this.linkRule.value?.(e, this.makeTarget()),
       snapToCenter: false
     });
   }

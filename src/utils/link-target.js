@@ -8,6 +8,7 @@ class LinkTarget {
     this.destroyed = false;
     this.enabled = true;
     this.droppable = null;
+    this.droppableGroup = "link";
 
     this.data = {
       snapToCenter: options?.snapToCenter ?? null
@@ -42,13 +43,19 @@ class LinkTarget {
   }
 
   initDroppable() {
-    this.droppable = new Droppable(this.element, {
+    const callbacks = {
       dropEnter: this.onDropEnter,
       dropLeave: this.onDropLeave,
       dropFinish: this.onDropFinish,
       drop: this.onDrop,
       data: () => this.data
-    }, this.stopEvent);
+    };
+    this.droppable = new Droppable(
+      this.element,
+      callbacks,
+      this.stopEvent,
+      this.droppableGroup
+    );
   }
 
   destroyDroppable() {

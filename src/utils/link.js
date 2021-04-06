@@ -11,6 +11,7 @@ class Link {
     this.destroyed = false;
     this.enabled = true;
     this.draggable = null;
+    this.draggableGroup = "link";
     this.ctrl = ctrl;
 
     this.controlElement = null;
@@ -47,12 +48,19 @@ class Link {
   }
 
   initDraggable() {
-    this.draggable = new Draggable(this.element, {
+    const callbacks = {
       dragStart: this.onDragStart,
       drag: this.onDrag,
       dragEnd: this.onDragEnd,
       data: this.callbacks.data
-    }, this.stopEvent, this.ctrl);
+    };
+    this.draggable = new Draggable(
+      this.element,
+      callbacks,
+      this.stopEvent,
+      this.ctrl,
+      this.draggableGroup
+    );
   }
 
   destroyDraggable() {

@@ -52,6 +52,7 @@
           :x="100"
           :y="100"
           title="s"
+          :link-rule="circleLinkRule"
           @new-link="onNodeNewlink"
         >
           <template #port>
@@ -76,6 +77,7 @@
           :x="200"
           :y="20"
           title="Response"
+          :link-rule="nodeLinkRule"
           v-model:selected="selected"
           @new-link="onNodeNewlink"
         >
@@ -89,6 +91,7 @@
             <v-graph-port
               :link-limit="1"
               @new-link="onNewLink"
+              :link-rule="portLinkRule"
               v-model:selected="portSelected"
               direction="left"
             >
@@ -245,6 +248,15 @@ export default {
     },
     onNewLink(e) {
       this.connections.push({ from: e.from, to: e.to, selected: false });
+    },
+    circleLinkRule(from, to) {
+      console.log(from, to);
+    },
+    nodeLinkRule(from, to) {
+      console.log(from, to);
+    },
+    portLinkRule(from, to) {
+      console.log(from, to);
     }
   }
 };

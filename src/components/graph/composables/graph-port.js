@@ -73,7 +73,7 @@ class GraphPort {
       enter: () => stateRef.value = true,
       leave: end,
       link: (e) => { end(); this.emitNewLink(e); },
-      rule: () => this.linkRule.value?.(),
+      rule: (e) => this.linkRule.value?.(e, this.makeTarget()),
       enabled: this.linkEnabled.value,
       snapToCenter
     });
