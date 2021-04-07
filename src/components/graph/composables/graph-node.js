@@ -15,6 +15,7 @@ class GraphNode {
     this.ports = {};
 
     this.position = reactive({ x: x.value, y: y.value });
+    this.savedPosition = null;
     this.moving = ref(false);
     this.moveOffsetPoint = ref(null);
     this.zIndex = ref(1);
@@ -84,6 +85,12 @@ class GraphNode {
       from: e.data,
       to: this.makeTarget()
     })
+  }
+
+  emitChangePosition({ x, y }) {
+    this.emit("change-position", {
+      position: [x, y]
+    });
   }
 
   makeTarget() {
@@ -190,6 +197,24 @@ class GraphNode {
     }
   }
 
+  savePosition() {
+    const { x, y } = this.position;
+    this.savedPosition = { x, y };
+  }
+
+  isPositionChanged(oldPosition, newPosition) {
+    return !(oldPosition.x === newPosition.x &&
+      oldPosition.y === newPosition.y);
+  }
+
+  notifyChangePosition() {
+    if (!this.savedPosition) return;
+    if (this.isPositionChanged(this.savedPosition, this.position)) {
+      this.emitChangePosition(this.position);
+    }
+    this.savedPosition = null;
+  }
+
   onDragStart(e) {
     this.moving.value = true;
     const startPoint = this.canvas?.mouseEventToLayerPoint(e);
@@ -201,6 +226,7 @@ class GraphNode {
       }
     }
 
+    this.savePosition();
     this.bringToFront();
   }
 
@@ -229,6 +255,8 @@ class GraphNode {
 
     this.canvas?.stopEdgeScrolling();
     this.clearConnectionCache();
+
+    this.notifyChangePosition();
   }
 
   onEdgeScroll(deltaX, deltaY) {

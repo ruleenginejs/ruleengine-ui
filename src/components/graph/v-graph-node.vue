@@ -97,7 +97,13 @@ export default {
       default: null
     }
   },
-  emits: ["update:x", "update:y", "update:selected", "new-link"],
+  emits: [
+    "update:x",
+    "update:y",
+    "update:selected",
+    "new-link",
+    "change-position"
+  ],
   setup(props, { emit }) {
     const { x, y, headerColor, id, linkRule } = toRefs(props);
 
