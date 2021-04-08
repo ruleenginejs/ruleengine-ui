@@ -87,9 +87,10 @@ class GraphNode {
     })
   }
 
-  emitChangePosition({ x, y }) {
+  emitChangePosition(oldPosition, newPosition) {
     this.emit("change-position", {
-      position: [x, y]
+      oldPosition: [oldPosition.x, oldPosition.y],
+      newPosition: [newPosition.x, newPosition.y]
     });
   }
 
@@ -210,7 +211,7 @@ class GraphNode {
   notifyChangePosition() {
     if (!this.savedPosition) return;
     if (this.isPositionChanged(this.savedPosition, this.position)) {
-      this.emitChangePosition(this.position);
+      this.emitChangePosition(this.savedPosition, this.position);
     }
     this.savedPosition = null;
   }
