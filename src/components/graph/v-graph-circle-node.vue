@@ -69,11 +69,15 @@ export default {
     linkRule: {
       type: Function,
       default: null
+    },
+    titleLength: {
+      type: Number,
+      default: 2
     }
   },
   emits: ["update:x", "update:y", "update:selected", "new-link"],
   setup(props, { emit }) {
-    const { x, y, title, id, linkRule } = toRefs(props);
+    const { x, y, title, id, linkRule, titleLength } = toRefs(props);
 
     const canvas = inject("canvas");
     const node = useCircleNode(canvas, { id, x, y, emit, linkRule });
@@ -89,7 +93,10 @@ export default {
       onSelect
     } = node;
 
-    const { truncateTitle, truncateLength } = useTruncateTitle(title, 2);
+    const { truncateTitle, truncateLength } = useTruncateTitle(
+      title,
+      titleLength
+    );
 
     const getNode = () => node;
     provide("node", node);
