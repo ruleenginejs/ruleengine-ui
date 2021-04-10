@@ -1,4 +1,4 @@
-import { reactive, watch, ref, computed, getCurrentInstance } from "vue";
+import { reactive, watch, ref, computed, getCurrentInstance, nextTick } from "vue";
 import Bounds from "@/utils/bounds";
 
 class GraphNode {
@@ -27,6 +27,7 @@ class GraphNode {
     this.onDragStart = this.onDragStart.bind(this);
     this.onDrag = this.onDrag.bind(this);
     this.onDragEnd = this.onDragEnd.bind(this);
+    this.drawConnections = this.drawConnections.bind(this);
 
     this.draggableCallbacks = {
       dragStart: this.onDragStart,
@@ -50,9 +51,15 @@ class GraphNode {
 
   initWatchers(x, y) {
     watch([x, y], () => {
+      const oldX = this.position.x;
+      const oldY = this.position.y;
       this.position.x = x.value;
       this.position.y = y.value;
-    })
+
+      if (oldX !== x.value || oldY !== y.value) {
+        nextTick(this.drawConnections);
+      }
+    });
 
     watch(this.position, () => {
       this.emit("update:x", this.position.x);

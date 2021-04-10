@@ -61,8 +61,8 @@
         </v-graph-circle-node>
         <v-graph-circle-node
           :id="2"
-          :x="nodePos1.x"
-          :y="nodePos1.y"
+          v-model:x="nodePos1.x"
+          v-model:y="nodePos1.y"
           title="error"
           error
           @new-link="onNodeNewlink"
