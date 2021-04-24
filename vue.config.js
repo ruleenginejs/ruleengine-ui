@@ -1,4 +1,5 @@
 module.exports = {
+  lintOnSave: false,
   chainWebpack: config => {
     if (process.env.BUILD_LIB) {
       config.externals({

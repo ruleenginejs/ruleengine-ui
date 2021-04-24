@@ -27,7 +27,7 @@ export default {
     },
     color: {
       type: String,
-      default: "var(--graph-connection-background)"
+      default: null
     },
     borderWidth: {
       type: Number,
@@ -40,6 +40,10 @@ export default {
     selectedClass: {
       type: String,
       default: "v-graph-connection--selected"
+    },
+    colorClass: {
+      type: String,
+      default: "v-graph-connection--color"
     },
     curveFactor: {
       type: Number,
@@ -58,6 +62,7 @@ export default {
       borderWidth,
       className,
       selectedClass,
+      colorClass,
       curveFactor
     } = toRefs(props);
 
@@ -76,6 +81,7 @@ export default {
       borderWidth,
       className,
       selectedClass,
+      colorClass,
       curveFactor
     });
     const getConnection = () => connection;

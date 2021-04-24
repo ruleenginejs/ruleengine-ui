@@ -2,3 +2,13 @@
   /* interactive */
   @apply pointer-events-auto;
 }
+
+.v-graph-connection--color {
+  /* stroke color */
+  @apply text-graph-connection-background stroke-current;
+}
+
+.v-graph-connection--selected {
+  /* stroke color */
+  @apply text-focus-border stroke-current;
+}

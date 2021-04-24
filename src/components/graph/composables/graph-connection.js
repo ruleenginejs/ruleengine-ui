@@ -15,6 +15,7 @@ class GraphConnection {
     borderWidth,
     className,
     selectedClass,
+    colorClass,
     curveFactor
   }) {
     this.canvas = null;
@@ -29,19 +30,22 @@ class GraphConnection {
     this.borderWidth = borderWidth;
     this.className = className;
     this.selectedClass = selectedClass;
+    this.colorClass = colorClass;
     this.curveFactor = curveFactor;
     this.svgElement = null;
     this.drawCache = null;
-
     this.onSelect = this.onSelect.bind(this);
 
-    this.initWatchers({ invalidate })
+    this.initWatchers({ invalidate });
+    this.initHooks();
+  }
 
+  initHooks() {
     onMounted(() => {
       this.notifyRelink(null, this.from.value);
       this.notifyRelink(null, this.to.value);
       this.draw();
-    })
+    });
   }
 
   initWatchers({ invalidate }) {
@@ -77,6 +81,10 @@ class GraphConnection {
     })
 
     watch(this.selectedClass, (newVal, oldVal) => {
+      this.updateCssClass(oldVal, newVal);
+    })
+
+    watch(this.colorClass, (newVal, oldVal) => {
       this.updateCssClass(oldVal, newVal);
     })
 
@@ -210,21 +218,31 @@ class GraphConnection {
 
   createSvgElement() {
     const path = new Path();
-    path.addClass(this.className.value).click(this.onSelect);
+    path.addClass(this.className.value);
+    path.click(this.onSelect);
     this.updateStyle(path);
     this.updateSelectedClass(path);
     return path;
   }
 
   updateStyle(svgElement = this.svgElement) {
-    if (!svgElement) return;
-
-    svgElement
-      .stroke({
+    if (svgElement) {
+      const strokeStyle = {
         width: this.borderWidth.value,
         color: this.color.value,
         linecap: "round"
-      }).fill("transparent");
+      };
+
+      if (!strokeStyle.color) {
+        svgElement.addClass(this.colorClass.value);
+      } else {
+        svgElement.removeClass(this.colorClass.value);
+      }
+
+      svgElement
+        .stroke(strokeStyle)
+        .fill("transparent");
+    }
   }
 
   updateSelectedClass(svgElement = this.svgElement) {
