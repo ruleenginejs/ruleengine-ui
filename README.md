@@ -57,6 +57,8 @@ In your templates
 
 - v-input
 - v-label
+- v-fieldset
+- v-field-layout
 
 #### Action Bar
 
