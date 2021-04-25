@@ -6,25 +6,19 @@
   @apply my-6sp;
 }
 
-/* all labels */
-.v-field-layout > .v-label {
-  /* visual styles */
-  @apply truncate;
-}
-
 .v-field-layout--horizontal {
   /* display styles */
   @apply flex-row items-center;
 }
 
 /* horizontal label */
-.v-field-layout--horizontal > .v-label {
+.v-field-layout--horizontal > .v-field-layout__label {
   /* size */
   @apply w-2/5 pr-2;
 }
 
-/* horizontal input */
-.v-field-layout--horizontal > .v-input-wrap {
+/* horizontal value */
+.v-field-layout--horizontal > .v-field-layout__value {
   /* display styles */
   @apply w-3/5;
 }
@@ -35,7 +29,7 @@
 }
 
 /* vertical label */
-.v-field-layout--vertical > .v-label {
+.v-field-layout--vertical > .v-field-layout__label {
   /* size */
   @apply mb-1;
 }

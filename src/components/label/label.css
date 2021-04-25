@@ -2,3 +2,14 @@
   /* visual styles */
   @apply text-13sp text-foreground;
 }
+
+.v-label--truncate {
+  /* display styles */
+  @apply block;
+
+  /* visual styles */
+  @apply truncate;
+
+  /* sizes */
+  @apply w-full;
+}

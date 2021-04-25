@@ -9,35 +9,47 @@
               title="Properties"
               header-compact
               expand
-              :header-border="false"
+              :header-border="true"
               :bottom-border="false"
             >
               <v-fieldset b-border label="Some input group">
                 <v-field-layout>
-                  <v-label>Some property</v-label>
-                  <v-input>
-                    <template #icon>
-                      <v-icon-file-menu />
-                    </template>
-                  </v-input>
+                  <template #label>
+                    <v-label truncate>Some property</v-label>
+                  </template>
+                  <template #value>
+                    <v-input>
+                      <template #icon>
+                        <v-icon-file-menu />
+                      </template>
+                    </v-input>
+                  </template>
                 </v-field-layout>
                 <v-field-layout>
-                  <v-label>Some property</v-label>
-                  <v-input />
+                  <template #label>
+                    <v-label truncate>Some property</v-label>
+                  </template>
+                  <template #value>
+                    <v-input />
+                  </template>
                 </v-field-layout>
               </v-fieldset>
               <v-fieldset label="Some input group">
                 <v-field-layout vertical>
-                  <v-label>Some property</v-label>
-                  <v-input />
+                  <template #label>
+                    <v-label truncate>Some property</v-label>
+                  </template>
+                  <template #value>
+                    <v-input />
+                  </template>
                 </v-field-layout>
-                <v-field-layout vertical>
-                  <v-label>Some property</v-label>
-                  <v-input>
-                    <template #icon>
-                      <v-icon-file-menu />
-                    </template>
-                  </v-input>
+                <v-field-layout>
+                  <template #label>
+                    <v-label truncate>Some property</v-label>
+                  </template>
+                  <template #value>
+                    <v-label truncate>Some property</v-label>
+                  </template>
                 </v-field-layout>
               </v-fieldset>
             </v-sidebar-section>
