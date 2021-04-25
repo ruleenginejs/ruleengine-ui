@@ -12,7 +12,7 @@
     <br />
     <button @click="toggleRight">toggle right</button>
   </v-content>
-  <v-content padding="md" class="h-96">
+  <v-content padding="md" class="h-96 c-split-view">
     <v-split-view
       key="test"
       ref="splitview"
@@ -55,7 +55,7 @@ export default {
 </script>
 
 <style>
-.v-split-gutter {
+.c-split-view .v-split-gutter {
   @apply bg-black;
 }
 </style>

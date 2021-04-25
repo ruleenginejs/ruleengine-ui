@@ -1,0 +1,17 @@
+.v-fieldset--padding {
+  /* sizes */
+  @apply px-2.5 py-1;
+}
+
+.v-fieldset__label {
+  /* visual styles */
+  @apply text-11sp leading-4 text-fieldset-title-foreground truncate uppercase font-medium;
+}
+
+.v-fieldset--t-border {
+  @apply border-t border-solid border-fieldset-border;
+}
+
+.v-fieldset--b-border {
+  @apply border-b border-solid border-fieldset-border;
+}

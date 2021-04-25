@@ -1,0 +1,41 @@
+.v-field-layout {
+  /* display styles */
+  @apply flex;
+
+  /* sizes */
+  @apply my-6sp;
+}
+
+/* all labels */
+.v-field-layout > .v-label {
+  /* visual styles */
+  @apply truncate;
+}
+
+.v-field-layout--horizontal {
+  /* display styles */
+  @apply flex-row items-center;
+}
+
+/* horizontal label */
+.v-field-layout--horizontal > .v-label {
+  /* size */
+  @apply w-2/5 pr-2;
+}
+
+/* horizontal input */
+.v-field-layout--horizontal > .v-input-wrap {
+  /* display styles */
+  @apply w-3/5;
+}
+
+.v-field-layout--vertical {
+  /* display styles */
+  @apply flex-col;
+}
+
+/* vertical label */
+.v-field-layout--vertical > .v-label {
+  /* size */
+  @apply mb-1;
+}

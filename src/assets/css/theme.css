@@ -70,4 +70,8 @@
 
   /* link */
   --link-control-backgound: #007fd4;
+
+  /* fieldset */
+  --fieldset-border: #cccccc33;
+  --fieldset-title-foreground: #bbbbbb;
 }

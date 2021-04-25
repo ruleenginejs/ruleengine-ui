@@ -54,7 +54,10 @@ module.exports = {
         "graph-link-active-port-backgound": "var(--graph-link-active-port-backgound)",
         "graph-connection-background": "var(--graph-connection-background)",
 
-        "link-control-backgound": "var(--link-control-backgound)"
+        "link-control-backgound": "var(--link-control-backgound)",
+
+        "fieldset-border": "var(--fieldset-border)",
+        "fieldset-title-foreground": "var(--fieldset-title-foreground)"
       },
       outline: {
         blue: ['1px solid var(--focus-border)', '-1px'],
@@ -80,6 +83,7 @@ module.exports = {
         "2sp": '0.125rem',
         "3sp": '0.1875rem',
         "5sp": '0.3125rem',
+        "6sp": '0.375rem',
         "7sp": '0.4375rem',
         "9sp": '0.5625rem',
         "11sp": '0.6875rem',
