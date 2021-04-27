@@ -1,0 +1,7 @@
+.v-select-box {
+  /* display styles */
+  @apply block;
+
+  /* sizes */
+  @apply w-full;
+}
