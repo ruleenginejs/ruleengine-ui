@@ -1,6 +1,7 @@
 <template>
   <c-form />
   <c-action-bar />
+  <c-list />
   <c-tabs />
   <c-sidebar />
   <c-treeview />
@@ -18,6 +19,7 @@ import CTreeview from "./c-treeview";
 import CSplitView from "./c-split-view";
 import CGraph from "./c-graph";
 import CPropsPanel from "./c-props-panel";
+import CList from "./c-list";
 
 export default {
   name: "all-components",
@@ -29,7 +31,8 @@ export default {
     CTreeview,
     CSplitView,
     CGraph,
-    CPropsPanel
+    CPropsPanel,
+    CList
   }
 };
 </script>

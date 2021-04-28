@@ -28,6 +28,10 @@ export default {
       type: [String, Number, Object],
       default: null
     },
+    items: {
+      type: Array,
+      default: () => []
+    },
     valueAsObject: {
       type: Boolean,
       default: false
@@ -48,10 +52,6 @@ export default {
       type: Number,
       default: 0
     },
-    items: {
-      type: Array,
-      default: () => []
-    },
     valueField: {
       type: String,
       default: "value"
@@ -63,6 +63,10 @@ export default {
     detailField: {
       type: String,
       default: "detail"
+    },
+    disabledField: {
+      type: String,
+      default: "disabled"
     }
   },
   emits: ["update:modelValue"],
@@ -75,15 +79,16 @@ export default {
       items,
       valueField,
       displayField,
-      detailField
+      detailField,
+      disabledField
     } = toRefs(props);
 
     const optionItems = computed(() =>
       items.value.map((item) => ({
         value: item[valueField.value],
         text: item[displayField.value],
-        detail: item[detailField],
-        disabled: !!item.disabled
+        detail: item[detailField.value],
+        disabled: !!item[disabledField.value]
       }))
     );
 
