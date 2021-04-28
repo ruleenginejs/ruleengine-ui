@@ -5,6 +5,7 @@
     v-model="value"
     :disabled="disabled"
     :readonly="readonly"
+    :tabindex="tabIndex"
   >
     <option
       v-for="optionItem in optionItems"
@@ -42,6 +43,10 @@ export default {
     readonly: {
       type: Boolean,
       default: false
+    },
+    tabIndex: {
+      type: Number,
+      default: 0
     },
     items: {
       type: Array,

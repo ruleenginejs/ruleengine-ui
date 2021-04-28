@@ -82,4 +82,9 @@
   --button-secondary-foreground: #ffffff;
   --button-secondary-background: #3a3d41;
   --button-secondary-hover-background: #45494e;
+
+  /* dropdown */
+  --dropdown-background: #3c3c3c;
+  --dropdown-foreground: #f0f0f0;
+  --dropdown-border: #3c3c3c;
 }

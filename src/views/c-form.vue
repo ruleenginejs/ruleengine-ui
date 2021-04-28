@@ -36,6 +36,10 @@
         v-model="form.selectValue"
       />
     </v-layout>
+    <v-layout h-center>
+      <v-label class="w-1/2">Disabled select:</v-label>
+      <v-select-box :items="selectItems" disabled />
+    </v-layout>
     <div>Select: {{ form.selectValue }}</div>
     <div>
       <v-button>Save</v-button>

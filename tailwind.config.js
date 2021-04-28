@@ -64,7 +64,11 @@ module.exports = {
         "button-hover-background": "var(--button-hover-background)",
         "button-secondary-foreground": "var(--button-secondary-foreground)",
         "button-secondary-background": "var(--button-secondary-background)",
-        "button-secondary-hover-background": "var(--button-secondary-hover-background)"
+        "button-secondary-hover-background": "var(--button-secondary-hover-background)",
+
+        "dropdown-background": "var(--dropdown-background)",
+        "dropdown-foreground": "var(--dropdown-foreground)",
+        "dropdown-border": "var(--dropdown-border)"
       },
       outline: {
         blue: ['1px solid var(--focus-border)', '-1px'],

@@ -2,6 +2,21 @@
   /* display styles */
   @apply block;
 
+  /* visual styles */
+  @apply text-13sp text-dropdown-foreground bg-dropdown-background;
+
+  /* border */
+  @apply border border-solid border-dropdown-border;
+
   /* sizes */
-  @apply w-full;
+  @apply h-6 w-full py-2sp px-2;
+
+  /* focus */
+  @apply focus:outline-blue;
+
+  /* active */
+  @apply active:outline-none;
+
+  /* disabled */
+  @apply disabled:opacity-38;
 }
