@@ -57,10 +57,18 @@ module.exports = {
         "link-control-backgound": "var(--link-control-backgound)",
 
         "fieldset-border": "var(--fieldset-border)",
-        "fieldset-title-foreground": "var(--fieldset-title-foreground)"
+        "fieldset-title-foreground": "var(--fieldset-title-foreground)",
+
+        "button-foreground": "var(--button-foreground)",
+        "button-background": "var(--button-background)",
+        "button-hover-background": "var(--button-hover-background)",
+        "button-secondary-foreground": "var(--button-secondary-foreground)",
+        "button-secondary-background": "var(--button-secondary-background)",
+        "button-secondary-hover-background": "var(--button-secondary-hover-background)"
       },
       outline: {
         blue: ['1px solid var(--focus-border)', '-1px'],
+        button: ["1px solid var(--focus-border)", "2px"]
       },
       fontSize: {
         "8sp": ['0.5rem', { lineHeight: '0.85rem' }],
@@ -132,7 +140,8 @@ module.exports = {
   },
   variants: {
     extend: {
-      opacity: ["disabled"]
+      opacity: ["disabled"],
+      outline: ["active"]
     }
   },
   plugins: []

@@ -1,0 +1,53 @@
+.v-button {
+  /* display styles */
+  @apply inline-flex items-center justify-center;
+
+  /* visual styles */
+  @apply text-13sp text-center whitespace-nowrap;
+
+  /* sizes */
+  @apply py-0.5 px-3.5;
+
+  /* cursor */
+  @apply cursor-pointer;
+
+  /* focus */
+  @apply focus:outline-button;
+
+  /* active */
+  @apply active:outline-none;
+}
+
+.v-button--default {
+  /* visual styles */
+  @apply text-button-foreground bg-button-background;
+
+  /* hover */
+  @apply hover:bg-button-hover-background hover:text-button-foreground;
+}
+
+.v-button--secondary {
+  /* visual styles */
+  @apply text-button-secondary-foreground bg-button-secondary-background;
+
+  /* hover */
+  @apply hover:bg-button-secondary-hover-background hover:text-button-secondary-foreground;
+}
+
+.v-button--disabled {
+  /* visual styles */
+  @apply opacity-40 cursor-default;
+
+  /* focus */
+  @apply focus:outline-none;
+}
+
+.v-button--disabled.v-button--default {
+  /* hover */
+  @apply hover:text-button-foreground hover:bg-button-background;
+}
+
+.v-button--disabled.v-button--secondary {
+  /* hover */
+  @apply hover:text-button-secondary-foreground hover:bg-button-secondary-background;
+}

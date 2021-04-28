@@ -74,4 +74,12 @@
   /* fieldset */
   --fieldset-border: #cccccc33;
   --fieldset-title-foreground: #bbbbbb;
+
+  /* button */
+  --button-foreground: #ffffff;
+  --button-background: #0e639c;
+  --button-hover-background: #1177bb;
+  --button-secondary-foreground: #ffffff;
+  --button-secondary-background: #3a3d41;
+  --button-secondary-hover-background: #45494e;
 }

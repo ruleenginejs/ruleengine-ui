@@ -37,6 +37,14 @@
       />
     </v-layout>
     <div>Select: {{ form.selectValue }}</div>
+    <div>
+      <v-button>Save</v-button>
+      <v-button secondary>Cancel</v-button>
+    </div>
+    <div>
+      <v-button disabled>Save</v-button>
+      <v-button disabled secondary>Cancel</v-button>
+    </div>
   </v-content>
 </template>
 
