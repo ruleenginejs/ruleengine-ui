@@ -10,10 +10,16 @@
 
   @apply outline-none cursor-pointer;
 
-  /* hover, focus */
-  &:hover, &:focus {
-    @apply bg-list-hover-background;
-  }
+  /* hover */
+  @apply hover:bg-list-hover-background;
+
+  /* focus */
+  @apply focus:outline-blue;
+}
+
+.v-tree-item:not(.v-tree-item--selected) {
+  /* active */
+  @apply active:outline-none;
 }
 
 .v-tree-item__label {
@@ -72,15 +78,15 @@
   /* visual styles */
   @apply bg-list-inactive-selection-background;
 
-  &:focus {
-    @apply text-list-active-selection-foreground bg-list-active-selection-background;
-  }
+  /* focus */
+  @apply focus:text-list-active-selection-foreground focus:bg-list-active-selection-background;
 }
 
-/* root item focus */
-.v-tree-item--root:focus {
-  @apply outline-blue;
-}
-.v-tree-item--root:focus:active {
-  @apply outline-none;
+/* root item */
+.v-tree-item--root {
+  /* focus */
+  @apply focus:outline-blue;
+
+  /* active */
+  @apply active:outline-none;
 }
