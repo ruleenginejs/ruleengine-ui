@@ -1,5 +1,5 @@
 <template>
-  <div class="v-input-wrap" :class="wrapClasses">
+  <div class="v-input-layout" :class="wrapClasses">
     <input
       class="v-input"
       :class="inputClasses"
@@ -71,7 +71,7 @@ export default {
 
     const wrapClasses = computed(() => ({
       [className.value]: !!className.value,
-      "v-input-wrap--disabled": disabled.value
+      "v-input-layout--disabled": disabled.value
     }));
 
     const onIconClick = () => {

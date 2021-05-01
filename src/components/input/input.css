@@ -1,4 +1,4 @@
-.v-input-wrap {
+.v-input-layout {
   /* position */
   @apply relative;
 }
@@ -49,6 +49,6 @@
   @apply cursor-pointer;
 }
 
-.v-input-wrap--disabled .v-input__icon {
+.v-input-layout--disabled .v-input__icon {
   @apply opacity-38;
 }
