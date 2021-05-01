@@ -1,0 +1,38 @@
+.v-list-item {
+  /* display styles */
+  @apply flex items-center;
+
+  /* visual styles */
+  @apply text-13sp leading-4 text-list-inactive-foreground;
+
+  /* sizes */
+  @apply h-5;
+
+  /* cursor */
+  @apply cursor-pointer;
+
+  /* hover */
+  @apply hover:bg-list-hover-background;
+}
+
+.v-list-item__text {
+  /* display styles */
+  @apply flex-grow;
+
+  /* visual styles */
+  @apply truncate;
+
+  /* sizes */
+  @apply px-1;
+}
+
+.v-list-item__icon {
+  /* display styles */
+  @apply flex items-center justify-center flex-shrink-0;
+
+  /* visual styles */
+  @apply text-12sp leading-none;
+
+  /* sizes */
+  @apply h-5 w-4;
+}
