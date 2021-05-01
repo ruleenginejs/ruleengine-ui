@@ -67,8 +67,8 @@ export default {
       "v-tree-item--selected": selected?.value
     }));
 
-    const forward = (eventName) => (e) => emit(eventName, e);
-    const forwardSelect = forward("select");
+    const forwardEvent = (eventName) => (e) => emit(eventName, e);
+    const forwardSelect = forwardEvent("select");
 
     const onSelect = () => {
       emit("select", {

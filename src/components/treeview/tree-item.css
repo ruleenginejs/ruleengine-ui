@@ -8,7 +8,11 @@
   /* sizes */
   @apply h-22sp;
 
-  @apply outline-none cursor-pointer;
+  /* ouline none */
+  @apply outline-none;
+
+  /* cursor */
+  @apply cursor-pointer;
 
   /* hover */
   @apply hover:bg-list-hover-background;
