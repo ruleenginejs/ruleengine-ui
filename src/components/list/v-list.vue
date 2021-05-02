@@ -13,6 +13,7 @@
       :selected="item.selected"
       :focused="item.focused"
       :disabled="item.disabled"
+      @select="mouseEnabled ? onItemSelect(item) : null"
     />
   </div>
 </template>
@@ -34,19 +35,23 @@ export default {
     },
     tabIndex: {
       type: Number,
-      default: -1
+      default: null
     },
     disabled: {
-      type: Boolean,
-      default: false
-    },
-    selectable: {
       type: Boolean,
       default: false
     },
     selected: {
       type: Object,
       default: null
+    },
+    mouseEnabled: {
+      type: Boolean,
+      default: false
+    },
+    keyboardEnabled: {
+      type: Boolean,
+      default: false
     },
     idField: {
       type: String,
@@ -78,7 +83,6 @@ export default {
     const {
       items,
       disabled,
-      selectable,
       selected,
       idField,
       displayField,
@@ -100,17 +104,17 @@ export default {
     const list = useList({
       items,
       disabled,
-      selectable,
       selected,
       fields,
       emit
     });
 
-    const { displayItems } = list;
+    const { displayItems, onItemSelect } = list;
 
     return {
       instance: list,
-      displayItems
+      displayItems,
+      onItemSelect
     };
   }
 };

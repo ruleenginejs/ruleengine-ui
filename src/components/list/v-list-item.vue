@@ -1,5 +1,5 @@
 <template>
-  <div class="v-list-item" :class="cssClasses">
+  <div class="v-list-item" :class="cssClasses" @click="onSelect">
     <div v-if="icon" class="v-list-item__icon" :style="{ color: iconColor }">
       <component :is="icon" />
     </div>
@@ -40,17 +40,22 @@ export default {
       default: false
     }
   },
-  setup(props) {
+  setup(props, { emit }) {
     const { selected, focused, disabled } = toRefs(props);
 
     const cssClasses = computed(() => ({
-      "v-list__item--focused": focused.value,
-      "v-list__item--selected": selected.value,
-      "v-list__item--disabled": disabled.value
+      "v-list-item--focused": focused.value,
+      "v-list-item--selected": selected.value,
+      "v-list-item--disabled": disabled.value
     }));
 
+    const onSelect = () => {
+      emit("select");
+    };
+
     return {
-      cssClasses
+      cssClasses,
+      onSelect
     };
   }
 };

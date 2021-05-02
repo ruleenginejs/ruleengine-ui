@@ -10,9 +10,6 @@
 
   /* cursor */
   @apply cursor-pointer;
-
-  /* hover */
-  @apply hover:bg-list-hover-background;
 }
 
 .v-list-item__text {
@@ -35,4 +32,45 @@
 
   /* sizes */
   @apply h-5 w-4;
+}
+
+/* hover */
+.v-list-item:not(.v-list-item--focused):not(.v-list-item--selected) {
+  @apply hover:bg-list-hover-background;
+}
+
+/* focused */
+.v-list-item--focused {
+  /* visual styles */
+  @apply bg-list-focus-background;
+
+  /* hover */
+  @apply hover:bg-list-focus-background;
+}
+
+/* selected */
+.v-list-item--selected {
+  /* visual styles */
+  @apply bg-list-inactive-selection-background;
+
+  /* hover */
+  @apply hover:bg-list-inactive-selection-background;
+}
+
+/* active list */
+.v-list:focus .v-list-item--selected {
+  /* visual styles */
+  @apply bg-list-active-selection-background text-list-active-selection-foreground;
+
+  /* hover */
+  @apply hover:bg-list-active-selection-background;
+}
+
+.v-list:focus .v-list-item--selected.v-list-item--focused {
+  /* visual styles */
+  @apply bg-list-active-selection-background text-list-active-selection-foreground;
+}
+
+.v-list:focus .v-list-item--focused {
+  @apply outline-blue;
 }

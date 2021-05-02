@@ -1,11 +1,11 @@
-import { watchEffect, reactive } from "vue";
+import { isDefined } from "@/utils/types";
+import { watch, watchEffect, reactive } from "vue";
 import ListItem from "./list-item";
 
 class List {
   constructor({
     items,
     disabled,
-    selectable,
     selected,
     fields,
     emit
@@ -13,12 +13,13 @@ class List {
     this.items = items;
     this.emit = emit;
     this.disabled = disabled;
-    this.selectable = selectable;
     this.selected = selected;
     this.fields = fields;
     this.displayItems = reactive([]);
+    this.onItemSelect = this.onItemSelect.bind(this);
 
     this.initWatchers();
+    this.updateSelection();
   }
 
   initWatchers() {
@@ -28,6 +29,26 @@ class List {
         (item, index) => new ListItem(index, item, this.fields)
       ));
     });
+
+    watch(this.selected, () => {
+      this.updateSelection();
+    });
+  }
+
+  isSelectedItem(item) {
+    const id = item[this.fields.value.idField];
+    const selectedId = this.selected.value?.[this.fields.value.idField];
+    return isDefined(selectedId) && isDefined(id) && id === selectedId;
+  }
+
+  updateSelection() {
+    this.displayItems.forEach(item => {
+      item.selected = this.isSelectedItem(item);
+    });
+  }
+
+  onItemSelect(item) {
+    this.emit("update:selected", item.data);
   }
 }
 

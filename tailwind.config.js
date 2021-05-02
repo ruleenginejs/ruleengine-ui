@@ -33,11 +33,12 @@ module.exports = {
         "side-bar-title-foreground": "var(--side-bar-title-foreground)",
         "side-bar-border": "var(--side-bar-border)",
 
-        "list-hover-background": "var(--list-hover-background)",
         "list-active-selection-background": "var(--list-active-selection-background)",
         "list-active-selection-foreground": "var(--list-active-selection-foreground)",
         "list-inactive-selection-background": "var(--list-inactive-selection-background)",
         "list-inactive-foreground": "var(--list-inactive-foreground)",
+        "list-hover-background": "var(--list-hover-background)",
+        "list-focus-background": "var(--list-focus-background)",
 
         "graph-background": "var(--graph-background)",
         "graph-foreground": "var(--graph-foreground)",

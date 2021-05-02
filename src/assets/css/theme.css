@@ -43,11 +43,12 @@
   --side-bar-border: #000000;
 
   /* list */
-  --list-hover-background: #2a2d2e;
   --list-active-selection-background: #094771;
   --list-active-selection-foreground: #ffffff;
   --list-inactive-selection-background: #37373d;
   --list-inactive-foreground: #cccccc;
+  --list-hover-background: #2a2d2e;
+  --list-focus-background: #062f4a;
 
   /* scrollbar */
   --scroll-hover-foreground: #cccccc33;
