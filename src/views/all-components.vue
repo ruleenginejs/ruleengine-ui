@@ -2,6 +2,7 @@
   <c-form />
   <c-action-bar />
   <c-list />
+  <c-dropdown />
   <c-tabs />
   <c-sidebar />
   <c-treeview />
@@ -20,6 +21,7 @@ import CSplitView from "./c-split-view";
 import CGraph from "./c-graph";
 import CPropsPanel from "./c-props-panel";
 import CList from "./c-list";
+import CDropdown from "./c-dropdown";
 
 export default {
   name: "all-components",
@@ -32,7 +34,8 @@ export default {
     CSplitView,
     CGraph,
     CPropsPanel,
-    CList
+    CList,
+    CDropdown
   }
 };
 </script>

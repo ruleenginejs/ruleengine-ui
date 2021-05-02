@@ -69,7 +69,9 @@ module.exports = {
 
         "dropdown-background": "var(--dropdown-background)",
         "dropdown-foreground": "var(--dropdown-foreground)",
-        "dropdown-border": "var(--dropdown-border)"
+        "dropdown-border": "var(--dropdown-border)",
+        "dropdown-list-background": "var(--dropdown-list-background)",
+        "dropdown-list-border": "var(--dropdown-list-border)"
       },
       outline: {
         blue: ['1px solid var(--focus-border)', '-1px'],
