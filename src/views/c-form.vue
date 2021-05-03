@@ -49,6 +49,11 @@
       <v-button disabled>Save</v-button>
       <v-button disabled secondary>Cancel</v-button>
     </div>
+    <div>Autocomplete:</div>
+    <v-autocomplete
+      placeholder="Enter relative path"
+      :data-source="fetchAutocompleteData"
+    />
   </v-content>
 </template>
 
@@ -72,6 +77,19 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    fetchAutocompleteData(searchText) {
+      console.log(searchText);
+      return Promise.resolve([
+        {
+          text: "Item 1"
+        },
+        {
+          text: "Item 2"
+        }
+      ]);
+    }
   }
 };
 </script>
