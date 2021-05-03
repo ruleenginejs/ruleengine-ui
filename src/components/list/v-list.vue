@@ -1,7 +1,11 @@
 <template>
   <div
     class="v-list"
-    :class="{ 'v-list--disabled': disabled }"
+    :class="{
+      'v-list--disabled': disabled,
+      'v-list--md': size === 'md',
+      'v-list--sm': size === 'sm'
+    }"
     :tabindex="tabIndex"
   >
     <v-list-item
@@ -52,6 +56,10 @@ export default {
     keyboardEnabled: {
       type: Boolean,
       default: false
+    },
+    size: {
+      type: String,
+      default: "md"
     },
     idField: {
       type: String,

@@ -1,12 +1,13 @@
 import { isDefined } from "./types";
 
 class RectObserver {
-  constructor(element, callback, checkInterval = 100) {
+  constructor(element, callback, customEquals = null, checkInterval = 100) {
     this.element = element;
     this.checkInterval = checkInterval;
     this.timer = null;
     this.lastRect = null;
     this.callback = callback;
+    this.equalsRectFn = customEquals ?? this.equalsRect;
     this.doCheck = this.doCheck.bind(this);
   }
 
@@ -21,11 +22,16 @@ class RectObserver {
       clearInterval(this.timer);
       this.timer = null;
     }
+    this.lastRect = null;
   }
 
   doCheck() {
     const currentRect = this.element.getBoundingClientRect();
-    if (this.equalsRect(this.lastRect, currentRect)) {
+    if (!this.lastRect) {
+      this.lastRect = currentRect;
+      return;
+    }
+    if (this.equalsRectFn(this.lastRect, currentRect)) {
       return;
     }
     this.callback?.(currentRect);

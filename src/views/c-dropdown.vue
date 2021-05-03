@@ -5,9 +5,10 @@
     </v-button>
     <v-dropdown
       v-if="!destroyDropdown"
-      :visible="dropdownVisible"
+      v-model:visible="dropdownVisible"
       anchor="button-1"
-      stretch-to-anchor
+      anchor-constraint
+      :offset-y="2"
     >
       <v-list :items="items" />
     </v-dropdown>

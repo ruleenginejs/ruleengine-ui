@@ -3,13 +3,26 @@
   @apply flex items-center;
 
   /* visual styles */
-  @apply text-13sp leading-4 text-list-inactive-foreground;
-
-  /* sizes */
-  @apply h-5;
+  @apply text-list-inactive-foreground;
 
   /* cursor */
   @apply cursor-pointer;
+}
+
+.v-list--md .v-list-item {
+  /* visual styles */
+  @apply text-13sp leading-4;
+
+  /* sizes */
+  @apply h-5;
+}
+
+.v-list--sm .v-list-item {
+  /* visual styles */
+  @apply text-12sp leading-4;
+
+  /* sizes */
+  @apply h-18sp;
 }
 
 .v-list-item__text {

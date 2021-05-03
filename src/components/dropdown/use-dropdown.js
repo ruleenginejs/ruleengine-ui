@@ -1,40 +1,41 @@
-import RectObserver from "@/utils/rect-observer";
-import { isDefined } from "@/utils/types";
-import { watch, onMounted, onBeforeUnmount, computed, ref, nextTick } from "vue";
+import { watch, watchEffect, onMounted, onBeforeUnmount, ref, nextTick } from "vue";
+import { getScrollParent } from "@/utils/scroll";
+import DropdownLayout from "./dropdown-layout";
+import ScrollTrigger from "./scroll-trigger";
 
 export default function useDropdown({
   visible,
   anchor,
-  maxWidth: userMaxWidth,
-  maxHeigth: userMaxHeigth,
-  minWidth: userMinWidth,
-  stretchToAnchor
+  emit,
+  maxWidth,
+  maxHeigth,
+  minWidth,
+  offsetX,
+  offsetY,
+  anchorConstraint
 }) {
   const dropdown = ref(null);
-  const top = ref(0);
-  const left = ref(0);
-  const minWidth = ref(null);
-  const maxHeigth = ref(null);
-  const maxWidth = ref(null);
-  let anchorObserver = null;
+  const layout = new DropdownLayout(dropdown);
 
-  const computedMinWidth = computed(
-    () => stretchToAnchor.value ? minWidth.value : userMinWidth.value
-  );
-  const computedMaxWidth = computed(
-    () => isDefined(userMaxWidth.value) ? userMaxWidth.value : maxWidth.value
-  );
-  const computedMaxHeight = computed(
-    () => isDefined(userMaxHeigth.value) ? userMaxHeigth.value : maxHeigth.value
-  );
+  const onMouseEnter = () => {
+    layout.update();
+  };
 
-  const dropdownStyles = computed(() => ({
-    top: `${top.value}px`,
-    left: `${left.value}px`,
-    maxWidth: isDefined(computedMaxWidth.value) ? `${computedMaxWidth.value}px` : null,
-    maxHeigth: isDefined(computedMaxHeight.value) ? `${computedMaxHeight.value}px` : null,
-    minWidth: isDefined(computedMinWidth.value) ? `${computedMinWidth.value}px` : null,
-  }));
+  watchEffect(() => {
+    layout.setMaxWidth(maxWidth.value)
+      .setMaxHeight(maxHeigth.value)
+      .setMinWidth(minWidth.value)
+      .setOffsetX(offsetX.value)
+      .setOffsetY(offsetY.value)
+      .setAnchorConstraint(anchorConstraint.value)
+  });
+
+  watch(anchor, () => {
+    destroyScrollTrigger();
+    if (visible.value) {
+      updateDropdown();
+    }
+  });
 
   onMounted(() => {
     if (visible.value) {
@@ -43,8 +44,7 @@ export default function useDropdown({
   });
 
   onBeforeUnmount(() => {
-    anchorObserver?.destroy();
-    anchorObserver = null;
+    destroyScrollTrigger();
   });
 
   watch(visible, () => {
@@ -53,69 +53,53 @@ export default function useDropdown({
         if (visible.value) {
           updateDropdown();
         } else {
-          stopAnchorObserver();
+          destroyScrollTrigger();
         }
       });
     } else {
-      stopAnchorObserver();
-    }
-  });
-
-  watch(anchor, () => {
-    anchorObserver?.destroy();
-    anchorObserver = null;
-
-    if (visible.value) {
-      updateDropdown();
+      destroyScrollTrigger();
     }
   });
 
   function updateDropdown() {
-    updatePosition();
-    startAnchorObserver();
+    layout.setAnchor(getAnchorElement()).update();
+    startScrollTrigger();
   }
 
-  function updatePosition() {
-    const anchorEl = getAnchorElement();
-    if (!anchorEl || !dropdown.value) return;
+  function closeDropdown() {
+    emit("update:visible", false);
+  }
 
-    const anchorRect = anchorEl.getBoundingClientRect();
-    const dropdownRect = dropdown.value.getBoundingClientRect();
-    const winHeight = window.innerHeight;
-
-    if (stretchToAnchor.value) {
-      minWidth.value = anchorRect.width;
+  let scrollTrigger = null;
+  function startScrollTrigger() {
+    if (!scrollTrigger) {
+      const scrollParentEl = getAnchorScrollParent();
+      if (scrollParentEl) {
+        scrollTrigger = new ScrollTrigger(scrollParentEl, closeDropdown);
+      }
     }
+    scrollTrigger?.start();
+  }
 
-    left.value = anchorRect.left;
-    top.value = anchorRect.top + anchorRect.height;
-
-    if ((top.value + dropdownRect.height) > winHeight) {
-      top.value = anchorRect.top - dropdownRect.height;
-    }
+  function destroyScrollTrigger() {
+    scrollTrigger?.destroy();
+    scrollTrigger = null;
   }
 
   function getAnchorElement() {
-    if (anchor.value) {
-      return document.getElementById(anchor.value);
-    }
-    return null;
+    if (!anchor.value) return null;
+    return document.getElementById(anchor.value);
   }
 
-  function startAnchorObserver() {
+  function getAnchorScrollParent() {
     const anchorEl = getAnchorElement();
-    if (!anchorObserver && anchorEl) {
-      anchorObserver = new RectObserver(anchorEl, updatePosition);
-    }
-    anchorObserver?.start();
-  }
-
-  function stopAnchorObserver() {
-    anchorObserver?.stop();
+    if (!anchorEl) return null;
+    return getScrollParent(anchorEl, false, document);
   }
 
   return {
-    dropdownStyles,
-    dropdown
+    dropdownStyles: layout.styles,
+    dropdown,
+    onMouseEnter
   }
 }
