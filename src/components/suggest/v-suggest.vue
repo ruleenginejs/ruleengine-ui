@@ -20,7 +20,7 @@
 
 <script>
 import { computed, toRefs } from "vue";
-import useSuggest from "./use-suggest";
+import useSearch from "./use-search";
 import { VList } from "@/components/list";
 import { VDropdown } from "@/components/dropdown";
 
@@ -115,9 +115,12 @@ export default {
       "v-suggest--md": size.value === "md"
     }));
 
-    const { modelVisible, loading, resultItems } = useSuggest({
-      emit,
-      visible,
+    const modelVisible = computed({
+      get: () => visible.value,
+      set: (val) => emit("update:visible", val)
+    });
+
+    const { loading, resultItems } = useSearch({
       dataSource,
       searchQuery,
       searchTimeout,
