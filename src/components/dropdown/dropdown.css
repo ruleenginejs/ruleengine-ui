@@ -1,7 +1,4 @@
 .v-dropdown {
   /* display styles */
   @apply fixed top-0 left-0 overflow-auto;
-
-  /* visaul styles */
-  @apply bg-dropdown-list-background border border-solid border-dropdown-border;
 }

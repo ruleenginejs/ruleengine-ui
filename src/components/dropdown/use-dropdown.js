@@ -29,6 +29,7 @@ export default function useDropdown({
       .setOffsetX(offsetX.value)
       .setOffsetY(offsetY.value)
       .setAnchorConstraint(anchorConstraint.value)
+      .update();
   });
 
   watch(anchor, () => {

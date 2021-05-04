@@ -1,10 +1,12 @@
 <template>
   <v-dropdown
-    class-name="v-suggest"
+    :class-name="cssClasses"
     v-model:visible="modelVisible"
     :anchor="anchor"
     :anchor-constraint="anchorConstraint"
     :action-when-scrolling="actionWhenParentScrolling"
+    :offset-x="offsetX"
+    :offset-y="offsetY"
   >
     <div v-if="loading" class="v-suggest__message">
       {{ loadingMessage }}
@@ -12,12 +14,12 @@
     <div v-else-if="resultItems.length === 0" class="v-suggest__message">
       {{ emptyResultMessage }}
     </div>
-    <v-list :items="resultItems" />
+    <v-list v-else :items="resultItems" :size="listSize" />
   </v-dropdown>
 </template>
 
 <script>
-import { toRefs } from "vue";
+import { computed, toRefs } from "vue";
 import useSuggest from "./use-suggest";
 import { VList } from "@/components/list";
 import { VDropdown } from "@/components/dropdown";
@@ -57,6 +59,22 @@ export default {
       type: Number,
       default: null
     },
+    size: {
+      type: String,
+      default: "md"
+    },
+    listSize: {
+      type: String,
+      default: "md"
+    },
+    offsetX: {
+      type: Number,
+      default: null
+    },
+    offsetY: {
+      type: Number,
+      default: null
+    },
     anchor: {
       type: String,
       default: null
@@ -81,6 +99,7 @@ export default {
   emits: ["update:visible", "select"],
   setup(props, { emit }) {
     const {
+      size,
       visible,
       dataSource,
       searchQuery,
@@ -89,6 +108,12 @@ export default {
       maxQueryLength,
       maxItemCount
     } = toRefs(props);
+
+    const cssClasses = computed(() => ({
+      "v-suggest": true,
+      "v-suggest--sm": size.value === "sm",
+      "v-suggest--md": size.value === "md"
+    }));
 
     const { modelVisible, loading, resultItems } = useSuggest({
       emit,
@@ -104,8 +129,13 @@ export default {
     return {
       modelVisible,
       loading,
-      resultItems
+      resultItems,
+      cssClasses
     };
   }
 };
 </script>
+
+<style>
+@import "suggest";
+</style>

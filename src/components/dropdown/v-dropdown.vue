@@ -49,7 +49,7 @@ export default {
       default: null
     },
     className: {
-      type: String,
+      type: [String, Object, Array],
       default: null
     },
     anchorConstraint: {

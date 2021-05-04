@@ -88,6 +88,9 @@
   --dropdown-background: #3c3c3c;
   --dropdown-foreground: #f0f0f0;
   --dropdown-border: #3c3c3c;
-  --dropdown-list-background: #252526;
-  --dropdown-list-border: #454545;
+
+  /* suggest */
+  --suggest-background: #252526;
+  --suggest-border: #454545;
+  --suggest-foreground: #d4d4d4;
 }

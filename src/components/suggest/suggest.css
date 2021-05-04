@@ -1,0 +1,28 @@
+.v-suggest {
+  /* visual styles */
+  @apply bg-suggest-background border border-solid border-suggest-border;
+}
+
+.v-suggest__message {
+  /* visual styles */
+  @apply text-suggest-foreground truncate;
+
+  /* sizes */
+  @apply pl-22sp;
+}
+
+.v-suggest--md .v-suggest__message {
+  /* visual styles */
+  @apply text-13sp leading-22sp;
+
+  /* sizes */
+  @apply h-22sp;
+}
+
+.v-suggest--sm .v-suggest__message {
+  /* visual styles */
+  @apply text-12sp leading-5;
+
+  /* sizes */
+  @apply h-5;
+}

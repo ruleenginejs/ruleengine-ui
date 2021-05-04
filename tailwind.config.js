@@ -70,8 +70,10 @@ module.exports = {
         "dropdown-background": "var(--dropdown-background)",
         "dropdown-foreground": "var(--dropdown-foreground)",
         "dropdown-border": "var(--dropdown-border)",
-        "dropdown-list-background": "var(--dropdown-list-background)",
-        "dropdown-list-border": "var(--dropdown-list-border)"
+
+        "suggest-background": "var(--suggest-background)",
+        "suggest-border": "var(--suggest-border)",
+        "suggest-foreground": "var(--suggest-foreground)"
       },
       outline: {
         blue: ['1px solid var(--focus-border)', '-1px'],
@@ -134,6 +136,7 @@ module.exports = {
         3: '3px',
       },
       lineHeight: {
+        "22sp": '1.375rem',
         "30sp": "1.875rem"
       },
       boxShadow: {
