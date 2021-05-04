@@ -5,6 +5,7 @@
       :class="inputClasses"
       v-model="value"
       v-bind="$attrs"
+      :type="type"
       :disabled="disabled"
       :readonly="readonly"
     />
@@ -29,6 +30,10 @@ export default {
     modelValue: {
       type: [String, Number],
       default: null
+    },
+    type: {
+      type: String,
+      default: "text"
     },
     className: {
       type: String,
