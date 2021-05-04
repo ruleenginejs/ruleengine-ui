@@ -49,10 +49,13 @@
       <v-button disabled>Save</v-button>
       <v-button disabled secondary>Cancel</v-button>
     </div>
-    <div>Autocomplete:</div>
+    <div>Autocomplete: {{ form.autocompleteValue }}</div>
     <v-autocomplete
       placeholder="Enter relative path"
+      v-model="form.autocompleteValue"
       :data-source="fetchAutocompleteData"
+      loading-message="Loading..."
+      empty-result-message="No suggestions."
     />
   </v-content>
 </template>
@@ -64,7 +67,8 @@ export default {
     return {
       form: {
         text: null,
-        selectValue: { value: "2" }
+        selectValue: { value: "2" },
+        autocompleteValue: null
       },
       selectItems: [
         {

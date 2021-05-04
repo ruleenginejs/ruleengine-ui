@@ -5,6 +5,7 @@
       ref="dropdown"
       :style="dropdownStyles"
       class="v-dropdown v-scrollbar"
+      :class="className"
       @mouseenter="onMouseEnter"
     >
       <slot />
@@ -47,9 +48,17 @@ export default {
       type: Number,
       default: null
     },
+    className: {
+      type: String,
+      default: null
+    },
     anchorConstraint: {
       type: [Boolean, String],
       default: false
+    },
+    actionWhenScrolling: {
+      type: [Boolean, String],
+      default: "close"
     }
   },
   emits: ["update:visible"],
@@ -62,7 +71,8 @@ export default {
       minWidth,
       offsetX,
       offsetY,
-      anchorConstraint
+      anchorConstraint,
+      actionWhenScrolling
     } = toRefs(props);
 
     const { dropdownStyles, dropdown, onMouseEnter } = useDropdown({
@@ -74,7 +84,8 @@ export default {
       minWidth,
       offsetX,
       offsetY,
-      anchorConstraint
+      anchorConstraint,
+      actionWhenScrolling
     });
 
     return {

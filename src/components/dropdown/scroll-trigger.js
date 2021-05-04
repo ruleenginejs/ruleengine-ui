@@ -1,7 +1,8 @@
 class ScrollTrigger {
-  constructor(element, callback) {
+  constructor(element, callback, onceRun = false) {
     this.element = element;
     this.callback = callback;
+    this.onceRun = onceRun;
     this.unbinder = null;
     this.doRun = this.doRun.bind(this);
   }
@@ -30,7 +31,9 @@ class ScrollTrigger {
 
   doRun() {
     this.callback?.();
-    this.stop();
+    if (this.onceRun) {
+      this.stop();
+    }
   }
 
   destroy() {

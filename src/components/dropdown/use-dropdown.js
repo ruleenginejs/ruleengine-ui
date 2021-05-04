@@ -12,7 +12,8 @@ export default function useDropdown({
   minWidth,
   offsetX,
   offsetY,
-  anchorConstraint
+  anchorConstraint,
+  actionWhenScrolling
 }) {
   const dropdown = ref(null);
   const layout = new DropdownLayout(dropdown);
@@ -33,13 +34,13 @@ export default function useDropdown({
   watch(anchor, () => {
     destroyScrollTrigger();
     if (visible.value) {
-      updateDropdown();
+      showDropdown();
     }
   });
 
   onMounted(() => {
     if (visible.value) {
-      updateDropdown();
+      showDropdown();
     }
   });
 
@@ -51,7 +52,7 @@ export default function useDropdown({
     if (visible.value) {
       nextTick(() => {
         if (visible.value) {
-          updateDropdown();
+          showDropdown();
         } else {
           destroyScrollTrigger();
         }
@@ -61,7 +62,7 @@ export default function useDropdown({
     }
   });
 
-  function updateDropdown() {
+  function showDropdown() {
     layout.setAnchor(getAnchorElement()).update();
     startScrollTrigger();
   }
@@ -71,17 +72,37 @@ export default function useDropdown({
   }
 
   let scrollTrigger = null;
-  function startScrollTrigger() {
-    if (!scrollTrigger) {
-      const scrollParentEl = getAnchorScrollParent();
-      if (scrollParentEl) {
-        scrollTrigger = new ScrollTrigger(scrollParentEl, closeDropdown);
+
+  function createScrollTrigger() {
+    const scrollParentEl = getAnchorScrollParent();
+    if (!scrollParentEl) {
+      return null;
+    }
+
+    const onceRun = actionWhenScrolling.value !== "update";
+    return new ScrollTrigger(scrollParentEl, () => {
+      if (actionWhenScrolling.value === "update") {
+        layout.update();
+      } else if (actionWhenScrolling.value === "close") {
+        closeDropdown();
       }
+    }, onceRun);
+  }
+
+  function startScrollTrigger() {
+    if (!actionWhenScrolling.value) {
+      return;
+    }
+    if (!scrollTrigger) {
+      scrollTrigger = createScrollTrigger();
     }
     scrollTrigger?.start();
   }
 
   function destroyScrollTrigger() {
+    if (!actionWhenScrolling.value) {
+      return;
+    }
     scrollTrigger?.destroy();
     scrollTrigger = null;
   }

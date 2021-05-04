@@ -3,6 +3,7 @@
   <c-action-bar />
   <c-list />
   <c-dropdown />
+  <c-suggest />
   <c-tabs />
   <c-sidebar />
   <c-treeview />
@@ -22,6 +23,7 @@ import CGraph from "./c-graph";
 import CPropsPanel from "./c-props-panel";
 import CList from "./c-list";
 import CDropdown from "./c-dropdown";
+import CSuggest from "./c-suggest";
 
 export default {
   name: "all-components",
@@ -35,7 +37,8 @@ export default {
     CGraph,
     CPropsPanel,
     CList,
-    CDropdown
+    CDropdown,
+    CSuggest
   }
 };
 </script>
