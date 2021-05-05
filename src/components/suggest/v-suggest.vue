@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { computed, toRefs } from "vue";
+import { computed, toRefs, watch } from "vue";
 import useSearch from "./use-search";
 import { VList } from "@/components/list";
 import { VDropdown } from "@/components/dropdown";
@@ -96,7 +96,7 @@ export default {
       default: null
     }
   },
-  emits: ["update:visible", "select"],
+  emits: ["update:visible", "select", "error"],
   setup(props, { emit }) {
     const {
       size,
@@ -120,13 +120,18 @@ export default {
       set: (val) => emit("update:visible", val)
     });
 
-    const { loading, resultItems } = useSearch({
+    const { loading, resultItems, error } = useSearch({
       dataSource,
       searchQuery,
       searchTimeout,
       minSearchLength,
       maxQueryLength,
       maxItemCount
+    });
+
+    watch(error, () => {
+      debugger;
+      emit("error", error.value);
     });
 
     return {

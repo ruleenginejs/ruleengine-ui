@@ -1,7 +1,7 @@
 import { watch, onBeforeUnmount } from "vue";
 import SearchContoller from "./search-controller";
 
-export default function useSuggest({
+export default function useSearch({
   dataSource,
   searchQuery,
   searchTimeout,
@@ -19,12 +19,13 @@ export default function useSuggest({
     maxQueryLength,
     maxItemCount
   ], () => {
+    debugger;
     controller.destroy();
     controller = createSearchController();
   });
 
   watch(searchQuery, () => {
-    controller.performSearch(searchQuery.value);
+    controller.performSearch(searchQuery.value, true);
   });
 
   onBeforeUnmount(() => {
@@ -43,6 +44,7 @@ export default function useSuggest({
 
   return {
     loading: controller.loading,
+    error: controller.lastRequestError,
     resultItems: controller.resultItems
   }
 }
