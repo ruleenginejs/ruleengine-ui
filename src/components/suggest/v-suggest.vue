@@ -17,7 +17,12 @@
     <div v-else-if="resultItems.length === 0" class="v-suggest__message">
       {{ emptyResultMessage }}
     </div>
-    <v-list v-else :items="resultItems" :size="listSize" />
+    <v-list
+      v-else
+      :items="resultItems"
+      :size="listSize"
+      @update:selected="onSelect"
+    />
   </v-dropdown>
 </template>
 
@@ -80,15 +85,15 @@ export default {
     },
     maxWidth: {
       type: Number,
-      default: null
+      default: 450
     },
     maxHeight: {
       type: Number,
-      default: null
+      default: 200
     },
     minWidth: {
       type: Number,
-      default: null
+      default: 400
     },
     anchor: {
       type: String,
@@ -135,6 +140,10 @@ export default {
       set: (val) => emit("update:visible", val)
     });
 
+    const onSelect = (e) => {
+      emit("select", e);
+    };
+
     const { loading, resultItems, error } = useSearch({
       dataSource,
       searchQuery,
@@ -152,7 +161,8 @@ export default {
       modelVisible,
       loading,
       resultItems,
-      cssClasses
+      cssClasses,
+      onSelect
     };
   }
 };

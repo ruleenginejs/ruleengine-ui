@@ -1,7 +1,7 @@
 import { ref, reactive, markRaw } from "vue";
 import debounce from "debounce";
 import { isDefined } from "@/utils/types";
-import SearchRequest from "./search-request";
+import { makeRequest } from "./search-request";
 
 class SearchContoller {
   constructor(dataSource, options = null) {
@@ -93,19 +93,28 @@ class SearchContoller {
     if (error) {
       this.lastRequestError.value = markRaw(error);
     } else if (Array.isArray(result)) {
+      result = this._sliceResult(result);
       this.resultItems.length = 0;
       this.resultItems.push(...result);
     }
+
     this._stopLoading();
   }
 
+  _sliceResult(result) {
+    if (isDefined(this.maxItemCount) && result.length > this.maxItemCount) {
+      result = result.slice(0, this.maxItemCount);
+    }
+    return result;
+  }
+
   _createRequest(query) {
-    return new SearchRequest(query, this.dataSource, this._requestCompleted);
+    return makeRequest(query, this.dataSource, this._requestCompleted);
   }
 
   _cancelLastRequest() {
     if (this._lastRequest) {
-      this._lastRequest.destroy();
+      this._lastRequest.cancel();
       this._lastRequest = null;
     }
   }

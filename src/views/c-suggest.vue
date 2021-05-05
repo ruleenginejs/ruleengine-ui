@@ -11,15 +11,17 @@
       v-if="!destroy"
       v-model:visible="suggestVisible"
       anchor="input-10"
-      anchor-constraint
+      :anchor-constraint="false"
       :search-query="searchQuery"
       :data-source="fetchData"
       action-when-parent-scrolling="update"
       loading-message="Loading..."
       empty-result-message="No suggestions."
-      :max-height="200"
+      :max-item-count="20"
       @error="onError"
+      @select="onSuggestionSelected"
     />
+    <div>Selected: {{ selectedItem }}</div>
   </v-content>
 </template>
 
@@ -35,12 +37,16 @@ export default {
     return {
       destroy: false,
       suggestVisible: true,
-      searchQuery: null
+      searchQuery: null,
+      selectedItem: null
     };
   },
   methods: {
     onError(err) {
       console.error(err);
+    },
+    onSuggestionSelected(e) {
+      this.selectedItem = e;
     },
     searchData(query) {
       if (!query) return [];

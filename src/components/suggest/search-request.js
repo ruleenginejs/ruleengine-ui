@@ -1,60 +1,48 @@
 import { CancellationTokenSource } from "@/utils/cancellation";
 
-class SearchRequest {
-  static nextId = 0;
+let _requestId = 0;
 
-  constructor(query, dataSource, completion = null) {
-    this.id = ++SearchRequest.nextId;
-    this.query = query;
-    this.dataSource = dataSource;
-    this.error = null;
-    this.completed = false;
-    this.completion = completion;
-    this.cancellationSource = new CancellationTokenSource();
-  }
+export function makeRequest(query, dataSource, completion = null) {
+  const requestId = ++_requestId;
+  const cancellationSource = new CancellationTokenSource();
 
-  async execute() {
+  async function execute() {
     try {
-      this.completed = false;
-      if (this.isCancelled) {
+      if (isCancelled()) {
         return;
       }
-      if (!this.dataSource) {
-        return;
-      }
-      const result = await this.dataSource(this.query, this.id, this.cancellationSource.token);
-      if (this.isCancelled) {
+      if (!dataSource) {
         return;
       }
 
-      this.completed = true;
-      this.completion?.(null, result);
+      const result = await dataSource(query, requestId, cancellationSource.token);
+      if (isCancelled()) {
+        return;
+      }
+
+      completion?.(null, result);
     } catch (e) {
-      if (this.isCancelled) {
+      if (isCancelled()) {
         return;
       }
 
-      this.error = e;
-      this.completed = true;
-      this.completion?.(e);
+      completion?.(e);
     } finally {
-      this.cancellationSource.destroy();
+      cancellationSource.destroy();
     }
   }
 
-  cancel() {
-    this.cancellationSource.cancel();
+  function cancel() {
+    cancellationSource.cancel();
   }
 
-  get isCancelled() {
-    return this.cancellationSource.token.isCancellationRequested;
+  function isCancelled() {
+    return cancellationSource.token.isCancellationRequested;
   }
 
-  destroy() {
-    this.cancellationSource.destroy(!this.completed);
-    this.dataSource = null;
-    this.completion = null;
+  return {
+    execute,
+    cancel,
+    isCancelled
   }
 }
-
-export default SearchRequest;

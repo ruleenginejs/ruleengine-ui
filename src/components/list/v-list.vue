@@ -17,7 +17,7 @@
       :selected="item.selected"
       :focused="item.focused"
       :disabled="item.disabled"
-      @select="mouseEnabled ? onItemSelect(item) : null"
+      @select="onItemSelect(item)"
     />
   </div>
 </template>
@@ -48,14 +48,6 @@ export default {
     selected: {
       type: Object,
       default: null
-    },
-    mouseEnabled: {
-      type: Boolean,
-      default: false
-    },
-    keyboardEnabled: {
-      type: Boolean,
-      default: false
     },
     size: {
       type: String,
