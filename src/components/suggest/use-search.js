@@ -19,7 +19,6 @@ export default function useSearch({
     maxQueryLength,
     maxItemCount
   ], () => {
-    debugger;
     controller.destroy();
     controller = createSearchController();
   });

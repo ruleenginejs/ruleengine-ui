@@ -32,7 +32,7 @@ export default {
       type: Number,
       default: null
     },
-    maxHeigth: {
+    maxHeight: {
       type: Number,
       default: null
     },
@@ -67,7 +67,7 @@ export default {
       visible,
       anchor,
       maxWidth,
-      maxHeigth,
+      maxHeight,
       minWidth,
       offsetX,
       offsetY,
@@ -80,7 +80,7 @@ export default {
       anchor,
       emit,
       maxWidth,
-      maxHeigth,
+      maxHeight,
       minWidth,
       offsetX,
       offsetY,

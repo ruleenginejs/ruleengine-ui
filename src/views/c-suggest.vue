@@ -17,11 +17,18 @@
       action-when-parent-scrolling="update"
       loading-message="Loading..."
       empty-result-message="No suggestions."
+      :max-height="200"
+      @error="onError"
     />
   </v-content>
 </template>
 
 <script>
+const data = [];
+for (let i = 0; i < 1000; i++) {
+  data.push(`Item ${i}`);
+}
+
 export default {
   name: "c-form",
   data() {
@@ -32,16 +39,32 @@ export default {
     };
   },
   methods: {
-    fetchData(searchText) {
-      console.log(searchText);
-      return Promise.resolve([
-        {
-          text: "Item 1"
-        },
-        {
-          text: "Item 2"
-        }
-      ]);
+    onError(err) {
+      console.error(err);
+    },
+    searchData(query) {
+      if (!query) return [];
+      return data
+        .filter((str) => str.toLowerCase().includes(query.toLowerCase()))
+        .map((str) => ({
+          text: str
+        }));
+    },
+    fetchData(searchText, reqId, token) {
+      console.log("searchText", searchText, "reqId", reqId);
+
+      return new Promise((resolve) => {
+        const timer = setTimeout(() => {
+          console.log("fetchData resolved");
+          resolve(this.searchData(searchText));
+        }, 300);
+
+        token.onCancellationRequested(() => {
+          console.log("fetchData cancelled");
+          clearTimeout(timer);
+          resolve();
+        });
+      });
     }
   }
 };

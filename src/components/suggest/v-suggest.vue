@@ -7,6 +7,9 @@
     :action-when-scrolling="actionWhenParentScrolling"
     :offset-x="offsetX"
     :offset-y="offsetY"
+    :max-width="maxWidth"
+    :max-height="maxHeight"
+    :min-width="minWidth"
   >
     <div v-if="loading" class="v-suggest__message">
       {{ loadingMessage }}
@@ -45,7 +48,7 @@ export default {
     },
     searchTimeout: {
       type: Number,
-      default: 300
+      default: 250
     },
     minSearchLength: {
       type: Number,
@@ -72,6 +75,18 @@ export default {
       default: null
     },
     offsetY: {
+      type: Number,
+      default: null
+    },
+    maxWidth: {
+      type: Number,
+      default: null
+    },
+    maxHeight: {
+      type: Number,
+      default: null
+    },
+    minWidth: {
       type: Number,
       default: null
     },
@@ -130,7 +145,6 @@ export default {
     });
 
     watch(error, () => {
-      debugger;
       emit("error", error.value);
     });
 

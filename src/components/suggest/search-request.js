@@ -4,8 +4,7 @@ class SearchRequest {
   static nextId = 0;
 
   constructor(query, dataSource, completion = null) {
-    debugger
-    this.id = ++Request.nextId;
+    this.id = ++SearchRequest.nextId;
     this.query = query;
     this.dataSource = dataSource;
     this.error = null;
@@ -16,21 +15,21 @@ class SearchRequest {
 
   async execute() {
     try {
-      debugger
       this.completed = false;
       if (this.isCancelled) {
         return;
       }
+      if (!this.dataSource) {
+        return;
+      }
       const result = await this.dataSource(this.query, this.id, this.cancellationSource.token);
-      debugger
       if (this.isCancelled) {
         return;
       }
-      debugger
+
       this.completed = true;
       this.completion?.(null, result);
     } catch (e) {
-      debugger
       if (this.isCancelled) {
         return;
       }
@@ -38,22 +37,21 @@ class SearchRequest {
       this.error = e;
       this.completed = true;
       this.completion?.(e);
+    } finally {
+      this.cancellationSource.destroy();
     }
   }
 
   cancel() {
-    debugger
     this.cancellationSource.cancel();
   }
 
   get isCancelled() {
-    debugger
     return this.cancellationSource.token.isCancellationRequested;
   }
 
   destroy() {
-    debugger;
-    this.cancellationSource.destroy(true);
+    this.cancellationSource.destroy(!this.completed);
     this.dataSource = null;
     this.completion = null;
   }

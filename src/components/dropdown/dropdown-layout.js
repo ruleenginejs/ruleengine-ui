@@ -7,7 +7,7 @@ class DropdownLayout {
     this.top = ref(0);
     this.left = ref(0);
     this.minWidth = ref(null);
-    this.maxHeigth = ref(null);
+    this.maxHeight = ref(null);
     this.maxWidth = ref(null);
     this.offsetX = ref(0);
     this.offsetY = ref(0);
@@ -18,7 +18,7 @@ class DropdownLayout {
       top: `${this.top.value}px`,
       left: `${this.left.value}px`,
       maxWidth: isDefined(this.maxWidth.value) ? `${this.maxWidth.value}px` : null,
-      maxHeigth: isDefined(this.maxHeigth.value) ? `${this.maxHeigth.value}px` : null,
+      maxHeight: isDefined(this.maxHeight.value) ? `${this.maxHeight.value}px` : null,
       minWidth: isDefined(this.minWidth.value) ? `${this.minWidth.value}px` : null
     }));
   }
@@ -34,7 +34,7 @@ class DropdownLayout {
   }
 
   setMaxHeight(value) {
-    this.maxHeigth.value = value;
+    this.maxHeight.value = value;
     return this;
   }
 

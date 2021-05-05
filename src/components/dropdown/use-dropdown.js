@@ -8,7 +8,7 @@ export default function useDropdown({
   anchor,
   emit,
   maxWidth,
-  maxHeigth,
+  maxHeight,
   minWidth,
   offsetX,
   offsetY,
@@ -24,7 +24,7 @@ export default function useDropdown({
 
   watchEffect(() => {
     layout.setMaxWidth(maxWidth.value)
-      .setMaxHeight(maxHeigth.value)
+      .setMaxHeight(maxHeight.value)
       .setMinWidth(minWidth.value)
       .setOffsetX(offsetX.value)
       .setOffsetY(offsetY.value)

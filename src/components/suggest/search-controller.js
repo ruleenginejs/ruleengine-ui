@@ -5,7 +5,6 @@ import SearchRequest from "./search-request";
 
 class SearchContoller {
   constructor(dataSource, options = null) {
-    debugger;
     this.dataSource = dataSource;
     this.searchTimeout = options?.searchTimeout;
     this.minSearchLength = options?.minSearchLength;
@@ -29,8 +28,7 @@ class SearchContoller {
   }
 
   performSearch(query, throttle = false) {
-    debugger;
-    if (throttle) {
+    if (throttle && this._firstRequestCompleted) {
       this._searchHandler(query);
     } else {
       this._doSearch(query);
@@ -38,36 +36,37 @@ class SearchContoller {
   }
 
   _doSearch(query) {
-    debugger;
     query = this._prepareQuery(query);
-    if (!this._canSearch(query)) {
+    if (!isDefined(this._lastQuery) && !this._canSearch(query)) {
       return;
     }
 
     if (query === this._lastQuery) {
       return;
     }
-    this._lastQuery = query;
 
     if (!this.dataSource) {
       return;
     }
 
-    this._cancelLastRequest();
+    this._lastQuery = query;
+    this._executeRequest(query);
+  }
 
+  _executeRequest(query) {
+    this._cancelLastRequest();
     this._startLoading();
+
     const request = this._createRequest(query);
     request.execute();
     this._lastRequest = request;
   }
 
   _canSearch(query) {
-    debugger;
-    return !isDefined(this.minSearchLength) || query.length < this.minSearchLength;
+    return !isDefined(this.minSearchLength) || query.length >= this.minSearchLength;
   }
 
   _prepareQuery(query) {
-    debugger;
     query = query ?? "";
 
     if (isDefined(this.maxQueryLength) && query.length > this.maxQueryLength) {
@@ -78,14 +77,12 @@ class SearchContoller {
   }
 
   _startLoading() {
-    debugger;
     if (!this._firstRequestCompleted) {
       this.loading.value = true;
     }
   }
 
   _stopLoading() {
-    debugger;
     if (!this._firstRequestCompleted) {
       this._firstRequestCompleted = true;
       this.loading.value = false;
@@ -93,22 +90,20 @@ class SearchContoller {
   }
 
   _requestCompleted(error, result) {
-    debugger;
     if (error) {
       this.lastRequestError.value = markRaw(error);
     } else if (Array.isArray(result)) {
       this.resultItems.length = 0;
       this.resultItems.push(...result);
     }
+    this._stopLoading();
   }
 
   _createRequest(query) {
-    debugger;
     return new SearchRequest(query, this.dataSource, this._requestCompleted);
   }
 
   _cancelLastRequest() {
-    debugger;
     if (this._lastRequest) {
       this._lastRequest.destroy();
       this._lastRequest = null;
@@ -116,7 +111,6 @@ class SearchContoller {
   }
 
   destroy() {
-    debugger;
     this._cancelLastRequest();
     this.dataSource = null;
   }
