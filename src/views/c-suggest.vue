@@ -56,8 +56,8 @@ export default {
           text: str
         }));
     },
-    fetchData(searchText, reqId, token) {
-      console.log("searchText", searchText, "reqId", reqId);
+    fetchData(searchText, requestId, token) {
+      console.log("searchText", searchText, "requestId", requestId);
 
       return new Promise((resolve) => {
         const timer = setTimeout(() => {

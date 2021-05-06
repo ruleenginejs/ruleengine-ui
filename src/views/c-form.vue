@@ -61,6 +61,11 @@
 </template>
 
 <script>
+const data = [];
+for (let i = 0; i < 1000; i++) {
+  data.push(`Item ${i}`);
+}
+
 export default {
   name: "c-form",
   data() {
@@ -83,16 +88,29 @@ export default {
     };
   },
   methods: {
-    fetchAutocompleteData(searchText) {
-      console.log(searchText);
-      return Promise.resolve([
-        {
-          text: "Item 1"
-        },
-        {
-          text: "Item 2"
-        }
-      ]);
+    searchData(query) {
+      if (!query) return [];
+      return data
+        .filter((str) => str.toLowerCase().includes(query.toLowerCase()))
+        .map((str) => ({
+          text: str
+        }));
+    },
+    fetchAutocompleteData(searchText, requestId, token) {
+      console.log("searchText", searchText, "requestId", requestId);
+
+      return new Promise((resolve) => {
+        const timer = setTimeout(() => {
+          console.log("fetchAutocompleteData resolved");
+          resolve(this.searchData(searchText));
+        }, 300);
+
+        token.onCancellationRequested(() => {
+          console.log("fetchAutocompleteData cancelled");
+          clearTimeout(timer);
+          resolve();
+        });
+      });
     }
   }
 };

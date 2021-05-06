@@ -1,39 +1,51 @@
-import { ref, getCurrentInstance, computed, onBeforeUnmount } from "vue";
-import SuggestionHandler from "./suggestion-handler";
+import { ref, getCurrentInstance, computed, watch } from "vue";
 
 export default function useAutocomplete({
-  dataSource,
   modelValue,
-  searchTimeout,
-  minSearchLength,
-  maxItemCount,
   emit
 }) {
   const uid = getCurrentInstance().uid;
   const anchorId = ref(`autocomplete-input-${uid}`);
+  const focused = ref(false);
+  const suggestVisible = ref(false);
+  const searchQuery = ref("");
 
-  const searchQuery = computed({
+  const value = computed({
     get: () => modelValue.value,
     set: (val) => emit("update:modelValue", val)
   });
 
-  const suggestionHandler = new SuggestionHandler(
-    searchQuery,
-    dataSource,
-    searchTimeout,
-    minSearchLength,
-    maxItemCount
-  );
-
-  onBeforeUnmount(() => {
-    suggestionHandler.destroy();
+  watch(value, () => {
+    suggestVisible.value = true;
+    searchQuery.value = value.value;
   });
 
+  const onInputFocus = () => {
+    focused.value = true;
+  }
+
+  const onInputBlur = () => {
+    focused.value = false;
+    suggestVisible.value = false;
+    searchQuery.value = "";
+  }
+
+  const onSuggestError = (err) => {
+    emit("error", err);
+  };
+
+  const onSuggestSelected = (val) => {
+  };
+
   return {
-    searchQuery,
+    value,
     anchorId,
-    dropdownVisible: suggestionHandler.dropdownVisible,
-    resultItems: suggestionHandler.resultItems,
-    loading: suggestionHandler.loading
+    focused,
+    suggestVisible,
+    searchQuery,
+    onInputFocus,
+    onInputBlur,
+    onSuggestError,
+    onSuggestSelected
   }
 }

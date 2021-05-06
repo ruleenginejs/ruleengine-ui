@@ -1,45 +1,50 @@
 <template>
-  <!--<div class="v-autocomplete">
-    <v-input
-      v-model="searchQuery"
-      autocomplete="off"
-      :placeholder="placeholder"
-      :disabled="disabled"
-      :readonly="readonly"
-      :tabindex="tabIndex"
-      :maxlength="maxLength"
-      :id="anchorId"
-    />
-    <v-dropdown
-      v-model:visible="dropdownVisible"
-      :anchor="anchorId"
-      anchor-constraint
-    >
-      <div v-if="loading" class="v-autocomplete__message">
-        {{ loadingMessage }}
-      </div>
-      <div v-else-if="resultItems.length === 0" class="v-autocomplete__message">
-        {{ emptyResultMessage }}
-      </div>
-      <v-list :items="resultItems" />
-    </v-dropdown>
-  </div>-->
-  <div />
+  <v-input
+    v-model="value"
+    autocomplete="off"
+    class-name="v-autocomplete"
+    :placeholder="placeholder"
+    :disabled="disabled"
+    :readonly="readonly"
+    :tabindex="tabIndex"
+    :maxlength="maxLength"
+    :id="anchorId"
+    @focus.prevent="onInputFocus"
+    @blur.prevent="onInputBlur"
+  />
+  <v-suggest
+    v-if="focused"
+    v-model:visible="suggestVisible"
+    :anchor="anchorId"
+    anchor-constraint
+    :search-query="searchQuery"
+    :data-source="dataSource"
+    :loading-message="loadingMessage"
+    :empty-result-message="emptyResultMessage"
+    :search-timeout="searchTimeout"
+    :min-search-length="minSearchLength"
+    :max-query-length="maxLength"
+    :max-item-count="maxItemCount"
+    @error="onSuggestError"
+    @select="onSuggestSelected"
+  />
 </template>
 
 <script>
 import { toRefs } from "vue";
 import { VInput } from "@/components/input";
+import { VSuggest } from "@/components/suggest";
 import useAutocomplete from "./use-autocomplete";
 
 export default {
   name: "v-autocomplete",
   components: {
-    VInput
+    VInput,
+    VSuggest
   },
   props: {
     modelValue: {
-      type: [String, Number],
+      type: [String, Number, Object],
       default: null
     },
     dataSource: {
@@ -62,17 +67,13 @@ export default {
       type: Number,
       default: 0
     },
-    loadingMessage: {
+    valueField: {
       type: String,
-      default: null
-    },
-    emptyResultMessage: {
-      type: String,
-      default: null
+      default: "text"
     },
     searchTimeout: {
       type: Number,
-      default: 300
+      default: 250
     },
     minSearchLength: {
       type: Number,
@@ -85,42 +86,46 @@ export default {
     maxItemCount: {
       type: Number,
       default: null
+    },
+    loadingMessage: {
+      type: String,
+      default: null
+    },
+    emptyResultMessage: {
+      type: String,
+      default: null
     }
   },
-  emits: ["update:modelValue"],
+  emits: ["update:modelValue", "error"],
   setup(props, { emit }) {
-    /*
-    const {
-      dataSource,
-      modelValue,
-      searchTimeout,
-      minSearchLength,
-      maxItemCount
-    } = toRefs(props);
+    const { modelValue } = toRefs(props);
 
     const {
-      searchQuery,
-      dropdownVisible,
-      resultItems,
+      value,
       anchorId,
-      loading
+      focused,
+      suggestVisible,
+      searchQuery,
+      onInputFocus,
+      onInputBlur,
+      onSuggestError,
+      onSuggestSelected
     } = useAutocomplete({
-      dataSource,
       modelValue,
-      emit,
-      searchTimeout,
-      minSearchLength,
-      maxItemCount
+      emit
     });
 
     return {
-      searchQuery,
-      dropdownVisible,
-      resultItems,
+      value,
       anchorId,
-      loading
+      focused,
+      suggestVisible,
+      searchQuery,
+      onInputFocus,
+      onInputBlur,
+      onSuggestError,
+      onSuggestSelected
     };
-    */
   }
 };
 </script>
