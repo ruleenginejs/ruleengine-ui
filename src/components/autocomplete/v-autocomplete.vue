@@ -1,5 +1,6 @@
 <template>
   <v-input
+    ref="input"
     v-model="value"
     autocomplete="off"
     class-name="v-autocomplete"
@@ -25,6 +26,7 @@
     :min-search-length="minSearchLength"
     :max-query-length="maxLength"
     :max-item-count="maxItemCount"
+    prevent-mouse-down
     @error="onSuggestError"
     @select="onSuggestSelected"
   />
@@ -44,7 +46,7 @@ export default {
   },
   props: {
     modelValue: {
-      type: [String, Number, Object],
+      type: [String, Number],
       default: null
     },
     dataSource: {
@@ -98,10 +100,11 @@ export default {
   },
   emits: ["update:modelValue", "error"],
   setup(props, { emit }) {
-    const { modelValue } = toRefs(props);
+    const { modelValue, valueField } = toRefs(props);
 
     const {
       value,
+      input,
       anchorId,
       focused,
       suggestVisible,
@@ -112,11 +115,13 @@ export default {
       onSuggestSelected
     } = useAutocomplete({
       modelValue,
+      valueField,
       emit
     });
 
     return {
       value,
+      input,
       anchorId,
       focused,
       suggestVisible,

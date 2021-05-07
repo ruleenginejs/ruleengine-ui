@@ -1,7 +1,9 @@
+import { isDefined } from "@/utils/types";
 import { ref, getCurrentInstance, computed, watch } from "vue";
 
 export default function useAutocomplete({
   modelValue,
+  valueField,
   emit
 }) {
   const uid = getCurrentInstance().uid;
@@ -9,6 +11,7 @@ export default function useAutocomplete({
   const focused = ref(false);
   const suggestVisible = ref(false);
   const searchQuery = ref("");
+  const input = ref(null);
 
   const value = computed({
     get: () => modelValue.value,
@@ -16,18 +19,25 @@ export default function useAutocomplete({
   });
 
   watch(value, () => {
-    suggestVisible.value = true;
-    searchQuery.value = value.value;
+    if (focused.value) {
+      suggestVisible.value = true;
+      searchQuery.value = value.value;
+    }
   });
+
+  const resetSuggest = () => {
+    suggestVisible.value = false;
+    searchQuery.value = "";
+  };
 
   const onInputFocus = () => {
     focused.value = true;
+    resetSuggest();
   }
 
   const onInputBlur = () => {
     focused.value = false;
-    suggestVisible.value = false;
-    searchQuery.value = "";
+    resetSuggest();
   }
 
   const onSuggestError = (err) => {
@@ -35,10 +45,22 @@ export default function useAutocomplete({
   };
 
   const onSuggestSelected = (val) => {
+    if (!isDefined(val)) {
+      value.value = null;
+    } else if (isDefined(val[valueField.value])) {
+      value.value = val[valueField.value];
+    } else {
+      value.value = null;
+    }
+
+    input.value?.inputEl?.blur();
+    focused.value = false;
+    resetSuggest();
   };
 
   return {
     value,
+    input,
     anchorId,
     focused,
     suggestVisible,

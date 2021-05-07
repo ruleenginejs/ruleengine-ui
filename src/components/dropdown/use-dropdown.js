@@ -13,13 +13,20 @@ export default function useDropdown({
   offsetX,
   offsetY,
   anchorConstraint,
-  actionWhenScrolling
+  actionWhenScrolling,
+  preventMouseDown
 }) {
   const dropdown = ref(null);
   const layout = new DropdownLayout(dropdown);
 
   const onMouseEnter = () => {
     layout.update();
+  };
+
+  const onMouseDown = (e) => {
+    if (preventMouseDown.value) {
+      e.preventDefault();
+    }
   };
 
   watchEffect(() => {
@@ -122,6 +129,7 @@ export default function useDropdown({
   return {
     dropdownStyles: layout.styles,
     dropdown,
-    onMouseEnter
+    onMouseEnter,
+    onMouseDown
   }
 }

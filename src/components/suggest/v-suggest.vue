@@ -10,6 +10,7 @@
     :max-width="maxWidth"
     :max-height="maxHeight"
     :min-width="minWidth"
+    :prevent-mouse-down="preventMouseDown"
   >
     <div v-if="loading" class="v-suggest__message">
       {{ loadingMessage }}
@@ -21,7 +22,8 @@
       v-else
       :items="resultItems"
       :size="listSize"
-      @update:selected="onSelect"
+      :display-field="displayField"
+      @select="onSelect"
     />
   </v-dropdown>
 </template>
@@ -46,6 +48,10 @@ export default {
     dataSource: {
       type: Function,
       default: null
+    },
+    displayField: {
+      type: String,
+      default: "text"
     },
     searchQuery: {
       type: [String, Number],
@@ -114,6 +120,10 @@ export default {
     emptyResultMessage: {
       type: String,
       default: null
+    },
+    preventMouseDown: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ["update:visible", "select", "error"],
@@ -140,8 +150,8 @@ export default {
       set: (val) => emit("update:visible", val)
     });
 
-    const onSelect = (e) => {
-      emit("select", e);
+    const onSelect = (item, e) => {
+      emit("select", item, e);
     };
 
     const { loading, resultItems, error } = useSearch({

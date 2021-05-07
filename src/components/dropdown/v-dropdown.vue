@@ -7,6 +7,7 @@
       class="v-dropdown v-scrollbar"
       :class="className"
       @mouseenter="onMouseEnter"
+      @mousedown="onMouseDown"
     >
       <slot />
     </div>
@@ -59,6 +60,10 @@ export default {
     actionWhenScrolling: {
       type: [Boolean, String],
       default: "close"
+    },
+    preventMouseDown: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ["update:visible"],
@@ -72,26 +77,31 @@ export default {
       offsetX,
       offsetY,
       anchorConstraint,
-      actionWhenScrolling
+      actionWhenScrolling,
+      preventMouseDown
     } = toRefs(props);
 
-    const { dropdownStyles, dropdown, onMouseEnter } = useDropdown({
-      visible,
-      anchor,
-      emit,
-      maxWidth,
-      maxHeight,
-      minWidth,
-      offsetX,
-      offsetY,
-      anchorConstraint,
-      actionWhenScrolling
-    });
+    const { dropdownStyles, dropdown, onMouseEnter, onMouseDown } = useDropdown(
+      {
+        visible,
+        anchor,
+        emit,
+        maxWidth,
+        maxHeight,
+        minWidth,
+        offsetX,
+        offsetY,
+        anchorConstraint,
+        actionWhenScrolling,
+        preventMouseDown
+      }
+    );
 
     return {
       dropdownStyles,
       dropdown,
-      onMouseEnter
+      onMouseEnter,
+      onMouseDown
     };
   }
 };

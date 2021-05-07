@@ -16,7 +16,7 @@ class List {
     this.selected = selected;
     this.fields = fields;
     this.displayItems = reactive([]);
-    this.onItemSelect = this.onItemSelect.bind(this);
+    this.onSelect = this.onSelect.bind(this);
 
     this.initWatchers();
     this.updateSelection();
@@ -47,7 +47,8 @@ class List {
     });
   }
 
-  onItemSelect(item) {
+  onSelect(item, e) {
+    this.emit("select", item.data, e);
     this.emit("update:selected", item.data);
   }
 }

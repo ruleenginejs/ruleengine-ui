@@ -17,7 +17,7 @@
       :selected="item.selected"
       :focused="item.focused"
       :disabled="item.disabled"
-      @select="onItemSelect(item)"
+      @click="onSelect(item, $event)"
     />
   </div>
 </template>
@@ -78,7 +78,7 @@ export default {
       default: "iconColor"
     }
   },
-  emits: ["update:selected"],
+  emits: ["update:selected", "select"],
   setup(props, { emit }) {
     const {
       items,
@@ -109,12 +109,12 @@ export default {
       emit
     });
 
-    const { displayItems, onItemSelect } = list;
+    const { displayItems, onSelect } = list;
 
     return {
       instance: list,
       displayItems,
-      onItemSelect
+      onSelect
     };
   }
 };

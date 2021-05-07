@@ -1,6 +1,7 @@
 <template>
   <div class="v-input-layout" :class="wrapClasses">
     <input
+      ref="inputEl"
       class="v-input"
       :class="inputClasses"
       v-model="value"
@@ -21,7 +22,7 @@
 </template>
 
 <script>
-import { computed, toRefs } from "vue";
+import { computed, ref, toRefs } from "vue";
 
 export default {
   name: "v-input",
@@ -58,6 +59,8 @@ export default {
       props
     );
 
+    const inputEl = ref(null);
+
     const value = computed({
       get: () => modelValue.value,
       set: (val) => emit("update:modelValue", val)
@@ -86,6 +89,7 @@ export default {
 
     return {
       value,
+      inputEl,
       iconClasses,
       onIconClick,
       hasIcon,
