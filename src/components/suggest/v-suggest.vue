@@ -4,7 +4,7 @@
     v-model:visible="modelVisible"
     :anchor="anchor"
     :anchor-constraint="anchorConstraint"
-    :action-when-scrolling="actionWhenParentScrolling"
+    :action-on-scrolling="actionOnParentScrolling"
     :offset-x="offsetX"
     :offset-y="offsetY"
     :max-width="maxWidth"
@@ -126,7 +126,7 @@ export default {
       type: [Boolean, String],
       default: false
     },
-    actionWhenParentScrolling: {
+    actionOnParentScrolling: {
       type: [Boolean, String],
       default: "close"
     },

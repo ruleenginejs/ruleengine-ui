@@ -14,7 +14,7 @@
       :anchor-constraint="false"
       :search-query="searchQuery"
       :data-source="fetchData"
-      action-when-parent-scrolling="update"
+      action-on-parent-scrolling="update"
       loading-message="Loading..."
       empty-result-message="No suggestions."
       :max-item-count="20"
