@@ -23,6 +23,9 @@
       :items="resultItems"
       :size="listSize"
       :display-field="displayField"
+      v-model:focused="modelListFocusItem"
+      v-model:focus-index="modelListFocusIndex"
+      :focus-loop="listFocusLoop"
       @select="onSelect"
     />
   </v-dropdown>
@@ -31,6 +34,8 @@
 <script>
 import { computed, toRefs, watch } from "vue";
 import useSearch from "./use-search";
+import useDropdown from "./use-dropdown";
+import useList from "./use-list";
 import { VList } from "@/components/list";
 import { VDropdown } from "@/components/dropdown";
 
@@ -81,6 +86,18 @@ export default {
       type: String,
       default: "md"
     },
+    listFocusItem: {
+      type: Object,
+      default: null
+    },
+    listFocusIndex: {
+      type: Number,
+      default: null
+    },
+    listFocusLoop: {
+      type: Boolean,
+      default: false
+    },
     offsetX: {
       type: Number,
       default: null
@@ -126,7 +143,13 @@ export default {
       default: false
     }
   },
-  emits: ["update:visible", "select", "error"],
+  emits: [
+    "update:visible",
+    "update:listFocusItem",
+    "update:listFocusIndex",
+    "select",
+    "error"
+  ],
   setup(props, { emit }) {
     const {
       size,
@@ -136,7 +159,9 @@ export default {
       searchTimeout,
       minSearchLength,
       maxQueryLength,
-      maxItemCount
+      maxItemCount,
+      listFocusItem,
+      listFocusIndex
     } = toRefs(props);
 
     const cssClasses = computed(() => ({
@@ -145,14 +170,13 @@ export default {
       "v-suggest--md": size.value === "md"
     }));
 
-    const modelVisible = computed({
-      get: () => visible.value,
-      set: (val) => emit("update:visible", val)
-    });
+    const { modelVisible } = useDropdown({ visible, emit });
 
-    const onSelect = (item, e) => {
-      emit("select", item, e);
-    };
+    const { modelListFocusItem, modelListFocusIndex, onSelect } = useList({
+      listFocusItem,
+      listFocusIndex,
+      emit
+    });
 
     const { loading, resultItems, error } = useSearch({
       dataSource,
@@ -169,6 +193,8 @@ export default {
 
     return {
       modelVisible,
+      modelListFocusItem,
+      modelListFocusIndex,
       loading,
       resultItems,
       cssClasses,

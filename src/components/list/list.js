@@ -45,15 +45,15 @@ class List {
     watch(this.focusIndex, this.updateFocusItem);
   }
 
-  isSelectedItem(item) {
-    const id = item[this.fields.value.idField];
+  isSelectedItem(listItem) {
+    const id = listItem[this.fields.value.idField];
     const selectedId = this.selected.value?.[this.fields.value.idField];
     return isDefined(selectedId) && isDefined(id) && id === selectedId;
   }
 
   updateSelection() {
-    this.displayItems.forEach(item => {
-      item.selected = this.isSelectedItem(item);
+    this.displayItems.forEach(listItem => {
+      listItem.selected = this.isSelectedItem(listItem);
     });
   }
 
@@ -68,7 +68,11 @@ class List {
     }
 
     if (newValue < 0) {
-      newValue = 0;
+      if (this.focusLoop.value) {
+        newValue = this.displayItems.length - 1;
+      } else {
+        newValue = 0;
+      }
     }
     if (newValue >= this.displayItems.length) {
       if (this.focusLoop.value) {
@@ -78,20 +82,20 @@ class List {
       }
     }
 
-    const item = this.displayItems[newValue];
-    if (!item) {
+    const listItem = this.displayItems[newValue];
+    if (!listItem) {
       this.emit("update:focused", null);
       return;
     }
 
-    item.focused = true;
-    this.emit("update:focused", item.data);
+    listItem.focused = true;
+    this.emit("update:focused", listItem.data);
     this.emit("update:focusIndex", newValue);
   }
 
-  onSelect(item, e) {
-    this.emit("select", item.data, e);
-    this.emit("update:selected", item.data);
+  onSelect(listItem, e) {
+    this.emit("select", listItem.data, e);
+    this.emit("update:selected", listItem.data);
   }
 }
 
