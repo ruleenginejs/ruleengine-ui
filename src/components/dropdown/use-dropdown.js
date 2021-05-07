@@ -13,7 +13,7 @@ export default function useDropdown({
   offsetX,
   offsetY,
   anchorConstraint,
-  actionWhenScrolling,
+  actionOnScrolling,
   preventMouseDown
 }) {
   const dropdown = ref(null);
@@ -87,18 +87,18 @@ export default function useDropdown({
       return null;
     }
 
-    const onceRun = actionWhenScrolling.value !== "update";
+    const onceRun = actionOnScrolling.value !== "update";
     return new ScrollTrigger(scrollParentEl, () => {
-      if (actionWhenScrolling.value === "update") {
+      if (actionOnScrolling.value === "update") {
         layout.update();
-      } else if (actionWhenScrolling.value === "close") {
+      } else if (actionOnScrolling.value === "close") {
         closeDropdown();
       }
     }, onceRun);
   }
 
   function startScrollTrigger() {
-    if (!actionWhenScrolling.value) {
+    if (!actionOnScrolling.value) {
       return;
     }
     if (!scrollTrigger) {
@@ -108,7 +108,7 @@ export default function useDropdown({
   }
 
   function destroyScrollTrigger() {
-    if (!actionWhenScrolling.value) {
+    if (!actionOnScrolling.value) {
       return;
     }
     scrollTrigger?.destroy();

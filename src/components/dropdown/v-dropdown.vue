@@ -57,7 +57,7 @@ export default {
       type: [Boolean, String],
       default: false
     },
-    actionWhenScrolling: {
+    actionOnScrolling: {
       type: [Boolean, String],
       default: "close"
     },
@@ -77,7 +77,7 @@ export default {
       offsetX,
       offsetY,
       anchorConstraint,
-      actionWhenScrolling,
+      actionOnScrolling,
       preventMouseDown
     } = toRefs(props);
 
@@ -92,7 +92,7 @@ export default {
         offsetX,
         offsetY,
         anchorConstraint,
-        actionWhenScrolling,
+        actionOnScrolling,
         preventMouseDown
       }
     );
