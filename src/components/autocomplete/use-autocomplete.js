@@ -1,5 +1,5 @@
 import { isDefined } from "@/utils/types";
-import { ref, getCurrentInstance, computed, watch } from "vue";
+import { ref, getCurrentInstance, computed, watch, nextTick } from "vue";
 
 export default function useAutocomplete({
   modelValue,
@@ -13,17 +13,11 @@ export default function useAutocomplete({
   const visible = ref(false);
   const focusItem = ref(null);
   const focusIndex = ref(0);
+  let lockSearch = false;
 
   const value = computed({
     get: () => modelValue.value,
     set: (val) => emit("update:modelValue", val)
-  });
-
-  watch(value, () => {
-    if (focused.value) {
-      visible.value = true;
-      searchQuery.value = value.value;
-    }
   });
 
   const resetSearch = () => {
@@ -32,6 +26,17 @@ export default function useAutocomplete({
     focusItem.value = null;
     focusIndex.value = 0;
   };
+
+  const updateSearch = () => {
+    visible.value = true;
+    searchQuery.value = value.value;
+  };
+
+  watch(value, () => {
+    if (!lockSearch && focused.value) {
+      updateSearch();
+    }
+  });
 
   const focusForward = () => {
     focusIndex.value++;
@@ -65,6 +70,11 @@ export default function useAutocomplete({
     }
 
     resetSearch();
+    lockSearch = true;
+
+    nextTick(() => {
+      lockSearch = false;
+    });
   };
 
   const onSelectFocused = () => {
@@ -80,6 +90,7 @@ export default function useAutocomplete({
     focusIndex,
     focusItem,
     resetSearch,
+    updateSearch,
     focusForward,
     focusBackward,
     onFocusIn,

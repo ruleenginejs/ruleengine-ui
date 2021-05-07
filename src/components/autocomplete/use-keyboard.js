@@ -1,23 +1,35 @@
 export default function useKeyboard({
+  visible,
   resetSearch,
+  updateSearch,
   focusForward,
   focusBackward,
   onSelectFocused
 }) {
   const onKeyEsc = () => {
-    resetSearch();
+    if (visible.value) {
+      resetSearch();
+    }
   };
 
   const onKeyDown = () => {
-    focusForward();
+    if (visible.value) {
+      focusForward();
+    } else {
+      updateSearch();
+    }
   };
 
   const onKeyUp = () => {
-    focusBackward();
+    if (visible.value) {
+      focusBackward();
+    }
   };
 
   const onKeyEnter = () => {
-    onSelectFocused();
+    if (visible.value) {
+      onSelectFocused();
+    }
   };
 
   return {

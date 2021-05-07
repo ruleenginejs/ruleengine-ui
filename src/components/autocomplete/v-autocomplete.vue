@@ -33,6 +33,7 @@
     anchor-constraint
     prevent-mouse-down
     list-focus-loop
+    clear-on-invisible
     @error="onError"
     @select="onSelected"
   />
@@ -118,6 +119,7 @@ export default {
       focusIndex,
       focusItem,
       resetSearch,
+      updateSearch,
       focusForward,
       focusBackward,
       onFocusIn,
@@ -128,7 +130,9 @@ export default {
     } = useAutocomplete({ modelValue, valueField, emit });
 
     const { onKeyEsc, onKeyDown, onKeyUp, onKeyEnter } = useKeyboard({
+      visible,
       resetSearch,
+      updateSearch,
       focusForward,
       focusBackward,
       onSelectFocused
