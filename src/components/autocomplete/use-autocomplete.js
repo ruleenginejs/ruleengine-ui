@@ -78,7 +78,11 @@ export default function useAutocomplete({
   };
 
   const onSelectFocused = () => {
-    onSelected(focusItem.value);
+    if (focusItem.value) {
+      onSelected(focusItem.value);
+    } else {
+      resetSearch();
+    }
   }
 
   return {
