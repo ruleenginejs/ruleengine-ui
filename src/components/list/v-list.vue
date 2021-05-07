@@ -49,6 +49,18 @@ export default {
       type: Object,
       default: null
     },
+    focused: {
+      type: Object,
+      default: null
+    },
+    focusIndex: {
+      type: Number,
+      default: null
+    },
+    focusLoop: {
+      type: Boolean,
+      default: false
+    },
     size: {
       type: String,
       default: "md"
@@ -78,12 +90,15 @@ export default {
       default: "iconColor"
     }
   },
-  emits: ["update:selected", "select"],
+  emits: ["update:selected", "update:focused", "update:focusIndex", "select"],
   setup(props, { emit }) {
     const {
       items,
       disabled,
       selected,
+      focused,
+      focusIndex,
+      focusLoop,
       idField,
       displayField,
       detailField,
@@ -105,6 +120,9 @@ export default {
       items,
       disabled,
       selected,
+      focused,
+      focusIndex,
+      focusLoop,
       fields,
       emit
     });
