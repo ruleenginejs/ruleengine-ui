@@ -7,7 +7,9 @@ export default function useSearch({
   searchTimeout,
   minSearchLength,
   maxQueryLength,
-  maxItemCount
+  maxItemCount,
+  clearOnInvisible,
+  visible
 }) {
   let controller = createSearchController();
   controller.performSearch(searchQuery.value);
@@ -25,6 +27,12 @@ export default function useSearch({
 
   watch(searchQuery, () => {
     controller.performSearch(searchQuery.value, true);
+  });
+
+  watch(visible, () => {
+    if (!visible.value && clearOnInvisible.value) {
+      controller.reset();
+    }
   });
 
   onBeforeUnmount(() => {

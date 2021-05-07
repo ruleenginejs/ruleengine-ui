@@ -2,6 +2,7 @@
   <v-content padding="md" class="w-1/3">
     <div>Suggestion:</div>
     <div @click="destroy = !destroy">Toggle</div>
+    <div @click="suggestVisible = !suggestVisible">Toggle Visible</div>
     <v-input
       v-model="searchQuery"
       placeholder="Enter your text"
@@ -18,6 +19,7 @@
       loading-message="Loading..."
       empty-result-message="No suggestions."
       :max-item-count="20"
+      clear-on-invisible
       @error="onError"
       @select="onSuggestionSelected"
     />

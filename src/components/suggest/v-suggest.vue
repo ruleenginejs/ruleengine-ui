@@ -141,6 +141,10 @@ export default {
     preventMouseDown: {
       type: Boolean,
       default: false
+    },
+    clearOnInvisible: {
+      type: Boolean,
+      default: false
     }
   },
   emits: [
@@ -161,7 +165,8 @@ export default {
       maxQueryLength,
       maxItemCount,
       listFocusItem,
-      listFocusIndex
+      listFocusIndex,
+      clearOnInvisible
     } = toRefs(props);
 
     const cssClasses = computed(() => ({
@@ -184,7 +189,9 @@ export default {
       searchTimeout,
       minSearchLength,
       maxQueryLength,
-      maxItemCount
+      maxItemCount,
+      clearOnInvisible,
+      visible
     });
 
     watch(error, () => {

@@ -119,6 +119,15 @@ class SearchContoller {
     }
   }
 
+  reset() {
+    this._cancelLastRequest();
+    this.resultItems.splice(0);
+    this.loading.value = false;
+    this.lastRequestError.value = null;
+    this._lastQuery = null;
+    this._firstRequestCompleted = false;
+  }
+
   destroy() {
     this._cancelLastRequest();
     this.dataSource = null;
