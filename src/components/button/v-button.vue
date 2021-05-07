@@ -3,7 +3,7 @@
     :is="tag"
     class="v-button"
     :class="cssClasses"
-    :tabindex="tabIndex"
+    :tabindex="disabled ? -1 : tabIndex"
     @click="onClick"
   >
     <slot />
