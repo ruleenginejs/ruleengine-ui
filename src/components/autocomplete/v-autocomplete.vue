@@ -1,6 +1,5 @@
 <template>
   <v-input
-    ref="input"
     v-model="value"
     autocomplete="off"
     class-name="v-autocomplete"
@@ -10,14 +9,19 @@
     :tabindex="tabIndex"
     :maxlength="maxLength"
     :id="anchorId"
-    @focus.prevent="onInputFocus"
-    @blur.prevent="onInputBlur"
+    @focus.prevent="onFocusIn"
+    @blur.prevent="onFocusOut"
+    @keyup.esc="onKeyEsc"
+    @keydown.down.prevent="onKeyDown"
+    @keydown.up.prevent="onKeyUp"
+    @keypress.enter.prevent.stop.self="onKeyEnter"
   />
   <v-suggest
     v-if="focused"
-    v-model:visible="suggestVisible"
+    v-model:visible="visible"
+    v-model:list-focus-item="focusItem"
+    v-model:list-focus-index="focusIndex"
     :anchor="anchorId"
-    anchor-constraint
     :search-query="searchQuery"
     :data-source="dataSource"
     :loading-message="loadingMessage"
@@ -26,9 +30,11 @@
     :min-search-length="minSearchLength"
     :max-query-length="maxLength"
     :max-item-count="maxItemCount"
+    anchor-constraint
     prevent-mouse-down
-    @error="onSuggestError"
-    @select="onSuggestSelected"
+    list-focus-loop
+    @error="onError"
+    @select="onSelected"
   />
 </template>
 
@@ -37,6 +43,7 @@ import { toRefs } from "vue";
 import { VInput } from "@/components/input";
 import { VSuggest } from "@/components/suggest";
 import useAutocomplete from "./use-autocomplete";
+import useKeyboard from "./use-keyboard";
 
 export default {
   name: "v-autocomplete",
@@ -104,32 +111,45 @@ export default {
 
     const {
       value,
-      input,
       anchorId,
       focused,
-      suggestVisible,
+      visible,
       searchQuery,
-      onInputFocus,
-      onInputBlur,
-      onSuggestError,
-      onSuggestSelected
-    } = useAutocomplete({
-      modelValue,
-      valueField,
-      emit
+      focusIndex,
+      focusItem,
+      resetSearch,
+      focusForward,
+      focusBackward,
+      onFocusIn,
+      onFocusOut,
+      onError,
+      onSelected,
+      onSelectFocused
+    } = useAutocomplete({ modelValue, valueField, emit });
+
+    const { onKeyEsc, onKeyDown, onKeyUp, onKeyEnter } = useKeyboard({
+      resetSearch,
+      focusForward,
+      focusBackward,
+      onSelectFocused
     });
 
     return {
       value,
-      input,
       anchorId,
       focused,
-      suggestVisible,
+      visible,
       searchQuery,
-      onInputFocus,
-      onInputBlur,
-      onSuggestError,
-      onSuggestSelected
+      focusIndex,
+      focusItem,
+      onFocusIn,
+      onFocusOut,
+      onError,
+      onSelected,
+      onKeyEsc,
+      onKeyDown,
+      onKeyUp,
+      onKeyEnter
     };
   }
 };

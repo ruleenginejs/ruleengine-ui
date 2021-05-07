@@ -103,7 +103,7 @@ export default {
         const timer = setTimeout(() => {
           console.log("fetchAutocompleteData resolved");
           resolve(this.searchData(searchText));
-        }, 3000);
+        }, 300);
 
         token.onCancellationRequested(() => {
           console.log("fetchAutocompleteData cancelled");

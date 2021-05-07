@@ -7,11 +7,12 @@ export default function useAutocomplete({
   emit
 }) {
   const uid = getCurrentInstance().uid;
-  const anchorId = ref(`autocomplete-input-${uid}`);
+  const anchorId = ref(`__v-autocomplete-input-${uid}`);
   const focused = ref(false);
-  const suggestVisible = ref(false);
   const searchQuery = ref("");
-  const input = ref(null);
+  const visible = ref(false);
+  const focusItem = ref(null);
+  const focusIndex = ref(0);
 
   const value = computed({
     get: () => modelValue.value,
@@ -20,31 +21,41 @@ export default function useAutocomplete({
 
   watch(value, () => {
     if (focused.value) {
-      suggestVisible.value = true;
+      visible.value = true;
       searchQuery.value = value.value;
     }
   });
 
-  const resetSuggest = () => {
-    suggestVisible.value = false;
+  const resetSearch = () => {
+    visible.value = false;
     searchQuery.value = "";
+    focusItem.value = null;
+    focusIndex.value = 0;
   };
 
-  const onInputFocus = () => {
+  const focusForward = () => {
+    focusIndex.value++;
+  }
+
+  const focusBackward = () => {
+    focusIndex.value--;
+  }
+
+  const onFocusIn = () => {
     focused.value = true;
-    resetSuggest();
+    resetSearch();
   }
 
-  const onInputBlur = () => {
+  const onFocusOut = () => {
     focused.value = false;
-    resetSuggest();
+    resetSearch();
   }
 
-  const onSuggestError = (err) => {
+  const onError = (err) => {
     emit("error", err);
   };
 
-  const onSuggestSelected = (val) => {
+  const onSelected = (val) => {
     if (!isDefined(val)) {
       value.value = null;
     } else if (isDefined(val[valueField.value])) {
@@ -53,21 +64,28 @@ export default function useAutocomplete({
       value.value = null;
     }
 
-    input.value?.inputEl?.blur();
-    focused.value = false;
-    resetSuggest();
+    resetSearch();
   };
+
+  const onSelectFocused = () => {
+    onSelected(focusItem.value);
+  }
 
   return {
     value,
-    input,
     anchorId,
     focused,
-    suggestVisible,
+    visible,
     searchQuery,
-    onInputFocus,
-    onInputBlur,
-    onSuggestError,
-    onSuggestSelected
+    focusIndex,
+    focusItem,
+    resetSearch,
+    focusForward,
+    focusBackward,
+    onFocusIn,
+    onFocusOut,
+    onError,
+    onSelected,
+    onSelectFocused
   }
 }
