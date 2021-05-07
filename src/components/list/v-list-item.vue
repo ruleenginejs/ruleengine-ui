@@ -1,5 +1,5 @@
 <template>
-  <div class="v-list-item" :class="cssClasses" @click="onClick">
+  <div ref="itemEl" class="v-list-item" :class="cssClasses" @click="onClick">
     <div v-if="icon" class="v-list-item__icon" :style="{ color: iconColor }">
       <component :is="icon" />
     </div>
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { computed, toRefs } from "vue";
+import { computed, onMounted, ref, toRefs, watch } from "vue";
 
 export default {
   name: "v-list-item",
@@ -38,11 +38,17 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    scrollIntoOnFocus: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ["click"],
   setup(props, { emit }) {
-    const { selected, focused, disabled } = toRefs(props);
+    const { selected, focused, disabled, scrollIntoOnFocus } = toRefs(props);
+
+    const itemEl = ref(null);
 
     const cssClasses = computed(() => ({
       "v-list-item--focused": focused.value,
@@ -50,12 +56,27 @@ export default {
       "v-list-item--disabled": disabled.value
     }));
 
+    const scrollIntoItem = () => {
+      if (focused.value && scrollIntoOnFocus.value) {
+        itemEl.value?.scrollIntoView({ block: "nearest", inline: "nearest" });
+      }
+    };
+
+    watch(focused, () => {
+      scrollIntoItem();
+    });
+
+    onMounted(() => {
+      scrollIntoItem();
+    });
+
     const onClick = (e) => {
       emit("click", e);
     };
 
     return {
       cssClasses,
+      itemEl,
       onClick
     };
   }

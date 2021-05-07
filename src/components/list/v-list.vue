@@ -17,6 +17,7 @@
       :selected="item.selected"
       :focused="item.focused"
       :disabled="item.disabled"
+      :scroll-into-on-focus="scrollIntoOnFocus"
       @click="onSelect(item, $event)"
     />
   </div>
@@ -60,6 +61,10 @@ export default {
     focusLoop: {
       type: Boolean,
       default: false
+    },
+    scrollIntoOnFocus: {
+      type: Boolean,
+      default: true
     },
     size: {
       type: String,
