@@ -56,7 +56,16 @@
       :data-source="fetchAutocompleteData"
       loading-message="Loading..."
       empty-result-message="No suggestions."
-    />
+    >
+      <template #icon>
+        <v-icon-file-menu />
+      </template>
+    </v-autocomplete>
+    <div>Checkbox: {{ form.checked1 }} : {{ form.checked2 }}</div>
+    <v-checkbox v-model="form.checked1" />
+    <v-checkbox v-model="form.checked2" />
+    <v-checkbox :model-value="true" disabled />
+    <v-checkbox :model-value="false" disabled />
   </v-content>
 </template>
 
@@ -73,7 +82,9 @@ export default {
       form: {
         text: null,
         selectValue: { value: "2" },
-        autocompleteValue: null
+        autocompleteValue: null,
+        checked1: true,
+        checked2: false
       },
       selectItems: [
         {

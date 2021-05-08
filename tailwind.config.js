@@ -73,7 +73,11 @@ module.exports = {
 
         "suggest-background": "var(--suggest-background)",
         "suggest-border": "var(--suggest-border)",
-        "suggest-foreground": "var(--suggest-foreground)"
+        "suggest-foreground": "var(--suggest-foreground)",
+
+        "checkbox-background": "var(--checkbox-background)",
+        "checkbox-border": "var(--checkbox-border)",
+        "checkbox-foreground": "var(--checkbox-foreground)"
       },
       outline: {
         blue: ['1px solid var(--focus-border)', '-1px'],

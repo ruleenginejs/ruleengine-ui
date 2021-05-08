@@ -1,0 +1,73 @@
+.v-checkbox {
+  /* display styles */
+  @apply inline-block overflow-hidden relative;
+
+  /* sizes */
+  @apply w-18sp h-18sp;
+}
+
+.v-checkbox__wrap {
+  /* display styles */
+  @apply block;
+
+  /* cursor */
+  @apply cursor-default;
+}
+
+.v-checkbox__input {
+  /* display styles */
+  @apply absolute;
+
+  /* visual styles */
+  @apply opacity-0;
+
+  /* sizes */
+  @apply w-0 h-0;
+}
+
+.v-checkbox__custom {
+  /* display styles */
+  @apply flex items-center justify-center;
+
+  /* visual styles */
+  @apply border border-solid border-checkbox-border bg-checkbox-background rounded-3sp;
+
+  /* icon styles */
+  @apply text-base leading-none text-checkbox-foreground;
+
+  /* opacity */
+  @apply opacity-70 hover:opacity-100;
+
+  /* sizes */
+  @apply w-18sp h-18sp p-2sp;
+
+  /* no selection */
+  @apply select-none;
+
+  /* cursor */
+  @apply cursor-pointer;
+}
+
+/* states */
+.v-checkbox__input:checked + .v-checkbox__custom {
+  /* visual styles */
+  @apply opacity-100;
+}
+
+.v-checkbox__input:focus + .v-checkbox__custom {
+  /* visual styles */
+  @apply opacity-100 outline-blue;
+}
+
+.v-checkbox__input:focus:active + .v-checkbox__custom {
+  /* visual styles */
+  @apply outline-none;
+}
+
+.v-checkbox__input:disabled + .v-checkbox__custom {
+  /* visual styles */
+  @apply opacity-38;
+
+  /* cursor */
+  @apply cursor-default;
+}

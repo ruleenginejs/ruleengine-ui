@@ -14,6 +14,7 @@ import VIconPlusBold from "./v-icon-plus-bold"
 import VIconPlus from "./v-icon-plus"
 import VIconSidebarLeft from "./v-icon-sidebar-left"
 import VIconSidebarRight from "./v-icon-sidebar-right"
+import VIconCheckmark from "./v-icon-checkmark"
 
 export {
   VIconFileMenu,
@@ -29,5 +30,6 @@ export {
   VIconPlusBold,
   VIconPlus,
   VIconSidebarLeft,
-  VIconSidebarRight
+  VIconSidebarRight,
+  VIconCheckmark
 }

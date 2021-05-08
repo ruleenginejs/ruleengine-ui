@@ -93,4 +93,9 @@
   --suggest-background: #252526;
   --suggest-border: #454545;
   --suggest-foreground: #d4d4d4;
+
+  /* checkbox */
+  --checkbox-background: #3c3c3c;
+  --checkbox-border: #3c3c3c;
+  --checkbox-foreground: #f0f0f0;
 }
