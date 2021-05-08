@@ -56,9 +56,23 @@ In your templates
 #### Inputs
 
 - v-input
+- v-autocomplete
+- v-button
+- v-checkbox
+- v-select-box
 - v-label
 - v-fieldset
 - v-field-layout
+
+#### List
+
+- v-list
+- v-list-item
+
+#### Dropdown
+
+- v-dropdown
+- v-suggest
 
 #### Action Bar
 
@@ -107,3 +121,4 @@ In your templates
 - v-icon-stop
 - v-icon-plus-bold
 - v-icon-script
+- v-icon-checkmark
