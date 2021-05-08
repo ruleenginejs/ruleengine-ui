@@ -15,7 +15,11 @@
     @keydown.down.prevent="onKeyDown"
     @keydown.up.prevent="onKeyUp"
     @keypress.enter.prevent.stop.self="onKeyEnter"
-  />
+  >
+    <template #icon>
+      <slot name="icon" />
+    </template>
+  </v-input>
   <v-suggest
     v-if="focused"
     v-model:visible="visible"
