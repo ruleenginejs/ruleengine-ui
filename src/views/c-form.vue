@@ -58,7 +58,7 @@
       empty-result-message="No suggestions."
     >
       <template #icon>
-        <v-icon-file-menu />
+        <span class="codicon codicon-file-code"></span>
       </template>
     </v-autocomplete>
     <div>Checkbox: {{ form.checked1 }} : {{ form.checked2 }}</div>
