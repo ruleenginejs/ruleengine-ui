@@ -1,5 +1,5 @@
-import { isDefined } from "@/utils/types";
 import { watch, watchEffect, reactive } from "vue";
+import { isDefined } from "@/utils/types";
 import ListItem from "./list-item";
 
 class List {
@@ -10,6 +10,7 @@ class List {
     focused,
     focusIndex,
     focusLoop,
+    resetFocusIndex,
     fields,
     emit
   }) {
@@ -20,8 +21,10 @@ class List {
     this.selected = selected;
     this.focused = focused;
     this.focusIndex = focusIndex;
+    this.resetFocusIndex = resetFocusIndex;
     this.focusLoop = focusLoop;
     this.displayItems = reactive([]);
+
     this.onSelect = this.onSelect.bind(this);
     this.updateFocusItem = this.updateFocusItem.bind(this);
 
@@ -43,6 +46,13 @@ class List {
     });
 
     watch(this.focusIndex, this.updateFocusItem);
+
+    watch(() => [...this.displayItems], () => {
+      if (isDefined(this.focusIndex.value)
+        && isDefined(this.resetFocusIndex.value)) {
+        this.updateFocusItem(this.resetFocusIndex.value);
+      }
+    });
   }
 
   isSelectedItem(listItem) {
@@ -52,16 +62,16 @@ class List {
   }
 
   updateSelection() {
-    this.displayItems.forEach(listItem => {
+    for (let i = 0, len = this.displayItems.length; i < len; i++) {
+      const listItem = this.displayItems[i];
       listItem.selected = this.isSelectedItem(listItem);
-    });
+    }
   }
 
   updateFocusItem(newValue = null, oldValue = null) {
     if (isDefined(oldValue) && this.displayItems[oldValue]) {
       this.displayItems[oldValue].focused = false;
     }
-
     if (!isDefined(newValue)) {
       this.emit("update:focused", null);
       return;

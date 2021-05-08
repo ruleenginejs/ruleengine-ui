@@ -58,6 +58,10 @@ export default {
       type: Number,
       default: null
     },
+    resetFocusIndex: {
+      type: Number,
+      default: null
+    },
     focusLoop: {
       type: Boolean,
       default: false
@@ -104,6 +108,7 @@ export default {
       focused,
       focusIndex,
       focusLoop,
+      resetFocusIndex,
       idField,
       displayField,
       detailField,
@@ -128,6 +133,7 @@ export default {
       focused,
       focusIndex,
       focusLoop,
+      resetFocusIndex,
       fields,
       emit
     });
