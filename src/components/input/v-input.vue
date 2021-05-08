@@ -1,20 +1,21 @@
 <template>
-  <div class="v-input-layout" :class="wrapClasses">
+  <div class="v-input-layout" :class="layoutClasses">
     <input
       ref="inputEl"
       class="v-input"
-      :class="inputClasses"
+      :class="{ 'v-input--icon': $slots['icon'] }"
       v-model="value"
       v-bind="$attrs"
       :type="type"
       :disabled="disabled"
       :readonly="readonly"
+      :tabindex="tabIndex"
     />
     <span
-      v-if="hasIcon"
-      @click="onIconClick"
+      v-if="$slots['icon']"
       class="v-input__icon"
       :class="iconClasses"
+      @click="onIconClick"
     >
       <slot name="icon" />
     </span>
@@ -36,6 +37,10 @@ export default {
       type: String,
       default: "text"
     },
+    tabIndex: {
+      type: Number,
+      default: 0
+    },
     className: {
       type: String,
       default: null
@@ -54,11 +59,10 @@ export default {
     }
   },
   emits: ["update:modelValue", "icon-click"],
-  setup(props, { emit, slots }) {
+  setup(props, { emit }) {
     const { modelValue, iconClickable, className, disabled, readonly } = toRefs(
       props
     );
-
     const inputEl = ref(null);
 
     const value = computed({
@@ -66,20 +70,15 @@ export default {
       set: (val) => emit("update:modelValue", val)
     });
 
-    const hasIcon = computed(() => !!slots.icon);
-
     const iconClasses = computed(() => ({
       "v-input__icon--clickable":
         !disabled.value && !readonly.value && iconClickable.value
     }));
 
-    const inputClasses = computed(() => ({
-      "v-input--icon": hasIcon.value
-    }));
-
-    const wrapClasses = computed(() => ({
+    const layoutClasses = computed(() => ({
       [className.value]: !!className.value,
-      "v-input-layout--disabled": disabled.value
+      "v-input-layout--disabled": disabled.value,
+      "v-input-layout--readonly": readonly.value
     }));
 
     const onIconClick = () => {
@@ -91,10 +90,8 @@ export default {
       value,
       inputEl,
       iconClasses,
-      onIconClick,
-      hasIcon,
-      inputClasses,
-      wrapClasses
+      layoutClasses,
+      onIconClick
     };
   }
 };
