@@ -26,6 +26,7 @@
       v-model:focused="modelListFocusItem"
       v-model:focus-index="modelListFocusIndex"
       :focus-loop="listFocusLoop"
+      :reset-focus-index="listResetFocusIndex"
       @select="onSelect"
     />
   </v-dropdown>
@@ -82,6 +83,10 @@ export default {
       type: String,
       default: "md"
     },
+    scrollSize: {
+      type: String,
+      default: "md"
+    },
     listSize: {
       type: String,
       default: "md"
@@ -97,6 +102,10 @@ export default {
     listFocusLoop: {
       type: Boolean,
       default: false
+    },
+    listResetFocusIndex: {
+      type: Number,
+      default: 0
     },
     offsetX: {
       type: Number,
@@ -156,7 +165,6 @@ export default {
   ],
   setup(props, { emit }) {
     const {
-      size,
       visible,
       dataSource,
       searchQuery,
@@ -164,6 +172,8 @@ export default {
       minSearchLength,
       maxQueryLength,
       maxItemCount,
+      size,
+      scrollSize,
       listFocusItem,
       listFocusIndex,
       clearOnInvisible
@@ -172,7 +182,8 @@ export default {
     const cssClasses = computed(() => ({
       "v-suggest": true,
       "v-suggest--sm": size.value === "sm",
-      "v-suggest--md": size.value === "md"
+      "v-suggest--md": size.value === "md",
+      "v-scrollbar--sm": scrollSize.value === "sm"
     }));
 
     const { modelVisible } = useDropdown({ visible, emit });
