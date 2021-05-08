@@ -1,5 +1,5 @@
 .v-input-layout {
-  /* position */
+  /* display styles */
   @apply relative;
 }
 
@@ -18,23 +18,21 @@
 
   /* disabled */
   @apply disabled:opacity-38;
+}
 
-  /* placeholder */
-  &::placeholder {
-    @apply text-input-placeholder-foreground;
-  }
+.v-input::placeholder {
+  /* visual styles */
+  @apply text-input-placeholder-foreground;
 }
 
 .v-input--icon {
+  /* sizes */
   @apply pr-6;
 }
 
 .v-input__icon {
-  /* position */
-  @apply absolute top-0 right-0;
-
   /* display styles */
-  @apply flex items-center justify-center;
+  @apply flex items-center justify-center absolute top-0 right-0;
 
   /* visual styles */
   @apply text-base leading-none text-input-foreground;
@@ -42,13 +40,16 @@
   /* size */
   @apply w-6 h-6 px-1 py-0.5;
 
+  /* cursor */
   @apply cursor-default;
 }
 
 .v-input__icon--clickable {
+  /* cursor */
   @apply cursor-pointer;
 }
 
 .v-input-layout--disabled .v-input__icon {
+  /* visual styles */
   @apply opacity-38;
 }
