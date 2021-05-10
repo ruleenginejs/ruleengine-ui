@@ -6,6 +6,9 @@
 .v-fieldset__label {
   /* visual styles */
   @apply text-11sp leading-4 text-fieldset-title-foreground truncate uppercase font-medium;
+
+  /* opacity */
+  @apply opacity-60;
 }
 
 .v-fieldset--t-border {
