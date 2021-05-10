@@ -9,8 +9,10 @@
     :tabindex="tabIndex"
     :maxlength="maxLength"
     :id="anchorId"
+    :icon-clickable="iconClickable"
     @focus.prevent="onFocusIn"
     @blur.prevent="onFocusOut"
+    @icon-click="onIconClick"
     @keyup.esc="onKeyEsc"
     @keydown.down.prevent="onKeyDown"
     @keydown.up.prevent="onKeyUp"
@@ -81,6 +83,10 @@ export default {
       type: Number,
       default: 0
     },
+    iconClickable: {
+      type: Boolean,
+      default: false
+    },
     valueField: {
       type: String,
       default: "text"
@@ -110,7 +116,7 @@ export default {
       default: null
     }
   },
-  emits: ["update:modelValue", "error"],
+  emits: ["update:modelValue", "error", "icon-click"],
   setup(props, { emit }) {
     const { modelValue, valueField } = toRefs(props);
 
@@ -130,7 +136,8 @@ export default {
       onFocusOut,
       onError,
       onSelected,
-      onSelectFocused
+      onSelectFocused,
+      onIconClick
     } = useAutocomplete({ modelValue, valueField, emit });
 
     const { onKeyEsc, onKeyDown, onKeyUp, onKeyEnter } = useKeyboard({
@@ -154,6 +161,7 @@ export default {
       onFocusOut,
       onError,
       onSelected,
+      onIconClick,
       onKeyEsc,
       onKeyDown,
       onKeyUp,

@@ -85,6 +85,10 @@ export default function useAutocomplete({
     }
   }
 
+  const onIconClick = (e) => {
+    emit("icon-click", e);
+  }
+
   return {
     value,
     anchorId,
@@ -101,6 +105,7 @@ export default function useAutocomplete({
     onFocusOut,
     onError,
     onSelected,
-    onSelectFocused
+    onSelectFocused,
+    onIconClick
   }
 }

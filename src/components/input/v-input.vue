@@ -81,9 +81,9 @@ export default {
       "v-input-layout--readonly": readonly.value
     }));
 
-    const onIconClick = () => {
+    const onIconClick = (e) => {
       if (!iconClickable.value || disabled.value || readonly.value) return;
-      emit("icon-click");
+      emit("icon-click", e);
     };
 
     return {

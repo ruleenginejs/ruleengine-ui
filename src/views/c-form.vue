@@ -56,6 +56,8 @@
       :data-source="fetchAutocompleteData"
       loading-message="Loading..."
       empty-result-message="No suggestions."
+      icon-clickable
+      @icon-click="onAutocompleteIconClick"
     >
       <template #icon>
         <span class="codicon codicon-file-code"></span>
@@ -122,6 +124,9 @@ export default {
           resolve();
         });
       });
+    },
+    onAutocompleteIconClick(e) {
+      console.log(e);
     }
   }
 };
