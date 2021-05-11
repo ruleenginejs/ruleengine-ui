@@ -170,7 +170,3 @@ export default {
   }
 };
 </script>
-
-<style>
-@import "autocomplete";
-</style>
