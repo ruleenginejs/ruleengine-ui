@@ -9,10 +9,6 @@
   @apply h-35sp px-5;
 }
 
-.v-sidebar-section__header--compact {
-  @apply px-2.5;
-}
-
 .v-sidebar-section__title {
   /* display styles */
   @apply flex-grow;
@@ -43,6 +39,19 @@
   @apply box-content;
 }
 
+/* compact header */
+.v-sidebar-section__header--compact {
+  /* sizes */
+  @apply h-27sp px-2.5;
+}
+
+/* strong header */
+.v-sidebar-section__header--strong .v-sidebar-section__title {
+  /* visual styles */
+  @apply font-bold;
+}
+
+/* expandable */
 .v-sidebar-section--expandable .v-sidebar-section__header {
   @apply cursor-pointer;
 }

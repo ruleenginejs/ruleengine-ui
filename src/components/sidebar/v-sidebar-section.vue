@@ -13,7 +13,8 @@
       @click.prevent.stop="onToggleExpand"
       :class="{
         'v-sidebar-section__border': headerBorder,
-        'v-sidebar-section__header--compact': headerCompact
+        'v-sidebar-section__header--compact': headerCompact,
+        'v-sidebar-section__header--strong': headerStrong
       }"
     >
       <div v-if="title" :title="title" class="v-sidebar-section__title">
@@ -73,6 +74,10 @@ export default {
       default: true
     },
     headerCompact: {
+      type: Boolean,
+      default: false
+    },
+    headerStrong: {
       type: Boolean,
       default: false
     },

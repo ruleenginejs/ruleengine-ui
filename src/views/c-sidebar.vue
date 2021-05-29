@@ -7,6 +7,9 @@
       <v-sidebar-section title="Title" header-compact :bottom-border="false">
         <div>Content</div>
       </v-sidebar-section>
+      <v-sidebar-section title="Title" header-compact header-strong :bottom-border="false">
+        <div>Content</div>
+      </v-sidebar-section>
       <v-sidebar-section title="Title" :expandable="false">
         <div>Content</div>
       </v-sidebar-section>
