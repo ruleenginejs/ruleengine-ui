@@ -1,17 +1,20 @@
 <template>
   <component
+    ref="button"
     :is="tag"
     class="v-button"
     :class="cssClasses"
-    :tabindex="disabled ? -1 : tabIndex"
-    @click="onClick"
+    :tabindex="disabled ? null : tabIndex"
+    @click="disabled ? null : onClick($event)"
+    @keyup.esc="disabled ? null : onEscKey($event)"
+    @keyup.space.enter="disabled ? null : onClick($event)"
   >
     <slot />
   </component>
 </template>
 
 <script>
-import { computed, toRefs } from "vue";
+import { computed, ref, toRefs } from "vue";
 
 export default {
   name: "v-button",
@@ -36,6 +39,7 @@ export default {
   emits: ["click"],
   setup(props, { emit }) {
     const { disabled, secondary } = toRefs(props);
+    const button = ref(null);
 
     const cssClasses = computed(() => ({
       "v-button--disabled": disabled.value,
@@ -56,9 +60,15 @@ export default {
       emit("click", e);
     };
 
+    const onEscKey = () => {
+      button.value?.blur();
+    };
+
     return {
+      button,
       cssClasses,
-      onClick
+      onClick,
+      onEscKey
     };
   }
 };
