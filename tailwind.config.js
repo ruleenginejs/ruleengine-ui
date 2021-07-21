@@ -141,6 +141,7 @@ module.exports = {
         3: '3px',
       },
       lineHeight: {
+        inherit: 'inherit',
         "22sp": '1.375rem',
         "30sp": "1.875rem"
       },

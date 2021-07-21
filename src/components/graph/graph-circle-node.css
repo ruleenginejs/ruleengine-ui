@@ -39,7 +39,7 @@
 
 .v-graph-circle-node__label {
   /* visual styles */
-  @apply text-18sp leading-none uppercase;
+  @apply text-18sp leading-inherit uppercase;
 }
 
 .v-graph-circle-node__label--sm {
@@ -50,8 +50,7 @@
 /* single port styles */
 .v-graph-circle-node__port {
   /* display styles */
-  @apply absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2;
-  @apply invisible;
+  @apply absolute invisible left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2;
 }
 
 .v-graph-circle-node__port .v-graph-port {
