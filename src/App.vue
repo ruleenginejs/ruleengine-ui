@@ -1,23 +1,13 @@
 <template>
-  <all-components />
+  <router-view />
 </template>
 
 <script>
-import AllComponents from "@/views/all-components";
-
 export default {
-  name: "App",
-  components: {
-    AllComponents
-  }
+  name: "App"
 };
 </script>
 
 <style>
-@import "./assets/css/demo";
-
-body {
-  background-color: #171717;
-  color: blueviolet;
-}
+@import "./assets/css/demo/style";
 </style>

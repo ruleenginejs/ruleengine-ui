@@ -12,8 +12,8 @@
     "dev:serve": "vue-cli-service serve",
     "dev:build": "vue-cli-service build",
     "dev:lint": "vue-cli-service lint",
-    "lib:build": "cross-env BUILD_LIB=true vue-cli-service build --target lib --name ruleengine-ui-kit-vue ./src/index.js",
-    "version": "npm run lib:build",
+    "build": "cross-env BUILD_LIB=true vue-cli-service build --target lib --name ruleengine-ui-kit-vue ./src/index.js",
+    "version": "npm run build",
     "postversion": "npm run push && npm publish",
     "push": "git push origin master --tags"
   },
@@ -45,7 +45,8 @@
     "postcss-nesting": "^8.0.1",
     "tailwindcss": "^2.2.6",
     "@vscode/codicons": "^0.0.20",
-    "vue": "^3.1.5"
+    "vue": "^3.1.5",
+    "vue-router": "^4.0.10"
   },
   "repository": {
     "type": "git",
