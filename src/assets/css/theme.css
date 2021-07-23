@@ -1,101 +1,101 @@
 :root {
   /* window */
-  --window-background: #171717;
+  --v-window-background: #171717;
 
   /* common */
-  --background: #1E1E1E;
-  --foreground: #cccccc;
+  --v-background: #1E1E1E;
+  --v-foreground: #cccccc;
 
   /* border */
-  --focus-border: #007fd4;
+  --v-focus-border: #007fd4;
 
   /* input */
-  --input-placeholder-foreground: #a6a6a6;
-  --input-background: #3c3c3c;
-  --input-foreground: #cccccc;
+  --v-input-placeholder-foreground: #a6a6a6;
+  --v-input-background: #3c3c3c;
+  --v-input-foreground: #cccccc;
 
   /* shadow */
-  --shadow-100: #000000;
-  --shadow-50: #00000080;
-  --shadow-30: #0000004D;
+  --v-shadow-100: #000000;
+  --v-shadow-50: #00000080;
+  --v-shadow-30: #0000004D;
 
   /* action bar */
-  --action-bar-background: #252526;
-  --action-bar-border: #000000;
-  --action-bar-active-background: #4a4a4a;
-  --action-bar-active-foreground: #ffffff;
-  --action-bar-inactive-background: #333333;
-  --action-bar-inactive-foreground: #ffffff;
-  --action-bar-disabled-foreground: #ffffff66;
+  --v-action-bar-background: #252526;
+  --v-action-bar-border: #000000;
+  --v-action-bar-active-background: #4a4a4a;
+  --v-action-bar-active-foreground: #ffffff;
+  --v-action-bar-inactive-background: #333333;
+  --v-action-bar-inactive-foreground: #ffffff;
+  --v-action-bar-disabled-foreground: #ffffff66;
 
   /* tabs */
-  --tab-background: #252526;
-  --tab-inactive-background: #2D2D2D;
-  --tab-inactive-foreground: #ffffff80;
-  --tab-active-background: #1E1E1E;
-  --tab-active-foreground: #FFFFFF;
-  --tab-border: #252526;
+  --v-tab-background: #252526;
+  --v-tab-inactive-background: #2D2D2D;
+  --v-tab-inactive-foreground: #ffffff80;
+  --v-tab-active-background: #1E1E1E;
+  --v-tab-active-foreground: #FFFFFF;
+  --v-tab-border: #252526;
 
   /* sidebar */
-  --side-bar-background: #252526;
-  --side-bar-section-header-border: #cccccc33;
-  --side-bar-title-foreground: #bbbbbb;
-  --side-bar-border: #000000;
+  --v-side-bar-background: #252526;
+  --v-side-bar-section-header-border: #cccccc33;
+  --v-side-bar-title-foreground: #bbbbbb;
+  --v-side-bar-border: #000000;
 
   /* list */
-  --list-active-selection-background: #094771;
-  --list-active-selection-foreground: #ffffff;
-  --list-inactive-selection-background: #37373d;
-  --list-inactive-foreground: #cccccc;
-  --list-hover-background: #2a2d2e;
-  --list-focus-background: #062f4a;
+  --v-list-active-selection-background: #094771;
+  --v-list-active-selection-foreground: #ffffff;
+  --v-list-inactive-selection-background: #37373d;
+  --v-list-inactive-foreground: #cccccc;
+  --v-list-hover-background: #2a2d2e;
+  --v-list-focus-background: #062f4a;
 
   /* scrollbar */
-  --scroll-hover-foreground: #cccccc33;
+  --v-scroll-hover-foreground: #cccccc33;
 
   /* graph */
-  --graph-background: #1E1E1E;
-  --graph-foreground: #D4D4D4;
-  --graph-round-border: #4C4F53;
-  --graph-error-background: #810B07;
-  --graph-node-background: #414141;
-  --graph-node-header-background: #4C4F53;
-  --graph-node-header-blue-background: #3A68A1;
-  --graph-node-header-green-background: #247939;
-  --graph-node-border: #754A4A;
-  --graph-active-port-backgound: #82801A;
-  --graph-inactive-port-backgound: #4C4F53;
-  --graph-inactive-port-border: #D4D4D4;
-  --graph-link-active-port-backgound: #D4D4D4;
-  --graph-connection-background: #414141;
+  --v-graph-background: #1E1E1E;
+  --v-graph-foreground: #D4D4D4;
+  --v-graph-round-border: #4C4F53;
+  --v-graph-error-background: #810B07;
+  --v-graph-node-background: #414141;
+  --v-graph-node-header-background: #4C4F53;
+  --v-graph-node-header-blue-background: #3A68A1;
+  --v-graph-node-header-green-background: #247939;
+  --v-graph-node-border: #754A4A;
+  --v-graph-active-port-backgound: #82801A;
+  --v-graph-inactive-port-backgound: #4C4F53;
+  --v-graph-inactive-port-border: #D4D4D4;
+  --v-graph-link-active-port-backgound: #D4D4D4;
+  --v-graph-connection-background: #414141;
 
   /* link */
-  --link-control-backgound: #007fd4;
+  --v-link-control-backgound: #007fd4;
 
   /* fieldset */
-  --fieldset-border: #cccccc33;
-  --fieldset-title-foreground: #bbbbbb;
+  --v-fieldset-border: #cccccc33;
+  --v-fieldset-title-foreground: #bbbbbb;
 
   /* button */
-  --button-foreground: #ffffff;
-  --button-background: #0e639c;
-  --button-hover-background: #1177bb;
-  --button-secondary-foreground: #ffffff;
-  --button-secondary-background: #3a3d41;
-  --button-secondary-hover-background: #45494e;
+  --v-button-foreground: #ffffff;
+  --v-button-background: #0e639c;
+  --v-button-hover-background: #1177bb;
+  --v-button-secondary-foreground: #ffffff;
+  --v-button-secondary-background: #3a3d41;
+  --v-button-secondary-hover-background: #45494e;
 
   /* dropdown */
-  --dropdown-background: #3c3c3c;
-  --dropdown-foreground: #f0f0f0;
-  --dropdown-border: #3c3c3c;
+  --v-dropdown-background: #3c3c3c;
+  --v-dropdown-foreground: #f0f0f0;
+  --v-dropdown-border: #3c3c3c;
 
   /* suggest */
-  --suggest-background: #252526;
-  --suggest-border: #454545;
-  --suggest-foreground: #d4d4d4;
+  --v-suggest-background: #252526;
+  --v-suggest-border: #454545;
+  --v-suggest-foreground: #d4d4d4;
 
   /* checkbox */
-  --checkbox-background: #3c3c3c;
-  --checkbox-border: #3c3c3c;
-  --checkbox-foreground: #f0f0f0;
+  --v-checkbox-background: #3c3c3c;
+  --v-checkbox-border: #3c3c3c;
+  --v-checkbox-foreground: #f0f0f0;
 }
