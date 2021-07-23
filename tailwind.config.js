@@ -4,9 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "window-background": "var(--v-window-background)",
         "foreground": "var(--v-foreground)",
-        "background": "var(--v-background)",
         "focus-border": "var(--v-focus-border)",
         "scroll-hover-foreground": "var(--v-scroll-hover-foreground)",
 

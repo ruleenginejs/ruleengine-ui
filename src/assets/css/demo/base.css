@@ -1,0 +1,17 @@
+html, body, #app {
+  @apply w-full h-full;
+}
+
+body {
+  @apply overflow-hidden p-0;
+
+  font-family: var(--vscode-font-family);
+}
+
+html.vscode-dark {
+  background-color: #171717;
+}
+
+html.vscode-light {
+  background-color: #fff;
+}
