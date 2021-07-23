@@ -12,7 +12,9 @@
     "dev:serve": "vue-cli-service serve",
     "dev:build": "vue-cli-service build",
     "dev:lint": "vue-cli-service lint",
-    "build": "cross-env BUILD_LIB=true vue-cli-service build --target lib --name ruleengine-ui-kit-vue ./src/index.js",
+    "lib:theme": "postcss src/assets/css/*.theme.css --base src/assets/css --dir dist -u cssnano --no-map",
+    "lib:build": "cross-env BUILD_LIB=true vue-cli-service build --target lib --name ruleengine-ui-kit-vue ./src/index.js",
+    "build": "npm run lib:build && npm run lib:theme",
     "version": "npm run build",
     "postversion": "npm run push && npm publish",
     "push": "git push origin master --tags"
@@ -41,12 +43,14 @@
     "eslint": "^7.31.0",
     "eslint-plugin-vue": "^7.14.0",
     "postcss": "^8.3.6",
+    "postcss-cli": "^8.3.1",
     "postcss-import": "^14.0.2",
     "postcss-nesting": "^8.0.1",
     "tailwindcss": "^2.2.6",
     "@vscode/codicons": "^0.0.20",
     "vue": "^3.1.5",
-    "vue-router": "^4.0.10"
+    "vue-router": "^4.0.10",
+    "cssnano": "^5.0.7"
   },
   "repository": {
     "type": "git",

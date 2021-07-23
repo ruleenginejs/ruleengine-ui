@@ -25,6 +25,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import RuleEngineUIKit from "@ruleenginejs/ruleengine-ui-kit-vue"
 import "@ruleenginejs/ruleengine-ui-kit-vue/dist/ruleengine-ui-kit-vue.css"
+import "@ruleenginejs/ruleengine-ui-kit-vue/dist/dark.theme.css"
 
 const app = createApp(App)
 

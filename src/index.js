@@ -1,5 +1,3 @@
-import "./assets/css/style.css"
-
 import * as Components from "./components"
 
 export default {
