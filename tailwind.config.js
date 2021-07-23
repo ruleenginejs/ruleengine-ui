@@ -6,6 +6,7 @@ module.exports = {
       colors: {
         "window-background": "var(--window-background)",
         "foreground": "var(--foreground)",
+        "background": "var(--background)",
         "focus-border": "var(--focus-border)",
         "scroll-hover-foreground": "var(--scroll-hover-foreground)",
 
