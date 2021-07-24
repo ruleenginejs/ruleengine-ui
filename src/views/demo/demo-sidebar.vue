@@ -35,6 +35,14 @@ export default {
         {
           title: "Component 2",
           routeName: "Component2"
+        },
+        {
+          title: "Component 3",
+          routeName: "Component3"
+        },
+        {
+          title: "Component 4",
+          routeName: "Component4"
         }
       ]
     };

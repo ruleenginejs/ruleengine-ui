@@ -1,3 +1,16 @@
 .demo-sidebar {
   border-top: 1px solid var(--vscode-sideBarSectionHeader-border);
 }
+
+.demo-sidebar__nav {
+  padding: 0.9375rem 1.25rem 0.4375rem;
+}
+
+.demo-sidebar__nav__item {
+  @apply truncate;
+  margin-bottom: 0.7rem;
+}
+
+.demo-sidebar__nav__item a.router-link-exact-active {
+  color: var(--vscode-textLink-foreground);
+}

@@ -4,7 +4,7 @@
       <demo-sidebar />
     </v-split-pane>
     <v-split-pane :min-size="200">
-      <v-content w-full h-full scroll padding="md" class="demo-component-content">
+      <v-content class="demo-component-content" w-full h-full scroll>
         <router-view />
       </v-content>
     </v-split-pane>
