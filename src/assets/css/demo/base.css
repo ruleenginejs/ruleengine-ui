@@ -8,10 +8,10 @@ body {
   font-family: var(--vscode-font-family);
 }
 
-html.vscode-dark {
-  background-color: #171717;
+html {
+  @apply bg-window-background;
 }
 
-html.vscode-light {
-  background-color: #fff;
+a:focus {
+  @apply outline-none;
 }

@@ -1,0 +1,8 @@
+.demo-header {
+  background-color: var(--vscode-menu-background);
+  padding: 0.625rem 1.25rem;
+}
+
+.demo-header__logo {
+  @apply uppercase;
+}

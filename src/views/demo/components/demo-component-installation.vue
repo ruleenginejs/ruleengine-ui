@@ -1,9 +1,9 @@
 <template>
-  <div></div>
+  <div>install</div>
 </template>
 
 <script>
 export default {
-  name: "demo-home"
+  name: "demo-component-installation"
 };
 </script>

@@ -1,3 +1,7 @@
 @import "vscode-environment/style";
+@import "../dark.theme";
 @import "tailwind";
 @import "base";
+@import "header";
+@import "link";
+@import "sidebar";
