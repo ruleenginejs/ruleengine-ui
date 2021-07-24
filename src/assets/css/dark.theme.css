@@ -1,6 +1,13 @@
 :root {
+  /* window */
+  --v-window-background: #171717;
+
   /* common */
   --v-foreground: #cccccc;
+
+  /* editor */
+  --v-editor-background: #1e1e1e;
+  --v-editor-foreground: #d4d4d4;
 
   /* border */
   --v-focus-border: #007fd4;
