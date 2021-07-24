@@ -1,22 +1,57 @@
-.v-scrollbar::-webkit-scrollbar {
-  /* visual styles */
-  @apply bg-transparent;
+.v-scrollbar {
+  scrollbar-color: var(--v-scrollbar-slider-background) var(--v-scrollbar-corner-background);
+}
 
-  /* sizes */
-  @apply h-1 w-1;
+.v-scrollbar::-webkit-scrollbar-corner {
+  @apply bg-scrollbar-corner-background;
 }
 
 .v-scrollbar::-webkit-scrollbar-thumb {
-  /* visual styles */
-  @apply bg-transparent;
+  @apply bg-scrollbar-slider-background;
 }
 
-.v-scrollbar:hover::-webkit-scrollbar-thumb {
-  /* visual styles */
-  @apply bg-scroll-hover-foreground;
+.v-scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply bg-scrollbar-slider-hover-background;
+}
+
+.v-scrollbar::-webkit-scrollbar-thumb:active {
+  @apply bg-scrollbar-slider-active-background;
+}
+
+/* scrollbar sizes */
+.v-scrollbar::-webkit-scrollbar {
+  @apply w-10sp h-10sp;
+}
+
+.v-scrollbar--md::-webkit-scrollbar {
+  @apply w-1 h-1;
 }
 
 .v-scrollbar--sm::-webkit-scrollbar {
-  /* sizes */
-  @apply h-0.5 w-0.5;
+  @apply w-0.5 h-0.5;
+}
+
+/* show on hover */
+.v-scrollbar--show-on-hover::-webkit-scrollbar-thumb {
+  @apply bg-transparent;
+}
+
+.v-scrollbar--show-on-hover::-webkit-scrollbar-corner {
+  @apply bg-transparent;
+}
+
+.v-scrollbar--show-on-hover:hover::-webkit-scrollbar-corner {
+  @apply bg-scrollbar-corner-background;
+}
+
+.v-scrollbar--show-on-hover:hover::-webkit-scrollbar-thumb {
+  @apply bg-scrollbar-slider-background;
+}
+
+.v-scrollbar--show-on-hover:hover::-webkit-scrollbar-thumb:hover {
+  @apply bg-scrollbar-slider-hover-background;
+}
+
+.v-scrollbar--show-on-hover:hover::-webkit-scrollbar-thumb:active {
+  @apply bg-scrollbar-slider-active-background;
 }

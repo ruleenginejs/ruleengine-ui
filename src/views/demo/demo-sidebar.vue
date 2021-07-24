@@ -1,6 +1,6 @@
 <template>
   <v-sidebar w-full h-full class="demo-sidebar">
-    <v-content w-full h-full scroll>
+    <v-content w-full h-full scroll="md">
       <v-sidebar-section expand title="Introduction">
         <demo-sidebar-nav :items="introduction" />
       </v-sidebar-section>

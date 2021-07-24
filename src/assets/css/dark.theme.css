@@ -54,7 +54,10 @@
   --v-list-focus-background: #062f4a;
 
   /* scrollbar */
-  --v-scroll-hover-foreground: #cccccc33;
+  --v-scrollbar-corner-background: #1e1e1e;
+  --v-scrollbar-slider-background: #79797966;
+  --v-scrollbar-slider-hover-background: #646464b3;
+  --v-scrollbar-slider-active-background: #bfbfbf66;
 
   /* graph */
   --v-graph-background: #1E1E1E;

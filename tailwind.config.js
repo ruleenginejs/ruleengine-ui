@@ -10,7 +10,6 @@ module.exports = {
 
         "foreground": "var(--v-foreground)",
         "focus-border": "var(--v-focus-border)",
-        "scroll-hover-foreground": "var(--v-scroll-hover-foreground)",
 
         "input-placeholder-foreground": "var(--v-input-placeholder-foreground)",
         "input-background": "var(--v-input-background)",
@@ -80,7 +79,12 @@ module.exports = {
 
         "checkbox-background": "var(--v-checkbox-background)",
         "checkbox-border": "var(--v-checkbox-border)",
-        "checkbox-foreground": "var(--v-checkbox-foreground)"
+        "checkbox-foreground": "var(--v-checkbox-foreground)",
+
+        "scrollbar-corner-background": "var(--v-scrollbar-corner-background)",
+        "scrollbar-slider-background": "var(--v-scrollbar-slider-background)",
+        "scrollbar-slider-hover-background": "var(--v-scrollbar-slider-hover-background)",
+        "scrollbar-slider-active-background": "var(--v-scrollbar-slider-active-background)"
       },
       outline: {
         blue: ['1px solid var(--v-focus-border)', '-1px'],
@@ -110,6 +114,7 @@ module.exports = {
         "6sp": '0.375rem',
         "7sp": '0.4375rem',
         "9sp": '0.5625rem',
+        "10sp": '0.625rem',
         "11sp": '0.6875rem',
         "18sp": '1.125rem',
         "21sp": '1.3125rem',

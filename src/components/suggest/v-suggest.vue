@@ -183,6 +183,7 @@ export default {
       "v-suggest": true,
       "v-suggest--sm": size.value === "sm",
       "v-suggest--md": size.value === "md",
+      "v-scrollbar--md": scrollSize.value === "md",
       "v-scrollbar--sm": scrollSize.value === "sm"
     }));
 

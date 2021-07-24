@@ -37,6 +37,7 @@
           'v-sidebar-section__border': bottomBorder,
           'v-sidebar-section__content--scroll': scroll,
           'v-scrollbar': scroll,
+          'v-scrollbar--md': scroll === 'md',
           'v-scrollbar--sm': scroll === 'sm'
         }"
       >
