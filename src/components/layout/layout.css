@@ -119,3 +119,15 @@
 .v-layout--no-overflow {
   @apply overflow-hidden;
 }
+
+.v-layout--no-flex {
+  @apply block;
+}
+
+.v-layout--no-flex.v-layout--inline {
+  @apply inline-block;
+}
+
+.v-layout--min-h-0 {
+  @apply min-h-0;
+}

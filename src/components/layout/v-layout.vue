@@ -89,6 +89,14 @@ export default {
     noOverflow: {
       type: Boolean,
       default: false
+    },
+    noFlex: {
+      type: Boolean,
+      default: false
+    },
+    minH0: {
+      type: Boolean,
+      default: false
     }
   },
   setup(props) {
@@ -111,7 +119,9 @@ export default {
       wCenter,
       allDistr,
       notShrink,
-      noOverflow
+      noOverflow,
+      noFlex,
+      minH0
     } = toRefs(props);
 
     const cssClasses = computed(() => ({
@@ -135,7 +145,9 @@ export default {
       "v-layout--w-center": wCenter.value,
       "v-layout--all-distr": allDistr.value,
       "v-layout--not-shrink": notShrink.value,
-      "v-layout--no-overflow": noOverflow.value
+      "v-layout--no-overflow": noOverflow.value,
+      "v-layout--no-flex": noFlex.value,
+      "v-layout--min-h-0": minH0.value
     }));
 
     return {
