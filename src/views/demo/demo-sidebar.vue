@@ -1,10 +1,10 @@
 <template>
   <v-sidebar w-full h-full class="demo-sidebar">
     <v-content w-full h-full scroll="md">
-      <v-sidebar-section expand title="Introduction">
+      <v-sidebar-section header-compact expand title="Introduction">
         <demo-sidebar-nav :items="introduction" />
       </v-sidebar-section>
-      <v-sidebar-section expand :bottom-border="false" title="Components">
+      <v-sidebar-section header-compact expand :bottom-border="false" title="Components">
         <demo-sidebar-nav :items="components" />
       </v-sidebar-section>
     </v-content>

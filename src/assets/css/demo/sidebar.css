@@ -14,3 +14,7 @@
 .demo-sidebar__nav__item a.router-link-exact-active {
   color: var(--vscode-textLink-foreground);
 }
+
+.demo-sidebar .v-sidebar-section__header--compact {
+  @apply pl-5;
+}

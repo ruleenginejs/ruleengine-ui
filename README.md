@@ -2,11 +2,13 @@
 
 ## Installation
 
+### npm
+
 ```bash
 npm install @ruleenginejs/ruleengine-ui-kit-vue
 ```
 
-Use tailwindcss (recommended)
+Use [tailwindcss](https://github.com/tailwindlabs/tailwindcss) (recommended)
 
 ```bash
 npm install tailwindcss
