@@ -1,4 +1,4 @@
-const DemoNotFound = () => import("@/views/demo/demo-not-found");
+const DemoNotFound = () => import("@/demo/views/demo-not-found");
 
 export default [
   {

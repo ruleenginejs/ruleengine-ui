@@ -1,5 +1,5 @@
-const DemoComponentLayout = () => import("@/views/demo/demo-component-layout");
-const DemoComponentInstallation = () => import("@/views/demo/components/demo-component-installation");
+const DemoComponentLayout = () => import("@/demo/views/demo-component-layout");
+const DemoComponentInstallation = () => import("@/demo/views/components/demo-component-installation");
 
 export default [
   {
