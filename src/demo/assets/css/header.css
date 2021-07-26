@@ -6,3 +6,7 @@
 .demo-header__logo {
   @apply uppercase;
 }
+
+.demo-header__logo a:hover {
+  color: inherit;
+}
