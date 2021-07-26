@@ -5,7 +5,7 @@
       :key="item.routerName"
       class="demo-sidebar__nav__item"
     >
-      <router-link :to="{ name: item.routerName }">
+      <router-link :to="{ name: item.routeName }">
         {{ item.title }}
       </router-link>
     </li>

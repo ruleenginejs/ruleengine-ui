@@ -13,6 +13,7 @@
 
 <script>
 import DemoSidebarNav from "./demo-sidebar-nav";
+import menu from "./demo-menu";
 
 export default {
   name: "demo-sidebar",
@@ -20,32 +21,7 @@ export default {
     DemoSidebarNav
   },
   data() {
-    return {
-      introduction: [
-        {
-          title: "Installation",
-          routeName: "installation"
-        }
-      ],
-      components: [
-        {
-          title: "Component 1",
-          routeName: "Component1"
-        },
-        {
-          title: "Component 2",
-          routeName: "Component2"
-        },
-        {
-          title: "Component 3",
-          routeName: "Component3"
-        },
-        {
-          title: "Component 4",
-          routeName: "Component4"
-        }
-      ]
-    };
+    return menu;
   }
 };
 </script>
