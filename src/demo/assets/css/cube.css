@@ -1,0 +1,67 @@
+.demo-cube {
+  @apply w-full h-full;
+}
+
+.demo-cube-h10 {
+  @apply h-10;
+}
+
+.demo-cube-h14 {
+  @apply h-14;
+}
+
+.demo-cube-h52 {
+  @apply h-52;
+}
+
+.demo-cube-h60 {
+  @apply h-60;
+}
+
+.demo-cube-w52 {
+  @apply w-52;
+}
+
+.demo-cube-a,
+.demo-cube-b,
+.demo-cube-c,
+.demo-cube-d {
+  @apply flex items-center justify-center;
+  @apply text-lg;
+}
+
+.demo-cube-a {
+  background-color: #2A2438;
+}
+
+.demo-cube-b {
+  background-color: #59405C;
+}
+
+.demo-cube-c {
+  background-color: #322F3D;
+}
+
+.demo-cube-d {
+  background-color: #4B5D67;
+}
+
+.demo-cube-a::after {
+  @apply block;
+  content: "A";
+}
+
+.demo-cube-b::after {
+  @apply block;
+  content: "B";
+}
+
+.demo-cube-c::after {
+  @apply block;
+  content: "C";
+}
+
+.demo-cube-d::after {
+  @apply block;
+  content: "D";
+}

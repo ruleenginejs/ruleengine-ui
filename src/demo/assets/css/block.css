@@ -16,7 +16,7 @@
 }
 
 .demo-block__code .v-sidebar-section__header {
-  @apply justify-center;
+  @apply justify-center select-none;
 }
 
 .demo-block__code .v-sidebar-section__title {
