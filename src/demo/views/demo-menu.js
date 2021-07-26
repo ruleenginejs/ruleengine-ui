@@ -9,6 +9,10 @@ export default {
     {
       title: "Layout",
       routeName: "component-layout"
+    },
+    {
+      title: "Button",
+      routeName: "component-button"
     }
   ]
 };

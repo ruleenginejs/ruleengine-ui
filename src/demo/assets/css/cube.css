@@ -27,7 +27,7 @@
 .demo-cube-c,
 .demo-cube-d {
   @apply flex items-center justify-center;
-  @apply text-lg;
+  @apply text-sm font-medium;
 }
 
 .demo-cube-a {

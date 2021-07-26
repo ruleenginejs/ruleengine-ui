@@ -1,6 +1,7 @@
 const DemoComponentPageLayout = () => import("@/demo/views/demo-component-layout");
 const DemoComponentInstallation = () => import("@/demo/views/components/demo-component-installation");
 const DemoComponentLayout = () => import("@/demo/views/components/demo-component-layout");
+const DemoComponentButton = () => import("@/demo/views/components/demo-component-button");
 
 export default [
   {
@@ -17,6 +18,11 @@ export default [
         path: "layout",
         name: "component-layout",
         component: DemoComponentLayout
+      },
+      {
+        path: "button",
+        name: "component-button",
+        component: DemoComponentButton
       }
     ]
   }
