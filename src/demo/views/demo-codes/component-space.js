@@ -4,6 +4,10 @@ const space_basic_usage_html = `
     <div class="demo-cube demo-cube-a demo-cube-w14" />
     <v-space />
     <div class="demo-cube demo-cube-b demo-cube-w14" />
+    <v-space />
+    <div class="demo-cube demo-cube-c demo-cube-w14" />
+    <v-space />
+    <div class="demo-cube demo-cube-d demo-cube-w14" />
   </v-layout>
 </template>
 `;
