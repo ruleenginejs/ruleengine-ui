@@ -5,6 +5,7 @@ export default [
   {
     path: "component",
     redirect: "/component/installation",
+    name: "component",
     component: DemoComponentLayout,
     children: [
       {

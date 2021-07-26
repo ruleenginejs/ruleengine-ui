@@ -10,7 +10,7 @@
     code="npm install @ruleenginejs/ruleengine-ui-kit-vue"
   />
 
-  <p>Use tailwindcss (recommended)</p>
+  <p>Use tailwindcss (for reset style)</p>
   <demo-code lang="shell" code="npm install tailwindcss" />
 
   <p>In your styles</p>

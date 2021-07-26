@@ -2,6 +2,10 @@
   @apply py-5 px-7 bg-editor-background;
 }
 
+.demo-content h1 {
+  @apply m-0 text-3xl font-medium;
+}
+
 .demo-content h2 {
   @apply m-0 text-2xl font-normal;
 }
@@ -18,4 +22,8 @@
   @apply block bg-window-background rounded text-xs leading-5;
   @apply mt-4 mb-6 py-4 px-6;
   @apply overflow-auto;
+}
+
+.demo-text-center {
+  @apply text-center;
 }

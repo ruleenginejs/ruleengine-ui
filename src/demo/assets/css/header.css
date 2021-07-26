@@ -10,3 +10,7 @@
 .demo-header__logo a:hover {
   color: inherit;
 }
+
+.demo-header__nav a {
+  @apply inline-block whitespace-nowrap ml-5;
+}

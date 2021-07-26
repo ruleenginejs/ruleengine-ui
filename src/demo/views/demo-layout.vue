@@ -3,7 +3,7 @@
     <v-layout not-shrink>
       <demo-header />
     </v-layout>
-    <v-layout all-distr min-h-0>
+    <v-layout all-distr h-full>
       <router-view />
     </v-layout>
   </v-layout>

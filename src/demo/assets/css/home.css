@@ -1,0 +1,15 @@
+.demo-home {
+  @apply flex items-center justify-center;
+}
+
+.demo-home__logo {
+  @apply w-52 mb-8;
+}
+
+.demo-home__buttons {
+  @apply flex mt-5;
+}
+
+.demo-home__buttons .v-button {
+  @apply mx-3 text-base;
+}

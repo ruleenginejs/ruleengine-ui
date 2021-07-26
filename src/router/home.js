@@ -10,7 +10,6 @@ export default [
     children: [
       {
         path: "",
-        redirect: "/component/installation",
         name: "home",
         component: DemoHome
       },

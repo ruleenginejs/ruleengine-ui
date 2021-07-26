@@ -3,7 +3,7 @@ function route(id) {
 }
 
 export default {
-  introduction: [
+  gettingStarted: [
     {
       title: "Installation",
       route: route("installation")
