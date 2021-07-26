@@ -1,6 +1,7 @@
 <template>
   <h2>Layout</h2>
   <p>Quickly create layouts with no styling on flex.</p>
+
   <h3>Basic layout</h3>
   <demo-block>
     <div class="demo-cube demo-cube-h60">
@@ -19,7 +20,7 @@
       </v-layout>
     </div>
     <template #code>
-      <demo-code name="basic_layout_html" />
+      <demo-code name="layout_basic_html" />
     </template>
   </demo-block>
 </template>

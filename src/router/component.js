@@ -1,28 +1,17 @@
-const DemoComponentPageLayout = () => import("@/demo/views/demo-component-layout");
-const DemoComponentInstallation = () => import("@/demo/views/components/demo-component-installation");
-const DemoComponentLayout = () => import("@/demo/views/components/demo-component-layout");
-const DemoComponentButton = () => import("@/demo/views/components/demo-component-button");
+const DemoComponentLayout = () => import("@/demo/views/demo-component-layout");
+const DemoComponentContent = () => import("@/demo/views/demo-component-content");
 
 export default [
   {
     path: "component",
     redirect: "/component/installation",
-    component: DemoComponentPageLayout,
+    component: DemoComponentLayout,
     children: [
       {
-        path: "installation",
-        name: "component-installation",
-        component: DemoComponentInstallation
-      },
-      {
-        path: "layout",
-        name: "component-layout",
-        component: DemoComponentLayout
-      },
-      {
-        path: "button",
-        name: "component-button",
-        component: DemoComponentButton
+        path: ":id",
+        name: "component-content",
+        props: true,
+        component: DemoComponentContent
       }
     ]
   }

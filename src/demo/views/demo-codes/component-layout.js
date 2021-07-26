@@ -1,4 +1,4 @@
-const basic_layout_html = `
+const layout_basic_html = `
 <template>
   <v-layout h-full w-full vertical>
     <v-layout not-shrink>
@@ -18,8 +18,8 @@ const basic_layout_html = `
 
 export default [
   {
-    name: "basic_layout_html",
-    code: basic_layout_html,
+    name: "layout_basic_html",
+    code: layout_basic_html,
     lang: "html"
   }
 ]

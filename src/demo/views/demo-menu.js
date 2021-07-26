@@ -1,18 +1,26 @@
+function route(id) {
+  return { name: "component-content", params: { id } };
+}
+
 export default {
   introduction: [
     {
       title: "Installation",
-      routeName: "component-installation"
+      route: route("installation")
     }
   ],
   components: [
     {
       title: "Layout",
-      routeName: "component-layout"
+      route: route("layout")
     },
     {
       title: "Button",
-      routeName: "component-button"
+      route: route("button")
+    },
+    {
+      title: "Space",
+      route: route("space")
     }
   ]
 };

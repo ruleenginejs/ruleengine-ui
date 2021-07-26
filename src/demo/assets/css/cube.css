@@ -18,6 +18,14 @@
   @apply h-60;
 }
 
+.demo-cube-w10 {
+  @apply w-10;
+}
+
+.demo-cube-w14 {
+  @apply w-14;
+}
+
 .demo-cube-w52 {
   @apply w-52;
 }

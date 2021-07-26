@@ -1,4 +1,4 @@
-const basic_usage_html = `
+const button_basic_usage_html = `
 <template>
   <v-layout gutter>
     <v-button>Default</v-button>
@@ -7,7 +7,7 @@ const basic_usage_html = `
 </template>
 `;
 
-const disabled_button_html = `
+const button_disabled_html = `
 <template>
   <v-layout gutter>
     <v-button disabled>Default</v-button>
@@ -18,13 +18,13 @@ const disabled_button_html = `
 
 export default [
   {
-    name: "basic_usage_html",
-    code: basic_usage_html,
+    name: "button_basic_usage_html",
+    code: button_basic_usage_html,
     lang: "html"
   },
   {
-    name: "disabled_button_html",
-    code: disabled_button_html,
+    name: "button_disabled_html",
+    code: button_disabled_html,
     lang: "html"
   }
 ]

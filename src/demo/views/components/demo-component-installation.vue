@@ -17,10 +17,10 @@
   <demo-code lang="css" code='@import "tailwindcss/base";' />
 
   <h3>Usage</h3>
-  <demo-code name="usage_js" />
+  <demo-code name="installation_usage_js" />
 
   <p>In your templates</p>
-  <demo-code name="usage_html" />
+  <demo-code name="installation_usage_html" />
 </template>
 
 <script>

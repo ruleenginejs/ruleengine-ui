@@ -52,7 +52,8 @@
     "tailwindcss": "^2.2.6",
     "vue": "^3.1.5",
     "vue-router": "^4.0.10",
-    "highlight.js": "^11.1.0"
+    "highlight.js": "^11.1.0",
+    "lodash": "^4.17.21"
   },
   "repository": {
     "type": "git",

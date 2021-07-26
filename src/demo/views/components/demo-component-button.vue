@@ -9,7 +9,7 @@
       <v-button secondary>Secondary</v-button>
     </v-layout>
     <template #code>
-      <demo-code name="basic_usage_html" />
+      <demo-code name="button_basic_usage_html" />
     </template>
   </demo-block>
 
@@ -20,7 +20,7 @@
       <v-button disabled secondary>Secondary</v-button>
     </v-layout>
     <template #code>
-      <demo-code name="basic_usage_html" />
+      <demo-code name="button_disabled_html" />
     </template>
   </demo-block>
 </template>

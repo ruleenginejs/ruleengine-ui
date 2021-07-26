@@ -1,4 +1,4 @@
-const usage_js = `
+const installation_usage_js = `
 import { createApp } from 'vue'
 import App from './App.vue'
 import RuleEngineUIKit from '@ruleenginejs/ruleengine-ui-kit-vue'
@@ -12,7 +12,7 @@ app.use(RuleEngineUIKit)
 app.mount('#app')
 `;
 
-const usage_html = `
+const installation_usage_html = `
 <v-action-bar>
   <v-action @click="onClick">
     <v-icon-play />
@@ -22,13 +22,13 @@ const usage_html = `
 
 export default [
   {
-    name: "usage_js",
-    code: usage_js,
+    name: "installation_usage_js",
+    code: installation_usage_js,
     lang: "javascript"
   },
   {
-    name: "usage_html",
-    code: usage_html,
+    name: "installation_usage_html",
+    code: installation_usage_html,
     lang: "html"
   }
 ]
