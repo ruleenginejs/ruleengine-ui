@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import UIKit from './index'
 import router from './router'
-import './demo/hljs';
+import './demo/utils/hljs';
 import hljsVuePlugin from "@highlightjs/vue-plugin";
 import '@vscode/codicons/dist/codicon.css';
 
