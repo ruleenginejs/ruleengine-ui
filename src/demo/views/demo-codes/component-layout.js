@@ -4,7 +4,7 @@ const layout_basic_html = `
     <v-layout not-shrink>
       <div class="demo-cube demo-cube-a demo-cube-h14" />
     </v-layout>
-    <v-layout all-distr min-h-0>
+    <v-layout all-distr h-full>
       <v-layout h-full not-shrink>
         <div class="demo-cube demo-cube-b demo-cube-w52" />
       </v-layout>
