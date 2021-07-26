@@ -17,4 +17,5 @@
 .demo-content .hljs {
   @apply block bg-window-background rounded text-xs leading-5;
   @apply mt-4 mb-6 py-4 px-6;
+  @apply overflow-auto;
 }
