@@ -18,3 +18,12 @@
 .demo-sidebar .v-sidebar-section__header--compact {
   @apply pl-5;
 }
+
+.demo-sidebar__nav__group {
+  margin-bottom: 0.7rem;
+  margin-top: 1.675rem;
+}
+
+.demo-sidebar__nav__group:first-child{
+  @apply mt-0;
+}

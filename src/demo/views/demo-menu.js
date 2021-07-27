@@ -11,20 +11,34 @@ export default {
   ],
   components: [
     {
-      title: "Layout",
-      route: route("layout")
+      title: "Basic",
+      items: [
+        {
+          title: "Layout",
+          route: route("layout")
+        },
+        {
+          title: "Button",
+          route: route("button")
+        },
+        {
+          title: "Space",
+          route: route("space")
+        },
+        {
+          title: "Scrollbar",
+          route: route("scrollbar")
+        }
+      ]
     },
     {
-      title: "Button",
-      route: route("button")
-    },
-    {
-      title: "Space",
-      route: route("space")
-    },
-    {
-      title: "Scrollbar",
-      route: route("scrollbar")
+      title: "Form",
+      items: [
+        {
+          title: "Input",
+          route: route("Input")
+        }
+      ]
     }
   ]
 };
