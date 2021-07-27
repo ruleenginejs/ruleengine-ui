@@ -40,7 +40,7 @@ export default {
       items: [
         {
           title: "Input",
-          route: route("Input")
+          route: route("input")
         }
       ]
     }

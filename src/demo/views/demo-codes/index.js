@@ -1,5 +1,6 @@
 import componentButton from "./component-button";
 import componentIcon from "./component-icon";
+import componentInput from "./component-input";
 import componentInstallation from "./component-installation";
 import componentLayout from "./component-layout";
 import componentScrollbar from "./component-scrollbar";
@@ -11,5 +12,6 @@ export default [
   ...componentButton,
   ...componentSpace,
   ...componentScrollbar,
-  ...componentIcon
+  ...componentIcon,
+  ...componentInput
 ]

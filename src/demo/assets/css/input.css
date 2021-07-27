@@ -1,0 +1,7 @@
+.demo-input-block .v-input-layout {
+  @apply w-52;
+}
+
+.demo-input-block .v-input-layout + .v-input-layout {
+  @apply mt-3;
+}
