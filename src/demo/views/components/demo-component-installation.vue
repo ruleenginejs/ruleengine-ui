@@ -16,6 +16,12 @@
   <p>In your styles</p>
   <demo-code lang="css" code='@import "tailwindcss/base";' />
 
+  <p>Add codicons (optional)</p>
+  <demo-code lang="shell" code="npm install @vscode/codicons" />
+
+  <p>In your code</p>
+  <demo-code lang="javascript" code='import "@vscode/codicons/dist/codicon.css"' />
+
   <h3>Usage</h3>
   <demo-code name="installation_usage_js" />
 
