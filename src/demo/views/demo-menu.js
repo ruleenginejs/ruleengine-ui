@@ -21,6 +21,10 @@ export default {
     {
       title: "Space",
       route: route("space")
+    },
+    {
+      title: "Scrollbar",
+      route: route("scrollbar")
     }
   ]
 };

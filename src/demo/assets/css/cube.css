@@ -26,14 +26,23 @@
   @apply w-14;
 }
 
+.demo-cube-w24 {
+  @apply w-24;
+}
+
 .demo-cube-w52 {
   @apply w-52;
+}
+
+.demo-cube-no-shrink {
+  @apply flex-shrink-0;
 }
 
 .demo-cube-a,
 .demo-cube-b,
 .demo-cube-c,
-.demo-cube-d {
+.demo-cube-d,
+.demo-cube-num {
   @apply flex items-center justify-center;
   @apply text-sm font-medium;
 }
@@ -51,6 +60,10 @@
 }
 
 .demo-cube-d {
+  background-color: #4B5D67;
+}
+
+.demo-cube-num {
   background-color: #4B5D67;
 }
 
