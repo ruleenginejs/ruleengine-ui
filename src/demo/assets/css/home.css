@@ -7,7 +7,7 @@
 }
 
 .demo-home__buttons {
-  @apply flex mt-5;
+  @apply flex mt-9;
 }
 
 .demo-home__buttons .v-button {
