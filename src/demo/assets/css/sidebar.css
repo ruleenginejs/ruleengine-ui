@@ -2,6 +2,10 @@
   border-top: 1px solid var(--vscode-sideBarSectionHeader-border);
 }
 
+.demo-sidebar > .v-content {
+  @apply pb-5;
+}
+
 .demo-sidebar__nav {
   padding: 0.9375rem 1.25rem 0.4375rem;
 }
