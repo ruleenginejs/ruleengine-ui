@@ -4,6 +4,7 @@
       <router-link :to="{ name: 'home' }">Rule Engine UI</router-link>
     </div>
     <v-space />
+    <demo-theme-switcher />
     <div class="demo-header__nav">
       <router-link :to="{ name: 'component' }">Guide</router-link>
       <router-link :to="{ name: 'component' }">Components</router-link>
@@ -18,7 +19,12 @@
 </template>
 
 <script>
+import DemoThemeSwitcher from "./demo-theme-switcher";
+
 export default {
-  name: "demo-header"
+  name: "demo-header",
+  components: {
+    DemoThemeSwitcher
+  }
 };
 </script>

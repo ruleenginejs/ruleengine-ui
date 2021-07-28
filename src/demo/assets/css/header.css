@@ -4,13 +4,23 @@
 }
 
 .demo-header__logo {
-  @apply uppercase;
+  @apply uppercase whitespace-nowrap;
 }
 
 .demo-header__logo a:hover {
   color: inherit;
 }
 
+.demo-header__nav {
+  @apply whitespace-nowrap;
+}
+
 .demo-header__nav a {
-  @apply inline-block whitespace-nowrap ml-5;
+  @apply inline-block whitespace-nowrap ml-3;
+}
+
+@screen sm {
+  .demo-header__nav a {
+    @apply ml-5;
+  }
 }
