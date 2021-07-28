@@ -1,5 +1,5 @@
 const DemoComponentLayout = () => import("@/demo/views/demo-component-layout");
-const DemoComponentContent = () => import("@/demo/views/demo-component-content");
+const DemoComponentPage = () => import("@/demo/views/demo-component-page");
 
 export default [
   {
@@ -12,7 +12,7 @@ export default [
         path: ":id",
         name: "component-content",
         props: true,
-        component: DemoComponentContent
+        component: DemoComponentPage
       }
     ]
   }

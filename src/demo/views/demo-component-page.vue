@@ -3,7 +3,7 @@ import { resolveDynamicComponent, h, computed, toRefs } from "vue";
 import DemoComponentNotFound from "./demo-component-not-found";
 
 export default {
-  name: "demo-component-content",
+  name: "demo-component-page",
   props: {
     id: {
       type: String,
