@@ -24,6 +24,6 @@
   margin-top: 1.875rem;
 }
 
-.demo-sidebar__nav__group:first-child{
+.demo-sidebar__nav__group:first-child {
   @apply mt-0;
 }
