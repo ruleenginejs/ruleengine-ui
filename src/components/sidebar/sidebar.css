@@ -12,9 +12,9 @@
 }
 
 .v-sidebar--rt-border {
-  @apply border-r border-t border-solid border-action-bar-border;
+  @apply border-r border-t border-solid border-side-bar-border;
 }
 
 .v-sidebar--lt-border {
-  @apply border-l border-t border-solid border-action-bar-border;
+  @apply border-l border-t border-solid border-side-bar-border;
 }

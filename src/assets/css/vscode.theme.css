@@ -43,7 +43,7 @@
   --v-side-bar-background: var(--vscode-sideBar-background);
   --v-side-bar-section-header-border: var(--vscode-sideBarSectionHeader-border);
   --v-side-bar-title-foreground: var(--vscode-sideBarTitle-foreground);
-  --v-side-bar-border: #000000;
+  /* --v-side-bar-border: no mapping */
 
   /* list */
   --v-list-active-selection-background: var(--vscode-list-activeSelectionBackground);
@@ -113,6 +113,9 @@
 
   /* link */
   --v-link-control-backgound: #007fd4;
+
+  /* sidebar */
+  --v-side-bar-border: #000000;
 }
 
 .vscode-light {
@@ -121,4 +124,7 @@
 
   /* link */
   --v-link-control-backgound: #0090f1;
+
+  /* sidebar */
+  --v-side-bar-border: #dddddd;
 }

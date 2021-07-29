@@ -6,6 +6,7 @@ import componentInstallation from "./component-installation";
 import componentLayout from "./component-layout";
 import componentList from "./component-list";
 import componentScrollbar from "./component-scrollbar";
+import componentSidebar from "./component-sidebar";
 import componentSpace from "./component-space";
 
 export default [
@@ -17,5 +18,6 @@ export default [
   ...componentIcon,
   ...componentInput,
   ...componentContent,
-  ...componentList
+  ...componentList,
+  ...componentSidebar
 ]
