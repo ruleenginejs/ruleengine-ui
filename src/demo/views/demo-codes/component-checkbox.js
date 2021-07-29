@@ -1,11 +1,11 @@
 const checkbox_basic_usage_html = `
 <template>
   <v-layout gutter wrap>
-    <v-layout gutter="sm" w-full h-center>
+    <v-layout gutter w-full h-center>
       <v-checkbox id="checkbox_1" v-model="checked" />
       <v-label for="checkbox_1">Checked</v-label>
     </v-layout>
-    <v-layout gutter="sm" w-full h-center>
+    <v-layout gutter w-full h-center>
       <v-checkbox id="checkbox_2" v-model="unchecked" />
       <v-label for="checkbox_2">Unchecked</v-label>
     </v-layout>
@@ -32,11 +32,11 @@ const checkbox_basic_usage_html = `
 const checkbox_disabled_html = `
 <template>
   <v-layout gutter wrap>
-    <v-layout gutter="sm" w-full h-center>
+    <v-layout gutter w-full h-center>
       <v-checkbox id="checkbox_1" v-model="checked" disabled />
       <v-label for="checkbox_1">Checked</v-label>
     </v-layout>
-    <v-layout gutter="sm" w-full h-center>
+    <v-layout gutter w-full h-center>
       <v-checkbox id="checkbox_2" v-model="unchecked" disabled />
       <v-label for="checkbox_2">Unchecked</v-label>
     </v-layout>

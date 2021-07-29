@@ -4,11 +4,11 @@
   <h3>Basic Usage</h3>
   <demo-block>
     <v-layout gutter wrap>
-      <v-layout gutter="sm" w-full h-center>
+      <v-layout gutter w-full h-center>
         <v-checkbox id="checkbox_1" v-model="checked" />
         <v-label for="checkbox_1">Checked</v-label>
       </v-layout>
-      <v-layout gutter="sm" w-full h-center>
+      <v-layout gutter w-full h-center>
         <v-checkbox id="checkbox_2" v-model="unchecked" />
         <v-label for="checkbox_2">Unchecked</v-label>
       </v-layout>
@@ -21,11 +21,11 @@
   <h3>Disabled State</h3>
   <demo-block>
     <v-layout gutter wrap>
-      <v-layout gutter="sm" w-full h-center>
+      <v-layout gutter w-full h-center>
         <v-checkbox id="checkbox_3" v-model="disabledChecked" disabled />
         <v-label for="checkbox_3">Checked</v-label>
       </v-layout>
-      <v-layout gutter="sm" w-full h-center>
+      <v-layout gutter w-full h-center>
         <v-checkbox id="checkbox_4" v-model="disabledUnchecked" disabled />
         <v-label for="checkbox_4">Unchecked</v-label>
       </v-layout>
