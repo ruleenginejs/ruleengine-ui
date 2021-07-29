@@ -1,4 +1,5 @@
 import componentButton from "./component-button";
+import componentCheckbox from "./component-checkbox";
 import componentContent from "./component-content";
 import componentIcon from "./component-icon";
 import componentInput from "./component-input";
@@ -21,5 +22,6 @@ export default [
   ...componentContent,
   ...componentList,
   ...componentSidebar,
-  ...componentTreeview
+  ...componentTreeview,
+  ...componentCheckbox
 ]
