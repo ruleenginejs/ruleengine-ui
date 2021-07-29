@@ -8,6 +8,7 @@ import componentList from "./component-list";
 import componentScrollbar from "./component-scrollbar";
 import componentSidebar from "./component-sidebar";
 import componentSpace from "./component-space";
+import componentTreeview from "./component-treeview";
 
 export default [
   ...componentInstallation,
@@ -19,5 +20,6 @@ export default [
   ...componentInput,
   ...componentContent,
   ...componentList,
-  ...componentSidebar
+  ...componentSidebar,
+  ...componentTreeview
 ]
