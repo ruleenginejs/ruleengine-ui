@@ -47,26 +47,6 @@
   @apply text-sm font-medium;
 }
 
-.demo-cube-a {
-  background-color: #2A2438;
-}
-
-.demo-cube-b {
-  background-color: #59405C;
-}
-
-.demo-cube-c {
-  background-color: #322F3D;
-}
-
-.demo-cube-d {
-  background-color: #4B5D67;
-}
-
-.demo-cube-num {
-  background-color: #4B5D67;
-}
-
 .demo-cube-a::after {
   @apply block;
   content: "A";
@@ -85,4 +65,48 @@
 .demo-cube-d::after {
   @apply block;
   content: "D";
+}
+
+.vscode-dark {
+  & .demo-cube-a {
+    background-color: #2A2438;
+  }
+
+  & .demo-cube-b {
+    background-color: #59405C;
+  }
+
+  & .demo-cube-c {
+    background-color: #322F3D;
+  }
+
+  & .demo-cube-d {
+    background-color: #4B5D67;
+  }
+
+  & .demo-cube-num {
+    background-color: #4B5D67;
+  }
+}
+
+.vscode-light {
+  & .demo-cube-a {
+    background-color: #F3ECB8;
+  }
+
+  & .demo-cube-b {
+    background-color: #F5CAB3;
+  }
+
+  & .demo-cube-c {
+    background-color: #A8D3DA;
+  }
+
+  & .demo-cube-d {
+    background-color: #B590CA;
+  }
+
+  & .demo-cube-num {
+    background-color: #B590CA;
+  }
 }
