@@ -32,7 +32,7 @@
   --v-action-bar-disabled-foreground: #ffffff66;
 
   /* tabs */
-  --v-tab-background: var(--vscode-tab-border);
+  --v-tab-background: var(--vscode-editorGroupHeader-tabsBackground);
   --v-tab-inactive-background: var(--vscode-tab-inactiveBackground);
   --v-tab-inactive-foreground: var(--vscode-tab-inactiveForeground);
   --v-tab-active-background: var(--vscode-tab-activeBackground);
