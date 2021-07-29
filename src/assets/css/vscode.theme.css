@@ -1,0 +1,124 @@
+:root {
+  /* window */
+  /* --v-window-background: no mapping */
+
+  /* common */
+  --v-foreground: var(--vscode-foreground);
+
+  /* editor */
+  --v-editor-background: var(--vscode-editor-background);
+  --v-editor-foreground: var(--vscode-editor-foreground);
+
+  /* border */
+  --v-focus-border: var(--vscode-focusBorder);
+
+  /* input */
+  --v-input-placeholder-foreground: var(--vscode-input-placeholderForeground);
+  --v-input-background: var(--vscode-input-background);
+  --v-input-foreground: var(--vscode-input-foreground);
+
+  /* shadow */
+  --v-shadow-100: #000000;
+  --v-shadow-50: #00000080;
+  --v-shadow-30: #0000004D;
+
+  /* action bar */
+  --v-action-bar-background: #252526;
+  --v-action-bar-border: #000000;
+  --v-action-bar-active-background: #4a4a4a;
+  --v-action-bar-active-foreground: #ffffff;
+  --v-action-bar-inactive-background: #333333;
+  --v-action-bar-inactive-foreground: #ffffff;
+  --v-action-bar-disabled-foreground: #ffffff66;
+
+  /* tabs */
+  --v-tab-background: var(--vscode-tab-border);
+  --v-tab-inactive-background: var(--vscode-tab-inactiveBackground);
+  --v-tab-inactive-foreground: var(--vscode-tab-inactiveForeground);
+  --v-tab-active-background: var(--vscode-tab-activeBackground);
+  --v-tab-active-foreground: var(--vscode-tab-activeForeground);
+  --v-tab-border: var(--vscode-tab-border);
+
+  /* sidebar */
+  --v-side-bar-background: var(--vscode-sideBar-background);
+  --v-side-bar-section-header-border: var(--vscode-sideBarSectionHeader-border);
+  --v-side-bar-title-foreground: var(--vscode-sideBarTitle-foreground);
+  --v-side-bar-border: #000000;
+
+  /* list */
+  --v-list-active-selection-background: var(--vscode-list-activeSelectionBackground);
+  --v-list-active-selection-foreground: var(--vscode-list-activeSelectionForeground);
+  --v-list-inactive-selection-background: var(--vscode-list-inactiveSelectionBackground);
+  --v-list-inactive-foreground: var(--vscode-foreground);
+  --v-list-hover-background: var(--vscode-list-hoverBackground);
+  --v-list-focus-background: var(--vscode-list-activeSelectionBackground);
+
+  /* scrollbar */
+  --v-scrollbar-corner-background: var(--vscode-editor-background);
+  --v-scrollbar-slider-background: var(--vscode-scrollbarSlider-background);
+  --v-scrollbar-slider-hover-background: var(--vscode-scrollbarSlider-hoverBackground);
+  --v-scrollbar-slider-active-background: var(--vscode-scrollbarSlider-activeBackground);
+
+  /* graph */
+  --v-graph-background: var(--vscode-editor-background);
+  --v-graph-foreground: var(--vscode-editor-foreground);
+  --v-graph-round-border: #4C4F53;
+  --v-graph-error-background: #810B07;
+  --v-graph-node-background: #414141;
+  --v-graph-node-header-background: #4C4F53;
+  --v-graph-node-header-blue-background: #3A68A1;
+  --v-graph-node-header-green-background: #247939;
+  --v-graph-node-border: #754A4A;
+  --v-graph-active-port-backgound: #82801A;
+  --v-graph-inactive-port-backgound: #4C4F53;
+  --v-graph-inactive-port-border: #D4D4D4;
+  --v-graph-link-active-port-backgound: #D4D4D4;
+  --v-graph-connection-background: #414141;
+
+  /* link */
+  /* --v-link-control-backgound: no mapping */
+
+  /* fieldset */
+  --v-fieldset-border: var(--vscode-sideBarSectionHeader-border);
+  --v-fieldset-title-foreground: var(--vscode-sideBarTitle-foreground);
+
+  /* button */
+  --v-button-foreground: var(--vscode-button-foreground);
+  --v-button-background: var(--vscode-button-background);
+  --v-button-hover-background: var(--vscode-button-hoverBackground);
+  --v-button-secondary-foreground: var(--vscode-button-secondaryForeground);
+  --v-button-secondary-background: var(--vscode-button-secondaryBackground);
+  --v-button-secondary-hover-background: var(--vscode-button-secondaryHoverBackground);
+
+  /* dropdown */
+  --v-dropdown-background: var(--vscode-dropdown-background);
+  --v-dropdown-foreground: var(--vscode-dropdown-foreground);
+  --v-dropdown-border: var(--vscode-dropdown-border);
+
+  /* suggest */
+  --v-suggest-background: var(--vscode-editorSuggestWidget-background);
+  --v-suggest-border: var(--vscode-editorSuggestWidget-border);
+  --v-suggest-foreground: var(--vscode-editorSuggestWidget-foreground);
+
+  /* checkbox */
+  --v-checkbox-background: var(--vscode-checkbox-background);
+  --v-checkbox-border: var(--vscode-checkbox-border);
+  --v-checkbox-foreground: var(--vscode-checkbox-foreground);
+}
+
+/* no mapping */
+.vscode-dark {
+  /* window */
+  --v-window-background: #171717;
+
+  /* link */
+  --v-link-control-backgound: #007fd4;
+}
+
+.vscode-light {
+  /* window */
+  --v-window-background: #ffffff;
+
+  /* link */
+  --v-link-control-backgound: #0090f1;
+}

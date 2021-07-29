@@ -1,5 +1,5 @@
 @import "vscode-environment/style";
-@import "../../../assets/css/dark.theme.css";
+@import "../../../assets/css/vscode.theme.css";
 @import "tailwind";
 @import "base";
 @import "header";
