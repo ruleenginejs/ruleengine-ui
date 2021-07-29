@@ -13,7 +13,7 @@ const list_basic_usage_html = `
       const items = reactive([]);
       const selectedItem = ref({ id: 1 });
 
-      for (let i = 0; i < 20; i++) {
+      for (let i = 0; i < 15; i++) {
         items.push({
           id: i + 1,
           text: \`Item \${i + 1}\`,
@@ -45,7 +45,7 @@ const list_focusable_html = `
       const items = reactive([]);
       const selectedItem = ref({ id: 1 });
 
-      for (let i = 0; i < 20; i++) {
+      for (let i = 0; i < 15; i++) {
         items.push({
           id: i + 1,
           text: \`Item \${i + 1}\`,

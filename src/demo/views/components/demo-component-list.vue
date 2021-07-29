@@ -1,5 +1,6 @@
 <template>
   <h2>List</h2>
+  <p>Display a set of data with flat list.</p>
 
   <h3>Basic Usage</h3>
   <demo-block>
@@ -42,7 +43,7 @@ export default {
     const selectedItem = ref({ id: 1 });
     const focusableSelectedItem = ref({ id: 1 });
 
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 15; i++) {
       items.push({
         id: i + 1,
         text: `Item ${i + 1}`,
