@@ -2,7 +2,7 @@
 
 > Vue 3.0 based component library for developers of custom editors in Visual Studio Code.
 
-[Live Demo](https://github.com/ruleenginejs/ruleengine-ui)
+[Live Demo](https://ruleenginejs.github.io/ruleengine-ui/)
 
 ## Installation
 
@@ -63,7 +63,7 @@ In your templates
 
 ## Documentation
 
-Read the [documentation and demos](https://github.com/ruleenginejs/ruleengine-ui).
+Read the [documentation and demos](https://ruleenginejs.github.io/ruleengine-ui/).
 
 ### Components
 
