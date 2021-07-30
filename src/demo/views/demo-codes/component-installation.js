@@ -1,13 +1,13 @@
 const installation_usage_js = `
 import { createApp } from 'vue'
 import App from './App.vue'
-import RuleEngineUIKit from '@ruleenginejs/ruleengine-ui'
+import RuleEngineUI from '@ruleenginejs/ruleengine-ui'
 import '@ruleenginejs/ruleengine-ui/dist/ruleengine-ui.css'
 import '@ruleenginejs/ruleengine-ui/dist/dark.theme.css'
 
 const app = createApp(App)
 
-app.use(RuleEngineUIKit)
+app.use(RuleEngineUI)
 
 app.mount('#app')
 `;
