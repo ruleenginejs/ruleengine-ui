@@ -1,6 +1,6 @@
 {
   "name": "@ruleenginejs/ruleengine-ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Vue3.0 Component Library for VS Code",
   "main": "dist/ruleengine-ui.common.js",
   "files": [
