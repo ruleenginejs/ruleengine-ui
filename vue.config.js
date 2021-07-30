@@ -13,5 +13,7 @@ module.exports = {
   configureWebpack: {
     devtool: process.env.NO_SOURCE_MAP ? false : "source-map",
     plugins: []
-  }
+  },
+  assetsDir: "assets",
+  publicPath: process.env.PUBLIC_PATH ? process.env.PUBLIC_PATH : "/"
 }

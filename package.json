@@ -12,7 +12,7 @@
     "dev:serve": "vue-cli-service serve",
     "dev:build": "vue-cli-service build",
     "dev:lint": "vue-cli-service lint",
-    "demo-build": "vue-cli-service build",
+    "demo-build": "cross-env NO_SOURCE_MAP=true PUBLIC_PATH=/ruleengine-ui/ vue-cli-service build",
     "lib:theme": "postcss src/assets/css/*.theme.css --base src/assets/css --dir dist -u cssnano --no-map",
     "lib:build": "cross-env BUILD_LIB=true vue-cli-service build --target lib --name ruleengine-ui ./src/index.js",
     "build": "npm run lib:build && npm run lib:theme",
