@@ -1,4 +1,8 @@
-# ruleengine-ui
+# ruleengine-ui [![npm version](https://badge.fury.io/js/@ruleenginejs/ruleengine-ui.svg)](https://badge.fury.io/js/@ruleenginejs/ruleengine-ui)
+
+> Vue 3.0 based component library for developers of custom editors in Visual Studio Code.
+
+[Live Demo](https://github.com/ruleenginejs/ruleengine-ui)
 
 ## Installation
 
@@ -18,6 +22,17 @@ In your styles
 
 ```css
 @import "tailwindcss/base";
+```
+
+Add [codicons](https://github.com/microsoft/vscode-codicons) (optional)
+
+```bash
+npm install @vscode/codicons
+```
+
+In your code
+```bash
+import "@vscode/codicons/dist/codicon.css";
 ```
 
 ## Usage
@@ -48,80 +63,44 @@ In your templates
 
 ## Documentation
 
+Read the [documentation and demos](https://github.com/ruleenginejs/ruleengine-ui).
+
 ### Components
 
-#### Layout
 
-- v-layout
-- v-content
-- v-space
+#### Basic
+- Layout
+- Content
+- Button
+- Space
+- Icon
+- Scrollbar
 
-#### Inputs
+#### Form
+- Input
+- Checkbox
+- Select
+- Autocomplete
+- Fieldset
+- Label
 
-- v-input
-- v-autocomplete
-- v-button
-- v-checkbox
-- v-select-box
-- v-label
-- v-fieldset
-- v-field-layout
+#### Data
+- List
+- Treeview
 
-#### List
-
-- v-list
-- v-list-item
-
-#### Dropdown
-
-- v-dropdown
-- v-suggest
-
-#### Action Bar
-
-- v-action-bar
-- v-action-group
-- v-action
-
-#### Sidebar
-
-- v-sidebar
-- v-sidebar-section
-
-#### Split View
-
-- v-split-view
-- v-split-pane
-
-#### Tree View
-
-- v-treeview
-- v-tree-item
-
-#### Tabs
-
-- v-tabs
-- v-tab
+#### Navigation
+- Sidebar
+- Tabs
+- ActionBar
+- Dropdown
 
 #### Graph
+- Node Graph
 
-- v-graph-canvas
-- v-graph-node
-- v-graph-circle-node
-- v-graph-port
-- v-graph-connection
+#### Others
+- SplitView
+- Suggest
 
-#### Icons
+## License
 
-- v-icon-book
-- v-icon-chevron-down
-- v-icon-circle
-- v-icon-close
-- v-icon-doc-text
-- v-icon-file-menu
-- v-icon-folder
-- v-icon-play
-- v-icon-stop
-- v-icon-plus-bold
-- v-icon-script
-- v-icon-checkmark
+Licensed under the [MIT License](./LICENSE).
