@@ -1,4 +1,4 @@
-# ruleengine-ui [![npm version](https://badge.fury.io/js/@ruleenginejs/ruleengine-ui.svg)](https://badge.fury.io/js/@ruleenginejs/ruleengine-ui)
+# ruleengine-ui [![npm version](https://badge.fury.io/js/%40ruleenginejs%2Fruleengine-ui.svg)](https://badge.fury.io/js/%40ruleenginejs%2Fruleengine-ui)
 
 > Vue 3.0 based component library for developers of custom editors in Visual Studio Code.
 
