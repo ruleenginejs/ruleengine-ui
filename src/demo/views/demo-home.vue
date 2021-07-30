@@ -15,7 +15,7 @@
         >
         <v-button
           target="_blank"
-          href="https://github.com/ruleenginejs/ruleengine-ui-kit-vue"
+          href="https://github.com/ruleenginejs/ruleengine-ui"
           secondary
           >GitHub</v-button
         >

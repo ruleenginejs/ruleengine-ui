@@ -7,7 +7,7 @@
   </p>
   <demo-code
     lang="shell"
-    code="npm install @ruleenginejs/ruleengine-ui-kit-vue"
+    code="npm install @ruleenginejs/ruleengine-ui"
   />
 
   <p>Use tailwindcss (for reset style)</p>

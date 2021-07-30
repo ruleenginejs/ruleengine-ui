@@ -9,7 +9,7 @@
       <router-link :to="{ name: 'component' }">Guide</router-link>
       <router-link :to="{ name: 'component' }">Components</router-link>
       <a
-        href="https://github.com/ruleenginejs/ruleengine-ui-kit-vue"
+        href="https://github.com/ruleenginejs/ruleengine-ui"
         class="demo-external-link"
         target="_blank"
         >GitHub</a

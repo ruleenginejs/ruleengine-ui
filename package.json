@@ -1,8 +1,8 @@
 {
-  "name": "@ruleenginejs/ruleengine-ui-kit-vue",
+  "name": "@ruleenginejs/ruleengine-ui",
   "version": "1.1.4",
   "description": "UI components for ruleengine editor",
-  "main": "dist/ruleengine-ui-kit-vue.common.js",
+  "main": "dist/ruleengine-ui.common.js",
   "files": [
     "dist"
   ],
@@ -13,7 +13,7 @@
     "dev:build": "vue-cli-service build",
     "dev:lint": "vue-cli-service lint",
     "lib:theme": "postcss src/assets/css/*.theme.css --base src/assets/css --dir dist -u cssnano --no-map",
-    "lib:build": "cross-env BUILD_LIB=true vue-cli-service build --target lib --name ruleengine-ui-kit-vue ./src/index.js",
+    "lib:build": "cross-env BUILD_LIB=true vue-cli-service build --target lib --name ruleengine-ui ./src/index.js",
     "build": "npm run lib:build && npm run lib:theme",
     "version": "npm run build",
     "postversion": "npm run push && npm publish",
@@ -40,16 +40,16 @@
     "@vue/compiler-sfc": "^3.1.5",
     "autoprefixer": "^10.3.1",
     "babel-eslint": "^10.1.0",
-    "core-js": "^3.15.2",
+    "core-js": "^3.16.0",
     "cross-env": "^7.0.3",
     "cssnano": "^5.0.7",
     "eslint": "^7.31.0",
-    "eslint-plugin-vue": "^7.14.0",
+    "eslint-plugin-vue": "^7.15.0",
     "postcss": "^8.3.6",
     "postcss-cli": "^8.3.1",
     "postcss-import": "^14.0.2",
     "postcss-nesting": "^8.0.1",
-    "tailwindcss": "^2.2.6",
+    "tailwindcss": "^2.2.7",
     "vue": "^3.1.5",
     "vue-router": "^4.0.10",
     "highlight.js": "^11.1.0",
@@ -57,14 +57,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ruleenginejs/ruleengine-ui-kit-vue.git"
+    "url": "git+https://github.com/ruleenginejs/ruleengine-ui.git"
   },
   "author": "Nikolay Naumenkov",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ruleenginejs/ruleengine-ui-kit-vue/issues"
+    "url": "https://github.com/ruleenginejs/ruleengine-ui/issues"
   },
-  "homepage": "https://github.com/ruleenginejs/ruleengine-ui-kit-vue#readme",
+  "homepage": "https://github.com/ruleenginejs/ruleengine-ui#readme",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },

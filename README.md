@@ -1,11 +1,11 @@
-# ruleengine-ui-kit-vue
+# ruleengine-ui
 
 ## Installation
 
 ### npm
 
 ```bash
-npm install @ruleenginejs/ruleengine-ui-kit-vue
+npm install @ruleenginejs/ruleengine-ui
 ```
 
 Use [tailwindcss](https://github.com/tailwindlabs/tailwindcss) (for reset style)
@@ -25,9 +25,9 @@ In your styles
 ```javascript
 import { createApp } from 'vue'
 import App from './App.vue'
-import RuleEngineUIKit from "@ruleenginejs/ruleengine-ui-kit-vue"
-import "@ruleenginejs/ruleengine-ui-kit-vue/dist/ruleengine-ui-kit-vue.css"
-import "@ruleenginejs/ruleengine-ui-kit-vue/dist/dark.theme.css"
+import RuleEngineUIKit from "@ruleenginejs/ruleengine-ui"
+import "@ruleenginejs/ruleengine-ui/dist/ruleengine-ui.css"
+import "@ruleenginejs/ruleengine-ui/dist/dark.theme.css"
 
 const app = createApp(App)
 
