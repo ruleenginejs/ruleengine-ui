@@ -59,7 +59,7 @@
     "type": "git",
     "url": "git+https://github.com/ruleenginejs/ruleengine-ui.git"
   },
-  "author": "Nikolay Naumenkov",
+  "author": "Nikolay Naumenkov <nikolas.it.web@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ruleenginejs/ruleengine-ui/issues"

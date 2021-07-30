@@ -31,8 +31,8 @@ npm install @vscode/codicons
 ```
 
 In your code
-```bash
-import "@vscode/codicons/dist/codicon.css";
+```javascript
+import "@vscode/codicons/dist/codicon.css"
 ```
 
 ## Usage
