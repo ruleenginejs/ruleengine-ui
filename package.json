@@ -1,6 +1,6 @@
 {
   "name": "@ruleenginejs/ruleengine-ui",
-  "version": "1.1.4",
+  "version": "1.0.0",
   "description": "UI components for ruleengine editor",
   "main": "dist/ruleengine-ui.common.js",
   "files": [
@@ -15,9 +15,8 @@
     "lib:theme": "postcss src/assets/css/*.theme.css --base src/assets/css --dir dist -u cssnano --no-map",
     "lib:build": "cross-env BUILD_LIB=true vue-cli-service build --target lib --name ruleengine-ui ./src/index.js",
     "build": "npm run lib:build && npm run lib:theme",
-    "version": "npm run build",
-    "postversion": "npm run push && npm publish",
-    "push": "git push origin master --tags"
+    "postversion": "npm run push",
+    "push": "git push origin master && git push origin master --tags"
   },
   "dependencies": {
     "@svgdotjs/svg.js": "^3.1.1",
@@ -65,9 +64,6 @@
     "url": "https://github.com/ruleenginejs/ruleengine-ui/issues"
   },
   "homepage": "https://github.com/ruleenginejs/ruleengine-ui#readme",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "browserslist": [
     "> 1%",
     "last 2 versions",
