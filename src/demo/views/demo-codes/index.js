@@ -13,6 +13,7 @@ import componentScrollbar from "./component-scrollbar";
 import componentSelectbox from "./component-selectbox";
 import componentSidebar from "./component-sidebar";
 import componentSpace from "./component-space";
+import componentSplitview from "./component-splitview";
 import componentTreeview from "./component-treeview";
 
 export default [
@@ -31,5 +32,6 @@ export default [
   ...componentSelectbox,
   ...componentFieldset,
   ...componentLabel,
-  ...componentAutocomplete
+  ...componentAutocomplete,
+  ...componentSplitview
 ]
