@@ -1,4 +1,4 @@
-import { watch, onMounted, onBeforeUnmount, nextTick, markRaw } from "vue";
+import { watch, onMounted, onBeforeUnmount, markRaw } from "vue";
 import SplitView from "splitview.js";
 
 export default function useSplit(panes, emit, options) {
@@ -15,9 +15,7 @@ export default function useSplit(panes, emit, options) {
   }
 
   onMounted(() => {
-    nextTick(() => {
-      create();
-    });
+    create();
   });
 
   onBeforeUnmount(() => {
