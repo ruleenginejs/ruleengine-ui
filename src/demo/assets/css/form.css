@@ -1,4 +1,5 @@
-.demo-input-block .v-input-layout {
+.demo-input-block .v-input-layout,
+.demo-autocomplete-block .v-autocomplete {
   @apply w-52;
 }
 

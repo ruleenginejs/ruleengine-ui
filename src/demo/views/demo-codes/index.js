@@ -1,3 +1,4 @@
+import componentAutocomplete from "./component-autocomplete";
 import componentButton from "./component-button";
 import componentCheckbox from "./component-checkbox";
 import componentContent from "./component-content";
@@ -29,5 +30,6 @@ export default [
   ...componentCheckbox,
   ...componentSelectbox,
   ...componentFieldset,
-  ...componentLabel
+  ...componentLabel,
+  ...componentAutocomplete
 ]

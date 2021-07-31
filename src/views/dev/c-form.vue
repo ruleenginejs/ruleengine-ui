@@ -55,7 +55,7 @@
       v-model="form.autocompleteValue"
       :data-source="fetchAutocompleteData"
       loading-message="Loading..."
-      empty-result-message="No suggestions."
+      empty-result-message="No matching results."
       icon-clickable
       @icon-click="onAutocompleteIconClick"
     >
