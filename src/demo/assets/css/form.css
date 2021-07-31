@@ -1,5 +1,6 @@
 .demo-input-block .v-input-layout,
-.demo-autocomplete-block .v-autocomplete {
+.demo-autocomplete-block .v-autocomplete,
+.demo-suggest-block .v-input-layout {
   @apply w-52;
 }
 
