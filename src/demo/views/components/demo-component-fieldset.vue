@@ -2,7 +2,7 @@
   <h2>Fieldset</h2>
 
   <h3>Basic Usage</h3>
-  <demo-block>
+  <demo-block class="demo-fieldset-block">
     <v-fieldset label="Title">
       <v-field-layout>
         <template #label>
@@ -27,7 +27,7 @@
   </demo-block>
 
   <h3>Vertical Layout</h3>
-  <demo-block>
+  <demo-block class="demo-fieldset-block">
     <v-fieldset label="Title">
       <v-field-layout vertical>
         <template #label>

@@ -9,3 +9,7 @@
 .demo-select-block .v-select-box {
   @apply w-52;
 }
+
+.demo-fieldset-block .v-fieldset {
+  @apply w-80;
+}
