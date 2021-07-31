@@ -1,9 +1,14 @@
 .v-checkbox {
   /* display styles */
-  @apply inline-block overflow-hidden relative;
+  @apply block overflow-hidden relative;
 
   /* sizes */
   @apply w-18sp h-18sp;
+}
+
+.v-checkbox--inline {
+  /* display styles */
+  @apply inline-block;
 }
 
 .v-checkbox__wrap {
