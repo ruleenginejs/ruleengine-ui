@@ -1,6 +1,7 @@
 import componentButton from "./component-button";
 import componentCheckbox from "./component-checkbox";
 import componentContent from "./component-content";
+import componentFieldset from "./component-fieldset";
 import componentIcon from "./component-icon";
 import componentInput from "./component-input";
 import componentInstallation from "./component-installation";
@@ -25,5 +26,6 @@ export default [
   ...componentSidebar,
   ...componentTreeview,
   ...componentCheckbox,
-  ...componentSelectbox
+  ...componentSelectbox,
+  ...componentFieldset
 ]
