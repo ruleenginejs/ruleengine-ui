@@ -14,6 +14,7 @@ import componentSelectbox from "./component-selectbox";
 import componentSidebar from "./component-sidebar";
 import componentSpace from "./component-space";
 import componentSplitview from "./component-splitview";
+import componentTabs from "./component-tabs";
 import componentTreeview from "./component-treeview";
 
 export default [
@@ -33,5 +34,6 @@ export default [
   ...componentFieldset,
   ...componentLabel,
   ...componentAutocomplete,
-  ...componentSplitview
+  ...componentSplitview,
+  ...componentTabs
 ]
