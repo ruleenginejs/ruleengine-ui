@@ -1,5 +1,5 @@
 <template>
-  <v-content class="demo-content demo-home" w-full h-full scroll>
+  <v-content class="demo-content demo-home" w-full h-full scroll fill>
     <v-layout h-center vertical>
       <img class="demo-home__logo" :src="logo" alt="" />
       <h1>UI Toolkit for VS Code</h1>

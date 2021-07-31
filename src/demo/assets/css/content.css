@@ -1,5 +1,5 @@
 .demo-content {
-  @apply py-5 px-7 bg-editor-background;
+  @apply py-5 px-7;
 }
 
 .demo-content h1 {
