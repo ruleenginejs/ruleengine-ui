@@ -7,6 +7,7 @@ import componentInstallation from "./component-installation";
 import componentLayout from "./component-layout";
 import componentList from "./component-list";
 import componentScrollbar from "./component-scrollbar";
+import componentSelectbox from "./component-selectbox";
 import componentSidebar from "./component-sidebar";
 import componentSpace from "./component-space";
 import componentTreeview from "./component-treeview";
@@ -23,5 +24,6 @@ export default [
   ...componentList,
   ...componentSidebar,
   ...componentTreeview,
-  ...componentCheckbox
+  ...componentCheckbox,
+  ...componentSelectbox
 ]

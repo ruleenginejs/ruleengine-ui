@@ -5,3 +5,7 @@
 .demo-input-block .v-input-layout + .v-input-layout {
   @apply mt-3;
 }
+
+.demo-select-block .v-select-box {
+  @apply w-52;
+}
