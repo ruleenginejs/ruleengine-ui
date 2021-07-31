@@ -18,6 +18,10 @@ export default {
       type: String,
       default: null
     },
+    fill: {
+      type: Boolean,
+      default: false
+    },
     wFull: {
       type: Boolean,
       default: false
@@ -40,7 +44,7 @@ export default {
     }
   },
   setup(props) {
-    const { padding, wFull, hFull, allDistr, scroll, scrollOnHover } =
+    const { padding, fill, wFull, hFull, allDistr, scroll, scrollOnHover } =
       toRefs(props);
 
     const cssClasses = computed(() => ({
@@ -51,6 +55,7 @@ export default {
       "v-content--h-full": hFull.value,
       "v-content--all-distr": allDistr.value,
       "v-content--scroll": scroll.value,
+      "v-content--fill": fill.value,
       "v-scrollbar": scroll.value,
       "v-scrollbar--show-on-hover": scrollOnHover.value,
       "v-scrollbar--md": scroll.value === "md",

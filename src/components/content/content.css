@@ -25,3 +25,7 @@
 .v-content--scroll {
   @apply overflow-auto;
 }
+
+.v-content--fill {
+  @apply bg-editor-background;
+}
