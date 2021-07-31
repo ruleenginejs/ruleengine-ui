@@ -5,6 +5,7 @@ import componentFieldset from "./component-fieldset";
 import componentIcon from "./component-icon";
 import componentInput from "./component-input";
 import componentInstallation from "./component-installation";
+import componentLabel from "./component-label";
 import componentLayout from "./component-layout";
 import componentList from "./component-list";
 import componentScrollbar from "./component-scrollbar";
@@ -27,5 +28,6 @@ export default [
   ...componentTreeview,
   ...componentCheckbox,
   ...componentSelectbox,
-  ...componentFieldset
+  ...componentFieldset,
+  ...componentLabel
 ]

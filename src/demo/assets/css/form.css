@@ -10,6 +10,7 @@
   @apply w-52;
 }
 
-.demo-fieldset-block .v-fieldset {
+.demo-fieldset-block .v-fieldset,
+.demo-label-block .v-fieldset {
   @apply w-80;
 }
