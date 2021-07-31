@@ -18,18 +18,18 @@
   --v-input-foreground: var(--vscode-input-foreground);
 
   /* shadow */
-  --v-shadow-100: #000000;
-  --v-shadow-50: #00000080;
-  --v-shadow-30: #0000004D;
+  /* --v-shadow-100: no mapping */
+  /* --v-shadow-50: no mapping */
+  /* --v-shadow-30: no mapping */
 
   /* action bar */
-  --v-action-bar-background: #252526;
-  --v-action-bar-border: #000000;
-  --v-action-bar-active-background: #4a4a4a;
-  --v-action-bar-active-foreground: #ffffff;
-  --v-action-bar-inactive-background: #333333;
-  --v-action-bar-inactive-foreground: #ffffff;
-  --v-action-bar-disabled-foreground: #ffffff66;
+  /* --v-action-bar-background: no mapping */
+  /* --v-action-bar-border: no mapping */
+  /* --v-action-bar-active-background: no mapping */
+  /* --v-action-bar-active-foreground: no mapping */
+  /* --v-action-bar-inactive-background: no mapping */
+  /* --v-action-bar-inactive-foreground: no mapping */
+  /* --v-action-bar-disabled-foreground: no mapping */
 
   /* tabs */
   --v-tab-background: var(--vscode-editorGroupHeader-tabsBackground);
@@ -62,18 +62,18 @@
   /* graph */
   --v-graph-background: var(--vscode-editor-background);
   --v-graph-foreground: var(--vscode-editor-foreground);
-  --v-graph-round-border: #4C4F53;
-  --v-graph-error-background: #810B07;
-  --v-graph-node-background: #414141;
-  --v-graph-node-header-background: #4C4F53;
-  --v-graph-node-header-blue-background: #3A68A1;
-  --v-graph-node-header-green-background: #247939;
-  --v-graph-node-border: #754A4A;
-  --v-graph-active-port-backgound: #82801A;
-  --v-graph-inactive-port-backgound: #4C4F53;
-  --v-graph-inactive-port-border: #D4D4D4;
-  --v-graph-link-active-port-backgound: #D4D4D4;
-  --v-graph-connection-background: #414141;
+  /* --v-graph-round-border: no mapping */
+  /* --v-graph-error-background: no mapping */
+  /* --v-graph-node-background: no mapping */
+  /* --v-graph-node-header-background: no mapping */
+  /* --v-graph-node-header-blue-background: no mapping */
+  /* --v-graph-node-header-green-background: no mapping */
+  /* --v-graph-node-border: no mapping */
+  /* --v-graph-active-port-backgound: no mapping */
+  /* --v-graph-inactive-port-backgound: no mapping */
+  /* --v-graph-inactive-port-border: no mapping */
+  /* --v-graph-link-active-port-backgound: no mapping */
+  /* --v-graph-connection-background: no mapping */
 
   /* link */
   /* --v-link-control-backgound: no mapping */
@@ -116,6 +116,34 @@
 
   /* sidebar */
   --v-side-bar-border: #000000;
+
+  /* shadow */
+  --v-shadow-100: #000000;
+  --v-shadow-50: #00000080;
+  --v-shadow-30: #0000004D;
+
+  /* action bar */
+  --v-action-bar-background: #252526;
+  --v-action-bar-border: #000000;
+  --v-action-bar-active-background: #4a4a4a;
+  --v-action-bar-active-foreground: #ffffff;
+  --v-action-bar-inactive-background: #333333;
+  --v-action-bar-inactive-foreground: #ffffff;
+  --v-action-bar-disabled-foreground: #ffffff66;
+
+  /* graph */
+  --v-graph-round-border: #4C4F53;
+  --v-graph-error-background: #810B07;
+  --v-graph-node-background: #414141;
+  --v-graph-node-header-background: #4C4F53;
+  --v-graph-node-header-blue-background: #3A68A1;
+  --v-graph-node-header-green-background: #247939;
+  --v-graph-node-border: #754A4A;
+  --v-graph-active-port-backgound: #82801A;
+  --v-graph-inactive-port-backgound: #4C4F53;
+  --v-graph-inactive-port-border: #D4D4D4;
+  --v-graph-link-active-port-backgound: #D4D4D4;
+  --v-graph-connection-background: #414141;
 }
 
 .vscode-light {
@@ -127,4 +155,32 @@
 
   /* sidebar */
   --v-side-bar-border: #dddddd;
+
+  /* shadow */
+  --v-shadow-100: #000000;
+  --v-shadow-50: #00000080;
+  --v-shadow-30: #0000004D;
+
+  /* action bar */
+  --v-action-bar-background: #252526;
+  --v-action-bar-border: #000000;
+  --v-action-bar-active-background: #4a4a4a;
+  --v-action-bar-active-foreground: #ffffff;
+  --v-action-bar-inactive-background: #333333;
+  --v-action-bar-inactive-foreground: #ffffff;
+  --v-action-bar-disabled-foreground: #ffffff66;
+
+  /* graph */
+  --v-graph-round-border: #4C4F53;
+  --v-graph-error-background: #810B07;
+  --v-graph-node-background: #414141;
+  --v-graph-node-header-background: #4C4F53;
+  --v-graph-node-header-blue-background: #3A68A1;
+  --v-graph-node-header-green-background: #247939;
+  --v-graph-node-border: #754A4A;
+  --v-graph-active-port-backgound: #82801A;
+  --v-graph-inactive-port-backgound: #4C4F53;
+  --v-graph-inactive-port-border: #D4D4D4;
+  --v-graph-link-active-port-backgound: #D4D4D4;
+  --v-graph-connection-background: #414141;
 }
