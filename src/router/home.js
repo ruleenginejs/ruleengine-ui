@@ -1,7 +1,7 @@
 import component from "./component";
 
 const DemoLayout = () => import("@/demo/views/demo-layout");
-const DemoHome = () => import("@/demo/views//demo-home");
+const DemoHome = () => import("@/demo/views/demo-home");
 
 export default [
   {
