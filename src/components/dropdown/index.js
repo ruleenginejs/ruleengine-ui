@@ -1,4 +1,4 @@
-import VDropdown from "./v-dropdown";
+import VDropdown from "./v-dropdown.vue";
 
 export {
   VDropdown

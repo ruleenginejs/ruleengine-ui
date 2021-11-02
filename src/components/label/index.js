@@ -1,4 +1,4 @@
-import VLabel from "./v-label"
+import VLabel from "./v-label.vue"
 
 export {
   VLabel

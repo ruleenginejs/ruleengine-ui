@@ -12,7 +12,7 @@
 
 <script>
 import { ref } from "vue";
-import VTreeItem from "./v-tree-item";
+import VTreeItem from "./v-tree-item.vue";
 
 export default {
   name: "v-treeview",

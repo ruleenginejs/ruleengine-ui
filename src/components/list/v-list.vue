@@ -26,7 +26,7 @@
 <script>
 import { computed, toRefs } from "vue";
 import useList from "./use-list";
-import VListItem from "./v-list-item";
+import VListItem from "./v-list-item.vue";
 
 export default {
   name: "v-list",

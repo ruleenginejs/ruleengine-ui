@@ -1,4 +1,4 @@
-import VButton from "./v-button";
+import VButton from "./v-button.vue";
 
 export {
   VButton

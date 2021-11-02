@@ -1,4 +1,4 @@
-import VLayout from "./v-layout"
+import VLayout from "./v-layout.vue"
 
 export {
   VLayout

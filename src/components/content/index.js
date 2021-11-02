@@ -1,4 +1,4 @@
-import VContent from "./v-content"
+import VContent from "./v-content.vue"
 
 export {
   VContent

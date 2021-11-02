@@ -1,5 +1,5 @@
-import VTabs from "./v-tabs"
-import VTab from "./v-tab"
+import VTabs from "./v-tabs.vue"
+import VTab from "./v-tab.vue"
 
 export {
   VTabs,

@@ -50,7 +50,7 @@
 <script>
 import { computed, ref, toRefs } from "vue";
 import useExpand from "./use-expand";
-import VIconChevronDown from "@/components/icons/v-icon-chevron-down";
+import VIconChevronDown from "@/components/icons/v-icon-chevron-down.vue";
 
 export default {
   name: "v-sidebar-section",

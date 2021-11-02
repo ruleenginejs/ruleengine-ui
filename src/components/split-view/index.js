@@ -1,5 +1,5 @@
-import VSplitView from "./v-split-view"
-import VSplitPane from "./v-split-pane"
+import VSplitView from "./v-split-view.vue"
+import VSplitPane from "./v-split-pane.vue"
 
 export {
   VSplitView,

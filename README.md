@@ -2,7 +2,7 @@
 
 > Vue 3.0 based component library for developers of custom editors in Visual Studio Code.
 
-[Live Demo](https://ruleenginejs.github.io/ruleengine-ui/)
+[Live Demo](https://ruleenginejs.github.io/ruleengine-ui-demo/)
 
 ## Installation
 
@@ -10,18 +10,6 @@
 
 ```bash
 npm install @ruleenginejs/ruleengine-ui
-```
-
-Use [tailwindcss](https://github.com/tailwindlabs/tailwindcss) (for reset style)
-
-```bash
-npm install tailwindcss
-```
-
-In your styles
-
-```css
-@import "tailwindcss/base";
 ```
 
 Add [codicons](https://github.com/microsoft/vscode-codicons) (optional)
@@ -41,7 +29,9 @@ import "@vscode/codicons/dist/codicon.css"
 import { createApp } from 'vue'
 import App from './App.vue'
 import RuleEngineUI from "@ruleenginejs/ruleengine-ui"
-import "@ruleenginejs/ruleengine-ui/dist/ruleengine-ui.css"
+// Add css styles
+import "@ruleenginejs/ruleengine-ui/dist/normalize.css"
+import "@ruleenginejs/ruleengine-ui/dist/style.css"
 import "@ruleenginejs/ruleengine-ui/dist/dark.theme.css"
 
 const app = createApp(App)
@@ -63,7 +53,7 @@ In your templates
 
 ## Documentation
 
-Read the [documentation and demos](https://ruleenginejs.github.io/ruleengine-ui/).
+Read the [documentation and demos](https://ruleenginejs.github.io/ruleengine-ui-demo/).
 
 ### Components
 

@@ -28,8 +28,8 @@
 
 <script>
 import { computed, defineAsyncComponent, toRefs } from "vue";
-import VIconChevronDown from "@/components/icons/v-icon-chevron-down";
-const VTreeItem = defineAsyncComponent(() => import("./v-tree-item"));
+import VIconChevronDown from "@/components/icons/v-icon-chevron-down.vue";
+const VTreeItem = defineAsyncComponent(() => import("./v-tree-item.vue"));
 
 const INDENT_FACTOR = 0.75;
 

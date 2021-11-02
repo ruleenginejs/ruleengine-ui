@@ -40,7 +40,7 @@ import wheel from "@/directives/wheel";
 import resize from "@/directives/resize";
 import { provide, toRefs } from "vue";
 import useCanvas from "./composables/use-canvas";
-import VGraphSvgLayer from "./v-graph-svg-layer";
+import VGraphSvgLayer from "./v-graph-svg-layer.vue";
 
 export default {
   name: "v-graph-canvas",

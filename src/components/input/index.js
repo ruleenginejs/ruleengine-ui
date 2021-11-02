@@ -1,4 +1,4 @@
-import VInput from "./v-input"
+import VInput from "./v-input.vue"
 
 export {
   VInput

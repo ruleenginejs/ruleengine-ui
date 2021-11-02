@@ -1,8 +1,8 @@
-import VGraphCanvas from "./v-graph-canvas"
-import VGraphCircleNode from "./v-graph-circle-node"
-import VGraphNode from "./v-graph-node"
-import VGraphPort from "./v-graph-port"
-import VGraphConnection from "./v-graph-connection"
+import VGraphCanvas from "./v-graph-canvas.vue"
+import VGraphCircleNode from "./v-graph-circle-node.vue"
+import VGraphNode from "./v-graph-node.vue"
+import VGraphPort from "./v-graph-port.vue"
+import VGraphConnection from "./v-graph-connection.vue"
 
 export {
   VGraphCanvas,

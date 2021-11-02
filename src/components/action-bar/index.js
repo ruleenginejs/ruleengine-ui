@@ -1,6 +1,6 @@
-import VActionBar from "./v-action-bar"
-import VAction from "./v-action"
-import VActionGroup from "./v-action-group"
+import VActionBar from "./v-action-bar.vue"
+import VAction from "./v-action.vue"
+import VActionGroup from "./v-action-group.vue"
 
 export {
   VActionBar,

@@ -21,8 +21,8 @@
 
 <script>
 import { computed, getCurrentInstance, inject, ref, toRefs } from "vue";
-import VIconClose from "@/components/icons/v-icon-close";
-import VIconCircle from "@/components/icons/v-icon-circle";
+import VIconClose from "@/components/icons/v-icon-close.vue";
+import VIconCircle from "@/components/icons/v-icon-circle.vue";
 
 export default {
   name: "v-tab",

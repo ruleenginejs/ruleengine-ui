@@ -1,4 +1,4 @@
-import VSpace from "./v-space"
+import VSpace from "./v-space.vue"
 
 export {
   VSpace

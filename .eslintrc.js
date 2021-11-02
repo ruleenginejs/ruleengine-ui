@@ -1,17 +1,7 @@
 module.exports = {
-  root: true,
-  env: {
-    node: true
-  },
   extends: [
-    "plugin:vue/vue3-essential",
-    "eslint:recommended"
+    "plugin:vue/vue3-strongly-recommended"
   ],
-  parserOptions: {
-    parser: "@babel/eslint-parser",
-    ecmaVersion: 2020,
-    sourceType: "module"
-  },
   rules: {
     "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
@@ -22,6 +12,22 @@ module.exports = {
       "asyncArrow": "always",
       "named": "never"
     }],
-    "standard/computed-property-even-spacing": "off"
+    "standard/computed-property-even-spacing": "off",
+    "vue/component-definition-name-casing": ["error", "kebab-case"],
+    "vue/max-attributes-per-line": ["error", {
+      "singleline": {
+        "max": 5
+      },
+      "multiline": {
+        "max": 1
+      }
+    }],
+    "vue/html-self-closing": ["error", {
+      "html": {
+        "void": "always",
+        "normal": "any",
+        "component": "any"
+      }
+    }]
   }
 }

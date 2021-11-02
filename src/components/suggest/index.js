@@ -1,4 +1,4 @@
-import VSuggest from "./v-suggest";
+import VSuggest from "./v-suggest.vue";
 
 export {
   VSuggest

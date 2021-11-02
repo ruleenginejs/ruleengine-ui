@@ -1,5 +1,5 @@
-import VSidebar from "./v-sidebar"
-import VSidebarSection from "./v-sidebar-section"
+import VSidebar from "./v-sidebar.vue"
+import VSidebarSection from "./v-sidebar-section.vue"
 
 export {
   VSidebar,

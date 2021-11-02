@@ -2,22 +2,16 @@
   "name": "@ruleenginejs/ruleengine-ui",
   "version": "1.0.2",
   "description": "Vue3.0 Component Library for VS Code",
-  "main": "dist/ruleengine-ui.common.js",
+  "main": "dist/ruleengine-ui.umd.js",
+  "module": "dist/ruleengine-ui.es.js",
   "files": [
     "dist"
   ],
   "scripts": {
-    "start": "npm run dev:start",
-    "dev:start": "cross-env NO_SOURCE_MAP=true npm run dev:serve",
-    "dev:serve": "vue-cli-service serve",
-    "dev:build": "vue-cli-service build",
-    "dev:lint": "vue-cli-service lint",
-    "demo-build": "cross-env NO_SOURCE_MAP=true PUBLIC_PATH=/ruleengine-ui/ vue-cli-service build",
-    "lib:theme": "postcss src/assets/css/*.theme.css --base src/assets/css --dir dist -u cssnano --no-map",
-    "lib:build": "cross-env BUILD_LIB=true vue-cli-service build --target lib --name ruleengine-ui ./src/index.js",
-    "build": "npm run lib:build && npm run lib:theme",
-    "postversion": "npm run push",
-    "push": "git push origin master && git push origin master --tags"
+    "build-components": "vite build",
+    "build-theme": "postcss src/assets/css/*.theme.css --base src/assets/css --dir dist -u cssnano --no-map",
+    "build-normalize": "postcss src/assets/css/normalize.css --base src/assets/css --dir dist -u 'postcss-import' tailwindcss autoprefixer cssnano --no-map",
+    "build": "npm run build-components && npm run build-theme && npm run build-normalize"
   },
   "dependencies": {
     "@svgdotjs/svg.js": "^3.1.1",
@@ -25,35 +19,20 @@
     "splitview.js": "^1.0.4"
   },
   "peerDependencies": {
-    "vue": "^3.1.5"
+    "vue": "^3.2.20"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.14.7",
-    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.14.5",
-    "@babel/plugin-proposal-object-rest-spread": "^7.14.7",
-    "@babel/plugin-proposal-optional-chaining": "^7.14.5",
-    "@highlightjs/vue-plugin": "^2.0.1",
-    "@vscode/codicons": "^0.0.20",
-    "@vue/cli-plugin-babel": "^5.0.0-beta.1",
-    "@vue/cli-plugin-eslint": "^5.0.0-beta.1",
-    "@vue/cli-service": "^5.0.0-beta.1",
-    "@vue/compiler-sfc": "^3.1.5",
-    "autoprefixer": "^10.3.1",
-    "babel-eslint": "^10.1.0",
-    "core-js": "^3.16.0",
-    "cross-env": "^7.0.3",
-    "cssnano": "^5.0.7",
-    "eslint": "^7.31.0",
-    "eslint-plugin-vue": "^7.15.0",
-    "postcss": "^8.3.6",
-    "postcss-cli": "^8.3.1",
+    "@vitejs/plugin-vue": "^1.9.4",
+    "autoprefixer": "^10.4.0",
+    "cssnano": "^5.0.8",
+    "eslint": "^8.1.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "postcss": "^8.3.11",
+    "postcss-cli": "^9.0.1",
     "postcss-import": "^14.0.2",
-    "postcss-nesting": "^8.0.1",
-    "tailwindcss": "^2.2.7",
-    "vue": "^3.1.5",
-    "vue-router": "^4.0.10",
-    "highlight.js": "^11.1.0",
-    "lodash": "^4.17.21"
+    "postcss-nesting": "^9.0.0",
+    "tailwindcss": "^2.2.19",
+    "vite": "^2.6.13"
   },
   "repository": {
     "type": "git",
@@ -64,11 +43,5 @@
   "bugs": {
     "url": "https://github.com/ruleenginejs/ruleengine-ui/issues"
   },
-  "homepage": "https://github.com/ruleenginejs/ruleengine-ui#readme",
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead",
-    "not IE > 0"
-  ]
+  "homepage": "https://github.com/ruleenginejs/ruleengine-ui#readme"
 }
