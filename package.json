@@ -11,7 +11,9 @@
     "build-components": "vite build",
     "build-theme": "postcss src/assets/css/*.theme.css --base src/assets/css --dir dist -u cssnano --no-map",
     "build-normalize": "postcss src/assets/css/normalize.css --base src/assets/css --dir dist -u 'postcss-import' tailwindcss autoprefixer cssnano --no-map",
-    "build": "npm run build-components && npm run build-theme && npm run build-normalize"
+    "build": "npm run build-components && npm run build-theme && npm run build-normalize",
+    "postversion": "npm run push",
+    "push": "git push origin master --tags"
   },
   "dependencies": {
     "@svgdotjs/svg.js": "^3.1.1",
