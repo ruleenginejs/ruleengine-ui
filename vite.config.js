@@ -25,7 +25,7 @@ export default defineConfig({
       output: {
         globals: {
           vue: 'Vue',
-          debounce: 'Debounce',
+          debounce: 'debounce',
           'splitview.js': 'SplitView',
           '@svgdotjs/svg.js': 'SVG'
         },

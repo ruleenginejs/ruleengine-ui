@@ -8,6 +8,7 @@
     "dist"
   ],
   "scripts": {
+    "watch": "vite build --watch",
     "build-components": "vite build",
     "build-theme": "postcss src/assets/css/*.theme.css --base src/assets/css --dir dist -u cssnano --no-map",
     "build-normalize": "postcss src/assets/css/normalize.css --base src/assets/css --dir dist -u 'postcss-import' tailwindcss autoprefixer cssnano --no-map",
@@ -21,7 +22,7 @@
     "splitview.js": "^1.0.6"
   },
   "peerDependencies": {
-    "vue": "^3.2.20"
+    "vue": "^3.2.21"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.9.4",
