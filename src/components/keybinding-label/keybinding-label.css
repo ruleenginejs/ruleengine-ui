@@ -1,0 +1,35 @@
+.v-keybinding-label {
+  /* display styles */
+  @apply flex items-center;
+
+  /* visual styles */
+  @apply leading-10sp;
+
+  /* cursor */
+  @apply cursor-default;
+}
+
+.v-keybinding-label__key {
+  /* display styles */
+  @apply inline-block;
+
+  /* visual styles */
+  @apply text-11sp text-keybinding-label-foreground bg-keybinding-label-background align-middle rounded-3sp;
+
+  /* sizes */
+  @apply mx-2sp py-3sp px-5sp first:ml-0 last:mr-0;
+
+  /* border */
+  @apply border border-solid border-keybinding-label-border;
+
+  /* bottom border */
+  border-bottom-color: var(--keybinding-label-bottom-border);
+
+  /* shadow */
+  @apply shadow-keybinding-label;
+}
+
+.v-keybinding-label__separator {
+  /* display styles */
+  @apply inline-block;
+}

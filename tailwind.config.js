@@ -86,7 +86,12 @@ module.exports = {
         "scrollbar-corner-background": "var(--v-scrollbar-corner-background)",
         "scrollbar-slider-background": "var(--v-scrollbar-slider-background)",
         "scrollbar-slider-hover-background": "var(--v-scrollbar-slider-hover-background)",
-        "scrollbar-slider-active-background": "var(--v-scrollbar-slider-active-background)"
+        "scrollbar-slider-active-background": "var(--v-scrollbar-slider-active-background)",
+
+        "keybinding-label-background": "var(--v-keybinding-label-background)",
+        "keybinding-label-foreground": "var(--v-keybinding-label-foreground)",
+        "keybinding-label-border": "var(--v-keybinding-label-border)",
+        "keybinding-label-bottom-border": "var(--v-keybinding-label-bottom-border)"
       },
       outline: {
         blue: ['1px solid var(--v-focus-border)', '-1px'],
@@ -152,6 +157,7 @@ module.exports = {
       },
       lineHeight: {
         inherit: 'inherit',
+        "10sp": "0.625rem",
         "22sp": '1.375rem',
         "30sp": "1.875rem"
       },
@@ -159,6 +165,7 @@ module.exports = {
         "0-2-4": '0 2px 4px 0 var(--v-shadow-50)',
         "0-1-2": '0 1px 2px 0 var(--v-shadow-30)',
         "0-0-2": '0 0 2px 0 var(--v-shadow-100)',
+        'keybinding-label': 'inset 0 -1px 0 var(--v-shadow-36)',
       },
       zIndex: {
         9999: '9999',
@@ -169,7 +176,7 @@ module.exports = {
     extend: {
       opacity: ["disabled"],
       outline: ["active"],
-      margin: ['responsive', 'last'],
+      margin: ['responsive', 'first', 'last'],
     }
   },
   plugins: []

@@ -20,6 +20,7 @@
   /* shadow */
   --v-shadow-100: #000000;
   --v-shadow-50: #00000080;
+  --v-shadow-36: #0000005C;
   --v-shadow-30: #0000004D;
 
   /* action bar */
@@ -107,4 +108,10 @@
   --v-checkbox-background: #3c3c3c;
   --v-checkbox-border: #3c3c3c;
   --v-checkbox-foreground: #f0f0f0;
+
+  /* keybinding label */
+  --v-keybinding-label-background: #8080802b;
+  --v-keybinding-label-foreground: #cccccc;
+  --v-keybinding-label-border: #33333399;
+  --v-keybinding-label-bottom-border: #44444499;
 }

@@ -20,6 +20,7 @@
   /* shadow */
   /* --v-shadow-100: no mapping */
   /* --v-shadow-50: no mapping */
+  /* --v-shadow-36: no mapping */
   /* --v-shadow-30: no mapping */
 
   /* action bar */
@@ -107,6 +108,12 @@
   --v-checkbox-background: var(--vscode-checkbox-background);
   --v-checkbox-border: var(--vscode-checkbox-border);
   --v-checkbox-foreground: var(--vscode-checkbox-foreground);
+
+  /* keybinding label */
+  --v-keybinding-label-background: var(--vscode-keybindingLabel-background);
+  --v-keybinding-label-foreground: var(--vscode-keybindingLabel-foreground);
+  --v-keybinding-label-border: var(--vscode-keybindingLabel-border);
+  --v-keybinding-label-bottom-border: var(--vscode-keybindingLabel-bottomBorder);
 }
 
 /* no mapping */
@@ -123,6 +130,7 @@
   /* shadow */
   --v-shadow-100: #000000;
   --v-shadow-50: #00000080;
+  --v-shadow-36: #0000005C;
   --v-shadow-30: #0000004D;
 
   /* action bar */
@@ -162,6 +170,7 @@
   /* shadow */
   --v-shadow-100: #000000;
   --v-shadow-50: #00000080;
+  --v-shadow-36: #0000005C;
   --v-shadow-30: #0000004D;
 
   /* action bar */
