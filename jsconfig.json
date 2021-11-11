@@ -2,7 +2,6 @@
   "compilerOptions": {
     "target": "es6",
     "module": "es6",
-    "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
       "@/*": [
@@ -10,15 +9,10 @@
       ]
     }
   },
+  "include": [
+    "./src/**/*"
+  ],
   "exclude": [
-    "node_modules",
-    "bower_components",
-    "jspm_packages",
-    "tmp",
-    "temp",
-    ".tmp",
-    "build",
-    "lib",
-    "dist"
+    "node_modules"
   ]
 }
