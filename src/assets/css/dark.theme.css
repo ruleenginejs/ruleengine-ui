@@ -31,6 +31,9 @@
   --v-action-bar-inactive-foreground: #ffffff;
   --v-action-bar-disabled-foreground: #ffffff66;
 
+  /* action list */
+  --v-action-list-hover-background: #5a5d5e4f;
+
   /* tabs */
   --v-tab-background: #252526;
   --v-tab-inactive-background: #2D2D2D;

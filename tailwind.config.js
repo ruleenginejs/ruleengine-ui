@@ -23,6 +23,8 @@ module.exports = {
         "action-bar-inactive-foreground": "var(--v-action-bar-inactive-foreground)",
         "action-bar-disabled-foreground": "var(--v-action-bar-disabled-foreground)",
 
+        "action-list-hover-background": "var(--v-action-list-hover-background)",
+
         "tab-background": "var(--v-tab-background)",
         "tab-inactive-background": "var(--v-tab-inactive-background)",
         "tab-inactive-foreground": "var(--v-tab-inactive-foreground)",
@@ -166,7 +168,8 @@ module.exports = {
   variants: {
     extend: {
       opacity: ["disabled"],
-      outline: ["active"]
+      outline: ["active"],
+      margin: ['responsive', 'last'],
     }
   },
   plugins: []

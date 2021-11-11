@@ -1,0 +1,37 @@
+.v-action-item {
+  /* display styles */
+  @apply flex items-center justify-center;
+
+  /* visual styles */
+  @apply rounded-5sp;
+
+  /* sizes */
+  @apply w-22sp h-22sp p-3sp;
+
+  /* cursor */
+  @apply cursor-pointer;
+
+  /* focus */
+  @apply focus:outline-blue;
+
+  /* active */
+  @apply active:outline-none;
+
+  /* hover */
+  @apply hover:bg-action-list-hover-background hover:text-current;
+}
+
+.v-action-item--with-label {
+  /* sizes */
+  @apply w-auto;
+}
+
+.v-action-item__label {
+  /* visual styles */
+  @apply text-11sp;
+}
+
+.v-action-item > * + .v-action-item__label {
+  /* sizes */
+  @apply ml-1;
+}

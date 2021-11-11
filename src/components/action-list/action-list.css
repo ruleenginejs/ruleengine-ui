@@ -1,0 +1,9 @@
+.v-action-list {
+  /* display styles */
+  @apply flex items-center;
+}
+
+.v-action-list > .v-action-item {
+  /* sizes */
+  @apply mr-1 last:mr-0;
+}

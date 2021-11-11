@@ -31,6 +31,9 @@
   /* --v-action-bar-inactive-foreground: no mapping */
   /* --v-action-bar-disabled-foreground: no mapping */
 
+  /* action list */
+  --v-action-list-hover-background: var(--vscode-toolbar-hoverBackground);
+
   /* tabs */
   --v-tab-background: var(--vscode-editorGroupHeader-tabsBackground);
   --v-tab-inactive-background: var(--vscode-tab-inactiveBackground);
