@@ -114,4 +114,7 @@
   --v-keybinding-label-foreground: #cccccc;
   --v-keybinding-label-border: #33333399;
   --v-keybinding-label-bottom-border: #44444499;
+
+  /* floating toolbar */
+  --v-floating-toolbar-background: #333333;
 }

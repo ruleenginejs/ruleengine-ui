@@ -114,6 +114,9 @@
   --v-keybinding-label-foreground: var(--vscode-keybindingLabel-foreground);
   --v-keybinding-label-border: var(--vscode-keybindingLabel-border);
   --v-keybinding-label-bottom-border: var(--vscode-keybindingLabel-bottomBorder);
+
+  /* floating toolbar */
+  --v-floating-toolbar-background: var(--vscode-debugToolBar-background);
 }
 
 /* no mapping */

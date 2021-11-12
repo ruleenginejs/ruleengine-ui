@@ -91,7 +91,9 @@ module.exports = {
         "keybinding-label-background": "var(--v-keybinding-label-background)",
         "keybinding-label-foreground": "var(--v-keybinding-label-foreground)",
         "keybinding-label-border": "var(--v-keybinding-label-border)",
-        "keybinding-label-bottom-border": "var(--v-keybinding-label-bottom-border)"
+        "keybinding-label-bottom-border": "var(--v-keybinding-label-bottom-border)",
+
+        "floating-toolbar-background": "var(--v-floating-toolbar-background)"
       },
       outline: {
         blue: ['1px solid var(--v-focus-border)', '-1px'],
@@ -150,7 +152,8 @@ module.exports = {
       },
       cursor: {
         'col-resize': 'col-resize',
-        'row-resize': 'row-resize'
+        'row-resize': 'row-resize',
+        grab: 'grab'
       },
       borderWidth: {
         3: '3px',
@@ -166,6 +169,7 @@ module.exports = {
         "0-1-2": '0 1px 2px 0 var(--v-shadow-30)',
         "0-0-2": '0 0 2px 0 var(--v-shadow-100)',
         'keybinding-label': 'inset 0 -1px 0 var(--v-shadow-36)',
+        'floating-toolbar': '0 0 8px 2px var(--v-shadow-36)',
       },
       zIndex: {
         9999: '9999',

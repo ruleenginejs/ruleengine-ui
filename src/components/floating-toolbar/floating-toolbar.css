@@ -1,0 +1,72 @@
+.v-floating-toolbar {
+  /* display styles */
+  @apply flex absolute left-0 top-0 z-40;
+
+  /* visual styles */
+  @apply bg-floating-toolbar-background shadow-floating-toolbar;
+}
+
+.v-floating-toolbar--horizontal {
+  /* display styles */
+  @apply flex-row;
+
+  /* sizes */
+  @apply pl-7sp pr-1;
+}
+
+.v-floating-toolbar--vertical {
+  /* display styles */
+  @apply flex-col;
+
+  /* sizes */
+  @apply pt-7sp pb-1;
+}
+
+.v-floating-toolbar--fixed {
+  /* display styles */
+  @apply fixed;
+}
+
+.v-floating-toolbar__drag-area {
+  /* display styles */
+  @apply flex items-center justify-center;
+
+  /* visual styles */
+  @apply opacity-50;
+
+  /* cursor */
+  @apply cursor-grab;
+}
+
+.v-floating-toolbar--horizontal .v-floating-toolbar__drag-area {
+  /* sizes */
+  @apply w-4;
+}
+
+.v-floating-toolbar--vertical .v-floating-toolbar__drag-area {
+  /* sizes */
+  @apply h-4;
+}
+
+.v-floating-toolbar__container {
+  /* display styles */
+  @apply flex;
+}
+
+.v-floating-toolbar--horizontal .v-floating-toolbar__container {
+  /* display styles */
+  @apply items-center;
+
+  /* sizes */
+  @apply py-5sp;
+}
+
+.v-floating-toolbar--vertical .v-floating-toolbar__container {
+  /* sizes */
+  @apply px-5sp;
+}
+
+.v-floating-toolbar--vertical .v-floating-toolbar__drag-area > .v-svg-icon {
+  /* display styles */
+  @apply transform rotate-90;
+}

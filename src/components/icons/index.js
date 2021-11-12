@@ -15,6 +15,7 @@ import VIconPlus from "./v-icon-plus.vue"
 import VIconSidebarLeft from "./v-icon-sidebar-left.vue"
 import VIconSidebarRight from "./v-icon-sidebar-right.vue"
 import VIconCheckmark from "./v-icon-checkmark.vue"
+import VIconGripper from "./v-icon-gripper.vue"
 
 export {
   VIconFileMenu,
@@ -31,5 +32,6 @@ export {
   VIconPlus,
   VIconSidebarLeft,
   VIconSidebarRight,
-  VIconCheckmark
+  VIconCheckmark,
+  VIconGripper
 }
