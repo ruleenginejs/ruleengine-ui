@@ -20,5 +20,5 @@
 
 .v-action-list--vertical > .v-action-item {
   /* sizes */
-  @apply mt-1 last:mt-0;
+  @apply mb-1 last:mb-0;
 }
