@@ -21,6 +21,10 @@ defineProps({
   tabIndex: {
     type: Number,
     default: 0
+  },
+  disabled: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -34,19 +38,22 @@ function onClick(e) {
 <template>
   <component
     class="v-action-item"
-    :class="{ 'v-action-item--with-label': $slots['default'] }"
+    :class="{
+      'v-action-item--with-label': $slots['default'],
+      'v-action-item--disabled': disabled,
+    }"
     :is="tag"
     :title="title"
-    :tabindex="tabIndex"
-    @click="onClick"
-    @keyup.space.enter="onClick"
+    :tabindex="disabled ? null : tabIndex"
+    @click="disabled ? null : onClick"
+    @keyup.space.enter="disabled ? null : onClick"
   >
     <slot name="icon">
       <span v-if="icon" :class="`codicon codicon-${icon}`"></span>
     </slot>
-    <div v-if="$slots['default']" class="v-action-item__label">
+    <span v-if="$slots['default']" class="v-action-item__label">
       <slot></slot>
-    </div>
+    </span>
   </component>
 </template>
 

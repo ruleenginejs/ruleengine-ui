@@ -16,14 +16,24 @@
 
   /* active */
   @apply active:outline-none;
+}
 
-  /* hover */
-  @apply hover:bg-action-list-hover-background hover:text-current;
+/* hover */
+.v-action-item:hover:not(.v-action-item--disabled) {
+  @apply bg-action-list-hover-background text-current;
 }
 
 .v-action-item--with-label {
   /* sizes */
   @apply w-auto;
+}
+
+.v-action-item--disabled {
+  /* visual styles */
+  @apply opacity-40;
+
+  /* cursor */
+  @apply cursor-default;
 }
 
 .v-action-item__label {
