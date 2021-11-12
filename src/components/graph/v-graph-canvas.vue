@@ -8,7 +8,6 @@
     v-draggable="draggableCallbacks"
     v-wheel.prevent.stop="wheelCallbacks"
     v-resize:[resizeDelay]="resizeCallbacks"
-    @click="onSelect"
     ref="container"
   >
     <div class="v-graph-canvas__layer" :style="{ transform: scaleStyle }">
@@ -21,13 +20,10 @@
           :height="size.y"
           :scale="scale"
         >
-          <slot name="connection" />
+          <slot name="connection"></slot>
         </v-graph-svg-layer>
-        <div
-          v-if="$slots['node']"
-          class="v-graph-canvas__layer v-graph-canvas__node-layer"
-        >
-          <slot name="node" />
+        <div v-if="$slots['node']" class="v-graph-canvas__layer v-graph-canvas__node-layer">
+          <slot name="node"></slot>
         </div>
       </div>
     </div>
@@ -96,6 +92,10 @@ export default {
     resizeDelay: {
       type: Number,
       default: 100
+    },
+    clickTolerance: {
+      type: Number,
+      default: 15
     }
   },
   emits: ["update:selected", "update:zoom", "update:viewport"],
@@ -109,7 +109,8 @@ export default {
       zoomIntensity,
       moveIntensity,
       edgeSizes,
-      edgeMaxStep
+      edgeMaxStep,
+      clickTolerance
     } = toRefs(props);
 
     const canvas = useCanvas(emit, {
@@ -121,7 +122,8 @@ export default {
       zoomIntensity,
       moveIntensity,
       edgeMaxStep,
-      edgeSizes
+      edgeSizes,
+      clickTolerance
     });
 
     const {
@@ -134,8 +136,7 @@ export default {
       moving,
       layerPosition,
       size,
-      scale,
-      onSelect
+      scale
     } = canvas;
 
     provide("canvas", canvas);
@@ -152,7 +153,6 @@ export default {
       layerPosition,
       size,
       scale,
-      onSelect,
       getCanvas
     };
   }

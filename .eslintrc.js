@@ -1,6 +1,11 @@
 module.exports = {
+  env: {
+    node: true,
+    browser: true
+  },
   extends: [
-    "plugin:vue/vue3-strongly-recommended"
+    "plugin:vue/vue3-strongly-recommended",
+    "eslint:recommended"
   ],
   rules: {
     "no-console": process.env.NODE_ENV === "production" ? "error" : "off",

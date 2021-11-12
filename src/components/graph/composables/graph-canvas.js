@@ -4,6 +4,7 @@ import { getWheelDelta } from "@/utils/wheel-delta";
 import { ref, watch, computed, reactive, onMounted } from "vue"
 import Bounds from "@/utils/bounds";
 import clamp from "@/utils/clamp";
+import Point from "@/utils/point";
 import EdgeScrolling from "@/utils/edge-scrolling";
 
 class GraphCanvas {
@@ -16,7 +17,8 @@ class GraphCanvas {
     zoomIntensity,
     moveIntensity,
     edgeMaxStep,
-    edgeSizes
+    edgeSizes,
+    clickTolerance
   }) {
     this.emit = emit;
     this.nodes = {};
@@ -36,6 +38,9 @@ class GraphCanvas {
     this.moving = ref(false);
     this.moveStartPoint = ref(null);
     this.moveIntensity = moveIntensity;
+
+    this.clickStartPosition = ref(null);
+    this.clickTolerance = clickTolerance;
 
     this.moveEdgeSize = ref(200);
     this.moveTimer = ref(null);
@@ -391,9 +396,14 @@ class GraphCanvas {
     return this.limitZoom(this.getScaleZoom(scale));
   }
 
+  isClickValid(newPosition) {
+    return newPosition.distanceTo(this.clickStartPosition.value) <= this.clickTolerance.value;
+  }
+
   onDragStart(e) {
     this.moving.value = true;
     this.moveStartPoint.value = this.mouseEventToLayerPoint(e);
+    this.clickStartPosition.value = Point.toPoint(e.clientX, e.clientY);
   }
 
   onDrag(e) {
@@ -407,9 +417,10 @@ class GraphCanvas {
     }
   }
 
-  onDragEnd() {
+  onDragEnd(e) {
     this.moving.value = false;
     this.moveStartPoint.value = null;
+    this.handleClick(e);
   }
 
   onWheelScroll(e) {
@@ -443,6 +454,18 @@ class GraphCanvas {
 
   onResize() {
     this.invalidateSize();
+  }
+
+  handleClick(e) {
+    const newPosition = Point.toPoint(e.clientX, e.clientY);
+    if (this.isClickValid(newPosition)) {
+      this.onClick(e);
+    }
+    this.clickStartPosition.value = null;
+  }
+
+  onClick(e) {
+    this.onSelect(e);
   }
 }
 

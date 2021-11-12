@@ -11,17 +11,14 @@
     v-draggable.noctrl.stop="draggableCallbacks"
     v-link.ctrl.stop="linkOptions"
     v-link-target.stop="linkTargetOptions"
-    @click.prevent.stop="onSelect"
     ref="container"
   >
     <div
       class="v-graph-circle-node__label"
       :class="{ 'v-graph-circle-node__label--sm': truncateLength > 1 }"
-    >
-      {{ truncateTitle }}
-    </div>
+    >{{ truncateTitle }}</div>
     <div v-if="$slots['port']" class="v-graph-circle-node__port">
-      <slot name="port" />
+      <slot name="port"></slot>
     </div>
   </div>
 </template>
@@ -73,6 +70,10 @@ export default {
     titleLength: {
       type: Number,
       default: 2
+    },
+    clickTolerance: {
+      type: Number,
+      default: 15
     }
   },
   emits: [
@@ -83,10 +84,10 @@ export default {
     "change-position"
   ],
   setup(props, { emit }) {
-    const { x, y, title, id, linkRule, titleLength } = toRefs(props);
+    const { x, y, title, id, linkRule, titleLength, clickTolerance } = toRefs(props);
 
     const canvas = inject("canvas");
-    const node = useCircleNode(canvas, { id, x, y, emit, linkRule });
+    const node = useCircleNode(canvas, { id, x, y, emit, linkRule, clickTolerance });
     const {
       transformStyle,
       moving,
@@ -95,8 +96,7 @@ export default {
       draggableCallbacks,
       linkOptions,
       linkTargetOptions,
-      linkEnter,
-      onSelect
+      linkEnter
     } = node;
 
     const { truncateTitle, truncateLength } = useTruncateTitle(
@@ -119,7 +119,6 @@ export default {
       linkOptions,
       linkTargetOptions,
       linkEnter,
-      onSelect,
       getNode
     };
   }

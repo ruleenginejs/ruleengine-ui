@@ -10,7 +10,6 @@
     v-draggable.noctrl.stop="draggableCallbacks"
     v-link.ctrl.stop="linkOptions"
     v-link-target.stop="linkTargetOptions"
-    @click.prevent.stop="onSelect"
     ref="container"
   >
     <div
@@ -22,28 +21,22 @@
         v-if="$slots['header-left-icon']"
         class="v-graph-node__header__icon v-graph-node__header__left"
       >
-        <slot name="header-left-icon" />
+        <slot name="header-left-icon"></slot>
       </div>
       <div class="v-graph-node__header__label" :title="title">{{ title }}</div>
       <div
         v-if="$slots['header-right-icon']"
         class="v-graph-node__header__icon v-graph-node__header__right"
       >
-        <slot name="header-right-icon" />
+        <slot name="header-right-icon"></slot>
       </div>
     </div>
     <div class="v-graph-node__content">
-      <div
-        v-if="$slots['left']"
-        class="v-graph-node__part v-graph-node__part--left"
-      >
-        <slot name="left" />
+      <div v-if="$slots['left']" class="v-graph-node__part v-graph-node__part--left">
+        <slot name="left"></slot>
       </div>
-      <div
-        v-if="$slots['right']"
-        class="v-graph-node__part v-graph-node__part--right"
-      >
-        <slot name="right" />
+      <div v-if="$slots['right']" class="v-graph-node__part v-graph-node__part--right">
+        <slot name="right"></slot>
       </div>
     </div>
   </div>
@@ -95,6 +88,10 @@ export default {
     linkRule: {
       type: Function,
       default: null
+    },
+    clickTolerance: {
+      type: Number,
+      default: 15
     }
   },
   emits: [
@@ -105,10 +102,10 @@ export default {
     "change-position"
   ],
   setup(props, { emit }) {
-    const { x, y, headerColor, id, linkRule } = toRefs(props);
+    const { x, y, headerColor, id, linkRule, clickTolerance } = toRefs(props);
 
     const canvas = inject("canvas");
-    const node = useNode(canvas, { id, x, y, emit, linkRule });
+    const node = useNode(canvas, { id, x, y, emit, linkRule, clickTolerance });
     const {
       transformStyle,
       moving,
@@ -117,8 +114,7 @@ export default {
       draggableCallbacks,
       linkOptions,
       linkTargetOptions,
-      linkEnter,
-      onSelect
+      linkEnter
     } = node;
 
     const { colorStyle, colorClassName } = usePresetColor(
@@ -142,7 +138,6 @@ export default {
       linkOptions,
       linkTargetOptions,
       linkEnter,
-      onSelect,
       getNode
     };
   }

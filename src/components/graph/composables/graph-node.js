@@ -1,5 +1,6 @@
 import { reactive, watch, ref, computed, getCurrentInstance, nextTick } from "vue";
 import Bounds from "@/utils/bounds";
+import Point from "@/utils/point";
 
 class GraphNode {
   constructor({
@@ -7,7 +8,8 @@ class GraphNode {
     x,
     y,
     emit,
-    linkRule
+    linkRule,
+    clickTolerance
   }) {
     this.canvas = null;
     this.id = id.value ?? getCurrentInstance().uid;
@@ -23,6 +25,8 @@ class GraphNode {
     this.connectionCache = null;
     this.linkEnter = ref(false);
     this.linkRule = linkRule;
+    this.clickStartPosition = ref(null);
+    this.clickTolerance = clickTolerance;
 
     this.onDragStart = this.onDragStart.bind(this);
     this.onDrag = this.onDrag.bind(this);
@@ -223,9 +227,14 @@ class GraphNode {
     this.savedPosition = null;
   }
 
+  isClickValid(newPosition) {
+    return newPosition.distanceTo(this.clickStartPosition.value) <= this.clickTolerance.value;
+  }
+
   onDragStart(e) {
     this.moving.value = true;
     const startPoint = this.canvas?.mouseEventToLayerPoint(e);
+    this.clickStartPosition.value = Point.toPoint(e.clientX, e.clientY);
 
     if (startPoint) {
       this.moveOffsetPoint.value = {
@@ -255,7 +264,7 @@ class GraphNode {
     }
   }
 
-  onDragEnd() {
+  onDragEnd(e) {
     this.drawConnections(true);
 
     this.moving.value = false;
@@ -265,11 +274,24 @@ class GraphNode {
     this.clearConnectionCache();
 
     this.notifyChangePosition();
+    this.handleClick(e);
   }
 
   onEdgeScroll(deltaX, deltaY) {
     this.move(deltaX, deltaY);
     this.drawConnections(true);
+  }
+
+  handleClick(e) {
+    const newPosition = Point.toPoint(e.clientX, e.clientY);
+    if (this.isClickValid(newPosition)) {
+      this.onClick(e);
+    }
+    this.clickStartPosition.value = null;
+  }
+
+  onClick(e) {
+    this.onSelect(e);
   }
 }
 
