@@ -1,9 +1,24 @@
 .v-action-list {
   /* display styles */
-  @apply flex items-center;
+  @apply flex;
 }
 
-.v-action-list > .v-action-item {
+.v-action-list--horizontal {
+  /* display styles */
+  @apply flex-row items-center;
+}
+
+.v-action-list--vertical {
+  /* display styles */
+  @apply flex-col;
+}
+
+.v-action-list--horizontal > .v-action-item {
   /* sizes */
   @apply mr-1 last:mr-0;
+}
+
+.v-action-list--vertical > .v-action-item {
+  /* sizes */
+  @apply mt-1 last:mt-0;
 }
