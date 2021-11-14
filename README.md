@@ -82,7 +82,9 @@ Read the [documentation and demos](https://ruleenginejs.github.io/ruleengine-ui-
 - [Sidebar](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/sidebar)
 - [Tabs](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/tabs)
 - [ActionBar](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/action-bar)
+- [ActionList](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/action-list)
 - [Dropdown](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/dropdown)
+- [FloatingToolbar](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/floating-toolbar)
 
 #### Graph
 - [Node Graph](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/node-graph)
@@ -90,6 +92,8 @@ Read the [documentation and demos](https://ruleenginejs.github.io/ruleengine-ui-
 #### Others
 - [SplitView](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/splitview)
 - [Suggest](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/suggest)
+- [KeybindingLabel](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/keybinding-label)
+- [KeyboardShortcuts](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/keyboard-shortcuts)
 
 ## License
 
