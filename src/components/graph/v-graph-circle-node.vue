@@ -73,7 +73,7 @@ export default {
     },
     clickTolerance: {
       type: Number,
-      default: 15
+      default: 5
     }
   },
   emits: [
