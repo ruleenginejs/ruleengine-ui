@@ -12,7 +12,7 @@ const props = defineProps({
     type: String,
     default: null
   },
-  parseSeparator: {
+  valueSeparator: {
     type: String,
     default: "+"
   },
@@ -22,10 +22,10 @@ const props = defineProps({
   }
 });
 
-const { value, parseSeparator } = toRefs(props);
+const { value, valueSeparator } = toRefs(props);
 const parts = computed(() => {
   const keyParts = (value.value || "")
-    .split(parseSeparator.value)
+    .split(valueSeparator.value)
     .filter((item) => !!item);
   return keyParts;
 });

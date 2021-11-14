@@ -13,7 +13,7 @@ const props = defineProps({
     type: Array,
     default: () => []
   },
-  keyParseSeparator: {
+  keyValueSeparator: {
     type: String,
     default: undefined
   },
@@ -41,7 +41,7 @@ const cssClasses = computed(() => ({
       <dd>
         <v-keybinding-label
           :value="item.key"
-          :parse-separator="keyParseSeparator"
+          :value-separator="keyValueSeparator"
           :separator="keySeparator"
         />
       </dd>
