@@ -20,7 +20,7 @@ defineProps({
   },
   tabIndex: {
     type: Number,
-    default: 0
+    default: null
   },
   disabled: {
     type: Boolean,
