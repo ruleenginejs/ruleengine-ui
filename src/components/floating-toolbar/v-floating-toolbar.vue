@@ -6,10 +6,14 @@ export default {
 
 <script setup>
 import { computed, toRefs } from "vue";
-import VIconGripper from "../icons/v-icon-gripper.vue";
 import useFloatingToolbar from "./use-floating-toolbar";
+import VFloatingToolbarInternal from "./v-floating-toolbar-internal.vue";
 
 const props = defineProps({
+  container: {
+    type: [HTMLElement, String],
+    default: null
+  },
   fixed: {
     type: Boolean,
     default: false
@@ -33,8 +37,25 @@ const emit = defineEmits([
   "update:y"
 ]);
 
-const { x, y, fixed, vertical } = toRefs(props);
-const { styles } = useFloatingToolbar({ x, y, emit });
+const { x,
+  y,
+  fixed,
+  vertical,
+  container
+} = toRefs(props);
+
+const {
+  targetElement,
+  toolbarRef,
+  styles,
+  draggableCallbacks
+} = useFloatingToolbar({
+  container,
+  fixed,
+  x,
+  y,
+  emit
+});
 
 const cssClasses = computed(() => ({
   "v-floating-toolbar--fixed": fixed.value,
@@ -44,14 +65,25 @@ const cssClasses = computed(() => ({
 </script>
 
 <template>
-  <div class="v-floating-toolbar" :class="cssClasses" :style="styles">
-    <div class="v-floating-toolbar__drag-area">
-      <v-icon-gripper />
-    </div>
-    <div class="v-floating-toolbar__container">
+  <teleport v-if="targetElement" :to="targetElement">
+    <v-floating-toolbar-internal
+      ref="toolbarRef"
+      :class="cssClasses"
+      :style="styles"
+      :draggable-callbacks="draggableCallbacks"
+    >
       <slot></slot>
-    </div>
-  </div>
+    </v-floating-toolbar-internal>
+  </teleport>
+  <v-floating-toolbar-internal
+    v-else
+    ref="toolbarRef"
+    :class="cssClasses"
+    :style="styles"
+    :draggable-callbacks="draggableCallbacks"
+  >
+    <slot></slot>
+  </v-floating-toolbar-internal>
 </template>
 
 <style>
