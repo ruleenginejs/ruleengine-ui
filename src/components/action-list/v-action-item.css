@@ -11,16 +11,14 @@
   /* cursor */
   @apply cursor-pointer;
 
+  /* hover */
+  @apply hover:bg-action-list-hover-background hover:text-current;
+
   /* focus */
   @apply focus:outline-blue;
 
   /* active */
   @apply active:outline-none;
-}
-
-/* hover */
-.v-action-item:hover:not(.v-action-item--disabled) {
-  @apply bg-action-list-hover-background text-current;
 }
 
 .v-action-item--with-label {
@@ -34,6 +32,10 @@
 
   /* cursor */
   @apply cursor-default;
+}
+
+.v-action-item--disabled:hover {
+  @apply bg-transparent;
 }
 
 .v-action-item__label {
