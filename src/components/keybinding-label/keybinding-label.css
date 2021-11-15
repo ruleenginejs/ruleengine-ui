@@ -14,7 +14,7 @@
   @apply inline-block;
 
   /* visual styles */
-  @apply text-11sp text-keybinding-label-foreground bg-keybinding-label-background align-middle rounded-3sp;
+  @apply text-11sp leading-10sp text-keybinding-label-foreground bg-keybinding-label-background align-middle rounded-3sp;
 
   /* sizes */
   @apply mx-2sp py-3sp px-5sp first:ml-0 last:mr-0;
