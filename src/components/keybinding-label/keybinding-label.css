@@ -23,7 +23,7 @@
   @apply border border-solid border-keybinding-label-border;
 
   /* bottom border */
-  border-bottom-color: var(--keybinding-label-bottom-border);
+  border-bottom-color: var(--v-keybinding-label-bottom-border);
 
   /* shadow */
   @apply shadow-keybinding-label;
