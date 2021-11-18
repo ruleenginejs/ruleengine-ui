@@ -33,3 +33,8 @@
   /* size */
   @apply mb-1;
 }
+
+.v-field-layout--top {
+  /* display styles */
+  @apply items-start;
+}
