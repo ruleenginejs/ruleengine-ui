@@ -34,6 +34,7 @@ module.exports = {
         "normal": "any",
         "component": "any"
       }
-    }]
+    }],
+    "vue/singleline-html-element-content-newline": "off",
   }
 }
