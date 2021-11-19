@@ -1,6 +1,6 @@
 <template>
   <component class="v-label" :class="cssClasses" :is="tag">
-    <slot />
+    <slot></slot>
   </component>
 </template>
 
@@ -17,13 +17,18 @@ export default {
     truncate: {
       type: Boolean,
       default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   setup(props) {
-    const { truncate } = toRefs(props);
+    const { truncate, disabled } = toRefs(props);
 
     const cssClasses = computed(() => ({
-      "v-label--truncate": truncate.value
+      "v-label--truncate": truncate.value,
+      "v-label--disabled": disabled.value
     }));
 
     return {

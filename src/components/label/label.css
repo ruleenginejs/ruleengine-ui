@@ -13,3 +13,8 @@
   /* sizes */
   @apply w-full;
 }
+
+.v-label--disabled {
+  /* visual styles */
+  @apply opacity-38;
+}
