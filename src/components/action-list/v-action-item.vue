@@ -45,8 +45,8 @@ function onClick(e) {
     :is="tag"
     :title="title"
     :tabindex="disabled ? null : tabIndex"
-    @click="disabled ? null : onClick"
-    @keyup.space.enter="disabled ? null : onClick"
+    @click="disabled ? null : onClick($event)"
+    @keyup.space.enter="disabled ? null : onClick($event)"
   >
     <slot name="icon">
       <span v-if="icon" :class="`codicon codicon-${icon}`"></span>
