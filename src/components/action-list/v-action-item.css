@@ -3,7 +3,7 @@
   @apply flex items-center;
 
   /* visual styles */
-  @apply rounded-5sp;
+  @apply text-foreground rounded-5sp;
 
   /* sizes */
   @apply w-22sp h-22sp p-3sp;
