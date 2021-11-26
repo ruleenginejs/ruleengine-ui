@@ -1,7 +1,12 @@
 <template>
   <component class="v-fieldset" :class="cssClasses" :is="tag">
-    <div v-if="label" class="v-fieldset__label">{{ label }}</div>
-    <slot />
+    <div v-if="label || $slots['label-actions']" class="v-fieldset__header">
+      <div v-if="label" class="v-fieldset__label">{{ label }}</div>
+      <div v-if="$slots['label-actions']" class="v-fieldset__label-actions">
+        <slot name="label-actions"></slot>
+      </div>
+    </div>
+    <slot></slot>
   </component>
 </template>
 

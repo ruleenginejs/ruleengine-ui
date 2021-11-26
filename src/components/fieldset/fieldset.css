@@ -3,7 +3,15 @@
   @apply px-2.5 py-1;
 }
 
+.v-fieldset__header {
+  /* display styles */
+  @apply flex items-center;
+}
+
 .v-fieldset__label {
+  /* display styles */
+  @apply flex-grow;
+
   /* visual styles */
   @apply text-11sp leading-4 text-fieldset-title-foreground truncate uppercase font-medium;
 
@@ -11,10 +19,17 @@
   @apply opacity-60;
 }
 
+.v-fieldset__label-actions {
+  /* display styles */
+  @apply flex-shrink-0;
+}
+
 .v-fieldset--t-border {
+  /* visual styles */
   @apply border-t border-solid border-fieldset-border;
 }
 
 .v-fieldset--b-border {
+  /* visual styles */
   @apply border-b border-solid border-fieldset-border;
 }
