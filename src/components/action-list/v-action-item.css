@@ -12,7 +12,7 @@
   @apply cursor-pointer;
 
   /* hover */
-  @apply hover:bg-action-list-hover-background hover:text-current;
+  @apply hover:bg-action-list-hover-background;
 
   /* focus */
   @apply focus:outline-blue;
