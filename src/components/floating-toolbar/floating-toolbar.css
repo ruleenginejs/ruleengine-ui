@@ -32,7 +32,7 @@
   @apply flex items-center justify-center;
 
   /* visual styles */
-  @apply opacity-50;
+  @apply opacity-50 text-foreground;
 
   /* cursor */
   @apply cursor-grab;
