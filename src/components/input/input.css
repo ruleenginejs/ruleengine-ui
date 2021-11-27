@@ -53,3 +53,18 @@
   /* visual styles */
   @apply opacity-38;
 }
+
+.v-input--info {
+  /* focus */
+  @apply focus:outline-input-info;
+}
+
+.v-input--warning {
+  /* focus */
+  @apply focus:outline-input-warning;
+}
+
+.v-input--error {
+  /* focus */
+  @apply focus:outline-input-error;
+}

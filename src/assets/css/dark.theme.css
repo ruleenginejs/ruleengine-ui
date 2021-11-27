@@ -16,6 +16,12 @@
   --v-input-placeholder-foreground: #a6a6a6;
   --v-input-background: #3c3c3c;
   --v-input-foreground: #cccccc;
+  --v-input-info-background: #063b49;
+  --v-input-info-border: #007acc;
+  --v-input-warning-background: #352a05;
+  --v-input-warning-border: #b89500;
+  --v-input-error-background: #5a1d1d;
+  --v-input-error-border: #be1100;
 
   /* shadow */
   --v-shadow-100: #000000;

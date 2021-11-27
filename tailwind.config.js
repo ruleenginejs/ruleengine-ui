@@ -14,6 +14,12 @@ module.exports = {
         "input-placeholder-foreground": "var(--v-input-placeholder-foreground)",
         "input-background": "var(--v-input-background)",
         "input-foreground": "var(--v-input-foreground)",
+        "input-info-background": "var(--v-input-info-background)",
+        "input-info-border": "var(--v-input-info-border)",
+        "input-warning-background": "var(--v-input-warning-background)",
+        "input-warning-border": "var(--v-input-warning-border)",
+        "input-error-background": "var(--v-input-error-background)",
+        "input-error-border": "var(--v-input-error-border)",
 
         "action-bar-background": "var(--v-action-bar-background)",
         "action-bar-border": "var(--v-action-bar-border)",
@@ -97,7 +103,10 @@ module.exports = {
       },
       outline: {
         blue: ['1px solid var(--v-focus-border)', '-1px'],
-        button: ["1px solid var(--v-focus-border)", "2px"]
+        button: ["1px solid var(--v-focus-border)", "2px"],
+        "input-info": ['1px solid var(--v-input-info-border)', '-1px'],
+        "input-warning": ['1px solid var(--v-input-warning-border)', '-1px'],
+        "input-error": ['1px solid var(--v-input-error-border)', '-1px']
       },
       fontSize: {
         "8sp": ['0.5rem', { lineHeight: '0.85rem' }],
