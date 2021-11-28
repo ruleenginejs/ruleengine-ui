@@ -1,2 +1,25 @@
 .v-input-message {
+  /* visual styles */
+  @apply text-foreground text-12sp break-words;
+
+  /* sizes */
+  @apply p-5sp -mt-px;
+
+  /* cursor */
+  @apply cursor-default;
+}
+
+.v-input-message--info {
+  /* visual styles */
+  @apply bg-input-info-background border border-solid border-input-info-border;
+}
+
+.v-input-message--warning {
+  /* visual styles */
+  @apply bg-input-warning-background border border-solid border-input-warning-border;
+}
+
+.v-input-message--error {
+  /* visual styles */
+  @apply bg-input-error-background border border-solid border-input-error-border;
 }
