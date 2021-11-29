@@ -92,20 +92,42 @@ export default {
     clickTolerance: {
       type: Number,
       default: 5
+    },
+    invalidate: {
+      type: Boolean,
+      default: false
     }
   },
   emits: [
     "update:x",
     "update:y",
     "update:selected",
+    "update:invalidate",
     "new-link",
     "change-position"
   ],
   setup(props, { emit }) {
-    const { x, y, headerColor, id, linkRule, clickTolerance } = toRefs(props);
+    const {
+      x,
+      y,
+      id,
+      headerColor,
+      linkRule,
+      clickTolerance,
+      invalidate
+    } = toRefs(props);
 
     const canvas = inject("canvas");
-    const node = useNode(canvas, { id, x, y, emit, linkRule, clickTolerance });
+    const node = useNode(canvas, {
+      id,
+      x,
+      y,
+      emit,
+      linkRule,
+      clickTolerance,
+      invalidate
+    });
+
     const {
       transformStyle,
       moving,
@@ -117,7 +139,10 @@ export default {
       linkEnter
     } = node;
 
-    const { colorStyle, colorClassName } = usePresetColor(
+    const {
+      colorStyle,
+      colorClassName
+    } = usePresetColor(
       headerColor,
       presetColors,
       colorFn

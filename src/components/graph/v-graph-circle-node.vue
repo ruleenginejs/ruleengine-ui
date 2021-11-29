@@ -74,6 +74,10 @@ export default {
     clickTolerance: {
       type: Number,
       default: 5
+    },
+    invalidate: {
+      type: Boolean,
+      default: false
     }
   },
   emits: [
@@ -84,10 +88,28 @@ export default {
     "change-position"
   ],
   setup(props, { emit }) {
-    const { x, y, title, id, linkRule, titleLength, clickTolerance } = toRefs(props);
+    const {
+      x,
+      y,
+      id,
+      title,
+      linkRule,
+      titleLength,
+      clickTolerance,
+      invalidate
+    } = toRefs(props);
 
     const canvas = inject("canvas");
-    const node = useCircleNode(canvas, { id, x, y, emit, linkRule, clickTolerance });
+    const node = useCircleNode(canvas, {
+      id,
+      x,
+      y,
+      emit,
+      linkRule,
+      clickTolerance,
+      invalidate
+    });
+
     const {
       transformStyle,
       moving,
@@ -99,7 +121,10 @@ export default {
       linkEnter
     } = node;
 
-    const { truncateTitle, truncateLength } = useTruncateTitle(
+    const {
+      truncateTitle,
+      truncateLength
+    } = useTruncateTitle(
       title,
       titleLength
     );

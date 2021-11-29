@@ -9,7 +9,8 @@ class GraphNode {
     y,
     emit,
     linkRule,
-    clickTolerance
+    clickTolerance,
+    invalidate
   }) {
     this.canvas = null;
     this.id = id.value ?? getCurrentInstance().uid;
@@ -42,7 +43,7 @@ class GraphNode {
     this.onSelect = () => { this.emit("update:selected", true); }
 
     this.initComputed();
-    this.initWatchers(x, y);
+    this.initWatchers(x, y, invalidate);
 
     this.initLinkOptions();
     this.initLinkTargetOptions();
@@ -53,7 +54,7 @@ class GraphNode {
       `translate(${this.position.x}px, ${this.position.y}px)`);
   }
 
-  initWatchers(x, y) {
+  initWatchers(x, y, invalidate) {
     watch([x, y], () => {
       const oldX = this.position.x;
       const oldY = this.position.y;
@@ -69,6 +70,13 @@ class GraphNode {
       this.emit("update:x", this.position.x);
       this.emit("update:y", this.position.y);
     });
+
+    watch(invalidate, () => {
+      if (invalidate.value) {
+        this.drawConnections();
+        this.emit("update:invalidate", false);
+      }
+    })
   }
 
   initLinkOptions() {
