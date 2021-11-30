@@ -91,7 +91,7 @@ export default {
     },
     clickTolerance: {
       type: Number,
-      default: 5
+      default: 3
     },
     invalidate: {
       type: Boolean,
