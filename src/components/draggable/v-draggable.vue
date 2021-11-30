@@ -18,10 +18,6 @@ export default {
       type: Boolean,
       default: false
     },
-    movable: {
-      type: Boolean,
-      default: false
-    },
     ctrl: {
       type: Boolean,
       default: false
@@ -48,7 +44,6 @@ export default {
   setup(props, { emit, attrs, slots }) {
     const {
       fixed,
-      movable,
       disabled,
       clickTolerance,
       hint,
@@ -64,14 +59,12 @@ export default {
       draggableCallbacks
     } = useDraggable({
       clickTolerance,
-      movable,
       emit
     });
 
     const cssClasses = computed(() => ({
       "v-draggable": true,
       "v-draggable--disabled": disabled.value,
-      "v-draggable--movable": !hint.value && movable.value,
       "v-draggable--moving": !hint.value && moving.value,
       "v-draggable--fixed": !hint.value && moving.value && fixed.value
     }));
@@ -85,7 +78,7 @@ export default {
     }));
 
     const containerStyle = computed(() => {
-      if (!hint.value && (movable.value || moving.value)) {
+      if (!hint.value && moving.value) {
         return positionStyle.value;
       }
       return null;

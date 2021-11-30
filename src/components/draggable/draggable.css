@@ -1,4 +1,4 @@
-.v-draggable--movable, .v-draggable--moving {
+.v-draggable--moving {
   /* display styles */
   @apply absolute left-0 top-0;
 }

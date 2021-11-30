@@ -1,7 +1,7 @@
 import Point from "@/utils/point";
 import { ref, computed } from "vue";
 
-export default function useDraggable({ clickTolerance, movable, emit }) {
+export default function useDraggable({ clickTolerance, emit }) {
   let _startPosition = null;
   let _offsetPoint = null;
   let _dragStarted = false;
@@ -54,10 +54,7 @@ export default function useDraggable({ clickTolerance, movable, emit }) {
     }
 
     moving.value = false;
-
-    if (!movable.value) {
-      resetPosition();
-    }
+    resetPosition();
 
     _startPosition = null;
     _offsetPoint = null;
