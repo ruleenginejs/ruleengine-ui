@@ -48,9 +48,15 @@ export default function useDraggable({ clickTolerance, emit }) {
     const mousePosition = Point.toPoint(e.clientX, e.clientY);
     const isClick = isClickValid(mousePosition);
 
-    emit("drag-end", e, isClick);
+    emit("drag-end", {
+      event: e,
+      isClick
+    });
+
     if (isClick) {
       emit("click", e);
+    } else {
+      emit("moved", e);
     }
 
     moving.value = false;

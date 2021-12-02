@@ -37,6 +37,7 @@ export default {
   },
   emits: [
     "click",
+    "moved",
     "drag-start",
     "drag",
     "drag-end"
