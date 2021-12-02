@@ -40,7 +40,7 @@
 
 .v-action-item__label {
   /* visual styles */
-  @apply text-11sp;
+  @apply text-11sp whitespace-nowrap;
 }
 
 .v-action-item > * + .v-action-item__label {
