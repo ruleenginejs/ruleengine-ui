@@ -22,6 +22,10 @@ const props = defineProps({
     type: Boolean,
     default: false
   },
+  invalidate: {
+    type: Boolean,
+    default: false
+  },
   x: {
     type: Number,
     default: 0
@@ -34,13 +38,15 @@ const props = defineProps({
 
 const emit = defineEmits([
   "update:x",
-  "update:y"
+  "update:y",
+  "update:invalidate"
 ]);
 
-const { x,
-  y,
+const {
+  x, y,
   fixed,
   vertical,
+  invalidate,
   container
 } = toRefs(props);
 
@@ -50,10 +56,11 @@ const {
   styles,
   draggableCallbacks
 } = useFloatingToolbar({
+  x, y,
   container,
   fixed,
-  x,
-  y,
+  vertical,
+  invalidate,
   emit
 });
 

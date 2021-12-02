@@ -1,8 +1,15 @@
 import clamp from "@/utils/clamp";
 import Point from "@/utils/point";
-import { ref, watch, computed } from "vue";
+import { ref, watch, computed, nextTick, onMounted } from "vue";
 
-export default function useFloatingToolbar({ container, fixed, x, y, emit }) {
+export default function useFloatingToolbar({
+  x, y,
+  container,
+  fixed,
+  vertical,
+  invalidate,
+  emit
+}) {
   const toolbarRef = ref(null);
   const positionX = ref(x.value);
   const positionY = ref(y.value);
@@ -18,6 +25,19 @@ export default function useFloatingToolbar({ container, fixed, x, y, emit }) {
   });
   watch(positionY, () => {
     emit("update:y", positionY.value)
+  });
+  watch(vertical, () => {
+    nextTick(invalidatePosition);
+  });
+  watch(invalidate, () => {
+    if (invalidate.value) {
+      invalidatePosition();
+      emit("update:invalidate", false);
+    }
+  });
+
+  onMounted(() => {
+    invalidatePosition();
   });
 
   const styles = computed(() => ({
@@ -84,6 +104,9 @@ export default function useFloatingToolbar({ container, fixed, x, y, emit }) {
 
   function toLocalPosition(rect, point) {
     return Point.toPoint(point.x - rect.left, point.y - rect.top);
+  }
+
+  function invalidatePosition() {
   }
 
   return {
