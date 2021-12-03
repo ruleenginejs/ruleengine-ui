@@ -155,10 +155,7 @@ class GraphCanvas {
   }
 
   getContainerBounds() {
-    return new Bounds(
-      this.layerPosition,
-      this.addPoint(this.layerPosition, this.getContainerSize())
-    );
+    return new Bounds(this.point(0, 0), this.getContainerSize());
   }
 
   toPoint(value) {
