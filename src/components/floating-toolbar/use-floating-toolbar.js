@@ -17,18 +17,23 @@ export default function useFloatingToolbar({
   watch(x, () => {
     positionX.value = x.value;
   });
+
   watch(y, () => {
     positionY.value = y.value;
   });
+
   watch(positionX, () => {
     emit("update:x", positionX.value);
   });
+
   watch(positionY, () => {
     emit("update:y", positionY.value)
   });
+
   watch(vertical, () => {
     nextTick(invalidatePosition);
   });
+
   watch(invalidate, () => {
     if (invalidate.value) {
       invalidatePosition();
@@ -37,7 +42,7 @@ export default function useFloatingToolbar({
   });
 
   onMounted(() => {
-    invalidatePosition();
+    invalidatePosition(true);
   });
 
   const styles = computed(() => ({
@@ -106,7 +111,33 @@ export default function useFloatingToolbar({
     return Point.toPoint(point.x - rect.left, point.y - rect.top);
   }
 
-  function invalidatePosition() {
+  function invalidatePosition(revertNegative = false) {
+    const toolbarEl = toolbarRef.value?.$el;
+    const parentEl = toolbarEl?.parentElement;
+    if (!toolbarEl || !parentEl) {
+      return;
+    }
+
+    const toolbarRect = toolbarEl.getBoundingClientRect();
+    const parentRect = parentEl.getBoundingClientRect();
+
+    const localPosition = toLocalPosition(parentRect,
+      Point.toPoint(toolbarRect.left, toolbarRect.top));
+
+    const maxX = parentRect.width - toolbarRect.width;
+    const maxY = parentRect.height - toolbarRect.height;
+
+    if (revertNegative) {
+      if (localPosition.x < 0) {
+        localPosition.x = maxX + localPosition.x;
+      }
+      if (localPosition.y < 0) {
+        localPosition.y = maxY + localPosition.y;
+      }
+    }
+
+    positionX.value = clamp(0, localPosition.x, maxX);
+    positionY.value = clamp(0, localPosition.y, maxY);
   }
 
   return {
