@@ -25,8 +25,8 @@
   <v-suggest
     v-if="focused"
     v-model:visible="visible"
-    v-model:list-focus-item="focusItem"
-    v-model:list-focus-index="focusIndex"
+    v-model:list-focus-item="focusedItem"
+    v-model:list-focus-index="focusedIndex"
     :anchor="anchorId"
     :search-query="searchQuery"
     :data-source="dataSource"
@@ -126,8 +126,8 @@ export default {
       focused,
       visible,
       searchQuery,
-      focusIndex,
-      focusItem,
+      focusedIndex,
+      focusedItem,
       resetSearch,
       updateSearch,
       focusForward,
@@ -155,8 +155,8 @@ export default {
       focused,
       visible,
       searchQuery,
-      focusIndex,
-      focusItem,
+      focusedIndex,
+      focusedItem,
       onFocusIn,
       onFocusOut,
       onError,

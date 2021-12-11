@@ -11,8 +11,8 @@ export default function useAutocomplete({
   const focused = ref(false);
   const searchQuery = ref("");
   const visible = ref(false);
-  const focusItem = ref(null);
-  const focusIndex = ref(0);
+  const focusedItem = ref(null);
+  const focusedIndex = ref(0);
   let lockSearch = false;
 
   const value = computed({
@@ -23,8 +23,8 @@ export default function useAutocomplete({
   const resetSearch = () => {
     visible.value = false;
     searchQuery.value = "";
-    focusItem.value = null;
-    focusIndex.value = 0;
+    focusedItem.value = null;
+    focusedIndex.value = 0;
   };
 
   const updateSearch = () => {
@@ -39,11 +39,11 @@ export default function useAutocomplete({
   });
 
   const focusForward = () => {
-    focusIndex.value++;
+    focusedIndex.value++;
   }
 
   const focusBackward = () => {
-    focusIndex.value--;
+    focusedIndex.value--;
   }
 
   const onFocusIn = () => {
@@ -78,8 +78,8 @@ export default function useAutocomplete({
   };
 
   const onSelectFocused = () => {
-    if (focusItem.value) {
-      onSelected(focusItem.value);
+    if (focusedItem.value) {
+      onSelected(focusedItem.value);
     } else {
       resetSearch();
     }
@@ -95,8 +95,8 @@ export default function useAutocomplete({
     focused,
     visible,
     searchQuery,
-    focusIndex,
-    focusItem,
+    focusedIndex,
+    focusedItem,
     resetSearch,
     updateSearch,
     focusForward,
