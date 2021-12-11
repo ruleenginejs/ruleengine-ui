@@ -3,7 +3,7 @@
   @apply text-foreground text-12sp break-words;
 
   /* sizes */
-  @apply p-5sp -mt-px;
+  @apply p-5sp;
 
   /* cursor */
   @apply cursor-default;

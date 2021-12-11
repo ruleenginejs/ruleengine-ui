@@ -41,7 +41,13 @@ const cssClasses = computed(() => ({
 </script>
 
 <template>
-  <v-dropdown :visible="visible" :anchor="anchor" anchor-constraint action-on-scrolling="update">
+  <v-dropdown
+    :visible="visible"
+    :anchor="anchor"
+    :offset-y="-1"
+    anchor-constraint
+    action-on-scrolling="update"
+  >
     <div class="v-input-message" :class="cssClasses">
       <slot></slot>
     </div>
