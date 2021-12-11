@@ -1,4 +1,4 @@
-import { watch, onBeforeUnmount } from "vue";
+import { watch, watchEffect, onUnmounted } from "vue";
 import SearchContoller from "./search-controller";
 
 export default function useSearch({
@@ -12,7 +12,6 @@ export default function useSearch({
   visible
 }) {
   let controller = createSearchController();
-  controller.performSearch(searchQuery.value);
 
   watch([
     dataSource,
@@ -25,8 +24,10 @@ export default function useSearch({
     controller = createSearchController();
   });
 
-  watch(searchQuery, () => {
-    controller.performSearch(searchQuery.value, true);
+  watchEffect(() => {
+    if (visible.value) {
+      controller.performSearch(searchQuery.value, true);
+    }
   });
 
   watch(visible, () => {
@@ -35,7 +36,7 @@ export default function useSearch({
     }
   });
 
-  onBeforeUnmount(() => {
+  onUnmounted(() => {
     controller.destroy();
     controller = null;
   });
