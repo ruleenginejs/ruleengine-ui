@@ -4,6 +4,7 @@ import { ref, getCurrentInstance, computed, watch, nextTick } from "vue";
 export default function useAutocomplete({
   modelValue,
   valueField,
+  minSearchLength,
   emit
 }) {
   const uid = getCurrentInstance().uid;
@@ -16,9 +17,10 @@ export default function useAutocomplete({
   let lockSearch = false;
 
   const value = computed({
-    get: () => modelValue.value,
+    get: () => toString(modelValue.value),
     set: (val) => emit("update:modelValue", val)
   });
+  const valueLength = computed(() => value.value.length);
 
   const resetSearch = () => {
     visible.value = false;
@@ -33,34 +35,40 @@ export default function useAutocomplete({
   };
 
   watch(value, () => {
-    if (!lockSearch && focused.value) {
+    if (lockSearch || !focused.value) {
+      return;
+    }
+
+    if (valueLength.value >= minSearchLength.value) {
       updateSearch();
+    } else {
+      resetSearch();
     }
   });
 
-  const focusForward = () => {
+  function focusForward() {
     focusedIndex.value++;
   }
 
-  const focusBackward = () => {
+  function focusBackward() {
     focusedIndex.value--;
   }
 
-  const onFocusIn = () => {
+  function onFocusIn() {
     focused.value = true;
     resetSearch();
   }
 
-  const onFocusOut = () => {
+  function onFocusOut() {
     focused.value = false;
     resetSearch();
   }
 
-  const onError = (err) => {
+  function onError(err) {
     emit("error", err);
-  };
+  }
 
-  const onSelected = (val) => {
+  function onSelected(val) {
     if (!isDefined(val)) {
       value.value = null;
     } else if (isDefined(val[valueField.value])) {
@@ -75,9 +83,9 @@ export default function useAutocomplete({
     nextTick(() => {
       lockSearch = false;
     });
-  };
+  }
 
-  const onSelectFocused = () => {
+  function onSelectFocused() {
     if (focusedItem.value) {
       onSelected(focusedItem.value);
     } else {
@@ -85,7 +93,15 @@ export default function useAutocomplete({
     }
   }
 
-  const onIconClick = (e) => {
+  function toString(val) {
+    if (isDefined(val)) {
+      return `${val}`;
+    } else {
+      return "";
+    }
+  }
+
+  function onIconClick(e) {
     emit("icon-click", e);
   }
 

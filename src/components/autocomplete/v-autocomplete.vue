@@ -19,7 +19,7 @@
     @keypress.enter.prevent.stop.self="onKeyEnter"
   >
     <template #icon>
-      <slot name="icon" />
+      <slot name="icon"></slot>
     </template>
   </v-input>
   <v-suggest
@@ -118,7 +118,11 @@ export default {
   },
   emits: ["update:modelValue", "error", "icon-click"],
   setup(props, { emit }) {
-    const { modelValue, valueField } = toRefs(props);
+    const {
+      modelValue,
+      valueField,
+      minSearchLength
+    } = toRefs(props);
 
     const {
       value,
@@ -138,9 +142,19 @@ export default {
       onSelected,
       onSelectFocused,
       onIconClick
-    } = useAutocomplete({ modelValue, valueField, emit });
+    } = useAutocomplete({
+      modelValue,
+      valueField,
+      minSearchLength,
+      emit
+    });
 
-    const { onKeyEsc, onKeyDown, onKeyUp, onKeyEnter } = useKeyboard({
+    const {
+      onKeyEsc,
+      onKeyDown,
+      onKeyUp,
+      onKeyEnter
+    } = useKeyboard({
       visible,
       resetSearch,
       updateSearch,
