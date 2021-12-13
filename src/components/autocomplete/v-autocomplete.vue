@@ -30,6 +30,7 @@
     :anchor="anchorId"
     :search-query="searchQuery"
     :data-source="dataSource"
+    :display-field="displayField"
     :loading-message="loadingMessage"
     :empty-result-message="emptyResultMessage"
     :search-timeout="searchTimeout"
@@ -86,6 +87,10 @@ export default {
     iconClickable: {
       type: Boolean,
       default: false
+    },
+    displayField: {
+      type: String,
+      default: "text"
     },
     valueField: {
       type: String,
