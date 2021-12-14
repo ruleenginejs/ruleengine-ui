@@ -57,7 +57,6 @@ Read the [documentation and demos](https://ruleenginejs.github.io/ruleengine-ui-
 
 ### Components
 
-
 #### Basic
 - [Layout](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/layout)
 - [Content](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/content)
@@ -91,6 +90,7 @@ Read the [documentation and demos](https://ruleenginejs.github.io/ruleengine-ui-
 
 #### Others
 - [SplitView](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/splitview)
+- [Draggable](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/draggable)
 - [Suggest](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/suggest)
 - [KeybindingLabel](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/keybinding-label)
 - [KeyboardShortcuts](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/keyboard-shortcuts)
