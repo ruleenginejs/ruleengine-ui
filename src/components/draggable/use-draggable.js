@@ -1,15 +1,16 @@
 import Point from "@/utils/point";
 import { ref, computed } from "vue";
 
-export default function useDraggable({ clickTolerance, emit }) {
+export default function useDraggable({ clickTolerance, fixed, emit }) {
   let _startPosition = null;
   let _offsetPoint = null;
+  let _parentOffsetPoint = null;
   let _dragStarted = false;
 
   const positionX = ref(0);
   const positionY = ref(0);
   const moving = ref(false);
-  const containerRef = ref(null);
+  const elementRef = ref(null);
 
   const draggableCallbacks = {
     dragStart: onDragStart,
@@ -24,8 +25,10 @@ export default function useDraggable({ clickTolerance, emit }) {
 
   function onDragStart(e) {
     _startPosition = Point.toPoint(e.clientX, e.clientY);
-    _offsetPoint = getContainerOffset(_startPosition);
+    _offsetPoint = getElementOffset(_startPosition);
+    _parentOffsetPoint = fixed.value ? Point.zero() : getParentOffset();
     _dragStarted = true;
+
     emit("drag-start", e);
   }
 
@@ -64,6 +67,7 @@ export default function useDraggable({ clickTolerance, emit }) {
 
     _startPosition = null;
     _offsetPoint = null;
+    _parentOffsetPoint = null;
     _dragStarted = false;
   }
 
@@ -72,8 +76,8 @@ export default function useDraggable({ clickTolerance, emit }) {
   }
 
   function updatePosition(mousePosition) {
-    positionX.value = mousePosition.x - _offsetPoint.x;
-    positionY.value = mousePosition.y - _offsetPoint.y;
+    positionX.value = mousePosition.x - _offsetPoint.x - _parentOffsetPoint.x;
+    positionY.value = mousePosition.y - _offsetPoint.y - _parentOffsetPoint.y;
   }
 
   function resetPosition() {
@@ -81,17 +85,37 @@ export default function useDraggable({ clickTolerance, emit }) {
     positionY.value = 0;
   }
 
-  function getContainerOffset(startPosition) {
-    const containerRect = containerRef.value?.getBoundingClientRect();
-    const offsetX = startPosition.x - (containerRect?.left ?? 0);
-    const offsetY = startPosition.y - (containerRect?.top ?? 0);
+  function getElementOffset(startPosition) {
+    const elementRect = elementRef.value?.getBoundingClientRect();
+    const offsetX = startPosition.x - (elementRect?.left ?? 0);
+    const offsetY = startPosition.y - (elementRect?.top ?? 0);
     return Point.toPoint(offsetX, offsetY);
+  }
+
+  function getParentOffset() {
+    if (!elementRef.value) return Point.zero();
+    const parentRelativeEl = getClosestRelativeAncestor(elementRef.value);
+    if (!parentRelativeEl) return Point.zero();
+    const { top, left } = parentRelativeEl.getBoundingClientRect();
+    return Point.toPoint(left, top);
+  }
+
+  function getClosestRelativeAncestor(el) {
+    let p = el.parentElement;
+    while (p && getCssPosition(p) === "static") {
+      p = p.parentElement;
+    }
+    return p;
+  }
+
+  function getCssPosition(el) {
+    return window.getComputedStyle(el, null).getPropertyValue("position");
   }
 
   return {
     positionStyle,
     moving,
-    containerRef,
+    elementRef,
     draggableCallbacks
   };
 }

@@ -56,10 +56,11 @@ export default {
     const {
       moving,
       positionStyle,
-      containerRef,
+      elementRef,
       draggableCallbacks
     } = useDraggable({
       clickTolerance,
+      fixed,
       emit
     });
 
@@ -96,7 +97,7 @@ export default {
       const container = h("div", {
         class: [attrs.class, cssClasses.value],
         style: [attrs.style, containerStyle.value],
-        ref: (el) => containerRef.value = el
+        ref: (el) => elementRef.value = el
       }, slots.default?.());
 
       const nodes = [];
