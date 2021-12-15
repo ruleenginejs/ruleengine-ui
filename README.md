@@ -1,4 +1,4 @@
-# ruleengine-ui [![npm version](https://badge.fury.io/js/%40ruleenginejs%2Fruleengine-ui.svg)](https://badge.fury.io/js/%40ruleenginejs%2Fruleengine-ui)
+# ruleengine-ui [![npm version](https://badge.fury.io/js/%40ruleenginejs%2Fui.svg)](https://badge.fury.io/js/%40ruleenginejs%2Fui)
 
 > Vue 3.0 based component library for developers of custom editors in Visual Studio Code.
 
@@ -9,7 +9,7 @@
 ### npm
 
 ```bash
-npm install @ruleenginejs/ruleengine-ui
+npm install @ruleenginejs/ui
 ```
 
 Add [codicons](https://github.com/microsoft/vscode-codicons) (optional)
@@ -28,11 +28,11 @@ import "@vscode/codicons/dist/codicon.css"
 ```javascript
 import { createApp } from 'vue'
 import App from './App.vue'
-import RuleEngineUI from "@ruleenginejs/ruleengine-ui"
+import RuleEngineUI from "@ruleenginejs/ui"
 // Add css styles
-import "@ruleenginejs/ruleengine-ui/dist/normalize.css"
-import "@ruleenginejs/ruleengine-ui/dist/style.css"
-import "@ruleenginejs/ruleengine-ui/dist/dark.theme.css"
+import "@ruleenginejs/ui/dist/normalize.css"
+import "@ruleenginejs/ui/dist/style.css"
+import "@ruleenginejs/ui/dist/dark.theme.css"
 
 const app = createApp(App)
 
