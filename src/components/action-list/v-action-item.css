@@ -1,6 +1,6 @@
 .v-action-item {
   /* display styles */
-  @apply flex items-center;
+  @apply flex justify-center items-center;
 
   /* visual styles */
   @apply text-foreground rounded-5sp;

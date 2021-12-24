@@ -13,12 +13,12 @@
   @apply flex-col;
 }
 
-.v-action-list--horizontal > .v-action-item {
+.v-action-list--horizontal .v-action-item {
   /* sizes */
   @apply mr-1 last:mr-0;
 }
 
-.v-action-list--vertical > .v-action-item {
+.v-action-list--vertical .v-action-item {
   /* sizes */
   @apply mb-1 last:mb-0;
 }
