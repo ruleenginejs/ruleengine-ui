@@ -39,7 +39,8 @@ const props = defineProps({
 const emit = defineEmits([
   "update:x",
   "update:y",
-  "update:invalidate"
+  "update:invalidate",
+  "moveend"
 ]);
 
 const {

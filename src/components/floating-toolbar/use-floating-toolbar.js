@@ -102,6 +102,7 @@ export default function useFloatingToolbar({
   }
 
   function onDragEnd() {
+    moveEnd();
     _parentRect = null;
     _elementRect = null;
     _offsetPoint = null;
@@ -138,6 +139,11 @@ export default function useFloatingToolbar({
 
     positionX.value = clamp(0, localPosition.x, maxX);
     positionY.value = clamp(0, localPosition.y, maxY);
+  }
+
+  function moveEnd() {
+    const position = Point.toPoint(positionX.value, positionY.value);
+    emit("moveend", { position });
   }
 
   return {
