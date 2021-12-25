@@ -23,7 +23,7 @@
 
 .v-action-item--with-label {
   /* sizes */
-  @apply w-auto;
+  @apply w-auto justify-start;
 }
 
 .v-action-item--disabled {
