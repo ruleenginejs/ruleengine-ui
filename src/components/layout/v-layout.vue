@@ -1,6 +1,6 @@
 <template>
   <component :is="tag" class="v-layout" :class="cssClasses">
-    <slot />
+    <slot></slot>
   </component>
 </template>
 
@@ -82,7 +82,15 @@ export default {
       type: Boolean,
       default: false
     },
+    distr: {
+      type: Boolean,
+      default: false
+    },
     notShrink: {
+      type: Boolean,
+      default: false
+    },
+    noShrink: {
       type: Boolean,
       default: false
     },
@@ -118,7 +126,9 @@ export default {
       wBetween,
       wCenter,
       allDistr,
+      distr,
       notShrink,
+      noShrink,
       noOverflow,
       noFlex,
       minH0
@@ -143,8 +153,8 @@ export default {
       "v-layout--w-end": wEnd.value,
       "v-layout--w-between": wBetween.value,
       "v-layout--w-center": wCenter.value,
-      "v-layout--all-distr": allDistr.value,
-      "v-layout--not-shrink": notShrink.value,
+      "v-layout--all-distr": allDistr.value || distr.value,
+      "v-layout--not-shrink": notShrink.value || noShrink.value,
       "v-layout--no-overflow": noOverflow.value,
       "v-layout--no-flex": noFlex.value,
       "v-layout--min-h-0": minH0.value
