@@ -25,7 +25,12 @@ class GraphPort {
     this.labelLinkEnter = ref(false);
     this.direction = direction;
 
-    this.onSelect = () => { this.emit("update:selected", true); }
+    this.onSelect = () => {
+      this.emit("update:selected", true);
+    };
+    this.onMouseDown = (e) => {
+      e.details = this.id;
+    };
 
     this.initComputed();
     this.initWatchers();

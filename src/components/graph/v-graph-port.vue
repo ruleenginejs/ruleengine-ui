@@ -30,9 +30,9 @@
         }"
         v-link.ctrl.stop="labelLinkOptions"
         v-link-target.stop="labelLinkTargetOptions"
-        @click.prevent.stop="onSelect"
+        @mousedown="onMouseDown"
       >
-        <slot />
+        <slot></slot>
       </span>
     </div>
   </div>
@@ -108,7 +108,7 @@ export default {
       labelLinkTargetOptions,
       labelLinkStart,
       labelLinkEnter,
-      onSelect
+      onMouseDown
     } = port;
 
     const getPort = () => port;
@@ -124,7 +124,7 @@ export default {
       labelLinkTargetOptions,
       labelLinkStart,
       labelLinkEnter,
-      onSelect,
+      onMouseDown,
       getPort
     };
   }

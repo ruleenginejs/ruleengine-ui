@@ -1,6 +1,7 @@
 import { reactive, watch, ref, computed, getCurrentInstance, nextTick } from "vue";
 import Bounds from "@/utils/bounds";
 import Point from "@/utils/point";
+import { isDefined } from "@/utils/types";
 
 class GraphNode {
   constructor({
@@ -27,6 +28,7 @@ class GraphNode {
     this.linkEnter = ref(false);
     this.linkRule = linkRule;
     this.clickStartPosition = ref(null);
+    this.clickPortId = ref(null);
     this.clickTolerance = clickTolerance;
 
     this.onDragStart = this.onDragStart.bind(this);
@@ -243,6 +245,7 @@ class GraphNode {
     this.moving.value = true;
     const startPoint = this.canvas?.mouseEventToLayerPoint(e);
     this.clickStartPosition.value = Point.toPoint(e.clientX, e.clientY);
+    this.clickPortId.value = e.details;
 
     if (startPoint) {
       this.moveOffsetPoint.value = {
@@ -296,10 +299,15 @@ class GraphNode {
       this.onClick(e);
     }
     this.clickStartPosition.value = null;
+    this.clickPortId.value = null;
   }
 
   onClick(e) {
-    this.onSelect(e);
+    if (isDefined(this.clickPortId.value)) {
+      this.getPort(this.clickPortId.value)?.onSelect(e);
+    } else {
+      this.onSelect(e);
+    }
   }
 }
 
