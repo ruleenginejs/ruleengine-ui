@@ -112,7 +112,7 @@ export default function useFloatingToolbar({
     return Point.toPoint(point.x - rect.left, point.y - rect.top);
   }
 
-  function invalidatePosition(revertNegativePosition = false) {
+  function invalidatePosition(useNegativePosition = false) {
     const toolbarEl = toolbarRef.value?.$el;
     const parentEl = toolbarEl?.parentElement;
     if (!toolbarEl || !parentEl) {
@@ -128,7 +128,7 @@ export default function useFloatingToolbar({
     const maxX = parentRect.width - toolbarRect.width;
     const maxY = parentRect.height - toolbarRect.height;
 
-    if (revertNegativePosition) {
+    if (useNegativePosition) {
       if (localPosition.x < 0) {
         localPosition.x = maxX + localPosition.x;
       }
