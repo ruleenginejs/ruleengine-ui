@@ -219,6 +219,7 @@ class GraphConnection {
   createSvgElement() {
     const path = new Path();
     path.addClass(this.className.value);
+    path.mousedown(this.stopEvent);
     path.click(this.onSelect);
     this.updateStyle(path);
     this.updateSelectedClass(path);
@@ -260,11 +261,6 @@ class GraphConnection {
     if (newCssClass) {
       this.srcElement?.addClass(newCssClass);
     }
-  }
-
-  onSelect(e) {
-    this.stopEvent(e);
-    this.emit("update:selected", true);
   }
 
   findFromPort() {
@@ -316,6 +312,11 @@ class GraphConnection {
   stopEvent(e) {
     e.preventDefault();
     e.stopPropagation();
+  }
+
+  onSelect(e) {
+    this.stopEvent(e);
+    this.emit("update:selected", true);
   }
 }
 
