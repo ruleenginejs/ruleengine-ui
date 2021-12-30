@@ -43,14 +43,6 @@
   @apply shadow-0-1-2;
 }
 
-.v-graph-node__header--blue {
-  @apply bg-graph-node-header-blue-background;
-}
-
-.v-graph-node__header--green {
-  @apply bg-graph-node-header-green-background;
-}
-
 .v-graph-node__header__label {
   /* display styles */
   @apply flex-grow;
@@ -86,4 +78,56 @@
 .v-graph-node__part {
   /* sizes */
   @apply w-1/2;
+}
+
+/* additional header colors */
+
+/* blue */
+.v-graph-node__header--blue {
+  @apply bg-graph-node-header-blue-background;
+}
+
+/* green */
+.v-graph-node__header--green {
+  @apply bg-graph-node-header-green-background;
+}
+
+/* brown */
+.v-graph-node__header--brown {
+  @apply bg-graph-node-header-brown-background;
+}
+
+/* indigo */
+.v-graph-node__header--indigo {
+  @apply bg-graph-node-header-indigo-background;
+}
+
+/* orange */
+.v-graph-node__header--orange {
+  @apply bg-graph-node-header-orange-background;
+}
+
+/* pink */
+.v-graph-node__header--pink {
+  @apply bg-graph-node-header-pink-background;
+}
+
+/* purple */
+.v-graph-node__header--purple {
+  @apply bg-graph-node-header-purple-background;
+}
+
+/* red */
+.v-graph-node__header--red {
+  @apply bg-graph-node-header-red-background;
+}
+
+/* teal */
+.v-graph-node__header--teal {
+  @apply bg-graph-node-header-teal-background;
+}
+
+/* yellow */
+.v-graph-node__header--yellow {
+  @apply bg-graph-node-header-yellow-background;
 }
