@@ -15,7 +15,7 @@
     <div
       class="v-graph-node__header"
       :style="{ backgroundColor: colorStyle }"
-      :class="colorClassName"
+      :class="colorCssClass"
     >
       <div
         v-if="$slots['header-left-icon']"
@@ -47,11 +47,8 @@ import { inject, provide, toRefs } from "vue";
 import draggable from "@/directives/draggable";
 import link from "@/directives/link";
 import linkTarget from "@/directives/link-target";
-import usePresetColor from "./composables/use-preset-color";
+import useColorPreset from "./composables/use-color-preset";
 import useNode from "./composables/use-node";
-
-const presetColors = ["blue", "green"];
-const colorFn = (color) => `v-graph-node__header--${color}`;
 
 export default {
   name: "v-graph-node",
@@ -141,12 +138,8 @@ export default {
 
     const {
       colorStyle,
-      colorClassName
-    } = usePresetColor(
-      headerColor,
-      presetColors,
-      colorFn
-    );
+      colorCssClass
+    } = useColorPreset(headerColor);
 
     const getNode = () => node;
     provide("node", node);
@@ -158,7 +151,7 @@ export default {
       container,
       transformStyle,
       colorStyle,
-      colorClassName,
+      colorCssClass,
       draggableCallbacks,
       linkOptions,
       linkTargetOptions,
