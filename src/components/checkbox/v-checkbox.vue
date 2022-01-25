@@ -1,5 +1,5 @@
 <template>
-  <div class="v-checkbox" :class="cssClasses">
+  <div class="v-checkbox" :class="cssClasses" :title="title">
     <label class="v-checkbox__wrap">
       <input
         ref="inputEl"
@@ -54,6 +54,10 @@ export default {
     readonly: {
       type: Boolean,
       default: false
+    },
+    title: {
+      type: String,
+      default: null
     }
   },
   emits: ["update:modelValue"],
