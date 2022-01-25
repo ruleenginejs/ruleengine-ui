@@ -4,7 +4,7 @@
 
 ### Basic
 - [Layout](components/layout)
-  - [v-layout](components/layout/v-layout)
+  - [v-layout](components/layout/v-layout.md)
 - [Content](components/content)
 - [Button](components/button)
 - [Space](components/space)
