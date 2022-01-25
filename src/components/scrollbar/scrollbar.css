@@ -55,3 +55,12 @@
 .v-scrollbar--show-on-hover:hover::-webkit-scrollbar-thumb:active {
   @apply bg-scrollbar-slider-active-background;
 }
+
+/* overflow */
+.v-scrollbar--enabled {
+  @apply overflow-auto;
+}
+
+.v-scrollbar--disabled {
+  @apply overflow-hidden;
+}
