@@ -22,20 +22,20 @@
     "splitview.js": "^1.0.6"
   },
   "peerDependencies": {
-    "vue": "^3.2.26"
+    "vue": "^3.2.29"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^2.0.1",
+    "@vitejs/plugin-vue": "^2.1.0",
     "autoprefixer": "^10.4.2",
-    "cssnano": "^5.0.15",
-    "eslint": "^8.6.0",
+    "cssnano": "^5.0.16",
+    "eslint": "^8.7.0",
     "eslint-plugin-vue": "^8.3.0",
     "postcss": "^8.4.5",
     "postcss-cli": "^9.1.0",
     "postcss-import": "^14.0.2",
     "postcss-nesting": "^10.1.2",
     "tailwindcss": "^2.2.19",
-    "vite": "^2.7.12"
+    "vite": "^2.7.13"
   },
   "repository": {
     "type": "git",
