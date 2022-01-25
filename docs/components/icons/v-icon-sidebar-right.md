@@ -1,0 +1,1 @@
+# v-icon-sidebar-right

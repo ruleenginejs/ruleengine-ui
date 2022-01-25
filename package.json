@@ -13,6 +13,8 @@
     "build-theme": "postcss src/assets/css/*.theme.css --base src/assets/css --dir dist -u cssnano --no-map",
     "build-normalize": "postcss src/assets/css/normalize.css --base src/assets/css --dir dist -u \"postcss-import\" tailwindcss autoprefixer cssnano --no-map",
     "build": "npm run build-components && npm run build-theme && npm run build-normalize",
+    "clear-docs": "rimraf ./docs/components",
+    "build-docs": "npm run clear-docs && vue-docgen",
     "postversion": "npm run push",
     "push": "git push origin master --tags"
   },
@@ -34,8 +36,10 @@
     "postcss-cli": "^9.1.0",
     "postcss-import": "^14.0.2",
     "postcss-nesting": "^10.1.2",
+    "rimraf": "^3.0.2",
     "tailwindcss": "^2.2.19",
-    "vite": "^2.7.13"
+    "vite": "^2.7.13",
+    "vue-docgen-cli": "^4.44.2"
   },
   "repository": {
     "type": "git",
