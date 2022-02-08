@@ -19,27 +19,27 @@
     "push": "git push origin master --tags"
   },
   "dependencies": {
-    "@svgdotjs/svg.js": "^3.1.1",
+    "@svgdotjs/svg.js": "^3.1.2",
     "debounce": "^1.2.1",
     "splitview.js": "^1.0.6"
   },
   "peerDependencies": {
-    "vue": "^3.2.29"
+    "vue": "^3.2.30"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.1.0",
     "autoprefixer": "^10.4.2",
-    "cssnano": "^5.0.16",
-    "eslint": "^8.7.0",
-    "eslint-plugin-vue": "^8.3.0",
-    "postcss": "^8.4.5",
+    "cssnano": "^5.0.17",
+    "eslint": "^8.8.0",
+    "eslint-plugin-vue": "^8.4.1",
+    "postcss": "^8.4.6",
     "postcss-cli": "^9.1.0",
     "postcss-import": "^14.0.2",
     "postcss-nesting": "^10.1.2",
     "rimraf": "^3.0.2",
     "tailwindcss": "^2.2.19",
     "vite": "^2.7.13",
-    "vue-docgen-cli": "^4.44.2"
+    "vue-docgen-cli": "^4.44.15"
   },
   "repository": {
     "type": "git",
