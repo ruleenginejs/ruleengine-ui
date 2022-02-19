@@ -12,7 +12,7 @@
 npm install @ruleenginejs/ui
 ```
 
-Add [codicons](https://github.com/microsoft/vscode-codicons) (optional)
+Add icons (optional)
 
 ```bash
 npm install @vscode/codicons
@@ -97,7 +97,7 @@ Read the [documentation and demos](https://ruleenginejs.github.io/ruleengine-ui-
 
 ## Reference
 
-Read the [reference](docs/README.md) to props, events, slots.
+Read the [api reference](docs/README.md) to props, events, slots.
 
 ## License
 
