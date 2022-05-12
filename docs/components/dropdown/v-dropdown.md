@@ -13,7 +13,7 @@
 | offsetY           |             | number                | -      | null    |
 | className         |             | string\|object\|array | -      | null    |
 | anchorConstraint  |             | boolean\|string       | -      | false   |
-| actionOnScrolling |             | boolean\|string       | -      | "close" |
+| actionOnScrolling |             | boolean\|string       | -      | 'close' |
 | preventMouseDown  |             | boolean               | -      | false   |
 
 ## Events

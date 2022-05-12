@@ -11,9 +11,9 @@
 | selected      |             | boolean        | -      | false                          |
 | color         |             | string         | -      | null                           |
 | borderWidth   |             | number         | -      | 3                              |
-| className     |             | string         | -      | "v-graph-connection"           |
-| selectedClass |             | string         | -      | "v-graph-connection--selected" |
-| colorClass    |             | string         | -      | "v-graph-connection--color"    |
+| className     |             | string         | -      | 'v-graph-connection'           |
+| selectedClass |             | string         | -      | 'v-graph-connection--selected' |
+| colorClass    |             | string         | -      | 'v-graph-connection--color'    |
 | curveFactor   |             | number         | -      | 0.25                           |
 
 ## Events

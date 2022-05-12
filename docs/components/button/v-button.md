@@ -4,7 +4,7 @@
 
 | Prop name | Description | Type    | Values | Default |
 | --------- | ----------- | ------- | ------ | ------- |
-| tag       |             | string  | -      | "a"     |
+| tag       |             | string  | -      | 'a'     |
 | tabIndex  |             | number  | -      | 0       |
 | disabled  |             | boolean | -      | false   |
 | secondary |             | boolean | -      | false   |

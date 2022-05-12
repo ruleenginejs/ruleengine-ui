@@ -4,7 +4,7 @@
 
 | Prop name | Description | Type    | Values | Default |
 | --------- | ----------- | ------- | ------ | ------- |
-| tag       |             | string  | -      | "div"   |
+| tag       |             | string  | -      | 'div'   |
 | label     |             | string  | -      | null    |
 | tBorder   |             | boolean | -      | false   |
 | bBorder   |             | boolean | -      | false   |

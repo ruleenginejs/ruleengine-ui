@@ -6,15 +6,15 @@
 | ----------------------- | ----------- | --------------- | ------ | ------- |
 | visible                 |             | boolean         | -      | false   |
 | dataSource              |             | func            | -      | null    |
-| displayField            |             | string          | -      | "text"  |
+| displayField            |             | string          | -      | 'text'  |
 | searchQuery             |             | string\|number  | -      | null    |
 | searchTimeout           |             | number          | -      | 250     |
 | minSearchLength         |             | number          | -      | 1       |
 | maxQueryLength          |             | number          | -      | null    |
 | maxItemCount            |             | number          | -      | null    |
-| size                    |             | string          | -      | "md"    |
-| scrollSize              |             | string          | -      | "md"    |
-| listSize                |             | string          | -      | "md"    |
+| size                    |             | string          | -      | 'md'    |
+| scrollSize              |             | string          | -      | 'md'    |
+| listSize                |             | string          | -      | 'md'    |
 | listFocusItem           |             | object          | -      | null    |
 | listFocusIndex          |             | number          | -      | null    |
 | listFocusLoop           |             | boolean         | -      | false   |
@@ -26,7 +26,7 @@
 | minWidth                |             | number          | -      | 400     |
 | anchor                  |             | string          | -      | null    |
 | anchorConstraint        |             | boolean\|string | -      | false   |
-| actionOnParentScrolling |             | boolean\|string | -      | "close" |
+| actionOnParentScrolling |             | boolean\|string | -      | 'close' |
 | loadingMessage          |             | string          | -      | null    |
 | emptyResultMessage      |             | string          | -      | null    |
 | preventMouseDown        |             | boolean         | -      | false   |

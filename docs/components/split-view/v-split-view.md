@@ -8,7 +8,7 @@
 | gutterSize            |             | number  | -      | 4                |
 | expandToMin           |             | boolean | -      | false            |
 | snapOffset            |             | number  | -      | 0                |
-| customGutterClassName |             | string  | -      | "v-split-gutter" |
+| customGutterClassName |             | string  | -      | 'v-split-gutter' |
 | resizeDelay           |             | number  | -      | 100              |
 
 ## Events

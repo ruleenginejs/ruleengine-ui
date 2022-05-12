@@ -6,7 +6,7 @@
 | ------------- | ----------- | -------------- | ------ | ------- |
 | modelValue    |             | string\|number | -      | null    |
 | id            |             | string\|number | -      | null    |
-| type          |             | string         | -      | "text"  |
+| type          |             | string         | -      | 'text'  |
 | tabIndex      |             | number         | -      | 0       |
 | className     |             | string         | -      | null    |
 | iconClickable |             | boolean        | -      | false   |

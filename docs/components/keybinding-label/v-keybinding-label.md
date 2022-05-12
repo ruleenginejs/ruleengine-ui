@@ -5,5 +5,5 @@
 | Prop name      | Description | Type   | Values | Default |
 | -------------- | ----------- | ------ | ------ | ------- |
 | value          |             | string | -      | null    |
-| valueSeparator |             | string | -      | "+"     |
-| separator      |             | string | -      | "+"     |
+| valueSeparator |             | string | -      | '+'     |
+| separator      |             | string | -      | '+'     |

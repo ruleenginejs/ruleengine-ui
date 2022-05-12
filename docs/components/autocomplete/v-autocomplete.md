@@ -11,8 +11,8 @@
 | readonly           |             | boolean        | -      | false   |
 | tabIndex           |             | number         | -      | 0       |
 | iconClickable      |             | boolean        | -      | false   |
-| displayField       |             | string         | -      | "text"  |
-| valueField         |             | string         | -      | "text"  |
+| displayField       |             | string         | -      | 'text'  |
+| valueField         |             | string         | -      | 'text'  |
 | searchTimeout      |             | number         | -      | 250     |
 | minSearchLength    |             | number         | -      | 1       |
 | maxLength          |             | number         | -      | null    |

@@ -4,7 +4,7 @@
 
 | Prop name  | Description | Type            | Values | Default |
 | ---------- | ----------- | --------------- | ------ | ------- |
-| tag        |             | string          | -      | "div"   |
+| tag        |             | string          | -      | 'div'   |
 | vertical   |             | boolean         | -      | false   |
 | reverse    |             | boolean         | -      | false   |
 | inline     |             | boolean         | -      | false   |

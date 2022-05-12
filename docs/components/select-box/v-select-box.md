@@ -11,10 +11,10 @@
 | disabled      |             | boolean                | -      | false      |
 | readonly      |             | boolean                | -      | false      |
 | tabIndex      |             | number                 | -      | 0          |
-| valueField    |             | string                 | -      | "value"    |
-| displayField  |             | string                 | -      | "text"     |
-| detailField   |             | string                 | -      | "detail"   |
-| disabledField |             | string                 | -      | "disabled" |
+| valueField    |             | string                 | -      | 'value'    |
+| displayField  |             | string                 | -      | 'text'     |
+| detailField   |             | string                 | -      | 'detail'   |
+| disabledField |             | string                 | -      | 'disabled' |
 
 ## Events
 

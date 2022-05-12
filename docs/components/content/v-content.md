@@ -4,7 +4,7 @@
 
 | Prop name     | Description | Type            | Values | Default |
 | ------------- | ----------- | --------------- | ------ | ------- |
-| tag           |             | string          | -      | "div"   |
+| tag           |             | string          | -      | 'div'   |
 | padding       |             | string          | -      | null    |
 | fill          |             | boolean         | -      | false   |
 | wFull         |             | boolean         | -      | false   |

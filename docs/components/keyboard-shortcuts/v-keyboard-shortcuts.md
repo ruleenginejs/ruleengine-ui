@@ -7,4 +7,4 @@
 | value             |             | array  | -      | []        |
 | keyValueSeparator |             | string | -      | undefined |
 | keySeparator      |             | string | -      | undefined |
-| labelAlign        |             | string | -      | "left"    |
+| labelAlign        |             | string | -      | 'left'    |

@@ -4,7 +4,7 @@
 
 | Prop name | Description | Type    | Values | Default |
 | --------- | ----------- | ------- | ------ | ------- |
-| tag       |             | string  | -      | "a"     |
+| tag       |             | string  | -      | 'a'     |
 | icon      |             | string  | -      | null    |
 | title     |             | string  | -      | null    |
 | tabIndex  |             | number  | -      | null    |

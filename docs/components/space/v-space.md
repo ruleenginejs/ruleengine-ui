@@ -4,4 +4,4 @@
 
 | Prop name | Description | Type   | Values | Default |
 | --------- | ----------- | ------ | ------ | ------- |
-| tag       |             | string | -      | "div"   |
+| tag       |             | string | -      | 'div'   |

@@ -13,13 +13,13 @@
 | resetFocusIndex   |             | number  | -      | null        |
 | focusLoop         |             | boolean | -      | false       |
 | scrollIntoOnFocus |             | boolean | -      | true        |
-| size              |             | string  | -      | "md"        |
-| idField           |             | string  | -      | "id"        |
-| displayField      |             | string  | -      | "text"      |
-| detailField       |             | string  | -      | "detail"    |
-| disabledField     |             | string  | -      | "disabled"  |
-| iconField         |             | string  | -      | "icon"      |
-| iconColorField    |             | string  | -      | "iconColor" |
+| size              |             | string  | -      | 'md'        |
+| idField           |             | string  | -      | 'id'        |
+| displayField      |             | string  | -      | 'text'      |
+| detailField       |             | string  | -      | 'detail'    |
+| disabledField     |             | string  | -      | 'disabled'  |
+| iconField         |             | string  | -      | 'icon'      |
+| iconColorField    |             | string  | -      | 'iconColor' |
 
 ## Events
 

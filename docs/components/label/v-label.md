@@ -4,7 +4,7 @@
 
 | Prop name | Description | Type    | Values | Default |
 | --------- | ----------- | ------- | ------ | ------- |
-| tag       |             | string  | -      | "label" |
+| tag       |             | string  | -      | 'label' |
 | truncate  |             | boolean | -      | false   |
 | disabled  |             | boolean | -      | false   |
 
