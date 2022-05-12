@@ -1,12 +1,12 @@
 <script>
 export default {
-  name: "v-floating-toolbar-internal"
-}
+  name: 'v-floating-toolbar-internal'
+};
 </script>
 
 <script setup>
-import VIconGripper from "../icons/v-icon-gripper.vue";
-import vDraggable from "@/directives/draggable";
+import VIconGripper from '../icons/v-icon-gripper.vue';
+import vDraggable from '@/directives/draggable';
 
 defineProps({
   draggableCallbacks: {
@@ -18,7 +18,10 @@ defineProps({
 
 <template>
   <div class="v-floating-toolbar">
-    <div class="v-floating-toolbar__drag-area" v-draggable.stop="draggableCallbacks">
+    <div
+      class="v-floating-toolbar__drag-area"
+      v-draggable.stop="draggableCallbacks"
+    >
       <v-icon-gripper />
     </div>
     <div class="v-floating-toolbar__container">

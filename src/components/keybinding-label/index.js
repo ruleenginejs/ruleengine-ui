@@ -1,5 +1,3 @@
-import VKeybindingLabel from "./v-keybinding-label.vue"
+import VKeybindingLabel from './v-keybinding-label.vue';
 
-export {
-  VKeybindingLabel
-}
+export { VKeybindingLabel };

@@ -1,9 +1,9 @@
 <script>
-import { inject, toRefs } from "vue";
-import useConnection from "./composables/use-connection";
+import { inject, toRefs } from 'vue';
+import useConnection from './composables/use-connection';
 
 export default {
-  name: "v-graph-connection",
+  name: 'v-graph-connection',
   props: {
     id: {
       type: [String, Number],
@@ -35,22 +35,22 @@ export default {
     },
     className: {
       type: String,
-      default: "v-graph-connection"
+      default: 'v-graph-connection'
     },
     selectedClass: {
       type: String,
-      default: "v-graph-connection--selected"
+      default: 'v-graph-connection--selected'
     },
     colorClass: {
       type: String,
-      default: "v-graph-connection--color"
+      default: 'v-graph-connection--color'
     },
     curveFactor: {
       type: Number,
       default: 0.25
     }
   },
-  emits: ["update:invalidate", "update:selected"],
+  emits: ['update:invalidate', 'update:selected'],
   setup(props, { emit }) {
     const {
       id,
@@ -66,8 +66,8 @@ export default {
       curveFactor
     } = toRefs(props);
 
-    const canvas = inject("canvas");
-    const svg = inject("svg");
+    const canvas = inject('canvas');
+    const svg = inject('svg');
 
     const connection = useConnection(canvas, {
       svg,
@@ -97,5 +97,5 @@ export default {
 </script>
 
 <style>
-@import "graph-connection";
+@import 'graph-connection';
 </style>

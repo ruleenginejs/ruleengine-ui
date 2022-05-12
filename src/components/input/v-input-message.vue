@@ -1,12 +1,12 @@
 <script>
 export default {
-  name: "v-input-message"
-}
+  name: 'v-input-message'
+};
 </script>
 
 <script setup>
-import { computed, toRefs } from "vue";
-import { VDropdown } from "../dropdown/index";
+import { computed, toRefs } from 'vue';
+import { VDropdown } from '../dropdown/index';
 
 const props = defineProps({
   visible: {
@@ -34,9 +34,9 @@ const props = defineProps({
 const { info, warning, error } = toRefs(props);
 
 const cssClasses = computed(() => ({
-  "v-input-message--info": info.value,
-  "v-input-message--warning": warning.value,
-  "v-input-message--error": error.value
+  'v-input-message--info': info.value,
+  'v-input-message--warning': warning.value,
+  'v-input-message--error': error.value
 }));
 </script>
 
@@ -55,5 +55,5 @@ const cssClasses = computed(() => ({
 </template>
 
 <style>
-@import "input-message";
+@import 'input-message';
 </style>

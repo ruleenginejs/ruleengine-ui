@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import { computed, toRefs } from "vue";
+import { computed, toRefs } from 'vue';
 
 export default {
-  name: "v-action-bar",
+  name: 'v-action-bar',
   props: {
     lBorder: {
       type: Boolean,
@@ -35,11 +35,11 @@ export default {
     const { lBorder, rBorder, right, wFull, noOverflow } = toRefs(props);
 
     const cssClasses = computed(() => ({
-      "v-action-bar--l-border": lBorder.value,
-      "v-action-bar--r-border": rBorder.value,
-      "v-action-bar--right": right.value,
-      "v-action-bar--w-full": wFull.value,
-      "v-action-bar--no-overflow": noOverflow.value
+      'v-action-bar--l-border': lBorder.value,
+      'v-action-bar--r-border': rBorder.value,
+      'v-action-bar--right': right.value,
+      'v-action-bar--w-full': wFull.value,
+      'v-action-bar--no-overflow': noOverflow.value
     }));
 
     return {
@@ -50,5 +50,5 @@ export default {
 </script>
 
 <style>
-@import "action-bar";
+@import 'action-bar';
 </style>

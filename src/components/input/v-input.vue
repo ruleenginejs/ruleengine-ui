@@ -19,7 +19,12 @@
       @focusin="focused = true"
       @focusout="focused = false"
     />
-    <span v-if="$slots['icon']" class="v-input__icon" :class="iconClasses" @click="onIconClick">
+    <span
+      v-if="$slots['icon']"
+      class="v-input__icon"
+      :class="iconClasses"
+      @click="onIconClick"
+    >
       <slot name="icon"></slot>
     </span>
   </div>
@@ -30,15 +35,16 @@
     :info="info"
     :warning="warning"
     :error="error"
-  >{{ message }}</v-input-message>
+    >{{ message }}</v-input-message
+  >
 </template>
 
 <script>
-import { computed, ref, toRefs, getCurrentInstance } from "vue";
-import VInputMessage from "./v-input-message.vue";
+import { computed, ref, toRefs, getCurrentInstance } from 'vue';
+import VInputMessage from './v-input-message.vue';
 
 export default {
-  name: "v-input",
+  name: 'v-input',
   inheritAttrs: false,
   components: {
     VInputMessage
@@ -54,7 +60,7 @@ export default {
     },
     type: {
       type: String,
-      default: "text"
+      default: 'text'
     },
     tabIndex: {
       type: Number,
@@ -93,7 +99,7 @@ export default {
       default: null
     }
   },
-  emits: ["update:modelValue", "icon-click"],
+  emits: ['update:modelValue', 'icon-click'],
   setup(props, { emit }) {
     const {
       id,
@@ -112,18 +118,18 @@ export default {
 
     const value = computed({
       get: () => modelValue.value,
-      set: (val) => emit("update:modelValue", val)
+      set: val => emit('update:modelValue', val)
     });
 
     const iconClasses = computed(() => ({
-      "v-input__icon--clickable":
+      'v-input__icon--clickable':
         !disabled.value && !readonly.value && iconClickable.value
     }));
 
     const layoutClasses = computed(() => ({
       [className.value]: !!className.value,
-      "v-input-layout--disabled": disabled.value,
-      "v-input-layout--readonly": readonly.value
+      'v-input-layout--disabled': disabled.value,
+      'v-input-layout--readonly': readonly.value
     }));
 
     const inputId = computed(() => {
@@ -136,14 +142,15 @@ export default {
       }
     });
 
-    const canShowMessage = computed(() =>
-      message.value && !disabled.value && !readonly.value);
+    const canShowMessage = computed(
+      () => message.value && !disabled.value && !readonly.value
+    );
 
-    const onIconClick = (e) => {
+    const onIconClick = e => {
       if (!iconClickable.value || disabled.value || readonly.value) {
         return;
       }
-      emit("icon-click", e);
+      emit('icon-click', e);
     };
 
     return {
@@ -161,5 +168,5 @@ export default {
 </script>
 
 <style>
-@import "input";
+@import 'input';
 </style>

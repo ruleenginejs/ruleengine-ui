@@ -1,5 +1,3 @@
-import VContent from "./v-content.vue"
+import VContent from './v-content.vue';
 
-export {
-  VContent
-}
+export { VContent };

@@ -56,9 +56,15 @@
   /* --v-side-bar-border: no mapping */
 
   /* list */
-  --v-list-active-selection-background: var(--vscode-list-activeSelectionBackground);
-  --v-list-active-selection-foreground: var(--vscode-list-activeSelectionForeground);
-  --v-list-inactive-selection-background: var(--vscode-list-inactiveSelectionBackground);
+  --v-list-active-selection-background: var(
+    --vscode-list-activeSelectionBackground
+  );
+  --v-list-active-selection-foreground: var(
+    --vscode-list-activeSelectionForeground
+  );
+  --v-list-inactive-selection-background: var(
+    --vscode-list-inactiveSelectionBackground
+  );
   --v-list-inactive-foreground: var(--vscode-foreground);
   --v-list-hover-background: var(--vscode-list-hoverBackground);
   --v-list-focus-background: var(--vscode-list-activeSelectionBackground);
@@ -66,8 +72,12 @@
   /* scrollbar */
   --v-scrollbar-corner-background: var(--vscode-editor-background);
   --v-scrollbar-slider-background: var(--vscode-scrollbarSlider-background);
-  --v-scrollbar-slider-hover-background: var(--vscode-scrollbarSlider-hoverBackground);
-  --v-scrollbar-slider-active-background: var(--vscode-scrollbarSlider-activeBackground);
+  --v-scrollbar-slider-hover-background: var(
+    --vscode-scrollbarSlider-hoverBackground
+  );
+  --v-scrollbar-slider-active-background: var(
+    --vscode-scrollbarSlider-activeBackground
+  );
 
   /* graph */
   --v-graph-background: var(--vscode-editor-background);
@@ -98,7 +108,9 @@
   --v-button-hover-background: var(--vscode-button-hoverBackground);
   --v-button-secondary-foreground: var(--vscode-button-secondaryForeground);
   --v-button-secondary-background: var(--vscode-button-secondaryBackground);
-  --v-button-secondary-hover-background: var(--vscode-button-secondaryHoverBackground);
+  --v-button-secondary-hover-background: var(
+    --vscode-button-secondaryHoverBackground
+  );
 
   /* dropdown */
   --v-dropdown-background: var(--vscode-dropdown-background);
@@ -119,7 +131,9 @@
   --v-keybinding-label-background: var(--vscode-keybindingLabel-background);
   --v-keybinding-label-foreground: var(--vscode-keybindingLabel-foreground);
   --v-keybinding-label-border: var(--vscode-keybindingLabel-border);
-  --v-keybinding-label-bottom-border: var(--vscode-keybindingLabel-bottomBorder);
+  --v-keybinding-label-bottom-border: var(
+    --vscode-keybindingLabel-bottomBorder
+  );
 
   /* floating toolbar */
   --v-floating-toolbar-background: var(--vscode-debugToolBar-background);
@@ -139,8 +153,8 @@
   /* shadow */
   --v-shadow-100: #000000;
   --v-shadow-50: #00000080;
-  --v-shadow-36: #0000005C;
-  --v-shadow-30: #0000004D;
+  --v-shadow-36: #0000005c;
+  --v-shadow-30: #0000004d;
 
   /* action bar */
   --v-action-bar-background: #252526;
@@ -152,25 +166,25 @@
   --v-action-bar-disabled-foreground: #ffffff66;
 
   /* graph */
-  --v-graph-round-border: #4C4F53;
-  --v-graph-error-background: #810B07;
+  --v-graph-round-border: #4c4f53;
+  --v-graph-error-background: #810b07;
   --v-graph-node-background: #414141;
-  --v-graph-node-header-background: #4C4F53;
-  --v-graph-node-header-blue-background: #3A68A1;
+  --v-graph-node-header-background: #4c4f53;
+  --v-graph-node-header-blue-background: #3a68a1;
   --v-graph-node-header-green-background: #247939;
-  --v-graph-node-header-brown-background: #A1683A;
-  --v-graph-node-header-indigo-background: #483AA1;
-  --v-graph-node-header-orange-background: #A15C3A;
-  --v-graph-node-header-pink-background: #A13A9F;
-  --v-graph-node-header-purple-background: #713AA1;
-  --v-graph-node-header-red-background: #A13A3A;
-  --v-graph-node-header-teal-background: #3A98A1;
-  --v-graph-node-header-yellow-background: #82801A;
-  --v-graph-node-border: #754A4A;
-  --v-graph-active-port-backgound: #82801A;
-  --v-graph-inactive-port-backgound: #4C4F53;
-  --v-graph-inactive-port-border: #D4D4D4;
-  --v-graph-link-active-port-backgound: #D4D4D4;
+  --v-graph-node-header-brown-background: #a1683a;
+  --v-graph-node-header-indigo-background: #483aa1;
+  --v-graph-node-header-orange-background: #a15c3a;
+  --v-graph-node-header-pink-background: #a13a9f;
+  --v-graph-node-header-purple-background: #713aa1;
+  --v-graph-node-header-red-background: #a13a3a;
+  --v-graph-node-header-teal-background: #3a98a1;
+  --v-graph-node-header-yellow-background: #82801a;
+  --v-graph-node-border: #754a4a;
+  --v-graph-active-port-backgound: #82801a;
+  --v-graph-inactive-port-backgound: #4c4f53;
+  --v-graph-inactive-port-border: #d4d4d4;
+  --v-graph-link-active-port-backgound: #d4d4d4;
   --v-graph-connection-background: #414141;
 }
 
@@ -187,8 +201,8 @@
   /* shadow */
   --v-shadow-100: #000000;
   --v-shadow-50: #00000080;
-  --v-shadow-36: #0000005C;
-  --v-shadow-30: #0000004D;
+  --v-shadow-36: #0000005c;
+  --v-shadow-30: #0000004d;
 
   /* action bar */
   --v-action-bar-background: #252526;
@@ -200,24 +214,24 @@
   --v-action-bar-disabled-foreground: #ffffff66;
 
   /* graph */
-  --v-graph-round-border: #4C4F53;
-  --v-graph-error-background: #810B07;
+  --v-graph-round-border: #4c4f53;
+  --v-graph-error-background: #810b07;
   --v-graph-node-background: #414141;
-  --v-graph-node-header-background: #4C4F53;
-  --v-graph-node-header-blue-background: #3A68A1;
+  --v-graph-node-header-background: #4c4f53;
+  --v-graph-node-header-blue-background: #3a68a1;
   --v-graph-node-header-green-background: #247939;
-  --v-graph-node-header-brown-background: #A1683A;
-  --v-graph-node-header-indigo-background: #483AA1;
-  --v-graph-node-header-orange-background: #A15C3A;
-  --v-graph-node-header-pink-background: #A13A9F;
-  --v-graph-node-header-purple-background: #713AA1;
-  --v-graph-node-header-red-background: #A13A3A;
-  --v-graph-node-header-teal-background: #3A98A1;
-  --v-graph-node-header-yellow-background: #82801A;
-  --v-graph-node-border: #754A4A;
-  --v-graph-active-port-backgound: #82801A;
-  --v-graph-inactive-port-backgound: #4C4F53;
-  --v-graph-inactive-port-border: #D4D4D4;
-  --v-graph-link-active-port-backgound: #D4D4D4;
+  --v-graph-node-header-brown-background: #a1683a;
+  --v-graph-node-header-indigo-background: #483aa1;
+  --v-graph-node-header-orange-background: #a15c3a;
+  --v-graph-node-header-pink-background: #a13a9f;
+  --v-graph-node-header-purple-background: #713aa1;
+  --v-graph-node-header-red-background: #a13a3a;
+  --v-graph-node-header-teal-background: #3a98a1;
+  --v-graph-node-header-yellow-background: #82801a;
+  --v-graph-node-border: #754a4a;
+  --v-graph-active-port-backgound: #82801a;
+  --v-graph-inactive-port-backgound: #4c4f53;
+  --v-graph-inactive-port-border: #d4d4d4;
+  --v-graph-link-active-port-backgound: #d4d4d4;
   --v-graph-connection-background: #414141;
 }

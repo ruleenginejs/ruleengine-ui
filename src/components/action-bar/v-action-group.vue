@@ -6,10 +6,10 @@
 
 <script>
 export default {
-  name: "v-action-group"
+  name: 'v-action-group'
 };
 </script>
 
 <style>
-@import "action-group";
+@import 'action-group';
 </style>

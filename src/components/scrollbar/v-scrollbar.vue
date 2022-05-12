@@ -1,11 +1,11 @@
 <script>
 export default {
-  name: "v-scrollbar"
-}
+  name: 'v-scrollbar'
+};
 </script>
 
 <script setup>
-import { toRefs, computed } from "vue";
+import { toRefs, computed } from 'vue';
 
 const props = defineProps({
   size: {
@@ -21,10 +21,10 @@ const props = defineProps({
 const { size, disabled } = toRefs(props);
 
 const cssClasses = computed(() => ({
-  "v-scrollbar--enabled": !disabled.value,
-  "v-scrollbar--disabled": disabled.value,
-  "v-scrollbar--md": size.value === "md",
-  "v-scrollbar--sm": size.value === "sm",
+  'v-scrollbar--enabled': !disabled.value,
+  'v-scrollbar--disabled': disabled.value,
+  'v-scrollbar--md': size.value === 'md',
+  'v-scrollbar--sm': size.value === 'sm'
 }));
 </script>
 
@@ -35,5 +35,5 @@ const cssClasses = computed(() => ({
 </template>
 
 <style>
-@import "scrollbar";
+@import 'scrollbar';
 </style>

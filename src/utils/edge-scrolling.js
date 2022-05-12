@@ -1,5 +1,5 @@
-import isDefined from "./is-defined";
-import clamp from "./clamp";
+import isDefined from './is-defined';
+import clamp from './clamp';
 
 class EdgeScrolling {
   constructor(options = {}, callbacks = null) {
@@ -43,10 +43,10 @@ class EdgeScrolling {
     x = clamp(0, x, viewportWidth);
     y = clamp(0, y, viewportHeight);
 
-    const isInLeftEdge = (x < edgeLeft);
-    const isInRightEdge = (x > edgeRight);
-    const isInTopEdge = (y < edgeTop);
-    const isInBottomEdge = (y > edgeBottom);
+    const isInLeftEdge = x < edgeLeft;
+    const isInRightEdge = x > edgeRight;
+    const isInTopEdge = y < edgeTop;
+    const isInBottomEdge = y > edgeBottom;
 
     if (!(isInLeftEdge || isInRightEdge || isInTopEdge || isInBottomEdge)) {
       this.stop();
@@ -62,7 +62,6 @@ class EdgeScrolling {
       if (isInLeftEdge) {
         const intensity = (edgeLeft - x) / edgeLeftSize;
         deltaX = -this.maxStep * intensity;
-
       } else if (isInRightEdge) {
         const intensity = (x - edgeRight) / edgeRightSize;
         deltaX = this.maxStep * intensity;
@@ -71,7 +70,6 @@ class EdgeScrolling {
       if (isInTopEdge) {
         const intensity = (edgeTop - y) / edgeTopSize;
         deltaY = -this.maxStep * intensity;
-
       } else if (isInBottomEdge) {
         const intensity = (y - edgeBottom) / edgeBottomSize;
         deltaY = this.maxStep * intensity;

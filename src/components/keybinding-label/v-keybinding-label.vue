@@ -1,11 +1,11 @@
 <script>
 export default {
-  name: "v-keybinding-label"
-}
+  name: 'v-keybinding-label'
+};
 </script>
 
 <script setup>
-import { toRefs, computed } from "vue";
+import { toRefs, computed } from 'vue';
 
 const props = defineProps({
   value: {
@@ -14,19 +14,19 @@ const props = defineProps({
   },
   valueSeparator: {
     type: String,
-    default: "+"
+    default: '+'
   },
   separator: {
     type: String,
-    default: "+"
+    default: '+'
   }
 });
 
 const { value, valueSeparator } = toRefs(props);
 const parts = computed(() => {
-  const keyParts = (value.value || "")
+  const keyParts = (value.value || '')
     .split(valueSeparator.value)
-    .filter((item) => !!item);
+    .filter(item => !!item);
   return keyParts;
 });
 </script>
@@ -34,12 +34,14 @@ const parts = computed(() => {
 <template>
   <div v-if="value" class="v-keybinding-label" :title="value">
     <template v-for="(part, index) in parts" :key="index">
-      <span v-if="index > 0" class="v-keybinding-label__separator">{{ separator }}</span>
+      <span v-if="index > 0" class="v-keybinding-label__separator">{{
+        separator
+      }}</span>
       <span class="v-keybinding-label__key">{{ part }}</span>
     </template>
   </div>
 </template>
 
 <style>
-@import "keybinding-label";
+@import 'keybinding-label';
 </style>

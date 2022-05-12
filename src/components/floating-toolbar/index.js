@@ -1,5 +1,3 @@
-import VFloatingToolbar from "./v-floating-toolbar.vue"
+import VFloatingToolbar from './v-floating-toolbar.vue';
 
-export {
-  VFloatingToolbar
-}
+export { VFloatingToolbar };

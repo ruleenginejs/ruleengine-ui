@@ -11,11 +11,11 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import VTreeItem from "./v-tree-item.vue";
+import { ref } from 'vue';
+import VTreeItem from './v-tree-item.vue';
 
 export default {
-  name: "v-treeview",
+  name: 'v-treeview',
   components: {
     VTreeItem
   },
@@ -25,11 +25,11 @@ export default {
       default: () => []
     }
   },
-  emits: ["select"],
+  emits: ['select'],
   setup(props, { emit }) {
     const selectedItem = ref(null);
 
-    const onSelect = (e) => {
+    const onSelect = e => {
       if (e.item.children) {
         e.item.expanded = !e.item.expanded;
       }
@@ -41,7 +41,7 @@ export default {
         e.item.selected = true;
         selectedItem.value = e.item;
 
-        emit("select", e.item);
+        emit('select', e.item);
       }
     };
 

@@ -33,15 +33,15 @@
 </template>
 
 <script>
-import { computed, toRefs, watch } from "vue";
-import useSearch from "./use-search";
-import useDropdown from "./use-dropdown";
-import useList from "./use-list";
-import { VList } from "@/components/list";
-import { VDropdown } from "@/components/dropdown";
+import { computed, toRefs, watch } from 'vue';
+import useSearch from './use-search';
+import useDropdown from './use-dropdown';
+import useList from './use-list';
+import { VList } from '@/components/list';
+import { VDropdown } from '@/components/dropdown';
 
 export default {
-  name: "v-suggest",
+  name: 'v-suggest',
   components: {
     VList,
     VDropdown
@@ -57,7 +57,7 @@ export default {
     },
     displayField: {
       type: String,
-      default: "text"
+      default: 'text'
     },
     searchQuery: {
       type: [String, Number],
@@ -81,15 +81,15 @@ export default {
     },
     size: {
       type: String,
-      default: "md"
+      default: 'md'
     },
     scrollSize: {
       type: String,
-      default: "md"
+      default: 'md'
     },
     listSize: {
       type: String,
-      default: "md"
+      default: 'md'
     },
     listFocusItem: {
       type: Object,
@@ -137,7 +137,7 @@ export default {
     },
     actionOnParentScrolling: {
       type: [Boolean, String],
-      default: "close"
+      default: 'close'
     },
     loadingMessage: {
       type: String,
@@ -157,11 +157,11 @@ export default {
     }
   },
   emits: [
-    "update:visible",
-    "update:listFocusItem",
-    "update:listFocusIndex",
-    "select",
-    "error"
+    'update:visible',
+    'update:listFocusItem',
+    'update:listFocusIndex',
+    'select',
+    'error'
   ],
   setup(props, { emit }) {
     const {
@@ -180,11 +180,11 @@ export default {
     } = toRefs(props);
 
     const cssClasses = computed(() => ({
-      "v-suggest": true,
-      "v-suggest--sm": size.value === "sm",
-      "v-suggest--md": size.value === "md",
-      "v-scrollbar--md": scrollSize.value === "md",
-      "v-scrollbar--sm": scrollSize.value === "sm"
+      'v-suggest': true,
+      'v-suggest--sm': size.value === 'sm',
+      'v-suggest--md': size.value === 'md',
+      'v-scrollbar--md': scrollSize.value === 'md',
+      'v-scrollbar--sm': scrollSize.value === 'sm'
     }));
 
     const { modelVisible } = useDropdown({ visible, emit });
@@ -207,7 +207,7 @@ export default {
     });
 
     watch(error, () => {
-      emit("error", error.value);
+      emit('error', error.value);
     });
 
     return {
@@ -224,5 +224,5 @@ export default {
 </script>
 
 <style>
-@import "suggest";
+@import 'suggest';
 </style>

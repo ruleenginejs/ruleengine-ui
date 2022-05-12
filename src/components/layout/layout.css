@@ -66,21 +66,21 @@
   @apply justify-center;
 }
 
-.v-layout--gutter-sm:not(.v-layout--wrap)>* {
+.v-layout--gutter-sm:not(.v-layout--wrap) > * {
   @apply mr-2;
 }
 
-.v-layout--gutter-md:not(.v-layout--wrap)>* {
+.v-layout--gutter-md:not(.v-layout--wrap) > * {
   @apply mr-4;
 }
 
-.v-layout--gutter-lg:not(.v-layout--wrap)>* {
+.v-layout--gutter-lg:not(.v-layout--wrap) > * {
   @apply mr-6;
 }
 
-.v-layout--gutter-sm:not(.v-layout--wrap)>*:last-child,
-.v-layout--gutter-md:not(.v-layout--wrap)>*:last-child,
-.v-layout--gutter-lg:not(.v-layout--wrap)>*:last-child {
+.v-layout--gutter-sm:not(.v-layout--wrap) > *:last-child,
+.v-layout--gutter-md:not(.v-layout--wrap) > *:last-child,
+.v-layout--gutter-lg:not(.v-layout--wrap) > *:last-child {
   @apply mr-0;
 }
 
@@ -88,7 +88,7 @@
   @apply -mt-2 -ml-2;
 }
 
-.v-layout--gutter-sm.v-layout--wrap>* {
+.v-layout--gutter-sm.v-layout--wrap > * {
   @apply mt-2 ml-2;
 }
 
@@ -96,7 +96,7 @@
   @apply -mt-4 -ml-4;
 }
 
-.v-layout--gutter-md.v-layout--wrap>* {
+.v-layout--gutter-md.v-layout--wrap > * {
   @apply mt-4 ml-4;
 }
 
@@ -104,7 +104,7 @@
   @apply -mt-6 -ml-6;
 }
 
-.v-layout--gutter-lg.v-layout--wrap>* {
+.v-layout--gutter-lg.v-layout--wrap > * {
   @apply mt-6 ml-6;
 }
 

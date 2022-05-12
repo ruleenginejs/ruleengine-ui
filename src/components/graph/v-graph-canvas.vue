@@ -22,7 +22,10 @@
         >
           <slot name="connection"></slot>
         </v-graph-svg-layer>
-        <div v-if="$slots['node']" class="v-graph-canvas__layer v-graph-canvas__node-layer">
+        <div
+          v-if="$slots['node']"
+          class="v-graph-canvas__layer v-graph-canvas__node-layer"
+        >
           <slot name="node"></slot>
         </div>
       </div>
@@ -31,15 +34,15 @@
 </template>
 
 <script>
-import draggable from "@/directives/draggable";
-import wheel from "@/directives/wheel";
-import resize from "@/directives/resize";
-import { provide, toRefs } from "vue";
-import useCanvas from "./composables/use-canvas";
-import VGraphSvgLayer from "./v-graph-svg-layer.vue";
+import draggable from '@/directives/draggable';
+import wheel from '@/directives/wheel';
+import resize from '@/directives/resize';
+import { provide, toRefs } from 'vue';
+import useCanvas from './composables/use-canvas';
+import VGraphSvgLayer from './v-graph-svg-layer.vue';
 
 export default {
-  name: "v-graph-canvas",
+  name: 'v-graph-canvas',
   directives: {
     draggable,
     wheel,
@@ -98,7 +101,7 @@ export default {
       default: 3
     }
   },
-  emits: ["update:selected", "update:zoom", "update:viewport"],
+  emits: ['update:selected', 'update:zoom', 'update:viewport'],
   setup(props, { emit }) {
     const {
       viewport,
@@ -139,7 +142,7 @@ export default {
       scale
     } = canvas;
 
-    provide("canvas", canvas);
+    provide('canvas', canvas);
     const getCanvas = () => canvas;
 
     return {
@@ -160,5 +163,5 @@ export default {
 </script>
 
 <style>
-@import "graph-canvas";
+@import 'graph-canvas';
 </style>

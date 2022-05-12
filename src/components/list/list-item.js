@@ -1,4 +1,4 @@
-import { computed } from "vue";
+import { computed } from 'vue';
 
 class ListItem {
   constructor(index, proxyData, fields) {
@@ -11,9 +11,13 @@ class ListItem {
     this.id = computed(() => this.data[this.fields.value.idField] ?? index);
     this.text = computed(() => this.data[this.fields.value.displayField]);
     this.detail = computed(() => this.data[this.fields.value.detailField]);
-    this.disabled = computed(() => !!this.data[this.fields.value.disabledField]);
+    this.disabled = computed(
+      () => !!this.data[this.fields.value.disabledField]
+    );
     this.icon = computed(() => this.data[this.fields.value.iconField]);
-    this.iconColor = computed(() => this.data[this.fields.value.iconColorField]);
+    this.iconColor = computed(
+      () => this.data[this.fields.value.iconColorField]
+    );
   }
 }
 

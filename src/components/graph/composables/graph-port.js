@@ -1,16 +1,9 @@
-import { ref, computed, getCurrentInstance, reactive, watch } from "vue";
-import Point from "@/utils/point";
-import isDefined from "@/utils/is-defined";
+import { ref, computed, getCurrentInstance, reactive, watch } from 'vue';
+import Point from '@/utils/point';
+import isDefined from '@/utils/is-defined';
 
 class GraphPort {
-  constructor({
-    id,
-    disabled,
-    linkLimit,
-    linkRule,
-    emit,
-    direction
-  }) {
+  constructor({ id, disabled, linkLimit, linkRule, emit, direction }) {
     this.node = null;
     this.emit = emit;
     this.id = id.value ?? getCurrentInstance().uid;
@@ -26,9 +19,9 @@ class GraphPort {
     this.direction = direction;
 
     this.onSelect = () => {
-      this.emit("update:selected", true);
+      this.emit('update:selected', true);
     };
-    this.onMouseDown = (e) => {
+    this.onMouseDown = e => {
       e.details = this.id;
     };
 
@@ -38,7 +31,10 @@ class GraphPort {
     this.linkOptions = this.makeLinkOptions(this.linkStart, true);
     this.linkTargetOptions = this.makeLinkTargetOptions(this.linkEnter, true);
     this.labelLinkOptions = this.makeLinkOptions(this.labelLinkStart, false);
-    this.labelLinkTargetOptions = this.makeLinkTargetOptions(this.labelLinkEnter, false);
+    this.labelLinkTargetOptions = this.makeLinkTargetOptions(
+      this.labelLinkEnter,
+      false
+    );
   }
 
   initComputed() {
@@ -46,14 +42,17 @@ class GraphPort {
 
     this.linkEnabled = computed(() => {
       if (this.disabled.value) return false;
-      if (isDefined(this.linkLimit.value)
-        && this.linkCount.value >= this.linkLimit.value) return false;
+      if (
+        isDefined(this.linkLimit.value) &&
+        this.linkCount.value >= this.linkLimit.value
+      )
+        return false;
       return true;
-    })
+    });
   }
 
   initWatchers() {
-    watch(this.linkEnabled, (val) => {
+    watch(this.linkEnabled, val => {
       this.linkOptions.enabled = val;
       this.linkTargetOptions.enabled = val;
       this.labelLinkOptions.enabled = val;
@@ -63,8 +62,8 @@ class GraphPort {
 
   makeLinkOptions(stateRef, snapToCenter = false) {
     return reactive({
-      start: () => stateRef.value = true,
-      end: () => stateRef.value = false,
+      start: () => (stateRef.value = true),
+      end: () => (stateRef.value = false),
       data: () => this.makeTarget(),
       enabled: this.linkEnabled.value,
       snapToCenter
@@ -72,24 +71,27 @@ class GraphPort {
   }
 
   makeLinkTargetOptions(stateRef, snapToCenter = false) {
-    const end = () => stateRef.value = false;
+    const end = () => (stateRef.value = false);
 
     return reactive({
-      enter: () => stateRef.value = true,
+      enter: () => (stateRef.value = true),
       leave: end,
-      link: (e) => { end(); this.emitNewLink(e); },
-      rule: (e) => this.linkRule.value?.(e, this.makeTarget()),
+      link: e => {
+        end();
+        this.emitNewLink(e);
+      },
+      rule: e => this.linkRule.value?.(e, this.makeTarget()),
       enabled: this.linkEnabled.value,
       snapToCenter
     });
   }
 
   emitNewLink(e) {
-    this.emit("new-link", {
+    this.emit('new-link', {
       ...e,
       from: e.data,
       to: this.makeTarget()
-    })
+    });
   }
 
   onAdd(node) {
@@ -102,12 +104,12 @@ class GraphPort {
 
   onLink(connection) {
     this.incrLinkCount();
-    this.emit("link", { port: this, connection });
+    this.emit('link', { port: this, connection });
   }
 
   onUnlink(connection) {
     this.decrLinkCount();
-    this.emit("unlink", { port: this, connection });
+    this.emit('unlink', { port: this, connection });
   }
 
   incrLinkCount() {
@@ -135,19 +137,23 @@ class GraphPort {
     if (!this.node) return null;
     return {
       nodeId: this.node.id,
-      portId: this.id,
-    }
+      portId: this.id
+    };
   }
 
   getAnchorCenterLayerPosition() {
     const rect = this.anchor.value?.getBoundingClientRect();
     const canvas = this.node?.canvas;
     if (!rect || !canvas) return { x: 0, y: 0 };
-    const pos = Point.toPoint(canvas.mouseEventToLayerPoint({
-      clientX: rect.left,
-      clientY: rect.top
-    }));
-    const size = (new Point(rect.width, rect.height)).divideBy(canvas.scale.value);
+    const pos = Point.toPoint(
+      canvas.mouseEventToLayerPoint({
+        clientX: rect.left,
+        clientY: rect.top
+      })
+    );
+    const size = new Point(rect.width, rect.height).divideBy(
+      canvas.scale.value
+    );
     const halfSize = size.divideBy(2);
     return pos.add(halfSize);
   }

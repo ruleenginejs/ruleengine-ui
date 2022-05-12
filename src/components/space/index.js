@@ -1,5 +1,3 @@
-import VSpace from "./v-space.vue"
+import VSpace from './v-space.vue';
 
-export {
-  VSpace
-}
+export { VSpace };

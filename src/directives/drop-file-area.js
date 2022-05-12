@@ -1,6 +1,6 @@
-import DropFileArea from "@/utils/drop-file-area";
+import DropFileArea from '@/utils/drop-file-area';
 
-const PROP = Symbol("drop-file-area");
+const PROP = Symbol('drop-file-area');
 
 export default {
   mounted(el, { value, modifiers }) {
@@ -16,4 +16,4 @@ export default {
       delete el[PROP];
     }
   }
-}
+};

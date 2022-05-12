@@ -1,5 +1,5 @@
-import Droppable from "./droppable";
-import isDefined from "./is-defined";
+import Droppable from './droppable';
+import isDefined from './is-defined';
 
 class LinkTarget {
   constructor(element, options = null, stopEvent = false) {
@@ -8,7 +8,7 @@ class LinkTarget {
     this.destroyed = false;
     this.enabled = true;
     this.droppable = null;
-    this.droppableGroup = "link";
+    this.droppableGroup = 'link';
 
     this.data = {
       snapToCenter: options?.snapToCenter ?? null

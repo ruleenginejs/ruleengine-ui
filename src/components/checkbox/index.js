@@ -1,5 +1,3 @@
-import VCheckbox from "./v-checkbox.vue";
+import VCheckbox from './v-checkbox.vue';
 
-export {
-  VCheckbox
-}
+export { VCheckbox };

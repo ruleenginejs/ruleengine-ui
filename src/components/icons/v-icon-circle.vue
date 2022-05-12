@@ -6,6 +6,6 @@
 
 <script>
 export default {
-  name: "v-icon-circle"
+  name: 'v-icon-circle'
 };
 </script>

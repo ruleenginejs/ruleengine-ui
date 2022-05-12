@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import { computed, provide, toRefs } from "vue";
+import { computed, provide, toRefs } from 'vue';
 
 export default {
-  name: "v-tabs",
+  name: 'v-tabs',
   props: {
     modelValue: {
       type: [String, Number],
@@ -22,20 +22,20 @@ export default {
       default: false
     }
   },
-  emits: ["update:modelValue"],
+  emits: ['update:modelValue'],
   setup(props, { emit }) {
     const { modelValue } = toRefs(props);
 
     const selectedTab = computed({
       get: () => modelValue.value,
-      set: (val) => emit("update:modelValue", val)
+      set: val => emit('update:modelValue', val)
     });
 
-    provide("selectedTab", selectedTab);
+    provide('selectedTab', selectedTab);
   }
 };
 </script>
 
 <style>
-@import "tabs";
+@import 'tabs';
 </style>

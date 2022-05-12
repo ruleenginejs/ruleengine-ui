@@ -1,16 +1,16 @@
-import { computed } from "vue";
+import { computed } from 'vue';
 
 const COLOR_PRESET = [
-  "blue",
-  "green",
-  "brown",
-  "indigo",
-  "orange",
-  "pink",
-  "purple",
-  "red",
-  "teal",
-  "yellow"
+  'blue',
+  'green',
+  'brown',
+  'indigo',
+  'orange',
+  'pink',
+  'purple',
+  'red',
+  'teal',
+  'yellow'
 ];
 
 const COLOR_PRESET_MAP = COLOR_PRESET.reduce((res, val) => {
@@ -20,10 +20,12 @@ const COLOR_PRESET_MAP = COLOR_PRESET.reduce((res, val) => {
 
 export default function useColorPreset(color) {
   const colorStyle = computed(() =>
-    !COLOR_PRESET_MAP[color.value] ? color.value : null);
+    !COLOR_PRESET_MAP[color.value] ? color.value : null
+  );
 
   const colorCssClass = computed(() =>
-    COLOR_PRESET_MAP[color.value] ? getColorCss(color.value) : null);
+    COLOR_PRESET_MAP[color.value] ? getColorCss(color.value) : null
+  );
 
   function getColorCss(colorName) {
     return `v-graph-node__header--${colorName}`;
@@ -32,5 +34,5 @@ export default function useColorPreset(color) {
   return {
     colorStyle,
     colorCssClass
-  }
+  };
 }

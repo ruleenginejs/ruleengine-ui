@@ -1,5 +1,3 @@
-import VDraggable from "./v-draggable.vue";
+import VDraggable from './v-draggable.vue';
 
-export {
-  VDraggable
-}
+export { VDraggable };

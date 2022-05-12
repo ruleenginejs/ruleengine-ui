@@ -1,9 +1,10 @@
-import clamp from "@/utils/clamp";
-import Point from "@/utils/point";
-import { ref, watch, computed, nextTick, onMounted } from "vue";
+import clamp from '@/utils/clamp';
+import Point from '@/utils/point';
+import { ref, watch, computed, nextTick, onMounted } from 'vue';
 
 export default function useFloatingToolbar({
-  x, y,
+  x,
+  y,
   container,
   fixed,
   vertical,
@@ -23,11 +24,11 @@ export default function useFloatingToolbar({
   });
 
   watch(positionX, () => {
-    emit("update:x", positionX.value);
+    emit('update:x', positionX.value);
   });
 
   watch(positionY, () => {
-    emit("update:y", positionY.value)
+    emit('update:y', positionY.value);
   });
 
   watch(vertical, () => {
@@ -37,7 +38,7 @@ export default function useFloatingToolbar({
   watch(invalidate, () => {
     if (invalidate.value) {
       invalidatePosition();
-      emit("update:invalidate", false);
+      emit('update:invalidate', false);
     }
   });
 
@@ -52,7 +53,7 @@ export default function useFloatingToolbar({
 
   const targetElement = computed(() => {
     if (container.value) {
-      return container.value === "body" ? document.body : container.value;
+      return container.value === 'body' ? document.body : container.value;
     } else if (fixed.value) {
       return document.body;
     } else {
@@ -64,7 +65,7 @@ export default function useFloatingToolbar({
     dragStart: onDragStart,
     drag: onDrag,
     dragEnd: onDragEnd
-  }
+  };
 
   let _parentRect = null;
   let _elementRect = null;
@@ -74,7 +75,10 @@ export default function useFloatingToolbar({
     const el = toolbarRef.value?.$el;
     if (el) {
       _elementRect = el.getBoundingClientRect();
-      const elementPosition = Point.toPoint(_elementRect.left, _elementRect.top);
+      const elementPosition = Point.toPoint(
+        _elementRect.left,
+        _elementRect.top
+      );
       const startMousePoint = Point.toPoint(e.clientX, e.clientY);
       _offsetPoint = startMousePoint.subtract(elementPosition);
     }
@@ -91,8 +95,9 @@ export default function useFloatingToolbar({
     }
 
     const mousePosition = Point.toPoint(e.clientX, e.clientY);
-    const localPosition = toLocalPosition(_parentRect, mousePosition)
-      .subtract(_offsetPoint);
+    const localPosition = toLocalPosition(_parentRect, mousePosition).subtract(
+      _offsetPoint
+    );
 
     const maxX = _parentRect.width - _elementRect.width;
     const maxY = _parentRect.height - _elementRect.height;
@@ -122,8 +127,10 @@ export default function useFloatingToolbar({
     const toolbarRect = toolbarEl.getBoundingClientRect();
     const parentRect = parentEl.getBoundingClientRect();
 
-    const localPosition = toLocalPosition(parentRect,
-      Point.toPoint(toolbarRect.left, toolbarRect.top));
+    const localPosition = toLocalPosition(
+      parentRect,
+      Point.toPoint(toolbarRect.left, toolbarRect.top)
+    );
 
     const maxX = parentRect.width - toolbarRect.width;
     const maxY = parentRect.height - toolbarRect.height;
@@ -143,7 +150,7 @@ export default function useFloatingToolbar({
 
   function moveEnd() {
     const position = Point.toPoint(positionX.value, positionY.value);
-    emit("moveend", { position });
+    emit('moveend', { position });
   }
 
   return {
@@ -151,5 +158,5 @@ export default function useFloatingToolbar({
     targetElement,
     toolbarRef,
     draggableCallbacks
-  }
+  };
 }

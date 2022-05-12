@@ -19,10 +19,10 @@
 </template>
 
 <script>
-import { computed, toRefs } from "vue";
+import { computed, toRefs } from 'vue';
 
 export default {
-  name: "v-select-box",
+  name: 'v-select-box',
   props: {
     modelValue: {
       type: [String, Number, Object],
@@ -54,22 +54,22 @@ export default {
     },
     valueField: {
       type: String,
-      default: "value"
+      default: 'value'
     },
     displayField: {
       type: String,
-      default: "text"
+      default: 'text'
     },
     detailField: {
       type: String,
-      default: "detail"
+      default: 'detail'
     },
     disabledField: {
       type: String,
-      default: "disabled"
+      default: 'disabled'
     }
   },
-  emits: ["update:modelValue"],
+  emits: ['update:modelValue'],
   setup(props, { emit }) {
     const {
       modelValue,
@@ -84,7 +84,7 @@ export default {
     } = toRefs(props);
 
     const optionItems = computed(() =>
-      items.value.map((item) => ({
+      items.value.map(item => ({
         value: item[valueField.value],
         text: item[displayField.value],
         detail: item[detailField.value],
@@ -92,8 +92,8 @@ export default {
       }))
     );
 
-    const findItem = (val) => {
-      return items.value.find((item) => item[valueField.value] === val);
+    const findItem = val => {
+      return items.value.find(item => item[valueField.value] === val);
     };
 
     const value = computed({
@@ -104,17 +104,17 @@ export default {
           return modelValue.value;
         }
       },
-      set: (val) => {
+      set: val => {
         if (valueAsObject.value) {
           val = findItem(val);
         }
-        emit("update:modelValue", val);
+        emit('update:modelValue', val);
       }
     });
 
     const cssClasses = computed(() => ({
       [className.value]: !!className.value,
-      "v-select-box--disabled": disabled.value
+      'v-select-box--disabled': disabled.value
     }));
 
     return {
@@ -127,5 +127,5 @@ export default {
 </script>
 
 <style>
-@import "select-box";
+@import 'select-box';
 </style>

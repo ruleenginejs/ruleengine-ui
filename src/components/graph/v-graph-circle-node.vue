@@ -16,7 +16,9 @@
     <div
       class="v-graph-circle-node__label"
       :class="{ 'v-graph-circle-node__label--sm': truncateLength > 1 }"
-    >{{ truncateTitle }}</div>
+    >
+      {{ truncateTitle }}
+    </div>
     <div v-if="$slots['port']" class="v-graph-circle-node__port">
       <slot name="port"></slot>
     </div>
@@ -24,15 +26,15 @@
 </template>
 
 <script>
-import { inject, provide, toRefs } from "vue";
-import draggable from "@/directives/draggable";
-import link from "@/directives/link";
-import linkTarget from "@/directives/link-target";
-import useCircleNode from "./composables/use-circle-node";
-import useTruncateTitle from "./composables/use-truncate-title";
+import { inject, provide, toRefs } from 'vue';
+import draggable from '@/directives/draggable';
+import link from '@/directives/link';
+import linkTarget from '@/directives/link-target';
+import useCircleNode from './composables/use-circle-node';
+import useTruncateTitle from './composables/use-truncate-title';
 
 export default {
-  name: "v-graph-circle-node",
+  name: 'v-graph-circle-node',
   directives: {
     draggable,
     link,
@@ -81,11 +83,11 @@ export default {
     }
   },
   emits: [
-    "update:x",
-    "update:y",
-    "update:selected",
-    "new-link",
-    "change-position"
+    'update:x',
+    'update:y',
+    'update:selected',
+    'new-link',
+    'change-position'
   ],
   setup(props, { emit }) {
     const {
@@ -99,7 +101,7 @@ export default {
       invalidate
     } = toRefs(props);
 
-    const canvas = inject("canvas");
+    const canvas = inject('canvas');
     const node = useCircleNode(canvas, {
       id,
       x,
@@ -121,16 +123,13 @@ export default {
       linkEnter
     } = node;
 
-    const {
-      truncateTitle,
-      truncateLength
-    } = useTruncateTitle(
+    const { truncateTitle, truncateLength } = useTruncateTitle(
       title,
       titleLength
     );
 
     const getNode = () => node;
-    provide("node", node);
+    provide('node', node);
 
     return {
       node,
@@ -151,5 +150,5 @@ export default {
 </script>
 
 <style>
-@import "graph-circle-node";
+@import 'graph-circle-node';
 </style>

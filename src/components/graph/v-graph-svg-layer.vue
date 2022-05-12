@@ -5,11 +5,11 @@
 </template>
 
 <script>
-import { provide, toRefs } from "vue";
-import useSvg from "./composables/use-svg";
+import { provide, toRefs } from 'vue';
+import useSvg from './composables/use-svg';
 
 export default {
-  name: "v-graph-svg-layer",
+  name: 'v-graph-svg-layer',
   props: {
     translateX: {
       type: Number,
@@ -44,7 +44,7 @@ export default {
     });
     const { container } = svg;
 
-    provide("svg", svg);
+    provide('svg', svg);
 
     return {
       container

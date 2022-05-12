@@ -1,10 +1,16 @@
-import isDefined from "./is-defined";
+import isDefined from './is-defined';
 
 class Draggable {
   static activeDraggable = null;
   static activeDroppables = [];
 
-  constructor(element, callbacks = null, stopEvent = false, ctrl = null, group = null) {
+  constructor(
+    element,
+    callbacks = null,
+    stopEvent = false,
+    ctrl = null,
+    group = null
+  ) {
     this.onMouseDown = this.onMouseDown.bind(this);
     this.onMove = this.onMove.bind(this);
     this.onMouseUp = this.onMouseUp.bind(this);
@@ -26,29 +32,29 @@ class Draggable {
   }
 
   bindMouseDown() {
-    this.element.addEventListener("mousedown", this.onMouseDown);
+    this.element.addEventListener('mousedown', this.onMouseDown);
   }
 
   unbindMouseDown() {
-    this.element.removeEventListener("mousedown", this.onMouseDown);
+    this.element.removeEventListener('mousedown', this.onMouseDown);
   }
 
   bindContextMenu() {
-    this.element.addEventListener("contextmenu", this.onPrevent);
+    this.element.addEventListener('contextmenu', this.onPrevent);
   }
 
   unbindContextMenu() {
-    this.element.removeEventListener("contextmenu", this.onPrevent);
+    this.element.removeEventListener('contextmenu', this.onPrevent);
   }
 
   bindEvents() {
-    document.addEventListener("mousemove", this.onMove);
-    document.addEventListener("mouseup", this.onMouseUp);
+    document.addEventListener('mousemove', this.onMove);
+    document.addEventListener('mouseup', this.onMouseUp);
   }
 
   unbindEvents() {
-    document.removeEventListener("mousemove", this.onMove);
-    document.removeEventListener("mouseup", this.onMouseUp);
+    document.removeEventListener('mousemove', this.onMove);
+    document.removeEventListener('mouseup', this.onMouseUp);
   }
 
   activate() {
@@ -66,7 +72,7 @@ class Draggable {
   }
 
   isRightMouseButton(e) {
-    return "button" in e && e.button !== 0;
+    return 'button' in e && e.button !== 0;
   }
 
   checkCtrl(e) {
@@ -145,7 +151,7 @@ class Draggable {
         copy[i].onFinish({
           ev: e,
           draggable: this
-        })
+        });
       }
     }
   }

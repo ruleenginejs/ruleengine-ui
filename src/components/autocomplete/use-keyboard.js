@@ -37,5 +37,5 @@ export default function useKeyboard({
     onKeyDown,
     onKeyUp,
     onKeyEnter
-  }
+  };
 }

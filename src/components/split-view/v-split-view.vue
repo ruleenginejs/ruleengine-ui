@@ -5,13 +5,13 @@
 </template>
 
 <script>
-import { toRefs } from "vue";
-import useSplit from "./use-split";
-import usePanes from "./use-panes";
-import resize from "@/directives/resize";
+import { toRefs } from 'vue';
+import useSplit from './use-split';
+import usePanes from './use-panes';
+import resize from '@/directives/resize';
 
 export default {
-  name: "v-split-view",
+  name: 'v-split-view',
   directives: {
     resize
   },
@@ -34,14 +34,14 @@ export default {
     },
     customGutterClassName: {
       type: String,
-      default: "v-split-gutter"
+      default: 'v-split-gutter'
     },
     resizeDelay: {
       type: Number,
       default: 100
     }
   },
-  emits: ["resize", "created"],
+  emits: ['resize', 'created'],
   setup(props, { emit }) {
     const {
       horizontal,
@@ -70,5 +70,5 @@ export default {
 </script>
 
 <style>
-@import "split-view";
+@import 'split-view';
 </style>

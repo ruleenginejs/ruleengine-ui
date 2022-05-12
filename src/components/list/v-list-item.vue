@@ -10,10 +10,10 @@
 </template>
 
 <script>
-import { computed, onMounted, ref, toRefs, watch } from "vue";
+import { computed, onMounted, ref, toRefs, watch } from 'vue';
 
 export default {
-  name: "v-list-item",
+  name: 'v-list-item',
   props: {
     text: {
       type: String,
@@ -44,21 +44,21 @@ export default {
       default: false
     }
   },
-  emits: ["click"],
+  emits: ['click'],
   setup(props, { emit }) {
     const { selected, focused, disabled, scrollIntoOnFocus } = toRefs(props);
 
     const itemEl = ref(null);
 
     const cssClasses = computed(() => ({
-      "v-list-item--focused": focused.value,
-      "v-list-item--selected": selected.value,
-      "v-list-item--disabled": disabled.value
+      'v-list-item--focused': focused.value,
+      'v-list-item--selected': selected.value,
+      'v-list-item--disabled': disabled.value
     }));
 
     const scrollIntoItem = () => {
       if (focused.value && scrollIntoOnFocus.value) {
-        itemEl.value?.scrollIntoView({ block: "nearest", inline: "nearest" });
+        itemEl.value?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
       }
     };
 
@@ -70,8 +70,8 @@ export default {
       scrollIntoItem();
     });
 
-    const onClick = (e) => {
-      emit("click", e);
+    const onClick = e => {
+      emit('click', e);
     };
 
     return {

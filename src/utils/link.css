@@ -16,7 +16,8 @@
   @apply pointer-events-none;
 }
 
-.v-link-control__start, .v-link-control__end {
+.v-link-control__start,
+.v-link-control__end {
   /* display styles */
   @apply absolute;
 

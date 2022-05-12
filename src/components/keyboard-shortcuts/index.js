@@ -1,5 +1,3 @@
-import VKeyboardShortcuts from "./v-keyboard-shortcuts.vue"
+import VKeyboardShortcuts from './v-keyboard-shortcuts.vue';
 
-export {
-  VKeyboardShortcuts
-}
+export { VKeyboardShortcuts };

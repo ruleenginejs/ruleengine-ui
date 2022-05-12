@@ -21,11 +21,11 @@
 </template>
 
 <script>
-import { computed, ref, toRefs } from "vue";
-import { VIconCheckmark } from "@/components/icons";
+import { computed, ref, toRefs } from 'vue';
+import { VIconCheckmark } from '@/components/icons';
 
 export default {
-  name: "v-checkbox",
+  name: 'v-checkbox',
   inheritAttrs: false,
   components: {
     VIconCheckmark
@@ -60,22 +60,22 @@ export default {
       default: null
     }
   },
-  emits: ["update:modelValue"],
+  emits: ['update:modelValue'],
   setup(props, { emit }) {
     const { modelValue, className, disabled, readonly, inline } = toRefs(props);
     const inputEl = ref(null);
 
     const checked = computed({
       get: () => modelValue.value,
-      set: (val) => emit("update:modelValue", val)
+      set: val => emit('update:modelValue', val)
     });
 
     const cssClasses = computed(() => ({
       [className.value]: !!className.value,
-      "v-checkbox--disabled": disabled.value,
-      "v-checkbox--readonly": readonly.value,
-      "v-checkbox--checked": checked.value,
-      "v-checkbox--inline": inline.value
+      'v-checkbox--disabled': disabled.value,
+      'v-checkbox--readonly': readonly.value,
+      'v-checkbox--checked': checked.value,
+      'v-checkbox--inline': inline.value
     }));
 
     return {
@@ -88,5 +88,5 @@ export default {
 </script>
 
 <style>
-@import "checkbox";
+@import 'checkbox';
 </style>

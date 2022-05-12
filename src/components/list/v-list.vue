@@ -24,12 +24,12 @@
 </template>
 
 <script>
-import { computed, toRefs } from "vue";
-import useList from "./use-list";
-import VListItem from "./v-list-item.vue";
+import { computed, toRefs } from 'vue';
+import useList from './use-list';
+import VListItem from './v-list-item.vue';
 
 export default {
-  name: "v-list",
+  name: 'v-list',
   components: {
     VListItem
   },
@@ -72,34 +72,34 @@ export default {
     },
     size: {
       type: String,
-      default: "md"
+      default: 'md'
     },
     idField: {
       type: String,
-      default: "id"
+      default: 'id'
     },
     displayField: {
       type: String,
-      default: "text"
+      default: 'text'
     },
     detailField: {
       type: String,
-      default: "detail"
+      default: 'detail'
     },
     disabledField: {
       type: String,
-      default: "disabled"
+      default: 'disabled'
     },
     iconField: {
       type: String,
-      default: "icon"
+      default: 'icon'
     },
     iconColorField: {
       type: String,
-      default: "iconColor"
+      default: 'iconColor'
     }
   },
-  emits: ["update:selected", "update:focused", "update:focusIndex", "select"],
+  emits: ['update:selected', 'update:focused', 'update:focusIndex', 'select'],
   setup(props, { emit }) {
     const {
       items,
@@ -150,5 +150,5 @@ export default {
 </script>
 
 <style>
-@import "list";
+@import 'list';
 </style>

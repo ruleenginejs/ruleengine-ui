@@ -19,26 +19,27 @@ npm install @vscode/codicons
 ```
 
 In your code
+
 ```javascript
-import "@vscode/codicons/dist/codicon.css"
+import '@vscode/codicons/dist/codicon.css';
 ```
 
 ## Usage
 
 ```javascript
-import { createApp } from 'vue'
-import App from './App.vue'
-import RuleEngineUI from "@ruleenginejs/ui"
+import { createApp } from 'vue';
+import App from './App.vue';
+import RuleEngineUI from '@ruleenginejs/ui';
 // Add css styles
-import "@ruleenginejs/ui/dist/normalize.css"
-import "@ruleenginejs/ui/dist/style.css"
-import "@ruleenginejs/ui/dist/dark.theme.css"
+import '@ruleenginejs/ui/dist/normalize.css';
+import '@ruleenginejs/ui/dist/style.css';
+import '@ruleenginejs/ui/dist/dark.theme.css';
 
-const app = createApp(App)
+const app = createApp(App);
 
-app.use(RuleEngineUI)
+app.use(RuleEngineUI);
 
-app.mount('#app')
+app.mount('#app');
 ```
 
 In your templates
@@ -58,6 +59,7 @@ Read the [documentation and demos](https://ruleenginejs.github.io/ruleengine-ui-
 ### Components
 
 #### Basic
+
 - [Layout](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/layout)
 - [Content](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/content)
 - [Button](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/button)
@@ -66,6 +68,7 @@ Read the [documentation and demos](https://ruleenginejs.github.io/ruleengine-ui-
 - [Scrollbar](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/scrollbar)
 
 #### Form
+
 - [Input](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/input)
 - [Checkbox](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/checkbox)
 - [Select](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/selectbox)
@@ -74,10 +77,12 @@ Read the [documentation and demos](https://ruleenginejs.github.io/ruleengine-ui-
 - [Label](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/label)
 
 #### Data
+
 - [List](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/list)
 - [Treeview](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/treeview)
 
 #### Navigation
+
 - [Sidebar](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/sidebar)
 - [Tabs](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/tabs)
 - [ActionBar](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/action-bar)
@@ -86,9 +91,11 @@ Read the [documentation and demos](https://ruleenginejs.github.io/ruleengine-ui-
 - [FloatingToolbar](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/floating-toolbar)
 
 #### Graph
+
 - [Node Graph](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/node-graph)
 
 #### Others
+
 - [SplitView](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/splitview)
 - [Draggable](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/draggable)
 - [Suggest](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/suggest)

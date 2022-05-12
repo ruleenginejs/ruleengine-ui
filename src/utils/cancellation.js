@@ -1,5 +1,5 @@
 export class CancellationToken {
-  static emptyUnbind = () => { };
+  static emptyUnbind = () => {};
 
   constructor() {
     this._isCancelled = false;
@@ -26,7 +26,7 @@ export class CancellationToken {
     this._listeners.push(listener);
     return () => {
       this._removeListener(listener);
-    }
+    };
   }
 
   _removeListener(listener) {

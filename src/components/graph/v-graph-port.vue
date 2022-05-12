@@ -39,14 +39,14 @@
 </template>
 
 <script>
-import { inject, toRefs } from "vue";
-import link from "@/directives/link";
-import linkTarget from "@/directives/link-target";
-import usePort from "./composables/use-port";
-import VIconPlusBold from "@/components/icons/v-icon-plus-bold.vue";
+import { inject, toRefs } from 'vue';
+import link from '@/directives/link';
+import linkTarget from '@/directives/link-target';
+import usePort from './composables/use-port';
+import VIconPlusBold from '@/components/icons/v-icon-plus-bold.vue';
 
 export default {
-  name: "v-graph-port",
+  name: 'v-graph-port',
   directives: {
     link,
     linkTarget
@@ -84,10 +84,10 @@ export default {
       default: null
     }
   },
-  emits: ["link", "unlink", "new-link", "update:selected"],
+  emits: ['link', 'unlink', 'new-link', 'update:selected'],
   setup(props, { emit }) {
     const { id, disabled, linkLimit, linkRule, direction } = toRefs(props);
-    const node = inject("node");
+    const node = inject('node');
 
     const port = usePort(node, {
       id,
@@ -132,5 +132,5 @@ export default {
 </script>
 
 <style>
-@import "graph-port";
+@import 'graph-port';
 </style>

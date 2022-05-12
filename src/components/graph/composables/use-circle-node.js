@@ -1,5 +1,5 @@
-import { markRaw, onUnmounted } from "vue";
-import GraphCircleNode from "./graph-circle-node";
+import { markRaw, onUnmounted } from 'vue';
+import GraphCircleNode from './graph-circle-node';
 
 export default function useCircleNode(canvas, options) {
   const node = markRaw(new GraphCircleNode(options));

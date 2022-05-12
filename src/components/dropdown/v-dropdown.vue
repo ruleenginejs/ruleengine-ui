@@ -15,11 +15,11 @@
 </template>
 
 <script>
-import { toRefs } from "vue";
-import useDropdown from "./use-dropdown";
+import { toRefs } from 'vue';
+import useDropdown from './use-dropdown';
 
 export default {
-  name: "v-dropdown",
+  name: 'v-dropdown',
   props: {
     visible: {
       type: Boolean,
@@ -59,14 +59,14 @@ export default {
     },
     actionOnScrolling: {
       type: [Boolean, String],
-      default: "close"
+      default: 'close'
     },
     preventMouseDown: {
       type: Boolean,
       default: false
     }
   },
-  emits: ["update:visible"],
+  emits: ['update:visible'],
   setup(props, { emit }) {
     const {
       visible,
@@ -108,5 +108,5 @@ export default {
 </script>
 
 <style>
-@import "dropdown";
+@import 'dropdown';
 </style>

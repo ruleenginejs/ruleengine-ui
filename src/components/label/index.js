@@ -1,5 +1,3 @@
-import VLabel from "./v-label.vue"
+import VLabel from './v-label.vue';
 
-export {
-  VLabel
-}
+export { VLabel };

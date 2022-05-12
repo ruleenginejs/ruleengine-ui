@@ -1,5 +1,5 @@
-import { watch, onMounted, onBeforeUnmount, markRaw } from "vue";
-import SplitView from "splitview.js";
+import { watch, onMounted, onBeforeUnmount, markRaw } from 'vue';
+import SplitView from 'splitview.js';
 
 export default function useSplit(panes, emit, options) {
   const {
@@ -12,7 +12,7 @@ export default function useSplit(panes, emit, options) {
 
   const resizeCallbacks = {
     resize: onWindowResize
-  }
+  };
 
   onMounted(() => {
     create();
@@ -22,15 +22,12 @@ export default function useSplit(panes, emit, options) {
     remove();
   });
 
-  watch([
-    horizontal,
-    gutterSize,
-    expandToMin,
-    snapOffset,
-    customGutterClassName
-  ], () => {
-    recreate();
-  });
+  watch(
+    [horizontal, gutterSize, expandToMin, snapOffset, customGutterClassName],
+    () => {
+      recreate();
+    }
+  );
 
   let instance = null;
 
@@ -40,16 +37,18 @@ export default function useSplit(panes, emit, options) {
   }
 
   function create() {
-    instance = markRaw(SplitView(panes, {
-      percent: false,
-      direction: horizontal.value ? "horizontal" : "vertical",
-      expandToMin: expandToMin.value,
-      gutterSize: gutterSize.value,
-      snapOffset: snapOffset.value,
-      customGutterClassName: customGutterClassName.value,
-      onResize: (e) => emit("resize", e)
-    }));
-    emit("created", instance);
+    instance = markRaw(
+      SplitView(panes, {
+        percent: false,
+        direction: horizontal.value ? 'horizontal' : 'vertical',
+        expandToMin: expandToMin.value,
+        gutterSize: gutterSize.value,
+        snapOffset: snapOffset.value,
+        customGutterClassName: customGutterClassName.value,
+        onResize: e => emit('resize', e)
+      })
+    );
+    emit('created', instance);
     return instance;
   }
 
@@ -69,5 +68,5 @@ export default function useSplit(panes, emit, options) {
   return {
     resizeCallbacks,
     getInstance
-  }
+  };
 }

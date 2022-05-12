@@ -1,5 +1,3 @@
-import VSelectBox from "./v-select-box.vue";
+import VSelectBox from './v-select-box.vue';
 
-export {
-  VSelectBox
-};
+export { VSelectBox };

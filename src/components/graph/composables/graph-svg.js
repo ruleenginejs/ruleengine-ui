@@ -1,14 +1,8 @@
-import { ref, watch, onMounted, markRaw } from "vue";
-import { SVG } from "@svgdotjs/svg.js"
+import { ref, watch, onMounted, markRaw } from 'vue';
+import { SVG } from '@svgdotjs/svg.js';
 
 class GraphSvg {
-  constructor({
-    translateX,
-    translateY,
-    width,
-    height,
-    scale
-  }) {
+  constructor({ translateX, translateY, width, height, scale }) {
     this.container = ref(null);
     this.draw = ref(null);
     this.rootGroup = ref(null);
@@ -33,22 +27,10 @@ class GraphSvg {
     });
   }
 
-  initWatchers({
-    translateX,
-    translateY,
-    width,
-    height,
-    scale
-  }) {
-    watch([
-      translateX,
-      translateY,
-      width,
-      height,
-      scale
-    ], () => {
+  initWatchers({ translateX, translateY, width, height, scale }) {
+    watch([translateX, translateY, width, height, scale], () => {
       this.update();
-    })
+    });
   }
 
   initSvg(container) {
@@ -68,13 +50,10 @@ class GraphSvg {
     const w = this.width.value / this.scale.value;
     const h = this.height.value / this.scale.value;
 
-    draw
-      .size(w, h)
-      .viewbox(-x, -y, w, h)
-      .transform({
-        translateX: -x,
-        translateY: -y,
-      });
+    draw.size(w, h).viewbox(-x, -y, w, h).transform({
+      translateX: -x,
+      translateY: -y
+    });
   }
 }
 

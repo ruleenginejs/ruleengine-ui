@@ -1,12 +1,12 @@
 <script>
 export default {
-  name: "v-keyboard-shortcuts"
-}
+  name: 'v-keyboard-shortcuts'
+};
 </script>
 
 <script setup>
-import { toRefs, computed } from "vue";
-import VKeybindingLabel from "../keybinding-label/v-keybinding-label.vue";
+import { toRefs, computed } from 'vue';
+import VKeybindingLabel from '../keybinding-label/v-keybinding-label.vue';
 
 const props = defineProps({
   value: {
@@ -23,14 +23,14 @@ const props = defineProps({
   },
   labelAlign: {
     type: String,
-    default: "left"
+    default: 'left'
   }
 });
 
 const { labelAlign } = toRefs(props);
 const cssClasses = computed(() => ({
-  "v-keyboard-shortcuts--label-left": labelAlign.value === "left",
-  "v-keyboard-shortcuts--label-right": labelAlign.value === "right"
+  'v-keyboard-shortcuts--label-left': labelAlign.value === 'left',
+  'v-keyboard-shortcuts--label-right': labelAlign.value === 'right'
 }));
 </script>
 
@@ -50,5 +50,5 @@ const cssClasses = computed(() => ({
 </template>
 
 <style>
-@import "keyboard-shortcuts";
+@import 'keyboard-shortcuts';
 </style>

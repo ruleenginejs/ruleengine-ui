@@ -1,5 +1,9 @@
 <template>
-  <div v-if="$slots.label || $slots.value" class="v-field-layout" :class="cssClasses">
+  <div
+    v-if="$slots.label || $slots.value"
+    class="v-field-layout"
+    :class="cssClasses"
+  >
     <div v-if="$slots.label" class="v-field-layout__label">
       <slot name="label"></slot>
     </div>
@@ -10,10 +14,10 @@
 </template>
 
 <script>
-import { computed, toRefs } from "vue";
+import { computed, toRefs } from 'vue';
 
 export default {
-  name: "v-field-layout",
+  name: 'v-field-layout',
   props: {
     vertical: {
       type: Boolean,
@@ -28,9 +32,9 @@ export default {
     const { vertical, top } = toRefs(props);
 
     const cssClasses = computed(() => ({
-      "v-field-layout--horizontal": !vertical.value,
-      "v-field-layout--vertical": vertical.value,
-      "v-field-layout--top": top.value
+      'v-field-layout--horizontal': !vertical.value,
+      'v-field-layout--vertical': vertical.value,
+      'v-field-layout--top': top.value
     }));
 
     return {
@@ -41,5 +45,5 @@ export default {
 </script>
 
 <style>
-@import "field-layout";
+@import 'field-layout';
 </style>

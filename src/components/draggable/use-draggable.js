@@ -1,5 +1,5 @@
-import Point from "@/utils/point";
-import { ref, computed } from "vue";
+import Point from '@/utils/point';
+import { ref, computed } from 'vue';
 
 export default function useDraggable({ clickTolerance, fixed, emit }) {
   let _startPosition = null;
@@ -29,7 +29,7 @@ export default function useDraggable({ clickTolerance, fixed, emit }) {
     _parentOffsetPoint = fixed.value ? Point.zero() : getParentOffset();
     _dragStarted = true;
 
-    emit("drag-start", e);
+    emit('drag-start', e);
   }
 
   function onDrag(e) {
@@ -44,22 +44,22 @@ export default function useDraggable({ clickTolerance, fixed, emit }) {
 
     moving.value = true;
     updatePosition(mousePosition);
-    emit("drag", e);
+    emit('drag', e);
   }
 
   function onDragEnd(e) {
     const mousePosition = Point.toPoint(e.clientX, e.clientY);
     const isClick = isClickValid(mousePosition);
 
-    emit("drag-end", {
+    emit('drag-end', {
       event: e,
       isClick
     });
 
     if (isClick) {
-      emit("click", e);
+      emit('click', e);
     } else {
-      emit("moved", e);
+      emit('moved', e);
     }
 
     moving.value = false;
@@ -72,7 +72,10 @@ export default function useDraggable({ clickTolerance, fixed, emit }) {
   }
 
   function isClickValid(newPosition) {
-    return _startPosition && newPosition.distanceTo(_startPosition) <= clickTolerance.value;
+    return (
+      _startPosition &&
+      newPosition.distanceTo(_startPosition) <= clickTolerance.value
+    );
   }
 
   function updatePosition(mousePosition) {
@@ -102,14 +105,14 @@ export default function useDraggable({ clickTolerance, fixed, emit }) {
 
   function getClosestRelativeAncestor(el) {
     let p = el.parentElement;
-    while (p && getCssPosition(p) === "static") {
+    while (p && getCssPosition(p) === 'static') {
       p = p.parentElement;
     }
     return p;
   }
 
   function getCssPosition(el) {
-    return window.getComputedStyle(el, null).getPropertyValue("position");
+    return window.getComputedStyle(el, null).getPropertyValue('position');
   }
 
   return {

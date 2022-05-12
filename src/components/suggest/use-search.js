@@ -1,5 +1,5 @@
-import { watch, watchEffect, onUnmounted } from "vue";
-import SearchContoller from "./search-controller";
+import { watch, watchEffect, onUnmounted } from 'vue';
+import SearchContoller from './search-controller';
 
 export default function useSearch({
   dataSource,
@@ -13,16 +13,13 @@ export default function useSearch({
 }) {
   let controller = createSearchController();
 
-  watch([
-    dataSource,
-    searchTimeout,
-    minSearchLength,
-    maxQueryLength,
-    maxItemCount
-  ], () => {
-    controller.destroy();
-    controller = createSearchController();
-  });
+  watch(
+    [dataSource, searchTimeout, minSearchLength, maxQueryLength, maxItemCount],
+    () => {
+      controller.destroy();
+      controller = createSearchController();
+    }
+  );
 
   watchEffect(() => {
     if (visible.value) {
@@ -47,12 +44,12 @@ export default function useSearch({
       minSearchLength: minSearchLength.value,
       maxQueryLength: maxQueryLength.value,
       maxItemCount: maxItemCount.value
-    })
+    });
   }
 
   return {
     loading: controller.loading,
     error: controller.lastRequestError,
     resultItems: controller.resultItems
-  }
+  };
 }

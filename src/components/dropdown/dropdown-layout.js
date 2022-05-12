@@ -1,5 +1,5 @@
-import { isDefined } from "@/utils/types";
-import { ref, computed } from "vue";
+import { isDefined } from '@/utils/types';
+import { ref, computed } from 'vue';
 
 class DropdownLayout {
   constructor(dropdownRef) {
@@ -17,9 +17,15 @@ class DropdownLayout {
     this.styles = computed(() => ({
       top: `${this.top.value}px`,
       left: `${this.left.value}px`,
-      maxWidth: isDefined(this.maxWidth.value) ? `${this.maxWidth.value}px` : null,
-      maxHeight: isDefined(this.maxHeight.value) ? `${this.maxHeight.value}px` : null,
-      minWidth: isDefined(this.minWidth.value) ? `${this.minWidth.value}px` : null
+      maxWidth: isDefined(this.maxWidth.value)
+        ? `${this.maxWidth.value}px`
+        : null,
+      maxHeight: isDefined(this.maxHeight.value)
+        ? `${this.maxHeight.value}px`
+        : null,
+      minWidth: isDefined(this.minWidth.value)
+        ? `${this.minWidth.value}px`
+        : null
     }));
   }
 
@@ -70,17 +76,18 @@ class DropdownLayout {
     if (this.anchorConstraint.value === true) {
       this.minWidth.value = anchorRect.width;
       this.maxWidth.value = anchorRect.width;
-    } else if (this.anchorConstraint.value === "minWidth") {
+    } else if (this.anchorConstraint.value === 'minWidth') {
       this.minWidth.value = anchorRect.width;
-    } else if (this.anchorConstraint.value === "maxWidth") {
+    } else if (this.anchorConstraint.value === 'maxWidth') {
       this.maxWidth.value = anchorRect.width;
     }
 
     this.left.value = anchorRect.left + this.offsetX.value;
     this.top.value = anchorRect.top + anchorRect.height + this.offsetY.value;
 
-    if ((this.top.value + dropdownRect.height) > winHeight) {
-      this.top.value = anchorRect.top - dropdownRect.height - this.offsetY.value;
+    if (this.top.value + dropdownRect.height > winHeight) {
+      this.top.value =
+        anchorRect.top - dropdownRect.height - this.offsetY.value;
     }
   }
 }

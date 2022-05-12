@@ -15,11 +15,11 @@ class ScrollTrigger {
     if (!el) {
       return;
     }
-    el.addEventListener("scroll", this.doRun, { passive: true });
+    el.addEventListener('scroll', this.doRun, { passive: true });
 
     this.unbinder = () => {
-      el.removeEventListener("scroll", this.doRun, { passive: true });
-    }
+      el.removeEventListener('scroll', this.doRun, { passive: true });
+    };
   }
 
   stop() {

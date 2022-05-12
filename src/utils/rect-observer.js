@@ -1,4 +1,4 @@
-import { isDefined } from "./types";
+import { isDefined } from './types';
 
 class RectObserver {
   constructor(element, callback, customEquals = null, checkInterval = 100) {
@@ -39,12 +39,14 @@ class RectObserver {
   }
 
   equalsRect(rect1, rect2) {
-    return isDefined(rect1)
-      && isDefined(rect2)
-      && rect1.left === rect2.left
-      && rect1.top === rect2.top
-      && rect1.width === rect2.width
-      && rect1.height === rect2.height
+    return (
+      isDefined(rect1) &&
+      isDefined(rect2) &&
+      rect1.left === rect2.left &&
+      rect1.top === rect2.top &&
+      rect1.width === rect2.width &&
+      rect1.height === rect2.height
+    );
   }
 
   destroy() {

@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: "v-sidebar",
+  name: 'v-sidebar',
   props: {
     wFull: {
       type: Boolean,
@@ -37,5 +37,5 @@ export default {
 </script>
 
 <style>
-@import "sidebar";
+@import 'sidebar';
 </style>

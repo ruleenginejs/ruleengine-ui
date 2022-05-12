@@ -32,10 +32,16 @@
       </div>
     </div>
     <div class="v-graph-node__content">
-      <div v-if="$slots['left']" class="v-graph-node__part v-graph-node__part--left">
+      <div
+        v-if="$slots['left']"
+        class="v-graph-node__part v-graph-node__part--left"
+      >
         <slot name="left"></slot>
       </div>
-      <div v-if="$slots['right']" class="v-graph-node__part v-graph-node__part--right">
+      <div
+        v-if="$slots['right']"
+        class="v-graph-node__part v-graph-node__part--right"
+      >
         <slot name="right"></slot>
       </div>
     </div>
@@ -43,15 +49,15 @@
 </template>
 
 <script>
-import { inject, provide, toRefs } from "vue";
-import draggable from "@/directives/draggable";
-import link from "@/directives/link";
-import linkTarget from "@/directives/link-target";
-import useColorPreset from "./composables/use-color-preset";
-import useNode from "./composables/use-node";
+import { inject, provide, toRefs } from 'vue';
+import draggable from '@/directives/draggable';
+import link from '@/directives/link';
+import linkTarget from '@/directives/link-target';
+import useColorPreset from './composables/use-color-preset';
+import useNode from './composables/use-node';
 
 export default {
-  name: "v-graph-node",
+  name: 'v-graph-node',
   directives: {
     draggable,
     link,
@@ -96,25 +102,18 @@ export default {
     }
   },
   emits: [
-    "update:x",
-    "update:y",
-    "update:selected",
-    "update:invalidate",
-    "new-link",
-    "change-position"
+    'update:x',
+    'update:y',
+    'update:selected',
+    'update:invalidate',
+    'new-link',
+    'change-position'
   ],
   setup(props, { emit }) {
-    const {
-      x,
-      y,
-      id,
-      headerColor,
-      linkRule,
-      clickTolerance,
-      invalidate
-    } = toRefs(props);
+    const { x, y, id, headerColor, linkRule, clickTolerance, invalidate } =
+      toRefs(props);
 
-    const canvas = inject("canvas");
+    const canvas = inject('canvas');
     const node = useNode(canvas, {
       id,
       x,
@@ -136,13 +135,10 @@ export default {
       linkEnter
     } = node;
 
-    const {
-      colorStyle,
-      colorCssClass
-    } = useColorPreset(headerColor);
+    const { colorStyle, colorCssClass } = useColorPreset(headerColor);
 
     const getNode = () => node;
-    provide("node", node);
+    provide('node', node);
 
     return {
       node,
@@ -163,5 +159,5 @@ export default {
 </script>
 
 <style>
-@import "graph-node";
+@import 'graph-node';
 </style>

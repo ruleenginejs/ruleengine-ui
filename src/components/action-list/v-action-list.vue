@@ -1,11 +1,11 @@
 <script>
 export default {
-  name: "v-action-list"
+  name: 'v-action-list'
 };
 </script>
 
 <script setup>
-import { computed } from "vue";
+import { computed } from 'vue';
 
 const props = defineProps({
   vertical: {
@@ -15,8 +15,8 @@ const props = defineProps({
 });
 
 const cssClasses = computed(() => ({
-  "v-action-list--horizontal": !props.vertical,
-  "v-action-list--vertical": props.vertical
+  'v-action-list--horizontal': !props.vertical,
+  'v-action-list--vertical': props.vertical
 }));
 </script>
 
@@ -27,5 +27,5 @@ const cssClasses = computed(() => ({
 </template>
 
 <style>
-@import "action-list";
+@import 'action-list';
 </style>

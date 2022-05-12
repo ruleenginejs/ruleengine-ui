@@ -1,5 +1,3 @@
-import VInput from "./v-input.vue"
+import VInput from './v-input.vue';
 
-export {
-  VInput
-}
+export { VInput };

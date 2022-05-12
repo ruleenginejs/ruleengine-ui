@@ -1,13 +1,13 @@
 <script>
 export default {
-  name: "v-floating-toolbar"
-}
+  name: 'v-floating-toolbar'
+};
 </script>
 
 <script setup>
-import { computed, toRefs } from "vue";
-import useFloatingToolbar from "./use-floating-toolbar";
-import VFloatingToolbarInternal from "./v-floating-toolbar-internal.vue";
+import { computed, toRefs } from 'vue';
+import useFloatingToolbar from './use-floating-toolbar';
+import VFloatingToolbarInternal from './v-floating-toolbar-internal.vue';
 
 const props = defineProps({
   container: {
@@ -37,38 +37,29 @@ const props = defineProps({
 });
 
 const emit = defineEmits([
-  "update:x",
-  "update:y",
-  "update:invalidate",
-  "moveend"
+  'update:x',
+  'update:y',
+  'update:invalidate',
+  'moveend'
 ]);
 
-const {
-  x, y,
-  fixed,
-  vertical,
-  invalidate,
-  container
-} = toRefs(props);
+const { x, y, fixed, vertical, invalidate, container } = toRefs(props);
 
-const {
-  targetElement,
-  toolbarRef,
-  styles,
-  draggableCallbacks
-} = useFloatingToolbar({
-  x, y,
-  container,
-  fixed,
-  vertical,
-  invalidate,
-  emit
-});
+const { targetElement, toolbarRef, styles, draggableCallbacks } =
+  useFloatingToolbar({
+    x,
+    y,
+    container,
+    fixed,
+    vertical,
+    invalidate,
+    emit
+  });
 
 const cssClasses = computed(() => ({
-  "v-floating-toolbar--fixed": fixed.value,
-  "v-floating-toolbar--horizontal": !vertical.value,
-  "v-floating-toolbar--vertical": vertical.value
+  'v-floating-toolbar--fixed': fixed.value,
+  'v-floating-toolbar--horizontal': !vertical.value,
+  'v-floating-toolbar--vertical': vertical.value
 }));
 </script>
 
@@ -95,5 +86,5 @@ const cssClasses = computed(() => ({
 </template>
 
 <style>
-@import "floating-toolbar";
+@import 'floating-toolbar';
 </style>

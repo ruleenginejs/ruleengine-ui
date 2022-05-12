@@ -1,8 +1,8 @@
-import "./link.css";
-import Draggable from "./draggable";
-import Point from "./point";
-import degrees from "./degrees";
-import isDefined from "./is-defined";
+import './link.css';
+import Draggable from './draggable';
+import Point from './point';
+import degrees from './degrees';
+import isDefined from './is-defined';
 
 class Link {
   constructor(element, options = null, stopEvent = false, ctrl = null) {
@@ -11,7 +11,7 @@ class Link {
     this.destroyed = false;
     this.enabled = true;
     this.draggable = null;
-    this.draggableGroup = "link";
+    this.draggableGroup = 'link';
     this.ctrl = ctrl;
 
     this.controlElement = null;
@@ -71,14 +71,14 @@ class Link {
   }
 
   createControlElement() {
-    const container = document.createElement("div");
-    container.classList.add("v-link-control");
+    const container = document.createElement('div');
+    container.classList.add('v-link-control');
 
-    const startMarker = document.createElement("div");
-    startMarker.classList.add("v-link-control__start");
+    const startMarker = document.createElement('div');
+    startMarker.classList.add('v-link-control__start');
 
-    const endMarker = document.createElement("div");
-    endMarker.classList.add("v-link-control__end");
+    const endMarker = document.createElement('div');
+    endMarker.classList.add('v-link-control__end');
 
     container.appendChild(startMarker);
     container.appendChild(endMarker);
@@ -100,7 +100,7 @@ class Link {
     return {
       x: point.x - offset.left,
       y: point.y - offset.top
-    }
+    };
   }
 
   getCenterPosition(element) {
@@ -123,14 +123,19 @@ class Link {
     if (this.snapToCenter) {
       pos = this.getCenterPosition(this.element).subtract(this.snapOffset);
     } else {
-      pos = (new Point(mousePos.x, mousePos.y)).subtract(this.cursorOffset);
+      pos = new Point(mousePos.x, mousePos.y).subtract(this.cursorOffset);
     }
 
     s.transform = `translate(${pos.x}px, ${pos.y}px)`;
     return pos;
   }
 
-  updateControlPosition(startPos, newPos, dropElement = null, snapToCenter = null) {
+  updateControlPosition(
+    startPos,
+    newPos,
+    dropElement = null,
+    snapToCenter = null
+  ) {
     if (!this.controlElement) return;
     const s = this.controlElement.style;
     let pos;
@@ -144,7 +149,7 @@ class Link {
     if (snap && dropElement) {
       pos = this.getCenterPosition(dropElement).subtract(this.snapOffset);
     } else {
-      pos = (new Point(newPos.x, newPos.y)).subtract(this.cursorOffset);
+      pos = new Point(newPos.x, newPos.y).subtract(this.cursorOffset);
     }
 
     const distance = startPos.distanceTo(pos);

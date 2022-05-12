@@ -5,14 +5,14 @@
 </template>
 
 <script>
-import { computed, toRefs } from "vue";
+import { computed, toRefs } from 'vue';
 
 export default {
-  name: "v-layout",
+  name: 'v-layout',
   props: {
     tag: {
       type: String,
-      default: "div"
+      default: 'div'
     },
     vertical: {
       type: Boolean,
@@ -135,29 +135,29 @@ export default {
     } = toRefs(props);
 
     const cssClasses = computed(() => ({
-      "v-layout--inline": inline.value,
-      "v-layout--vertical": vertical.value,
-      "v-layout--reverse": reverse.value,
-      "v-layout--gutter-sm": gutter.value === "sm",
-      "v-layout--gutter-md": gutter.value === "md" || gutter.value === true,
-      "v-layout--gutter-lg": gutter.value === "lg",
-      "v-layout--wrap": wrap.value,
-      "v-layout--h-full": hFull.value,
-      "v-layout--w-full": wFull.value,
-      "v-layout--h-start": hStart.value,
-      "v-layout--h-end": hEnd.value,
-      "v-layout--h-center": hCenter.value,
-      "v-layout--h-stretch": hStretch.value,
-      "v-layout--h-baseline": hBaseline.value,
-      "v-layout--w-start": wStart.value,
-      "v-layout--w-end": wEnd.value,
-      "v-layout--w-between": wBetween.value,
-      "v-layout--w-center": wCenter.value,
-      "v-layout--all-distr": allDistr.value || distr.value,
-      "v-layout--not-shrink": notShrink.value || noShrink.value,
-      "v-layout--no-overflow": noOverflow.value,
-      "v-layout--no-flex": noFlex.value,
-      "v-layout--min-h-0": minH0.value
+      'v-layout--inline': inline.value,
+      'v-layout--vertical': vertical.value,
+      'v-layout--reverse': reverse.value,
+      'v-layout--gutter-sm': gutter.value === 'sm',
+      'v-layout--gutter-md': gutter.value === 'md' || gutter.value === true,
+      'v-layout--gutter-lg': gutter.value === 'lg',
+      'v-layout--wrap': wrap.value,
+      'v-layout--h-full': hFull.value,
+      'v-layout--w-full': wFull.value,
+      'v-layout--h-start': hStart.value,
+      'v-layout--h-end': hEnd.value,
+      'v-layout--h-center': hCenter.value,
+      'v-layout--h-stretch': hStretch.value,
+      'v-layout--h-baseline': hBaseline.value,
+      'v-layout--w-start': wStart.value,
+      'v-layout--w-end': wEnd.value,
+      'v-layout--w-between': wBetween.value,
+      'v-layout--w-center': wCenter.value,
+      'v-layout--all-distr': allDistr.value || distr.value,
+      'v-layout--not-shrink': notShrink.value || noShrink.value,
+      'v-layout--no-overflow': noOverflow.value,
+      'v-layout--no-flex': noFlex.value,
+      'v-layout--min-h-0': minH0.value
     }));
 
     return {
@@ -168,5 +168,5 @@ export default {
 </script>
 
 <style>
-@import "layout";
+@import 'layout';
 </style>

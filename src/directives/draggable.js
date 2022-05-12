@@ -1,10 +1,10 @@
-import Draggable from "@/utils/draggable";
+import Draggable from '@/utils/draggable';
 
-const PROP = Symbol("draggable");
+const PROP = Symbol('draggable');
 
 export default {
   mounted(el, { value, modifiers }) {
-    const ctrl = modifiers.ctrl ? true : (modifiers.noctrl ? false : null);
+    const ctrl = modifiers.ctrl ? true : modifiers.noctrl ? false : null;
     el[PROP] = new Draggable(el, value, !!modifiers.stop, ctrl);
   },
   beforeUnmount(el) {
@@ -13,4 +13,4 @@ export default {
       delete el[PROP];
     }
   }
-}
+};

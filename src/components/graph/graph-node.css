@@ -21,7 +21,8 @@
   @apply outline-none;
 }
 
-.v-graph-node--selected, .v-graph-node--link-enter {
+.v-graph-node--selected,
+.v-graph-node--link-enter {
   @apply border-focus-border;
 }
 

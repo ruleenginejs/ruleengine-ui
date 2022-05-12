@@ -20,12 +20,12 @@
 </template>
 
 <script>
-import { computed, getCurrentInstance, inject, ref, toRefs } from "vue";
-import VIconClose from "@/components/icons/v-icon-close.vue";
-import VIconCircle from "@/components/icons/v-icon-circle.vue";
+import { computed, getCurrentInstance, inject, ref, toRefs } from 'vue';
+import VIconClose from '@/components/icons/v-icon-close.vue';
+import VIconCircle from '@/components/icons/v-icon-circle.vue';
 
 export default {
-  name: "v-tab",
+  name: 'v-tab',
   components: {
     VIconClose,
     VIconCircle
@@ -44,10 +44,10 @@ export default {
       default: null
     }
   },
-  emits: ["close"],
+  emits: ['close'],
   setup(props, { slots, emit }) {
     const instance = getCurrentInstance();
-    const selectedTab = inject("selectedTab");
+    const selectedTab = inject('selectedTab');
     const { name, iconColor } = toRefs(props);
     const container = ref(null);
 
@@ -58,7 +58,7 @@ export default {
     );
 
     const tabClasses = computed(() => ({
-      "v-tab--selected": selected.value
+      'v-tab--selected': selected.value
     }));
 
     const iconStyle = computed(() => ({
@@ -75,7 +75,7 @@ export default {
       }
     };
 
-    const onClose = () => emit("close");
+    const onClose = () => emit('close');
 
     return {
       container,
@@ -90,5 +90,5 @@ export default {
 </script>
 
 <style>
-@import "tab";
+@import 'tab';
 </style>

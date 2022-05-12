@@ -5,27 +5,27 @@
 </template>
 
 <script>
-import { computed, toRefs } from "vue";
+import { computed, toRefs } from 'vue';
 
 export default {
-  name: "v-action",
+  name: 'v-action',
   props: {
     disabled: {
       type: Boolean,
       default: false
     }
   },
-  emits: ["click"],
+  emits: ['click'],
   setup(props, { emit }) {
     const { disabled } = toRefs(props);
 
     const onClick = () => {
       if (disabled.value) return;
-      emit("click");
+      emit('click');
     };
 
     const cssClasses = computed(() => ({
-      "v-action--disabled": disabled.value
+      'v-action--disabled': disabled.value
     }));
 
     return {
@@ -37,5 +37,5 @@ export default {
 </script>
 
 <style>
-@import "action";
+@import 'action';
 </style>

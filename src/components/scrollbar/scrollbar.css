@@ -1,5 +1,6 @@
 .v-scrollbar {
-  scrollbar-color: var(--v-scrollbar-slider-background) var(--v-scrollbar-corner-background);
+  scrollbar-color: var(--v-scrollbar-slider-background)
+    var(--v-scrollbar-corner-background);
 }
 
 .v-scrollbar::-webkit-scrollbar-corner {

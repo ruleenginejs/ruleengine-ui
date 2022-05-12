@@ -1,6 +1,6 @@
-import Wheel from "@/utils/wheel";
+import Wheel from '@/utils/wheel';
 
-const PROP = Symbol("wheel");
+const PROP = Symbol('wheel');
 
 export default {
   mounted(el, { value, modifiers }) {
@@ -12,4 +12,4 @@ export default {
       delete el[PROP];
     }
   }
-}
+};

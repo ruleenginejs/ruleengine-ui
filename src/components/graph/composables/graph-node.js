@@ -1,18 +1,17 @@
-import { reactive, watch, ref, computed, getCurrentInstance, nextTick } from "vue";
-import Bounds from "@/utils/bounds";
-import Point from "@/utils/point";
-import { isDefined } from "@/utils/types";
+import {
+  reactive,
+  watch,
+  ref,
+  computed,
+  getCurrentInstance,
+  nextTick
+} from 'vue';
+import Bounds from '@/utils/bounds';
+import Point from '@/utils/point';
+import { isDefined } from '@/utils/types';
 
 class GraphNode {
-  constructor({
-    id,
-    x,
-    y,
-    emit,
-    linkRule,
-    clickTolerance,
-    invalidate
-  }) {
+  constructor({ id, x, y, emit, linkRule, clickTolerance, invalidate }) {
     this.canvas = null;
     this.id = id.value ?? getCurrentInstance().uid;
     this.emit = emit;
@@ -42,7 +41,9 @@ class GraphNode {
       dragEnd: this.onDragEnd
     };
 
-    this.onSelect = () => { this.emit("update:selected", true); }
+    this.onSelect = () => {
+      this.emit('update:selected', true);
+    };
 
     this.initComputed();
     this.initWatchers(x, y, invalidate);
@@ -52,8 +53,9 @@ class GraphNode {
   }
 
   initComputed() {
-    this.transformStyle = computed(() =>
-      `translate(${this.position.x}px, ${this.position.y}px)`);
+    this.transformStyle = computed(
+      () => `translate(${this.position.x}px, ${this.position.y}px)`
+    );
   }
 
   initWatchers(x, y, invalidate) {
@@ -69,16 +71,16 @@ class GraphNode {
     });
 
     watch(this.position, () => {
-      this.emit("update:x", this.position.x);
-      this.emit("update:y", this.position.y);
+      this.emit('update:x', this.position.x);
+      this.emit('update:y', this.position.y);
     });
 
     watch(invalidate, () => {
       if (invalidate.value) {
         this.drawConnections();
-        this.emit("update:invalidate", false);
+        this.emit('update:invalidate', false);
       }
-    })
+    });
   }
 
   initLinkOptions() {
@@ -88,28 +90,31 @@ class GraphNode {
   }
 
   initLinkTargetOptions() {
-    const end = () => this.linkEnter.value = false;
+    const end = () => (this.linkEnter.value = false);
 
     this.linkTargetOptions = reactive({
-      enter: () => this.linkEnter.value = true,
+      enter: () => (this.linkEnter.value = true),
       leave: end,
       finish: end,
-      link: (e) => { end(); this.emitNewLink(e); },
-      rule: (e) => this.linkRule.value?.(e, this.makeTarget()),
+      link: e => {
+        end();
+        this.emitNewLink(e);
+      },
+      rule: e => this.linkRule.value?.(e, this.makeTarget()),
       snapToCenter: false
     });
   }
 
   emitNewLink(e) {
-    this.emit("new-link", {
+    this.emit('new-link', {
       ...e,
       from: e.data,
       to: this.makeTarget()
-    })
+    });
   }
 
   emitChangePosition(oldPosition, newPosition) {
-    this.emit("change-position", {
+    this.emit('change-position', {
       oldPosition: [oldPosition.x, oldPosition.y],
       newPosition: [newPosition.x, newPosition.y]
     });
@@ -134,7 +139,7 @@ class GraphNode {
     return {
       x: (size?.width ?? 0) / scale,
       y: (size?.height ?? 0) / scale
-    }
+    };
   }
 
   getBounds() {
@@ -225,8 +230,9 @@ class GraphNode {
   }
 
   isPositionChanged(oldPosition, newPosition) {
-    return !(oldPosition.x === newPosition.x &&
-      oldPosition.y === newPosition.y);
+    return !(
+      oldPosition.x === newPosition.x && oldPosition.y === newPosition.y
+    );
   }
 
   notifyChangePosition() {
@@ -238,7 +244,10 @@ class GraphNode {
   }
 
   isClickValid(newPosition) {
-    return newPosition.distanceTo(this.clickStartPosition.value) <= this.clickTolerance.value;
+    return (
+      newPosition.distanceTo(this.clickStartPosition.value) <=
+      this.clickTolerance.value
+    );
   }
 
   onDragStart(e) {
@@ -251,7 +260,7 @@ class GraphNode {
       this.moveOffsetPoint.value = {
         x: startPoint.x - this.position.x,
         y: startPoint.y - this.position.y
-      }
+      };
     }
 
     this.savePosition();

@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 import path from 'path';
 
 export default defineConfig({
@@ -13,15 +13,10 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, 'src/index.js'),
       name: 'RuleEngineUI',
-      fileName: (format) => `ruleengine-ui.${format}.js`
+      fileName: format => `ruleengine-ui.${format}.js`
     },
     rollupOptions: {
-      external: [
-        'vue',
-        'debounce',
-        'splitview.js',
-        '@svgdotjs/svg.js'
-      ],
+      external: ['vue', 'debounce', 'splitview.js', '@svgdotjs/svg.js'],
       output: {
         globals: {
           vue: 'Vue',
@@ -33,4 +28,4 @@ export default defineConfig({
       }
     }
   }
-})
+});

@@ -1,12 +1,12 @@
-import * as Components from "./components"
+import * as Components from './components';
 
 export default {
-  install: (app) => {
+  install: app => {
     for (const component in Components) {
-      app.component(Components[component].name, Components[component])
+      app.component(Components[component].name, Components[component]);
     }
   }
-}
+};
 
-export * from "./components"
-export * from "./utils"
+export * from './components';
+export * from './utils';

@@ -1,14 +1,14 @@
 export default function useExpand() {
-  const expandEnter = (el) => {
-    el.style.height = el.scrollHeight + "px";
+  const expandEnter = el => {
+    el.style.height = el.scrollHeight + 'px';
   };
 
-  const expandAfterEnter = (el) => {
-    el.style.height = "auto";
+  const expandAfterEnter = el => {
+    el.style.height = 'auto';
   };
 
-  const expandBeforeLeave = (el) => {
-    el.style.height = el.scrollHeight + "px";
+  const expandBeforeLeave = el => {
+    el.style.height = el.scrollHeight + 'px';
   };
 
   return {

@@ -1,5 +1,9 @@
 class Wheel {
-  constructor(element, callbacks = null, options = { prevent: false, stop: false }) {
+  constructor(
+    element,
+    callbacks = null,
+    options = { prevent: false, stop: false }
+  ) {
     this.onWheelScroll = this.onWheelScroll.bind(this);
 
     this.element = element;
@@ -12,11 +16,11 @@ class Wheel {
   }
 
   bindEvents() {
-    this.element.addEventListener("wheel", this.onWheelScroll);
+    this.element.addEventListener('wheel', this.onWheelScroll);
   }
 
   unbindEvents() {
-    this.element.removeEventListener("wheel", this.onWheelScroll);
+    this.element.removeEventListener('wheel', this.onWheelScroll);
   }
 
   onWheelScroll(e) {

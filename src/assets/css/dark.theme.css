@@ -26,8 +26,8 @@
   /* shadow */
   --v-shadow-100: #000000;
   --v-shadow-50: #00000080;
-  --v-shadow-36: #0000005C;
-  --v-shadow-30: #0000004D;
+  --v-shadow-36: #0000005c;
+  --v-shadow-30: #0000004d;
 
   /* action bar */
   --v-action-bar-background: #252526;
@@ -43,10 +43,10 @@
 
   /* tabs */
   --v-tab-background: #252526;
-  --v-tab-inactive-background: #2D2D2D;
+  --v-tab-inactive-background: #2d2d2d;
   --v-tab-inactive-foreground: #ffffff80;
-  --v-tab-active-background: #1E1E1E;
-  --v-tab-active-foreground: #FFFFFF;
+  --v-tab-active-background: #1e1e1e;
+  --v-tab-active-foreground: #ffffff;
   --v-tab-border: #252526;
 
   /* sidebar */
@@ -70,27 +70,27 @@
   --v-scrollbar-slider-active-background: #bfbfbf66;
 
   /* graph */
-  --v-graph-background: #1E1E1E;
-  --v-graph-foreground: #D4D4D4;
-  --v-graph-round-border: #4C4F53;
-  --v-graph-error-background: #810B07;
+  --v-graph-background: #1e1e1e;
+  --v-graph-foreground: #d4d4d4;
+  --v-graph-round-border: #4c4f53;
+  --v-graph-error-background: #810b07;
   --v-graph-node-background: #414141;
-  --v-graph-node-header-background: #4C4F53;
-  --v-graph-node-header-blue-background: #3A68A1;
+  --v-graph-node-header-background: #4c4f53;
+  --v-graph-node-header-blue-background: #3a68a1;
   --v-graph-node-header-green-background: #247939;
-  --v-graph-node-header-brown-background: #A1683A;
-  --v-graph-node-header-indigo-background: #483AA1;
-  --v-graph-node-header-orange-background: #A15C3A;
-  --v-graph-node-header-pink-background: #A13A9F;
-  --v-graph-node-header-purple-background: #713AA1;
-  --v-graph-node-header-red-background: #A13A3A;
-  --v-graph-node-header-teal-background: #3A98A1;
-  --v-graph-node-header-yellow-background: #82801A;
-  --v-graph-node-border: #754A4A;
-  --v-graph-active-port-backgound: #82801A;
-  --v-graph-inactive-port-backgound: #4C4F53;
-  --v-graph-inactive-port-border: #D4D4D4;
-  --v-graph-link-active-port-backgound: #D4D4D4;
+  --v-graph-node-header-brown-background: #a1683a;
+  --v-graph-node-header-indigo-background: #483aa1;
+  --v-graph-node-header-orange-background: #a15c3a;
+  --v-graph-node-header-pink-background: #a13a9f;
+  --v-graph-node-header-purple-background: #713aa1;
+  --v-graph-node-header-red-background: #a13a3a;
+  --v-graph-node-header-teal-background: #3a98a1;
+  --v-graph-node-header-yellow-background: #82801a;
+  --v-graph-node-border: #754a4a;
+  --v-graph-active-port-backgound: #82801a;
+  --v-graph-inactive-port-backgound: #4c4f53;
+  --v-graph-inactive-port-border: #d4d4d4;
+  --v-graph-link-active-port-backgound: #d4d4d4;
   --v-graph-connection-background: #414141;
 
   /* link */

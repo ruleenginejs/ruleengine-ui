@@ -1,4 +1,4 @@
-import Draggable from "./draggable";
+import Draggable from './draggable';
 
 class Droppable {
   constructor(element, callbacks = null, stopEvent = false, group = null) {
@@ -16,13 +16,13 @@ class Droppable {
   }
 
   bindEvents() {
-    this.element.addEventListener("mouseenter", this.onMouseEnter);
-    this.element.addEventListener("mouseleave", this.onMouseLeave);
+    this.element.addEventListener('mouseenter', this.onMouseEnter);
+    this.element.addEventListener('mouseleave', this.onMouseLeave);
   }
 
   unbindEvents() {
-    this.element.removeEventListener("mouseenter", this.onMouseEnter);
-    this.element.removeEventListener("mouseleave", this.onMouseLeave);
+    this.element.removeEventListener('mouseenter', this.onMouseEnter);
+    this.element.removeEventListener('mouseleave', this.onMouseLeave);
   }
 
   activate() {
@@ -41,9 +41,11 @@ class Droppable {
   }
 
   onMouseEnter(e) {
-    if (!Draggable.activeDraggable
-      || Draggable.activeDraggable.element === this.element
-      || Draggable.activeDraggable.group !== this.group) {
+    if (
+      !Draggable.activeDraggable ||
+      Draggable.activeDraggable.element === this.element ||
+      Draggable.activeDraggable.group !== this.group
+    ) {
       return;
     }
 
@@ -62,9 +64,11 @@ class Droppable {
   }
 
   onMouseLeave(e) {
-    if (!Draggable.activeDraggable
-      || Draggable.activeDraggable.element === this.element
-      || Draggable.activeDraggable.group !== this.group) {
+    if (
+      !Draggable.activeDraggable ||
+      Draggable.activeDraggable.element === this.element ||
+      Draggable.activeDraggable.group !== this.group
+    ) {
       return;
     }
 

@@ -5,14 +5,14 @@
 </template>
 
 <script>
-import { computed, toRefs } from "vue";
+import { computed, toRefs } from 'vue';
 
 export default {
-  name: "v-label",
+  name: 'v-label',
   props: {
     tag: {
       type: String,
-      default: "label"
+      default: 'label'
     },
     truncate: {
       type: Boolean,
@@ -27,8 +27,8 @@ export default {
     const { truncate, disabled } = toRefs(props);
 
     const cssClasses = computed(() => ({
-      "v-label--truncate": truncate.value,
-      "v-label--disabled": disabled.value
+      'v-label--truncate': truncate.value,
+      'v-label--disabled': disabled.value
     }));
 
     return {
@@ -39,5 +39,5 @@ export default {
 </script>
 
 <style>
-@import "label";
+@import 'label';
 </style>

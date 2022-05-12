@@ -1,7 +1,7 @@
-import { ref, reactive, markRaw } from "vue";
-import debounce from "debounce";
-import { isDefined } from "@/utils/types";
-import { makeRequest } from "./search-request";
+import { ref, reactive, markRaw } from 'vue';
+import debounce from 'debounce';
+import { isDefined } from '@/utils/types';
+import { makeRequest } from './search-request';
 
 class SearchContoller {
   constructor(dataSource, options = null) {
@@ -63,11 +63,13 @@ class SearchContoller {
   }
 
   _canSearch(query) {
-    return !isDefined(this.minSearchLength) || query.length >= this.minSearchLength;
+    return (
+      !isDefined(this.minSearchLength) || query.length >= this.minSearchLength
+    );
   }
 
   _prepareQuery(query) {
-    query = query ?? "";
+    query = query ?? '';
 
     if (isDefined(this.maxQueryLength) && query.length > this.maxQueryLength) {
       query = query.substring(0, this.maxQueryLength);

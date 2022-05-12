@@ -4,16 +4,16 @@
 
 <script>
 export default {
-  name: "v-space",
+  name: 'v-space',
   props: {
     tag: {
       type: String,
-      default: "div"
+      default: 'div'
     }
   }
 };
 </script>
 
 <style>
-@import "space";
+@import 'space';
 </style>

@@ -1,14 +1,14 @@
 <script>
 export default {
-  name: "v-action-item"
-}
+  name: 'v-action-item'
+};
 </script>
 
 <script setup>
 defineProps({
   tag: {
     type: String,
-    default: "a"
+    default: 'a'
   },
   icon: {
     type: String,
@@ -26,12 +26,12 @@ defineProps({
     type: Boolean,
     default: false
   }
-})
+});
 
-const emit = defineEmits(["click"])
+const emit = defineEmits(['click']);
 
 function onClick(e) {
-  emit("click", e);
+  emit('click', e);
 }
 </script>
 
@@ -40,7 +40,7 @@ function onClick(e) {
     class="v-action-item"
     :class="{
       'v-action-item--with-label': $slots['default'],
-      'v-action-item--disabled': disabled,
+      'v-action-item--disabled': disabled
     }"
     :is="tag"
     :title="title"
@@ -58,5 +58,5 @@ function onClick(e) {
 </template>
 
 <style>
-@import "v-action-item";
+@import 'v-action-item';
 </style>

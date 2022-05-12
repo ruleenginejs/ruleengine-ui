@@ -20,22 +20,22 @@ class DropFileArea {
   }
 
   bindEvents() {
-    this.element.addEventListener("dragenter", this.onDragEnter, false);
-    this.element.addEventListener("dragover", this.onDragOver, false);
-    this.element.addEventListener("drop", this.onDrop, false);
+    this.element.addEventListener('dragenter', this.onDragEnter, false);
+    this.element.addEventListener('dragover', this.onDragOver, false);
+    this.element.addEventListener('drop', this.onDrop, false);
 
     if (!this.syntheticLeave) {
-      this.element.addEventListener("dragleave", this.onDragLeave, false);
+      this.element.addEventListener('dragleave', this.onDragLeave, false);
     }
   }
 
   unbindEvents() {
-    this.element.removeEventListener("dragenter", this.onDragEnter, false);
-    this.element.removeEventListener("dragover", this.onDragOver, false);
-    this.element.removeEventListener("drop", this.onDrop, false);
+    this.element.removeEventListener('dragenter', this.onDragEnter, false);
+    this.element.removeEventListener('dragover', this.onDragOver, false);
+    this.element.removeEventListener('drop', this.onDrop, false);
 
     if (!this.syntheticLeave) {
-      this.element.removeEventListener("dragleave", this.onDragLeave, false);
+      this.element.removeEventListener('dragleave', this.onDragLeave, false);
     }
   }
 
@@ -45,12 +45,12 @@ class DropFileArea {
     }
 
     const { types } = e.dataTransfer;
-    if (types.length === 0 || typeof types[0] !== "string") {
+    if (types.length === 0 || typeof types[0] !== 'string') {
       return false;
     }
 
     const type = types[0].toLowerCase();
-    return type === "files";
+    return type === 'files';
   }
 
   onDragEnter(e) {
@@ -129,7 +129,10 @@ class DropFileArea {
 
   startSyntheticLeave() {
     if (!this.hideInterval) {
-      this.hideInterval = setInterval(this.handleSyntheticLeave, this.leaveTime);
+      this.hideInterval = setInterval(
+        this.handleSyntheticLeave,
+        this.leaveTime
+      );
     }
   }
 

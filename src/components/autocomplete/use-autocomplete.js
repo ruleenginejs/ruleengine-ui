@@ -1,5 +1,5 @@
-import { isDefined } from "@/utils/types";
-import { ref, getCurrentInstance, computed, watch, nextTick } from "vue";
+import { isDefined } from '@/utils/types';
+import { ref, getCurrentInstance, computed, watch, nextTick } from 'vue';
 
 export default function useAutocomplete({
   modelValue,
@@ -10,7 +10,7 @@ export default function useAutocomplete({
   const uid = getCurrentInstance().uid;
   const anchorId = ref(`__v-autocomplete-input-${uid}`);
   const focused = ref(false);
-  const searchQuery = ref("");
+  const searchQuery = ref('');
   const visible = ref(false);
   const focusedItem = ref(null);
   const focusedIndex = ref(0);
@@ -18,13 +18,13 @@ export default function useAutocomplete({
 
   const value = computed({
     get: () => toString(modelValue.value),
-    set: (val) => emit("update:modelValue", val)
+    set: val => emit('update:modelValue', val)
   });
   const valueLength = computed(() => value.value.length);
 
   const resetSearch = () => {
     visible.value = false;
-    searchQuery.value = "";
+    searchQuery.value = '';
     focusedItem.value = null;
     focusedIndex.value = 0;
   };
@@ -65,7 +65,7 @@ export default function useAutocomplete({
   }
 
   function onError(err) {
-    emit("error", err);
+    emit('error', err);
   }
 
   function onSelected(val) {
@@ -97,12 +97,12 @@ export default function useAutocomplete({
     if (isDefined(val)) {
       return `${val}`;
     } else {
-      return "";
+      return '';
     }
   }
 
   function onIconClick(e) {
-    emit("icon-click", e);
+    emit('icon-click', e);
   }
 
   return {
@@ -123,5 +123,5 @@ export default function useAutocomplete({
     onSelected,
     onSelectFocused,
     onIconClick
-  }
+  };
 }

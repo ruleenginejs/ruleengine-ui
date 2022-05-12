@@ -15,6 +15,8 @@
     "build": "npm run build-components && npm run build-theme && npm run build-normalize",
     "clear-docs": "rimraf ./docs/components",
     "build-docs": "npm run clear-docs && vue-docgen",
+    "lint": "eslint . --ext .vue,.js --fix --ignore-path .gitignore",
+    "format": "prettier --write \"src/**/*.{js,vue,css}\"",
     "postversion": "npm run push",
     "push": "git push origin master --tags"
   },
@@ -28,6 +30,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.3",
+    "@vue/eslint-config-prettier": "^7.0.0",
     "autoprefixer": "^10.4.7",
     "cssnano": "^5.1.7",
     "eslint": "^8.15.0",
@@ -36,6 +39,7 @@
     "postcss-cli": "^9.1.0",
     "postcss-import": "^14.1.0",
     "postcss-nesting": "^10.1.5",
+    "prettier": "^2.6.2",
     "rimraf": "^3.0.2",
     "tailwindcss": "^2.2.19",
     "vite": "^2.9.9",

@@ -1,6 +1,6 @@
-import { ref, watch, onMounted, getCurrentInstance } from "vue";
-import { Path } from "@svgdotjs/svg.js";
-import isDefined from "@/utils/is-defined";
+import { ref, watch, onMounted, getCurrentInstance } from 'vue';
+import { Path } from '@svgdotjs/svg.js';
+import isDefined from '@/utils/is-defined';
 
 class GraphConnection {
   constructor({
@@ -54,43 +54,43 @@ class GraphConnection {
     });
 
     watch(this.invalidate, () => {
-      this.emit("update:invalidate", this.invalidate.value);
+      this.emit('update:invalidate', this.invalidate.value);
       this.drawIfNeeded();
-    })
+    });
 
     watch(this.from, (newVal, oldVal) => {
       this.notifyRelink(oldVal, newVal);
       this.invalidate.value = true;
-    })
+    });
 
     watch(this.to, (newVal, oldVal) => {
       this.notifyRelink(oldVal, newVal);
       this.invalidate.value = true;
-    })
+    });
 
     watch(this.curveFactor, () => {
       this.invalidate.value = true;
-    })
+    });
 
     watch([this.color, this.borderWidth], () => {
       this.updateStyle();
-    })
+    });
 
     watch(this.className, (newVal, oldVal) => {
       this.updateCssClass(oldVal, newVal);
-    })
+    });
 
     watch(this.selectedClass, (newVal, oldVal) => {
       this.updateCssClass(oldVal, newVal);
-    })
+    });
 
     watch(this.colorClass, (newVal, oldVal) => {
       this.updateCssClass(oldVal, newVal);
-    })
+    });
 
     watch(this.selected, () => {
       this.updateSelectedClass();
-    })
+    });
 
     watch(this.svg.rootGroup, () => {
       if (this.svg.rootGroup.value) {
@@ -138,7 +138,7 @@ class GraphConnection {
         this.drawCache = {
           from: this.findFromPort(),
           to: this.findToPort()
-        }
+        };
       }
 
       from = this.drawCache.from;
@@ -187,22 +187,28 @@ class GraphConnection {
 
   getBezierHorizontalOffset(distance, direction = null) {
     switch (direction) {
-      case "left": return distance * -this.curveFactor.value;
-      case "right": return distance * this.curveFactor.value;
-      default: return 0;
+      case 'left':
+        return distance * -this.curveFactor.value;
+      case 'right':
+        return distance * this.curveFactor.value;
+      default:
+        return 0;
     }
   }
 
   getBezierVerticalOffset(distance, direction = null) {
     switch (direction) {
-      case "up": return distance * -this.curveFactor.value;
-      case "down": return distance * this.curveFactor.value;
-      default: return 0;
+      case 'up':
+        return distance * -this.curveFactor.value;
+      case 'down':
+        return distance * this.curveFactor.value;
+      default:
+        return 0;
     }
   }
 
   updatePath(path) {
-    this.svgElement?.attr("d", path);
+    this.svgElement?.attr('d', path);
   }
 
   clearDrawCache() {
@@ -231,7 +237,7 @@ class GraphConnection {
       const strokeStyle = {
         width: this.borderWidth.value,
         color: this.color.value,
-        linecap: "round"
+        linecap: 'round'
       };
 
       if (!strokeStyle.color) {
@@ -240,9 +246,7 @@ class GraphConnection {
         svgElement.removeClass(this.colorClass.value);
       }
 
-      svgElement
-        .stroke(strokeStyle)
-        .fill("transparent");
+      svgElement.stroke(strokeStyle).fill('transparent');
     }
   }
 
@@ -294,13 +298,13 @@ class GraphConnection {
 
   notifyUnlink(target) {
     if (target) {
-      this.notifyPort(target, "onUnlink");
+      this.notifyPort(target, 'onUnlink');
     }
   }
 
   notifyLink(target) {
     if (target) {
-      this.notifyPort(target, "onLink");
+      this.notifyPort(target, 'onLink');
     }
   }
 
@@ -316,7 +320,7 @@ class GraphConnection {
 
   onSelect(e) {
     this.stopEvent(e);
-    this.emit("update:selected", true);
+    this.emit('update:selected', true);
   }
 }
 

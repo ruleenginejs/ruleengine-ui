@@ -27,14 +27,14 @@
 </template>
 
 <script>
-import { computed, defineAsyncComponent, toRefs } from "vue";
-import VIconChevronDown from "@/components/icons/v-icon-chevron-down.vue";
-const VTreeItem = defineAsyncComponent(() => import("./v-tree-item.vue"));
+import { computed, defineAsyncComponent, toRefs } from 'vue';
+import VIconChevronDown from '@/components/icons/v-icon-chevron-down.vue';
+const VTreeItem = defineAsyncComponent(() => import('./v-tree-item.vue'));
 
 const INDENT_FACTOR = 0.75;
 
 export default {
-  name: "v-tree-item",
+  name: 'v-tree-item',
   components: {
     VIconChevronDown,
     VTreeItem
@@ -49,7 +49,7 @@ export default {
       default: 0
     }
   },
-  emits: ["select"],
+  emits: ['select'],
   setup(props, { emit }) {
     const { depth, item } = toRefs(props);
     const { expanded, selected, children } = toRefs(props.item);
@@ -62,16 +62,16 @@ export default {
     );
 
     const itemClasses = computed(() => ({
-      "v-tree-item--root": isRoot.value,
-      "v-tree-item--expanded": expanded?.value,
-      "v-tree-item--selected": selected?.value
+      'v-tree-item--root': isRoot.value,
+      'v-tree-item--expanded': expanded?.value,
+      'v-tree-item--selected': selected?.value
     }));
 
-    const forwardEvent = (eventName) => (e) => emit(eventName, e);
-    const forwardSelect = forwardEvent("select");
+    const forwardEvent = eventName => e => emit(eventName, e);
+    const forwardSelect = forwardEvent('select');
 
     const onSelect = () => {
-      emit("select", {
+      emit('select', {
         item: item.value,
         depth: depth.value
       });
@@ -90,5 +90,5 @@ export default {
 </script>
 
 <style>
-@import "tree-item";
+@import 'tree-item';
 </style>

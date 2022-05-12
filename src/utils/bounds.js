@@ -61,10 +61,12 @@ class Bounds {
       min = max = obj;
     }
 
-    return (min.x >= this.min.x) &&
-      (max.x <= this.max.x) &&
-      (min.y >= this.min.y) &&
-      (max.y <= this.max.y);
+    return (
+      min.x >= this.min.x &&
+      max.x <= this.max.x &&
+      min.y >= this.min.y &&
+      max.y <= this.max.y
+    );
   }
 }
 

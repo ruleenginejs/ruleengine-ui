@@ -1,7 +1,14 @@
-import { watch, watchEffect, onMounted, onBeforeUnmount, ref, nextTick } from "vue";
-import { getScrollParent } from "@/utils/scroll";
-import DropdownLayout from "./dropdown-layout";
-import ScrollTrigger from "./scroll-trigger";
+import {
+  watch,
+  watchEffect,
+  onMounted,
+  onBeforeUnmount,
+  ref,
+  nextTick
+} from 'vue';
+import { getScrollParent } from '@/utils/scroll';
+import DropdownLayout from './dropdown-layout';
+import ScrollTrigger from './scroll-trigger';
 
 export default function useDropdown({
   visible,
@@ -23,14 +30,15 @@ export default function useDropdown({
     layout.update();
   };
 
-  const onMouseDown = (e) => {
+  const onMouseDown = e => {
     if (preventMouseDown.value) {
       e.preventDefault();
     }
   };
 
   watchEffect(() => {
-    layout.setMaxWidth(maxWidth.value)
+    layout
+      .setMaxWidth(maxWidth.value)
       .setMaxHeight(maxHeight.value)
       .setMinWidth(minWidth.value)
       .setOffsetX(offsetX.value)
@@ -76,7 +84,7 @@ export default function useDropdown({
   }
 
   function closeDropdown() {
-    emit("update:visible", false);
+    emit('update:visible', false);
   }
 
   let scrollTrigger = null;
@@ -87,14 +95,18 @@ export default function useDropdown({
       return null;
     }
 
-    const onceRun = actionOnScrolling.value !== "update";
-    return new ScrollTrigger(scrollParentEl, () => {
-      if (actionOnScrolling.value === "update") {
-        layout.update();
-      } else if (actionOnScrolling.value === "close") {
-        closeDropdown();
-      }
-    }, onceRun);
+    const onceRun = actionOnScrolling.value !== 'update';
+    return new ScrollTrigger(
+      scrollParentEl,
+      () => {
+        if (actionOnScrolling.value === 'update') {
+          layout.update();
+        } else if (actionOnScrolling.value === 'close') {
+          closeDropdown();
+        }
+      },
+      onceRun
+    );
   }
 
   function startScrollTrigger() {
@@ -131,5 +143,5 @@ export default function useDropdown({
     dropdown,
     onMouseEnter,
     onMouseDown
-  }
+  };
 }

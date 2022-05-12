@@ -1,4 +1,4 @@
-import GraphNode from "./graph-node";
+import GraphNode from './graph-node';
 
 class GraphCircleNode extends GraphNode {
   constructor(options) {

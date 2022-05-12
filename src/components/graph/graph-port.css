@@ -79,12 +79,14 @@
   @apply bg-graph-error-background;
 }
 
-.v-graph-port__anchor--link-start, .v-graph-port__anchor--link-enter {
+.v-graph-port__anchor--link-start,
+.v-graph-port__anchor--link-enter {
   @apply border-none bg-graph-link-active-port-backgound;
 }
 
 /* plus icon styles */
-.v-graph-port__anchor:hover:not(.v-graph-port__anchor--link-start) > .v-svg-icon {
+.v-graph-port__anchor:hover:not(.v-graph-port__anchor--link-start)
+  > .v-svg-icon {
   @apply block;
 }
 
@@ -96,7 +98,9 @@
   @apply hidden;
 }
 
-.v-graph-port .v-graph-port__anchor.v-graph-port__anchor--link-enter > .v-svg-icon {
+.v-graph-port
+  .v-graph-port__anchor.v-graph-port__anchor--link-enter
+  > .v-svg-icon {
   @apply hidden;
 }
 
@@ -106,7 +110,8 @@
 }
 
 /* label link styles */
-.v-graph-port__label__text--link-start, .v-graph-port__label__text--link-enter {
+.v-graph-port__label__text--link-start,
+.v-graph-port__label__text--link-enter {
   @apply outline-blue;
 }
 

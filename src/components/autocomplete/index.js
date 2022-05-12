@@ -1,5 +1,3 @@
-import VAutocomplete from "./v-autocomplete.vue";
+import VAutocomplete from './v-autocomplete.vue';
 
-export {
-  VAutocomplete
-}
+export { VAutocomplete };

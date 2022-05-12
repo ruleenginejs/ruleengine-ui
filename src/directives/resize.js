@@ -1,7 +1,7 @@
-import { toInt } from "@/utils/number";
-import Resizing from "@/utils/resizing";
+import { toInt } from '@/utils/number';
+import Resizing from '@/utils/resizing';
 
-const PROP = Symbol("resize");
+const PROP = Symbol('resize');
 
 export default {
   mounted(el, { value, arg }) {
@@ -13,4 +13,4 @@ export default {
       delete el[PROP];
     }
   }
-}
+};

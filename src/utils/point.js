@@ -128,15 +128,16 @@ class Point {
   equals(point) {
     point = Point.toPoint(point);
 
-    return point.x === this.x &&
-      point.y === this.y;
+    return point.x === this.x && point.y === this.y;
   }
 
   contains(point) {
     point = Point.toPoint(point);
 
-    return Math.abs(point.x) <= Math.abs(this.x) &&
-      Math.abs(point.y) <= Math.abs(this.y);
+    return (
+      Math.abs(point.x) <= Math.abs(this.x) &&
+      Math.abs(point.y) <= Math.abs(this.y)
+    );
   }
 
   toString() {

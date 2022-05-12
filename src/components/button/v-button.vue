@@ -14,14 +14,14 @@
 </template>
 
 <script>
-import { computed, ref, toRefs } from "vue";
+import { computed, ref, toRefs } from 'vue';
 
 export default {
-  name: "v-button",
+  name: 'v-button',
   props: {
     tag: {
       type: String,
-      default: "a"
+      default: 'a'
     },
     tabIndex: {
       type: Number,
@@ -36,28 +36,28 @@ export default {
       default: false
     }
   },
-  emits: ["click"],
+  emits: ['click'],
   setup(props, { emit }) {
     const { disabled, secondary } = toRefs(props);
     const button = ref(null);
 
     const cssClasses = computed(() => ({
-      "v-button--disabled": disabled.value,
-      "v-button--default": !secondary.value,
-      "v-button--secondary": secondary.value
+      'v-button--disabled': disabled.value,
+      'v-button--default': !secondary.value,
+      'v-button--secondary': secondary.value
     }));
 
-    const stopEvent = (e) => {
+    const stopEvent = e => {
       e.preventDefault();
       e.stopPropagation();
     };
 
-    const onClick = (e) => {
+    const onClick = e => {
       if (disabled.value) {
         stopEvent(e);
         return;
       }
-      emit("click", e);
+      emit('click', e);
     };
 
     const onEscKey = () => {
@@ -75,5 +75,5 @@ export default {
 </script>
 
 <style>
-@import "button";
+@import 'button';
 </style>

@@ -47,14 +47,14 @@
 </template>
 
 <script>
-import { toRefs } from "vue";
-import { VInput } from "@/components/input";
-import { VSuggest } from "@/components/suggest";
-import useAutocomplete from "./use-autocomplete";
-import useKeyboard from "./use-keyboard";
+import { toRefs } from 'vue';
+import { VInput } from '@/components/input';
+import { VSuggest } from '@/components/suggest';
+import useAutocomplete from './use-autocomplete';
+import useKeyboard from './use-keyboard';
 
 export default {
-  name: "v-autocomplete",
+  name: 'v-autocomplete',
   components: {
     VInput,
     VSuggest
@@ -90,11 +90,11 @@ export default {
     },
     displayField: {
       type: String,
-      default: "text"
+      default: 'text'
     },
     valueField: {
       type: String,
-      default: "text"
+      default: 'text'
     },
     searchTimeout: {
       type: Number,
@@ -121,13 +121,9 @@ export default {
       default: null
     }
   },
-  emits: ["update:modelValue", "error", "icon-click"],
+  emits: ['update:modelValue', 'error', 'icon-click'],
   setup(props, { emit }) {
-    const {
-      modelValue,
-      valueField,
-      minSearchLength
-    } = toRefs(props);
+    const { modelValue, valueField, minSearchLength } = toRefs(props);
 
     const {
       value,
@@ -154,12 +150,7 @@ export default {
       emit
     });
 
-    const {
-      onKeyEsc,
-      onKeyDown,
-      onKeyUp,
-      onKeyEnter
-    } = useKeyboard({
+    const { onKeyEsc, onKeyDown, onKeyUp, onKeyEnter } = useKeyboard({
       visible,
       resetSearch,
       updateSearch,

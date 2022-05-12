@@ -1,6 +1,6 @@
-import { watch, watchEffect, reactive } from "vue";
-import { isDefined } from "@/utils/types";
-import ListItem from "./list-item";
+import { watch, watchEffect, reactive } from 'vue';
+import { isDefined } from '@/utils/types';
+import ListItem from './list-item';
 
 class List {
   constructor({
@@ -36,9 +36,11 @@ class List {
   initWatchers() {
     watchEffect(() => {
       this.displayItems.length = 0;
-      this.displayItems.push(...this.items.value.map(
-        (item, index) => new ListItem(index, item, this.fields)
-      ));
+      this.displayItems.push(
+        ...this.items.value.map(
+          (item, index) => new ListItem(index, item, this.fields)
+        )
+      );
     });
 
     watch(this.selected, () => {
@@ -47,12 +49,17 @@ class List {
 
     watch(this.focusIndex, this.updateFocusItem);
 
-    watch(() => [...this.displayItems], () => {
-      if (isDefined(this.focusIndex.value)
-        && isDefined(this.resetFocusIndex.value)) {
-        this.updateFocusItem(this.resetFocusIndex.value);
+    watch(
+      () => [...this.displayItems],
+      () => {
+        if (
+          isDefined(this.focusIndex.value) &&
+          isDefined(this.resetFocusIndex.value)
+        ) {
+          this.updateFocusItem(this.resetFocusIndex.value);
+        }
       }
-    });
+    );
   }
 
   isSelectedItem(listItem) {
@@ -73,7 +80,7 @@ class List {
       this.displayItems[oldValue].focused = false;
     }
     if (!isDefined(newValue)) {
-      this.emit("update:focused", null);
+      this.emit('update:focused', null);
       return;
     }
 
@@ -94,18 +101,18 @@ class List {
 
     const listItem = this.displayItems[newValue];
     if (!listItem) {
-      this.emit("update:focused", null);
+      this.emit('update:focused', null);
       return;
     }
 
     listItem.focused = true;
-    this.emit("update:focused", listItem.data);
-    this.emit("update:focusIndex", newValue);
+    this.emit('update:focused', listItem.data);
+    this.emit('update:focusIndex', newValue);
   }
 
   onSelect(listItem, e) {
-    this.emit("select", listItem.data, e);
-    this.emit("update:selected", listItem.data);
+    this.emit('select', listItem.data, e);
+    this.emit('update:selected', listItem.data);
   }
 }
 

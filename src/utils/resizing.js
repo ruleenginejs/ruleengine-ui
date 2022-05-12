@@ -1,4 +1,4 @@
-import debounce from "debounce";
+import debounce from 'debounce';
 
 class Resizing {
   constructor(element, callbacks = null, delay = null) {
@@ -13,11 +13,11 @@ class Resizing {
   }
 
   bindEvents() {
-    window.addEventListener("resize", this.resizeHandler);
+    window.addEventListener('resize', this.resizeHandler);
   }
 
   unbindEvents() {
-    window.removeEventListener("resize", this.resizeHandler);
+    window.removeEventListener('resize', this.resizeHandler);
   }
 
   onResize(e) {

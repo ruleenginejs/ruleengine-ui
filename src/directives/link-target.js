@@ -1,6 +1,6 @@
-import LinkTarget from "@/utils/link-target";
+import LinkTarget from '@/utils/link-target';
 
-const PROP = Symbol("link-target");
+const PROP = Symbol('link-target');
 
 export default {
   mounted(el, { value, modifiers }) {
@@ -17,4 +17,4 @@ export default {
       delete el[PROP];
     }
   }
-}
+};

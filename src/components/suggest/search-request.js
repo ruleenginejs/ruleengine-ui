@@ -1,4 +1,4 @@
-import { CancellationTokenSource } from "@/utils/cancellation";
+import { CancellationTokenSource } from '@/utils/cancellation';
 
 let _requestId = 0;
 
@@ -15,7 +15,11 @@ export function makeRequest(query, dataSource, completion = null) {
         return;
       }
 
-      const result = await dataSource(query, requestId, cancellationSource.token);
+      const result = await dataSource(
+        query,
+        requestId,
+        cancellationSource.token
+      );
       if (isCancelled()) {
         return;
       }
@@ -44,5 +48,5 @@ export function makeRequest(query, dataSource, completion = null) {
     execute,
     cancel,
     isCancelled
-  }
+  };
 }

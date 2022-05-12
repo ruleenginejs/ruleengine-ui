@@ -5,11 +5,11 @@
 </template>
 
 <script>
-import { toRefs } from "vue";
-import usePane from "./use-pane";
+import { toRefs } from 'vue';
+import usePane from './use-pane';
 
 export default {
-  name: "v-split-pane",
+  name: 'v-split-pane',
   props: {
     id: {
       type: [String, Number],
