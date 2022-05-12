@@ -18,7 +18,8 @@
     "lint": "eslint . --ext .vue,.js --fix --ignore-path .gitignore",
     "format": "prettier --write \"src/**/*.{js,vue,css}\"",
     "postversion": "npm run push",
-    "push": "git push origin master --tags"
+    "push": "git push origin master --tags",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@svgdotjs/svg.js": "^3.1.2",
@@ -29,12 +30,16 @@
     "vue": "^3.2.33"
   },
   "devDependencies": {
+    "@commitlint/cli": "^16.2.4",
+    "@commitlint/config-angular": "^16.2.4",
     "@vitejs/plugin-vue": "^2.3.3",
     "@vue/eslint-config-prettier": "^7.0.0",
     "autoprefixer": "^10.4.7",
     "cssnano": "^5.1.7",
     "eslint": "^8.15.0",
     "eslint-plugin-vue": "^8.7.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^12.4.1",
     "postcss": "^8.4.13",
     "postcss-cli": "^9.1.0",
     "postcss-import": "^14.1.0",
@@ -44,6 +49,9 @@
     "tailwindcss": "^2.2.19",
     "vite": "^2.9.9",
     "vue-docgen-cli": "^4.45.0"
+  },
+  "lint-staged": {
+    "*.{js,vue,css}": "prettier --write"
   },
   "repository": {
     "type": "git",
