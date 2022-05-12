@@ -102,9 +102,9 @@ Read the [documentation and demos](https://ruleenginejs.github.io/ruleengine-ui-
 - [KeybindingLabel](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/keybinding-label)
 - [KeyboardShortcuts](https://ruleenginejs.github.io/ruleengine-ui-demo/#/component/keyboard-shortcuts)
 
-## Reference
+## API Reference
 
-Read the [api reference](docs/README.md) to props, events, slots.
+Read the [api reference](docs/README.md) for props, events, slots.
 
 ## License
 
