@@ -57,6 +57,12 @@
     "type": "git",
     "url": "git+https://github.com/ruleenginejs/ruleengine-ui.git"
   },
+  "keywords": [
+    "ruleengine",
+    "ui",
+    "vue",
+    "components"
+  ],
   "author": "Nikolay Naumenkov <nikolas.it.web@gmail.com>",
   "license": "MIT",
   "bugs": {
