@@ -4,7 +4,7 @@
 
 | Prop name | Description | Type   | Values | Default |
 | --------- | ----------- | ------ | ------ | ------- |
-| item      |             | object | -      |         |
+| item      |             | object | -      | {}      |
 | depth     |             | number | -      | 0       |
 
 ## Events
