@@ -18,8 +18,7 @@
     "lint": "eslint . --ext .vue,.js --fix --ignore-path .gitignore",
     "format": "prettier --write \"src/**/*.{js,vue,css}\"",
     "postversion": "npm run push",
-    "push": "git push origin master --tags",
-    "prepare": "husky install"
+    "push": "git push origin master --tags"
   },
   "dependencies": {
     "@svgdotjs/svg.js": "^3.1.2",
